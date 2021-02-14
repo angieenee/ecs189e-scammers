@@ -13,6 +13,8 @@
 		63CCBFD725D9DC9F00AA3A36 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63CCBFD525D9DC9F00AA3A36 /* Main.storyboard */; };
 		63CCBFD925D9DCA300AA3A36 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63CCBFD825D9DCA300AA3A36 /* Assets.xcassets */; };
 		63CCBFDC25D9DCA300AA3A36 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63CCBFDA25D9DCA300AA3A36 /* LaunchScreen.storyboard */; };
+		63CCBFE625D9E08B00AA3A36 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 63CCBFE525D9E08B00AA3A36 /* GoogleService-Info.plist */; };
+		A23AC00CA70BBBD5AEE4B07C /* Pods_CashCow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BF537A977EF60E5E1388CCB /* Pods_CashCow.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,10 @@
 		63CCBFD825D9DCA300AA3A36 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		63CCBFDB25D9DCA300AA3A36 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		63CCBFDD25D9DCA300AA3A36 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		63CCBFE525D9E08B00AA3A36 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		6BF537A977EF60E5E1388CCB /* Pods_CashCow.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CashCow.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A129A5F6D0882622A726EAC5 /* Pods-CashCow.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CashCow.release.xcconfig"; path = "Target Support Files/Pods-CashCow/Pods-CashCow.release.xcconfig"; sourceTree = "<group>"; };
+		A72387558186A579001E9A56 /* Pods-CashCow.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CashCow.debug.xcconfig"; path = "Target Support Files/Pods-CashCow/Pods-CashCow.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A23AC00CA70BBBD5AEE4B07C /* Pods_CashCow.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +49,8 @@
 			children = (
 				63CCBFCE25D9DC9F00AA3A36 /* CashCow */,
 				63CCBFCD25D9DC9F00AA3A36 /* Products */,
+				855C1E22FAD56487FEDBBE2F /* Pods */,
+				84CEC243AF409803FD0A7EE2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -63,8 +72,27 @@
 				63CCBFD825D9DCA300AA3A36 /* Assets.xcassets */,
 				63CCBFDA25D9DCA300AA3A36 /* LaunchScreen.storyboard */,
 				63CCBFDD25D9DCA300AA3A36 /* Info.plist */,
+				63CCBFE525D9E08B00AA3A36 /* GoogleService-Info.plist */,
 			);
 			path = CashCow;
+			sourceTree = "<group>";
+		};
+		84CEC243AF409803FD0A7EE2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6BF537A977EF60E5E1388CCB /* Pods_CashCow.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		855C1E22FAD56487FEDBBE2F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A72387558186A579001E9A56 /* Pods-CashCow.debug.xcconfig */,
+				A129A5F6D0882622A726EAC5 /* Pods-CashCow.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +102,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 63CCBFE025D9DCA300AA3A36 /* Build configuration list for PBXNativeTarget "CashCow" */;
 			buildPhases = (
+				6441AA937E0DC92E54C24752 /* [CP] Check Pods Manifest.lock */,
 				63CCBFC825D9DC9F00AA3A36 /* Sources */,
 				63CCBFC925D9DC9F00AA3A36 /* Frameworks */,
 				63CCBFCA25D9DC9F00AA3A36 /* Resources */,
+				03456233FD1E4D5529B47963 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -125,12 +155,55 @@
 			buildActionMask = 2147483647;
 			files = (
 				63CCBFDC25D9DCA300AA3A36 /* LaunchScreen.storyboard in Resources */,
+				63CCBFE625D9E08B00AA3A36 /* GoogleService-Info.plist in Resources */,
 				63CCBFD925D9DCA300AA3A36 /* Assets.xcassets in Resources */,
 				63CCBFD725D9DC9F00AA3A36 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		03456233FD1E4D5529B47963 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CashCow/Pods-CashCow-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CashCow/Pods-CashCow-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CashCow/Pods-CashCow-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6441AA937E0DC92E54C24752 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CashCow-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		63CCBFC825D9DC9F00AA3A36 /* Sources */ = {
@@ -283,6 +356,7 @@
 		};
 		63CCBFE125D9DCA300AA3A36 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A72387558186A579001E9A56 /* Pods-CashCow.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -302,6 +376,7 @@
 		};
 		63CCBFE225D9DCA300AA3A36 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A129A5F6D0882622A726EAC5 /* Pods-CashCow.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
