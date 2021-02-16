@@ -53,6 +53,17 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>ProximaNovaAltBold.otf</string>
+		<string>ProximaNovaAltLight.otf</string>
+		<string>ProximaNovaAltThin.otf</string>
+		<string>ProximaNovaBlack.otf</string>
+		<string>ProximaNovaBold.otf</string>
+		<string>ProximaNovaExtrabold.otf</string>
+		<string>ProximaNovaThin.otf</string>
+		<string>ProximaNova-Regular.otf</string>
+	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

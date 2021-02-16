@@ -15,6 +15,14 @@
 		63CCBFDC25D9DCA300AA3A36 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63CCBFDA25D9DCA300AA3A36 /* LaunchScreen.storyboard */; };
 		63CCBFE625D9E08B00AA3A36 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 63CCBFE525D9E08B00AA3A36 /* GoogleService-Info.plist */; };
 		A23AC00CA70BBBD5AEE4B07C /* Pods_CashCow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BF537A977EF60E5E1388CCB /* Pods_CashCow.framework */; };
+		E0843CAC25DC74960015E5B5 /* ProximaNovaAltBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E0843CA425DC74880015E5B5 /* ProximaNovaAltBold.otf */; };
+		E0843CAD25DC74960015E5B5 /* ProximaNova-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E0843CA325DC74870015E5B5 /* ProximaNova-Regular.otf */; };
+		E0843CAE25DC74960015E5B5 /* ProximaNovaAltLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = E0843CA925DC74890015E5B5 /* ProximaNovaAltLight.otf */; };
+		E0843CAF25DC74960015E5B5 /* ProximaNovaAltThin.otf in Resources */ = {isa = PBXBuildFile; fileRef = E0843CAA25DC74890015E5B5 /* ProximaNovaAltThin.otf */; };
+		E0843CB025DC74960015E5B5 /* ProximaNovaExtrabold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E0843CA625DC74880015E5B5 /* ProximaNovaExtrabold.otf */; };
+		E0843CB125DC74960015E5B5 /* ProximaNovaBlack.otf in Resources */ = {isa = PBXBuildFile; fileRef = E0843CA825DC74890015E5B5 /* ProximaNovaBlack.otf */; };
+		E0843CB225DC74960015E5B5 /* ProximaNovaBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E0843CA725DC74890015E5B5 /* ProximaNovaBold.otf */; };
+		E0843CB325DC74960015E5B5 /* ProximaNovaThin.otf in Resources */ = {isa = PBXBuildFile; fileRef = E0843CA525DC74880015E5B5 /* ProximaNovaThin.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +38,14 @@
 		6BF537A977EF60E5E1388CCB /* Pods_CashCow.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CashCow.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A129A5F6D0882622A726EAC5 /* Pods-CashCow.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CashCow.release.xcconfig"; path = "Target Support Files/Pods-CashCow/Pods-CashCow.release.xcconfig"; sourceTree = "<group>"; };
 		A72387558186A579001E9A56 /* Pods-CashCow.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CashCow.debug.xcconfig"; path = "Target Support Files/Pods-CashCow/Pods-CashCow.debug.xcconfig"; sourceTree = "<group>"; };
+		E0843CA325DC74870015E5B5 /* ProximaNova-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Regular.otf"; sourceTree = "<group>"; };
+		E0843CA425DC74880015E5B5 /* ProximaNovaAltBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ProximaNovaAltBold.otf; sourceTree = "<group>"; };
+		E0843CA525DC74880015E5B5 /* ProximaNovaThin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ProximaNovaThin.otf; sourceTree = "<group>"; };
+		E0843CA625DC74880015E5B5 /* ProximaNovaExtrabold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ProximaNovaExtrabold.otf; sourceTree = "<group>"; };
+		E0843CA725DC74890015E5B5 /* ProximaNovaBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ProximaNovaBold.otf; sourceTree = "<group>"; };
+		E0843CA825DC74890015E5B5 /* ProximaNovaBlack.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ProximaNovaBlack.otf; sourceTree = "<group>"; };
+		E0843CA925DC74890015E5B5 /* ProximaNovaAltLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ProximaNovaAltLight.otf; sourceTree = "<group>"; };
+		E0843CAA25DC74890015E5B5 /* ProximaNovaAltThin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ProximaNovaAltThin.otf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +81,7 @@
 		63CCBFCE25D9DC9F00AA3A36 /* CashCow */ = {
 			isa = PBXGroup;
 			children = (
+				E0843C9E25DC73170015E5B5 /* Fonts */,
 				63CCBFCF25D9DC9F00AA3A36 /* AppDelegate.swift */,
 				63CCBFD125D9DC9F00AA3A36 /* SceneDelegate.swift */,
 				63CCBFD325D9DC9F00AA3A36 /* ViewController.swift */,
@@ -92,6 +109,21 @@
 				A129A5F6D0882622A726EAC5 /* Pods-CashCow.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		E0843C9E25DC73170015E5B5 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				E0843CA425DC74880015E5B5 /* ProximaNovaAltBold.otf */,
+				E0843CA925DC74890015E5B5 /* ProximaNovaAltLight.otf */,
+				E0843CAA25DC74890015E5B5 /* ProximaNovaAltThin.otf */,
+				E0843CA825DC74890015E5B5 /* ProximaNovaBlack.otf */,
+				E0843CA725DC74890015E5B5 /* ProximaNovaBold.otf */,
+				E0843CA625DC74880015E5B5 /* ProximaNovaExtrabold.otf */,
+				E0843CA525DC74880015E5B5 /* ProximaNovaThin.otf */,
+				E0843CA325DC74870015E5B5 /* ProximaNova-Regular.otf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -153,10 +185,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0843CAF25DC74960015E5B5 /* ProximaNovaAltThin.otf in Resources */,
+				E0843CB225DC74960015E5B5 /* ProximaNovaBold.otf in Resources */,
 				63CCBFDC25D9DCA300AA3A36 /* LaunchScreen.storyboard in Resources */,
 				63CCBFE625D9E08B00AA3A36 /* GoogleService-Info.plist in Resources */,
+				E0843CAE25DC74960015E5B5 /* ProximaNovaAltLight.otf in Resources */,
+				E0843CB125DC74960015E5B5 /* ProximaNovaBlack.otf in Resources */,
 				63CCBFD925D9DCA300AA3A36 /* Assets.xcassets in Resources */,
+				E0843CB325DC74960015E5B5 /* ProximaNovaThin.otf in Resources */,
 				63CCBFD725D9DC9F00AA3A36 /* Main.storyboard in Resources */,
+				E0843CAC25DC74960015E5B5 /* ProximaNovaAltBold.otf in Resources */,
+				E0843CB025DC74960015E5B5 /* ProximaNovaExtrabold.otf in Resources */,
+				E0843CAD25DC74960015E5B5 /* ProximaNova-Regular.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
