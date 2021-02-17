@@ -22,6 +22,14 @@ class HomeViewController: UIViewController {
     
     @IBAction func startButtonPressed(_ sender: Any) {
         // Go to clicker view
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let clickerViewController =  storyboard.instantiateViewController(identifier: "clickerViewController") as? ClickerViewController else {
+            assertionFailure("Couldn't find Clicker VC")
+            return
+        }
+        
+        // Push to stack because we want users to be able to go back to home view
+        self.navigationController?.pushViewController(clickerViewController, animated: true)
     }
     
     @IBAction func logoutButtonPressed(_ sender: Any) {
