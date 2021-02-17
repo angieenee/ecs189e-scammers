@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="L46-e0-Wg0">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -8,6 +8,11 @@
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="ProximaNovaThin.otf">
+            <string>ProximaNovaT-Thin</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -17,10 +22,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cash Cow" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lHD-th-YUb">
-                                <rect key="frame" x="65.666666666666686" y="109" width="283" height="57"/>
-                                <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="57"/>
-                                <nil key="textColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Cash Cow" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lHD-th-YUb">
+                                <rect key="frame" x="57" y="109" width="337" height="88"/>
+                                <fontDescription key="fontDescription" name="ProximaNovaT-Thin" family="Proxima Nova" pointSize="75"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bZr-ER-nik" customClass="AZSocialButton" customModule="EasySocialButton">
@@ -32,6 +37,9 @@
                                 <state key="normal" title="Sign in with Email">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="loginEmailPress" destination="BYZ-38-t0r" eventType="touchUpInside" id="Br6-Xm-Sbd"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V8H-7j-e5V" customClass="AZSocialButton" customModule="EasySocialButton">
                                 <rect key="frame" x="57" y="597" width="300" height="70"/>
@@ -63,7 +71,7 @@
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="V8H-7j-e5V" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="0FW-x6-2qf"/>
                             <constraint firstItem="lHD-th-YUb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="0O4-lr-RpK"/>
@@ -75,6 +83,7 @@
                             <constraint firstItem="bZr-ER-nik" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gtb-vh-9tR"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="NqT-KO-btR"/>
                     <connections>
                         <outlet property="emailLoginButton" destination="bZr-ER-nik" id="2ei-d6-KoU"/>
                         <outlet property="facebookLoginButton" destination="V8H-7j-e5V" id="NiT-6P-l8L"/>
@@ -83,7 +92,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2.3999999999999999" y="34.632683658170919"/>
+            <point key="canvasLocation" x="907.24637681159425" y="34.151785714285715"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="Vfi-pT-tbd">
@@ -153,7 +162,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sj6-Ne-s91" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="884.57943925233644" y="33.045356371490286"/>
+            <point key="canvasLocation" x="1794.2028985507247" y="32.8125"/>
         </scene>
         <!--Clicker View Controller-->
         <scene sceneID="RPO-b2-aBf">
@@ -168,18 +177,37 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LAN-Dy-mAD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1778" y="33"/>
+            <point key="canvasLocation" x="2686.9565217391305" y="32.8125"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="yfx-Kl-NPW">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="L46-e0-Wg0" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="oDH-U8-9xt">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="H9u-jR-IPq"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="D7d-hn-lxC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2.8985507246376816" y="34.151785714285715"/>
         </scene>
     </scenes>
     <designables>
         <designable name="V8H-7j-e5V">
-            <size key="intrinsicContentSize" width="150" height="30"/>
+            <size key="intrinsicContentSize" width="206" height="18"/>
         </designable>
         <designable name="bZr-ER-nik">
-            <size key="intrinsicContentSize" width="120" height="30"/>
+            <size key="intrinsicContentSize" width="176" height="18"/>
         </designable>
         <designable name="pJW-zq-ReT">
-            <size key="intrinsicContentSize" width="132" height="30"/>
+            <size key="intrinsicContentSize" width="188" height="18"/>
         </designable>
     </designables>
     <resources>
