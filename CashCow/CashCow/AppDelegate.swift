@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import Simplicity
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -31,6 +32,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
 
+    // Simplicity config
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any]) -> Bool {
+        return Simplicity.application(app, open: url, options: options)
+    }
 
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        return Simplicity.application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
+    }
 }
 

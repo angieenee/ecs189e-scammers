@@ -8,22 +8,94 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="CashCow" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loginViewController" id="BYZ-38-t0r" customClass="LoginViewController" customModule="CashCow" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cash Cow" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lHD-th-YUb">
+                                <rect key="frame" x="46" y="65" width="283.5" height="57"/>
+                                <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="57"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bZr-ER-nik" customClass="AZSocialButton" customModule="EasySocialButton">
+                                <rect key="frame" x="37.5" y="497" width="300" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="2Yh-4o-osD"/>
+                                    <constraint firstAttribute="width" constant="300" id="CUf-Z5-xDv"/>
+                                </constraints>
+                                <state key="normal" title="Sign in with Email">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V8H-7j-e5V" customClass="AZSocialButton" customModule="EasySocialButton">
+                                <rect key="frame" x="37.5" y="402" width="300" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="ElP-yL-2mg"/>
+                                    <constraint firstAttribute="height" constant="70" id="l1B-LE-Qje"/>
+                                </constraints>
+                                <state key="normal" title="Sign in with Facebook">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="keyPath" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pJW-zq-ReT" customClass="AZSocialButton" customModule="EasySocialButton">
+                                <rect key="frame" x="37.5" y="307" width="300" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="Pw5-Do-ZDy"/>
+                                    <constraint firstAttribute="height" constant="70" id="gYm-So-xmQ"/>
+                                </constraints>
+                                <state key="normal" title="Sign in with Google">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="label.cornerRadius">
+                                        <integer key="value" value="0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="V8H-7j-e5V" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="0FW-x6-2qf"/>
+                            <constraint firstItem="lHD-th-YUb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="0O4-lr-RpK"/>
+                            <constraint firstItem="V8H-7j-e5V" firstAttribute="top" secondItem="pJW-zq-ReT" secondAttribute="bottom" constant="25" id="9aW-gE-ygA"/>
+                            <constraint firstItem="pJW-zq-ReT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="BEy-Yd-WVz"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="bZr-ER-nik" secondAttribute="bottom" constant="100" id="Hva-cp-mz4"/>
+                            <constraint firstItem="bZr-ER-nik" firstAttribute="top" secondItem="V8H-7j-e5V" secondAttribute="bottom" constant="25" id="N2T-Qo-49R"/>
+                            <constraint firstItem="lHD-th-YUb" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="65" id="aAe-xm-y7X"/>
+                            <constraint firstItem="bZr-ER-nik" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gtb-vh-9tR"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="emailLoginButton" destination="bZr-ER-nik" id="2ei-d6-KoU"/>
+                        <outlet property="facebookLoginButton" destination="V8H-7j-e5V" id="NiT-6P-l8L"/>
+                        <outlet property="googleLoginButton" destination="pJW-zq-ReT" id="9JQ-xJ-DlH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1.4492753623188408" y="35.491071428571423"/>
+            <point key="canvasLocation" x="-2.3999999999999999" y="34.632683658170919"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="V8H-7j-e5V">
+            <size key="intrinsicContentSize" width="206" height="18"/>
+        </designable>
+        <designable name="bZr-ER-nik">
+            <size key="intrinsicContentSize" width="176" height="18"/>
+        </designable>
+        <designable name="pJW-zq-ReT">
+            <size key="intrinsicContentSize" width="188" height="18"/>
+        </designable>
+    </designables>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
