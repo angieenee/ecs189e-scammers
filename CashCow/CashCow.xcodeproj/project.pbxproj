@@ -15,6 +15,7 @@
 		63CCBFDC25D9DCA300AA3A36 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63CCBFDA25D9DCA300AA3A36 /* LaunchScreen.storyboard */; };
 		63CCBFE625D9E08B00AA3A36 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 63CCBFE525D9E08B00AA3A36 /* GoogleService-Info.plist */; };
 		A23AC00CA70BBBD5AEE4B07C /* Pods_CashCow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BF537A977EF60E5E1388CCB /* Pods_CashCow.framework */; };
+		C97CE5A125DD9153002CBCDE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97CE5A025DD9153002CBCDE /* HomeViewController.swift */; };
 		E0843CAC25DC74960015E5B5 /* ProximaNovaAltBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E0843CA425DC74880015E5B5 /* ProximaNovaAltBold.otf */; };
 		E0843CAD25DC74960015E5B5 /* ProximaNova-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E0843CA325DC74870015E5B5 /* ProximaNova-Regular.otf */; };
 		E0843CAE25DC74960015E5B5 /* ProximaNovaAltLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = E0843CA925DC74890015E5B5 /* ProximaNovaAltLight.otf */; };
@@ -38,6 +39,7 @@
 		6BF537A977EF60E5E1388CCB /* Pods_CashCow.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CashCow.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A129A5F6D0882622A726EAC5 /* Pods-CashCow.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CashCow.release.xcconfig"; path = "Target Support Files/Pods-CashCow/Pods-CashCow.release.xcconfig"; sourceTree = "<group>"; };
 		A72387558186A579001E9A56 /* Pods-CashCow.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CashCow.debug.xcconfig"; path = "Target Support Files/Pods-CashCow/Pods-CashCow.debug.xcconfig"; sourceTree = "<group>"; };
+		C97CE5A025DD9153002CBCDE /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		E0843CA325DC74870015E5B5 /* ProximaNova-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Regular.otf"; sourceTree = "<group>"; };
 		E0843CA425DC74880015E5B5 /* ProximaNovaAltBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ProximaNovaAltBold.otf; sourceTree = "<group>"; };
 		E0843CA525DC74880015E5B5 /* ProximaNovaThin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ProximaNovaThin.otf; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 				63CCBFDA25D9DCA300AA3A36 /* LaunchScreen.storyboard */,
 				63CCBFDD25D9DCA300AA3A36 /* Info.plist */,
 				63CCBFE525D9E08B00AA3A36 /* GoogleService-Info.plist */,
+				C97CE5A025DD9153002CBCDE /* HomeViewController.swift */,
 			);
 			path = CashCow;
 			sourceTree = "<group>";
@@ -252,6 +255,7 @@
 				6310577E25DCC0BC00D2EF96 /* LoginViewController.swift in Sources */,
 				63CCBFD025D9DC9F00AA3A36 /* AppDelegate.swift in Sources */,
 				63CCBFD225D9DC9F00AA3A36 /* SceneDelegate.swift in Sources */,
+				C97CE5A125DD9153002CBCDE /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

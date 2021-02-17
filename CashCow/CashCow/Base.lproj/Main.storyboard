@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -13,17 +14,17 @@
             <objects>
                 <viewController storyboardIdentifier="loginViewController" id="BYZ-38-t0r" customClass="LoginViewController" customModule="CashCow" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cash Cow" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lHD-th-YUb">
-                                <rect key="frame" x="46" y="65" width="283.5" height="57"/>
+                                <rect key="frame" x="65.666666666666686" y="109" width="283" height="57"/>
                                 <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="57"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bZr-ER-nik" customClass="AZSocialButton" customModule="EasySocialButton">
-                                <rect key="frame" x="37.5" y="497" width="300" height="70"/>
+                                <rect key="frame" x="57" y="692" width="300" height="70"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="2Yh-4o-osD"/>
                                     <constraint firstAttribute="width" constant="300" id="CUf-Z5-xDv"/>
@@ -33,7 +34,7 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V8H-7j-e5V" customClass="AZSocialButton" customModule="EasySocialButton">
-                                <rect key="frame" x="37.5" y="402" width="300" height="70"/>
+                                <rect key="frame" x="57" y="597" width="300" height="70"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="ElP-yL-2mg"/>
                                     <constraint firstAttribute="height" constant="70" id="l1B-LE-Qje"/>
@@ -46,7 +47,7 @@
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pJW-zq-ReT" customClass="AZSocialButton" customModule="EasySocialButton">
-                                <rect key="frame" x="37.5" y="307" width="300" height="70"/>
+                                <rect key="frame" x="57" y="502" width="300" height="70"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="Pw5-Do-ZDy"/>
                                     <constraint firstAttribute="height" constant="70" id="gYm-So-xmQ"/>
@@ -84,19 +85,90 @@
             </objects>
             <point key="canvasLocation" x="-2.3999999999999999" y="34.632683658170919"/>
         </scene>
+        <!--Home View Controller-->
+        <scene sceneID="Vfi-pT-tbd">
+            <objects>
+                <viewController storyboardIdentifier="homeViewController" id="vWc-7t-Pwu" customClass="HomeViewController" customModule="CashCow" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="j5G-1g-ThQ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;Insert_Logo&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rCh-wg-Hwr">
+                                <rect key="frame" x="151" y="345.66666666666669" width="112" height="20.333333333333314"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="200" translatesAutoresizingMaskIntoConstraints="NO" id="Uhr-Uv-r5v">
+                                <rect key="frame" x="54.666666666666657" y="747" width="305" height="36"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ae4-4v-kXk">
+                                        <rect key="frame" x="0.0" y="0.0" width="43" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="Start"/>
+                                        <connections>
+                                            <action selector="startButtonPressed:" destination="vWc-7t-Pwu" eventType="touchUpInside" id="hxs-j9-Y4V"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qvo-ay-6Cw">
+                                        <rect key="frame" x="243" y="0.0" width="62" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="Logout"/>
+                                        <connections>
+                                            <action selector="logoutButtonPressed:" destination="vWc-7t-Pwu" eventType="touchUpInside" id="a3a-Gz-GNh"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7FJ-X8-F3Y">
+                                <rect key="frame" x="324" y="72" width="39" height="39"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="39" id="kp1-kM-jM7"/>
+                                    <constraint firstAttribute="width" constant="39" id="noX-bA-c8I"/>
+                                </constraints>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button">
+                                    <imageReference key="image" image="questionmark.circle" catalog="system" symbolScale="large"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25" scale="large" weight="regular"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="MqB-w6-CRp"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="rCh-wg-Hwr" firstAttribute="leading" secondItem="MqB-w6-CRp" secondAttribute="leading" constant="151" id="9op-XQ-F3I"/>
+                            <constraint firstItem="MqB-w6-CRp" firstAttribute="trailing" secondItem="rCh-wg-Hwr" secondAttribute="trailing" constant="151" id="NPz-Cy-tcn"/>
+                            <constraint firstItem="MqB-w6-CRp" firstAttribute="trailing" secondItem="7FJ-X8-F3Y" secondAttribute="trailing" constant="51" id="TBh-uO-DDo"/>
+                            <constraint firstItem="Uhr-Uv-r5v" firstAttribute="centerX" secondItem="j5G-1g-ThQ" secondAttribute="centerX" id="XGK-QX-oL9"/>
+                            <constraint firstItem="7FJ-X8-F3Y" firstAttribute="top" secondItem="MqB-w6-CRp" secondAttribute="top" constant="28" id="hZN-H1-yDk"/>
+                            <constraint firstItem="Uhr-Uv-r5v" firstAttribute="top" secondItem="rCh-wg-Hwr" secondAttribute="bottom" constant="381" id="laY-aS-Acb"/>
+                            <constraint firstItem="MqB-w6-CRp" firstAttribute="bottom" secondItem="Uhr-Uv-r5v" secondAttribute="bottom" constant="79" id="s80-64-dkh"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="helpPopupButton" destination="7FJ-X8-F3Y" id="91b-jW-fTx"/>
+                        <outlet property="logoutButton" destination="qvo-ay-6Cw" id="ErY-p5-1mg"/>
+                        <outlet property="startButton" destination="Ae4-4v-kXk" id="eup-4C-KRp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Sj6-Ne-s91" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="884.57943925233644" y="33.045356371490286"/>
+        </scene>
     </scenes>
     <designables>
         <designable name="V8H-7j-e5V">
-            <size key="intrinsicContentSize" width="206" height="18"/>
+            <size key="intrinsicContentSize" width="150" height="30"/>
         </designable>
         <designable name="bZr-ER-nik">
-            <size key="intrinsicContentSize" width="176" height="18"/>
+            <size key="intrinsicContentSize" width="120" height="30"/>
         </designable>
         <designable name="pJW-zq-ReT">
-            <size key="intrinsicContentSize" width="188" height="18"/>
+            <size key="intrinsicContentSize" width="132" height="30"/>
         </designable>
     </designables>
     <resources>
+        <image name="questionmark.circle" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
