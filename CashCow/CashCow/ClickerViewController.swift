@@ -9,21 +9,20 @@ import UIKit
 
 class ClickerViewController: UIViewController {
 
+    @IBOutlet weak var totalIncome: UILabel!
+    @IBOutlet weak var settingsButton: UIButton!
+    @IBOutlet weak var profileButton: UIButton!
+    @IBOutlet weak var upgradesButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        // TODO: display user's saved income
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    // TODO: clicker functionality
+    
+    // TODO: update stamina bar
+    
+    // TODO: navigate to profile, upgrades, settings
 }
