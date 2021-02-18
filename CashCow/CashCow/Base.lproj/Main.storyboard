@@ -22,8 +22,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Cash Cow" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lHD-th-YUb">
-                                <rect key="frame" x="57" y="109" width="337" height="88"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cash Cow" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lHD-th-YUb">
+                                <rect key="frame" x="43.333333333333343" y="153" width="327.33333333333326" height="91.666666666666686"/>
                                 <fontDescription key="fontDescription" name="ProximaNovaT-Thin" family="Proxima Nova" pointSize="75"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -80,6 +80,7 @@
                             <constraint firstItem="lHD-th-YUb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="0O4-lr-RpK"/>
                             <constraint firstItem="V8H-7j-e5V" firstAttribute="top" secondItem="pJW-zq-ReT" secondAttribute="bottom" constant="25" id="9aW-gE-ygA"/>
                             <constraint firstItem="pJW-zq-ReT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="BEy-Yd-WVz"/>
+                            <constraint firstItem="lHD-th-YUb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="HFF-Ok-ptW"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="bZr-ER-nik" secondAttribute="bottom" constant="100" id="Hva-cp-mz4"/>
                             <constraint firstItem="bZr-ER-nik" firstAttribute="top" secondItem="V8H-7j-e5V" secondAttribute="bottom" constant="25" id="N2T-Qo-49R"/>
                             <constraint firstItem="lHD-th-YUb" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="65" id="aAe-xm-y7X"/>
