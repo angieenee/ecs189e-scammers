@@ -25,6 +25,9 @@
 		E0843CB125DC74960015E5B5 /* ProximaNovaBlack.otf in Resources */ = {isa = PBXBuildFile; fileRef = E0843CA825DC74890015E5B5 /* ProximaNovaBlack.otf */; };
 		E0843CB225DC74960015E5B5 /* ProximaNovaBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E0843CA725DC74890015E5B5 /* ProximaNovaBold.otf */; };
 		E0843CB325DC74960015E5B5 /* ProximaNovaThin.otf in Resources */ = {isa = PBXBuildFile; fileRef = E0843CA525DC74880015E5B5 /* ProximaNovaThin.otf */; };
+		E559C3C125DDF6470001CB88 /* GradientOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E559C3C025DDF6470001CB88 /* GradientOrientation.swift */; };
+		E559C3C425DDF6850001CB88 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E559C3C325DDF6850001CB88 /* Extensions.swift */; };
+		E559C3C725DDF7250001CB88 /* GradientProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E559C3C625DDF7250001CB88 /* GradientProgressView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +53,9 @@
 		E0843CA825DC74890015E5B5 /* ProximaNovaBlack.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ProximaNovaBlack.otf; sourceTree = "<group>"; };
 		E0843CA925DC74890015E5B5 /* ProximaNovaAltLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ProximaNovaAltLight.otf; sourceTree = "<group>"; };
 		E0843CAA25DC74890015E5B5 /* ProximaNovaAltThin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ProximaNovaAltThin.otf; sourceTree = "<group>"; };
+		E559C3C025DDF6470001CB88 /* GradientOrientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientOrientation.swift; sourceTree = "<group>"; };
+		E559C3C325DDF6850001CB88 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		E559C3C625DDF7250001CB88 /* GradientProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientProgressView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +96,9 @@
 				6310577D25DCC0BC00D2EF96 /* LoginViewController.swift */,
 				C97CE5A025DD9153002CBCDE /* HomeViewController.swift */,
 				C97CE5A425DD981F002CBCDE /* ClickerViewController.swift */,
+				E559C3C325DDF6850001CB88 /* Extensions.swift */,
+				E559C3C625DDF7250001CB88 /* GradientProgressView.swift */,
+				E559C3C025DDF6470001CB88 /* GradientOrientation.swift */,
 				63CCBFD125D9DC9F00AA3A36 /* SceneDelegate.swift */,
 				63CCBFD525D9DC9F00AA3A36 /* Main.storyboard */,
 				63CCBFD825D9DCA300AA3A36 /* Assets.xcassets */,
@@ -257,9 +266,12 @@
 			files = (
 				6310577E25DCC0BC00D2EF96 /* LoginViewController.swift in Sources */,
 				63CCBFD025D9DC9F00AA3A36 /* AppDelegate.swift in Sources */,
+				E559C3C125DDF6470001CB88 /* GradientOrientation.swift in Sources */,
+				E559C3C725DDF7250001CB88 /* GradientProgressView.swift in Sources */,
 				63CCBFD225D9DC9F00AA3A36 /* SceneDelegate.swift in Sources */,
 				C97CE5A525DD981F002CBCDE /* ClickerViewController.swift in Sources */,
 				C97CE5A125DD9153002CBCDE /* HomeViewController.swift in Sources */,
+				E559C3C425DDF6850001CB88 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
