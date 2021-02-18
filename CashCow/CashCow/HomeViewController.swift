@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import GoogleSignIn
 
 class HomeViewController: UIViewController {
 
@@ -16,8 +17,6 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
     }
     
     @IBAction func startButtonPressed(_ sender: Any) {
@@ -33,6 +32,8 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func logoutButtonPressed(_ sender: Any) {
+        GIDSignIn.sharedInstance()?.signOut()
+        
         // Go back to login view
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let loginViewController =  storyboard.instantiateViewController(identifier: "loginViewController") as? LoginViewController else {
@@ -41,10 +42,9 @@ class HomeViewController: UIViewController {
         }
         
         // Only have login view on stack so user can't go back
-        let viewControllers = [loginViewController]
+        let viewControllers = [loginViewController, self]
         self.navigationController?.setViewControllers(viewControllers, animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
     
-    
-
 }

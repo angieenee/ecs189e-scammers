@@ -7,6 +7,7 @@
 
 import UIKit
 import EasySocialButton
+import GoogleSignIn
 
 class LoginViewController: UIViewController {
     
@@ -18,14 +19,25 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
         
+        GIDSignIn.sharedInstance()?.presentingViewController = self
+        
         self.set(button: googleLoginButton, image: UIImage(named: "ic_google") ?? UIImage(), with: "  Sign In with Google")
         self.set(button: facebookLoginButton, image: UIImage(named: "ic_facebook") ?? UIImage(), with: "  Sign In with Facebook")
         facebookLoginButton.backgroundColor = UIColor(red: 59/255.0, green: 89/255.0, blue: 152/255.0, alpha: 1)
         self.set(button: emailLoginButton, image: UIImage(named: "ic_email") ?? UIImage(), with: "  Sign In with Email")
+        
+        // Set login notification
+        NotificationCenter.default.addObserver(self,
+                                                  selector: #selector(userDidSignInGoogle(_:)),
+                                                  name: .signInGoogleCompleted,
+                                                  object: nil)
+    }
+    
+    @IBAction func loginGooglePress() {
+        GIDSignIn.sharedInstance()?.signIn()
     }
     
     @IBAction func loginEmailPress() {
-        print("hello!")
         // Nav to home view for now until login w/ email is implemented
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let homeViewController =  storyboard.instantiateViewController(identifier: "homeViewController") as? HomeViewController else {
@@ -51,6 +63,20 @@ class LoginViewController: UIViewController {
       mutableAttributedString.append(textString)
 
       button.setAttributedTitle(mutableAttributedString, for: UIControl.State.normal)
+    }
+    
+    private func updateScreen() {
+        if (GIDSignIn.sharedInstance()?.currentUser) != nil {
+            // Nav to home screen
+            loginEmailPress()
+        }
+    }
+    
+    // MARK:- Notification
+    @objc private func userDidSignInGoogle(_ notification: Notification) {
+        // Update screen after user successfully signed in
+        print("signed in")
+        updateScreen()
     }
 }
 

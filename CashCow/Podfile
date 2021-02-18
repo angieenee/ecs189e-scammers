@@ -16,7 +16,7 @@ target 'CashCow' do
 	pod 'Hero'
 
   # Auth
-  pod 'Simplicity'
+  pod 'GoogleSignIn'
 
   # UI
   pod 'EasySocialButton'

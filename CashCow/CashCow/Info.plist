@@ -16,10 +16,34 @@
 	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>com.googleusercontent.apps</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.1083069992578-envpvijjfpbra5r0ov9dkije5bpuo8cg</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>ProximaNovaAltBold.otf</string>
+		<string>ProximaNovaAltLight.otf</string>
+		<string>ProximaNovaAltThin.otf</string>
+		<string>ProximaNovaBlack.otf</string>
+		<string>ProximaNovaBold.otf</string>
+		<string>ProximaNovaExtrabold.otf</string>
+		<string>ProximaNovaThin.otf</string>
+		<string>ProximaNova-Regular.otf</string>
+	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -52,17 +76,6 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-	</array>
-	<key>UIAppFonts</key>
-	<array>
-		<string>ProximaNovaAltBold.otf</string>
-		<string>ProximaNovaAltLight.otf</string>
-		<string>ProximaNovaAltThin.otf</string>
-		<string>ProximaNovaBlack.otf</string>
-		<string>ProximaNovaBold.otf</string>
-		<string>ProximaNovaExtrabold.otf</string>
-		<string>ProximaNovaThin.otf</string>
-		<string>ProximaNova-Regular.otf</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
