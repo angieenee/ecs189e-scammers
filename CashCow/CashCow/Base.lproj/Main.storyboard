@@ -144,14 +144,20 @@
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25" scale="large" weight="regular"/>
                                 </state>
                             </button>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ltb-Rw-vwb">
+                                <rect key="frame" x="36.333333333333343" y="277.33333333333337" width="341.33333333333326" height="341.33333333333337"/>
+                                <state key="normal" image="CashCowBase"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="MqB-w6-CRp"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="rCh-wg-Hwr" firstAttribute="leading" secondItem="MqB-w6-CRp" secondAttribute="leading" constant="151" id="9op-XQ-F3I"/>
+                            <constraint firstItem="Ltb-Rw-vwb" firstAttribute="centerX" secondItem="j5G-1g-ThQ" secondAttribute="centerX" id="9yP-lz-1b3"/>
                             <constraint firstItem="MqB-w6-CRp" firstAttribute="trailing" secondItem="rCh-wg-Hwr" secondAttribute="trailing" constant="151" id="NPz-Cy-tcn"/>
                             <constraint firstItem="MqB-w6-CRp" firstAttribute="trailing" secondItem="7FJ-X8-F3Y" secondAttribute="trailing" constant="51" id="TBh-uO-DDo"/>
                             <constraint firstItem="Uhr-Uv-r5v" firstAttribute="centerX" secondItem="j5G-1g-ThQ" secondAttribute="centerX" id="XGK-QX-oL9"/>
+                            <constraint firstItem="Ltb-Rw-vwb" firstAttribute="centerY" secondItem="j5G-1g-ThQ" secondAttribute="centerY" id="fQK-PO-gX5"/>
                             <constraint firstItem="7FJ-X8-F3Y" firstAttribute="top" secondItem="MqB-w6-CRp" secondAttribute="top" constant="28" id="hZN-H1-yDk"/>
                             <constraint firstItem="Uhr-Uv-r5v" firstAttribute="top" secondItem="rCh-wg-Hwr" secondAttribute="bottom" constant="381" id="laY-aS-Acb"/>
                             <constraint firstItem="MqB-w6-CRp" firstAttribute="bottom" secondItem="Uhr-Uv-r5v" secondAttribute="bottom" constant="79" id="s80-64-dkh"/>
@@ -194,9 +200,8 @@
                                     <imageReference key="image" image="tag.fill" catalog="system" symbolScale="large"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aGm-hF-SI4">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aGm-hF-SI4">
                                 <rect key="frame" x="349" y="44" width="45" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" systemColor="labelColor"/>
                                 <state key="normal">
                                     <imageReference key="image" image="wrench.fill" catalog="system" symbolScale="large"/>
@@ -232,23 +237,16 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="&lt;Insert Clicker Image as Button&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zl1-qc-2T9">
-                                <rect key="frame" x="83" y="438" width="249" height="21"/>
+                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="egJ-0v-vzg">
+                                <rect key="frame" x="-1" y="213" width="415" height="415"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="egJ-0v-vzg">
-                                <rect key="frame" x="-305" y="-64" width="1024" height="1024"/>
-                                <state key="normal" image="CashCowDollar_"/>
+                                <state key="normal" image="CashCowBase"/>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="G3y-Xk-ALp"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="egJ-0v-vzg" firstAttribute="centerY" secondItem="3Ne-tH-sBS" secondAttribute="centerY" id="0U3-cP-31L"/>
-                            <constraint firstItem="egJ-0v-vzg" firstAttribute="centerX" secondItem="3Ne-tH-sBS" secondAttribute="centerX" id="hXe-7z-nFd"/>
+                            <constraint firstItem="G3y-Xk-ALp" firstAttribute="trailing" secondItem="aGm-hF-SI4" secondAttribute="trailing" constant="20" id="uOx-yN-UCh"/>
                         </constraints>
                     </view>
                     <connections>
@@ -294,7 +292,7 @@
         </designable>
     </designables>
     <resources>
-        <image name="CashCowDollar_" width="1024" height="1024"/>
+        <image name="CashCowBase" width="341.33334350585938" height="341.33334350585938"/>
         <image name="dollarsign.circle.fill" catalog="system" width="128" height="121"/>
         <image name="heart.fill" catalog="system" width="128" height="109"/>
         <image name="person.circle.fill" catalog="system" width="128" height="121"/>
