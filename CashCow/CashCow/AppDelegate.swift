@@ -6,8 +6,9 @@
 //
 
 import UIKit
-import Firebase
 import GoogleSignIn
+import Firebase
+import FirebaseAuth
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
@@ -23,8 +24,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             return
         }
         
-        // Post notification after user successfully sign in
-        NotificationCenter.default.post(name: .signInGoogleCompleted, object: nil)
+        // Get credential object using Google ID token and Google access token
+        guard let authentication = user.authentication else {
+            return
+        }
+        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
+            
+        // Authenticate with Firebase using the credential object
+        Auth.auth().signIn(with: credential) { (authResult, error) in
+            if let error = error {
+                print("Error occurs when authenticate with Firebase: \(error.localizedDescription)")
+            }
+                    
+            // Post notification after user successfully sign in
+            NotificationCenter.default.post(name: .signInGoogleCompleted, object: nil)
+        }
     }
     
 
@@ -33,7 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         FirebaseApp.configure()
         
         // Google sign in config
-        GIDSignIn.sharedInstance()?.clientID = "1083069992578-envpvijjfpbra5r0ov9dkije5bpuo8cg.apps.googleusercontent.com"
+        GIDSignIn.sharedInstance()?.clientID = FirebaseApp.app()?.options.clientID
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance()?.restorePreviousSignIn()
         

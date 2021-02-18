@@ -7,6 +7,7 @@
 
 import UIKit
 import GoogleSignIn
+import FirebaseAuth
 
 class HomeViewController: UIViewController {
 
@@ -33,6 +34,13 @@ class HomeViewController: UIViewController {
     
     @IBAction func logoutButtonPressed(_ sender: Any) {
         GIDSignIn.sharedInstance()?.signOut()
+        
+        // Sign out from Firebase
+        do {
+            try Auth.auth().signOut()
+        } catch let error as NSError {
+            print ("Error signing out from Firebase: %@", error)
+        }
         
         // Go back to login view
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
