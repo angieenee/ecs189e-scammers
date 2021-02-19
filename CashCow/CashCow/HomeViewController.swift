@@ -7,6 +7,7 @@
 
 import UIKit
 import GoogleSignIn
+import FBSDKLoginKit
 import FirebaseAuth
 
 class HomeViewController: UIViewController {
@@ -33,6 +34,13 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func logoutButtonPressed(_ sender: Any) {
+        // FB Logout
+        let loginManager = LoginManager()
+        
+        if let _ = AccessToken.current {
+            loginManager.logOut()
+        }
+        
         GIDSignIn.sharedInstance()?.signOut()
         
         // Sign out from Firebase

@@ -17,6 +17,8 @@ target 'CashCow' do
 
   # Auth
   pod 'GoogleSignIn'
+	pod 'FBSDKCoreKit'
+	pod 'FBSDKLoginKit'
 
   # UI
   pod 'EasySocialButton'

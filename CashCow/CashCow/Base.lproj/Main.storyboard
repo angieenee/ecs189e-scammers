@@ -53,6 +53,9 @@
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="keyPath" value="YES"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="loginFacebookPress" destination="BYZ-38-t0r" eventType="touchUpInside" id="a2s-o7-SM6"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pJW-zq-ReT" customClass="AZSocialButton" customModule="EasySocialButton">
                                 <rect key="frame" x="57" y="502" width="300" height="70"/>
