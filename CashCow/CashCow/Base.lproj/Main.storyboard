@@ -264,6 +264,74 @@
             </objects>
             <point key="canvasLocation" x="2686.9565217391305" y="32.8125"/>
         </scene>
+        <!--Profile View Controller-->
+        <scene sceneID="RcW-ye-gFJ">
+            <objects>
+                <viewController storyboardIdentifier="profileViewController" id="119-8x-o1f" customClass="ProfileViewController" customModule="CashCow" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="clw-Ew-6XU">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="jI9-Po-vKC"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="86A-OK-Obq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2687" y="729"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="P7P-Po-YDJ">
+            <objects>
+                <viewController storyboardIdentifier="settingsViewController" id="rGs-OU-VLF" customClass="SettingsViewController" customModule="CashCow" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IjO-MV-m23">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1bW-WC-RdG">
+                                <rect key="frame" x="87" y="433" width="70" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Reset"/>
+                                <connections>
+                                    <action selector="resetButtonPressed:" destination="rGs-OU-VLF" eventType="touchUpInside" id="q4X-Sb-Brf"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eNQ-9K-lWI">
+                                <rect key="frame" x="232" y="433" width="81" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Logout"/>
+                                <connections>
+                                    <action selector="logoutButtonPressed:" destination="rGs-OU-VLF" eventType="touchUpInside" id="Eok-4K-fP2"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="OoV-mJ-mvF"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Settings" id="6cy-fb-BOF" customClass="Sett"/>
+                    <connections>
+                        <outlet property="logoutButton" destination="eNQ-9K-lWI" id="s1b-I2-iar"/>
+                        <outlet property="resetButton" destination="1bW-WC-RdG" id="GM9-H5-pzk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dkf-hc-N39" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3502.898550724638" y="33.482142857142854"/>
+        </scene>
+        <!--Upgrades View Controller-->
+        <scene sceneID="i8M-8B-Xkp">
+            <objects>
+                <viewController storyboardIdentifier="upgradesViewController" id="xkM-nF-WQb" customClass="UpgradesViewController" customModule="CashCow" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="RvV-95-Ct4">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="AOa-Vv-8bT"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pBW-vg-ivT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2687" y="-656"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="yfx-Kl-NPW">
             <objects>
@@ -286,13 +354,13 @@
     </scenes>
     <designables>
         <designable name="V8H-7j-e5V">
-            <size key="intrinsicContentSize" width="206" height="18"/>
+            <size key="intrinsicContentSize" width="150" height="30"/>
         </designable>
         <designable name="bZr-ER-nik">
-            <size key="intrinsicContentSize" width="176" height="18"/>
+            <size key="intrinsicContentSize" width="120" height="30"/>
         </designable>
         <designable name="pJW-zq-ReT">
-            <size key="intrinsicContentSize" width="188" height="18"/>
+            <size key="intrinsicContentSize" width="132" height="30"/>
         </designable>
     </designables>
     <resources>
