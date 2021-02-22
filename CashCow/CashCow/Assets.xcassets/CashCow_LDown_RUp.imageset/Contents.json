@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "CashCow_LDown_RUp_256.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "CashCow_LDown_RUp_512.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "CashCow_LDown_RUp_1024.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
