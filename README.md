@@ -4,6 +4,9 @@
 ## Trello Board
 Link: https://trello.com/b/lWbT4HPm/sprint-planning
 
+## Up-to-date Design Document
+Link: https://docs.google.com/document/d/1u3lhgbHPWvu3ZiSRF6G-g07oFe98yUl7xDgBPtAVmeU/edit?usp=sharing
+
 ## Milestone 1 [*February 22*]
 ### Team Roles
 - Bridget: API’s, Firebase, testing + debugging
