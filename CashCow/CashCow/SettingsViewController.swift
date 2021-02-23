@@ -6,6 +6,9 @@
 //
 
 import UIKit
+import GoogleSignIn
+import FBSDKLoginKit
+import FirebaseAuth
 
 class SettingsViewController: UIViewController {
 
@@ -24,6 +27,36 @@ class SettingsViewController: UIViewController {
     
     @IBAction func logoutButtonPressed(_ sender: Any) {
         // Go back to login view
+        
+        // TODO: same code as the one in HomeView; maybe we should create a global function for cleaner code
+        
+        // FB Logout
+        let loginManager = LoginManager()
+        
+        if let _ = AccessToken.current {
+            loginManager.logOut()
+        }
+        
+        GIDSignIn.sharedInstance()?.signOut()
+        
+        // Sign out from Firebase
+        do {
+            try Auth.auth().signOut()
+        } catch let error as NSError {
+            print ("Error signing out from Firebase: %@", error)
+        }
+        
+        // Go back to login view
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let loginViewController =  storyboard.instantiateViewController(identifier: "loginViewController") as? LoginViewController else {
+            assertionFailure("Couldn't find Login VC")
+            return
+        }
+        
+        // Only have login view on stack so user can't go back
+        let viewControllers = [loginViewController, self]
+        self.navigationController?.setViewControllers(viewControllers, animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
     
 

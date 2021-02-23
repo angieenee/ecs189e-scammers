@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cash Cow" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lHD-th-YUb">
-                                <rect key="frame" x="50.666666666666657" y="153" width="327" height="91.666666666666686"/>
+                                <rect key="frame" x="39.666666666666657" y="153" width="348.66666666666674" height="87.666666666666686"/>
                                 <fontDescription key="fontDescription" name="ProximaNovaT-Thin" family="Proxima Nova" pointSize="75"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -358,7 +358,7 @@
             </objects>
             <point key="canvasLocation" x="2687" y="729"/>
         </scene>
-        <!--Settings-->
+        <!--Settings View Controller-->
         <scene sceneID="P7P-Po-YDJ">
             <objects>
                 <viewController storyboardIdentifier="settingsViewController" id="rGs-OU-VLF" customClass="SettingsViewController" customModule="CashCow" customModuleProvider="target" sceneMemberID="viewController">
@@ -395,7 +395,6 @@
                             <constraint firstItem="hRP-o6-leO" firstAttribute="centerX" secondItem="IjO-MV-m23" secondAttribute="centerX" id="yNJ-Im-Qqg"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Settings" id="6cy-fb-BOF" customClass="Sett"/>
                     <connections>
                         <outlet property="logoutButton" destination="eNQ-9K-lWI" id="s1b-I2-iar"/>
                         <outlet property="resetButton" destination="1bW-WC-RdG" id="GM9-H5-pzk"/>
