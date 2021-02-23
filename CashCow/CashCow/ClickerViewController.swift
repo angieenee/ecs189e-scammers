@@ -30,7 +30,7 @@ class ClickerViewController: UIViewController {
     @IBAction func settingsButtonPressed(_ sender: Any) {
         // Go to settings view
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let settingsViewController =  storyboard.instantiateViewController(identifier: "settingsViewController") as? LoginViewController else {
+        guard let settingsViewController =  storyboard.instantiateViewController(identifier: "settingsViewController") as? SettingsViewController else {
             assertionFailure("Couldn't find Settings VC")
             return
         }
