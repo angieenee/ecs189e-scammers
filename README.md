@@ -4,6 +4,84 @@
 ## Trello Board
 Link: https://trello.com/b/lWbT4HPm/sprint-planning
 
+## Milestone 1 [*February 22*]
+### Team Roles
+- Bridget: API’s, Firebase, testing + debugging
+- Jarod: design, auxiliary support, testing + debugging
+- Rachel: front-end programming, testing + debugging
+- Angie: team scheduling, reports, sound design
+
+### What We Did
+Setup: 
+- GitHub repository
+- Design document
+- Trello board
+- Libraries + API’s -- Bridget
+- Balsamiq wireframe -- Angie
+- App logo -- Jarod
+- Outline game currency -- Jarod
+View Controllers:
+- Launch, Login/Signup -- Bridget + Jarod
+- Home, Clicker -- Angie + Rachel
+
+### Next Steps
+View Controllers:
+- Profile, Settings, Upgrades -- Rachel
+- Functioning Clicker -- Angie + Jarod
+- Server Support: implementing Firebase APIs -- Bridget
+- User Class: income (per click & passive), current money, stamina, timestamps -- Bridget
+- Moooney Class: handling currency -- Jarod
+- Upgrades Struct: organizing upgrades -- Jarod + Angie
+
+### Wireframe
+See `ImagesTempStorage` for .png Wireframe
+
+### View Controllers
+- Launch: logo; skip login/signup + verification if user is logged in
+- Login/Signup: option to login (returning user), signup (new user) with email, Google, or FB
+- Verification: for new users, verify account
+- Home Menu: option to start game or logout
+- Clicker: click to generate income while stamina is not empty; display user stats
+- Settings: options 
+- Upgrades: upgrading passive/icnome per click
+- Profile: user customization (username, profile image, etc.)
+
+### Third-Party Libraries
+- Animations (Spring, Hero)
+- UI
+- -> Design  (Dynamic Color)
+- -> Buttons (EasySocialButton, SSBouncyButton)
+- -> Popups (CatAlertController. CRToast)
+- -> Other (NVActivityIndicatorView. JVFloatLabeledTextView)
+- Parsing (Japx or SwiftyJSON)
+- Date & Time (SwiftDate)
+- Server Support (Firebase Auth, Analytics, Database)
+
+### Server Support and APIs
+- Firebase
+- -> Firebase/Auth for sign-in and authentication with Google or Facebook
+- -> Firebase/Database for keeping track of users, their “money”, and other settings
+- ->Users kept track of via email
+- API’s
+- -> createUser
+- -> deleteUser
+- -> setMoney
+- -> setActiveUpgrade/setPassiveUpgrade
+- -> setUsername
+- -> More as needed
+
+### Testing Plan
+Phase 1
+- Init testing on our side, and between the 4 of us,
+Phase 2 - ~1 week
+- Make a basic feedback form
+- Close friends/available test subjects used as free labor
+- Work on “beta” build whilst testing is occuring
+Phase 3
+- Larger testing phase
+- After feedback from phase 2, do some internal testing after fixes, then test again
+
+
 ## Sprint Planning 2 [*February 18*]
 ### Leading up to this meeting, we:
 - Finalized the app name **Cash Cow**
