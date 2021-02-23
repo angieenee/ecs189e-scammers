@@ -1,8 +1,10 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -11,10 +13,34 @@
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_yellow" translatesAutoresizingMaskIntoConstraints="NO" id="F3t-sK-9rf">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CashCowLogo_noBG" translatesAutoresizingMaskIntoConstraints="NO" id="cDv-Y4-CAb">
+                                <rect key="frame" x="60" y="100" width="294" height="696"/>
+                            </imageView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="F3t-sK-9rf" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="54x-np-Bk9"/>
+                            <constraint firstAttribute="trailing" secondItem="cDv-Y4-CAb" secondAttribute="trailing" constant="60" id="6eK-7m-58H"/>
+                            <constraint firstItem="cDv-Y4-CAb" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="LJI-R0-Rjy"/>
+                            <constraint firstItem="F3t-sK-9rf" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="MF8-oi-ld5"/>
+                            <constraint firstItem="cDv-Y4-CAb" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="60" id="OeJ-Of-xlg"/>
+                            <constraint firstItem="F3t-sK-9rf" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="SmA-GG-QU2"/>
+                            <constraint firstAttribute="bottom" secondItem="F3t-sK-9rf" secondAttribute="bottom" id="Sxv-DO-9NY"/>
+                            <constraint firstItem="cDv-Y4-CAb" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="WaM-OU-I7h"/>
+                            <constraint firstItem="cDv-Y4-CAb" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="dT5-qQ-DfA"/>
+                            <constraint firstAttribute="trailing" secondItem="F3t-sK-9rf" secondAttribute="trailing" id="eMt-Db-zQx"/>
+                            <constraint firstItem="cDv-Y4-CAb" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="haE-v9-Bvs"/>
+                            <constraint firstItem="F3t-sK-9rf" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="htz-df-lg6"/>
+                            <constraint firstAttribute="bottom" secondItem="cDv-Y4-CAb" secondAttribute="bottom" constant="100" id="y0K-IA-8GO"/>
+                            <constraint firstItem="cDv-Y4-CAb" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" constant="100" id="y61-jl-Cfd"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -22,4 +48,11 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="CashCowLogo_noBG" width="512" height="512"/>
+        <image name="bg_yellow" width="1024" height="1024"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
