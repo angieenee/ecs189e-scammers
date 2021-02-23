@@ -13,10 +13,11 @@ Link: https://trello.com/b/lWbT4HPm/sprint-planning
 - Set up Firebase and login authentication
 - Created controllers for Launch, Login/Signup, Home, and Clicker views
 ### Our incoming action items due *next Sprint Planning*:
-- Achieve full functioning clicker that updates user income
-- Finish user authentication stage
-- Set up Upgrades, Profile, and Settings view controllers
-- Brainstorm upgrade ideas that are feasible
+- Achieve full functioning clicker that updates user income @Angie
+- Finish user authentication stage @Bridget
+- Set up Upgrades, Profile, and Settings view controllers @Rachel
+- Brainstorm upgrade ideas that are feasible @Jarod
+- Money and Upgrades class @Jarod @Angie
 
 ## Sprint Planning 1 [*February 11*]
 ### In this meeting, we:
