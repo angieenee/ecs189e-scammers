@@ -208,6 +208,9 @@
                                 <state key="normal">
                                     <imageReference key="image" image="wrench.fill" catalog="system" symbolScale="large"/>
                                 </state>
+                                <connections>
+                                    <action selector="settingsButtonPressed:" destination="Wic-UL-1mk" eventType="touchUpInside" id="FKU-7u-odF"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KoJ-f0-Uff">
                                 <rect key="frame" x="20" y="636" width="25.666666666666671" height="50"/>

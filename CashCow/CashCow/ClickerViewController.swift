@@ -16,7 +16,7 @@ class ClickerViewController: UIViewController {
     @IBOutlet weak var clickerButton: UIButton!
     
     // M1: Stamina defaults to 5 when view loads
-    int stamina = 5
+//    int stamina = 5
     // M1: save user's income
     
     override func viewDidLoad() {
@@ -27,13 +27,26 @@ class ClickerViewController: UIViewController {
         
     }
     
+    @IBAction func settingsButtonPressed(_ sender: Any) {
+        // Go to settings view
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let settingsViewController =  storyboard.instantiateViewController(identifier: "settingsViewController") as? LoginViewController else {
+            assertionFailure("Couldn't find Settings VC")
+            return
+        }
+        
+        // Push to stack because we want users to be able to go back to clicker view
+        self.navigationController?.pushViewController(settingsViewController, animated: true)
+    }
+    
+    
     // TODO: clicker functionality
     @IBAction func cowClicked(_ sender: Any) {
     }
     
     // TODO: update stamina bar
-    func updateStamina {
-        
-    }
+//    func updateStamina {
+//
+//    }
 
 }
