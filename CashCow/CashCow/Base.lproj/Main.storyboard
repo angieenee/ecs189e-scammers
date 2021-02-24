@@ -186,7 +186,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Lx-uK-9wE">
-                                <rect key="frame" x="20" y="44" width="25" height="25"/>
+                                <rect key="frame" x="20" y="44" width="24.333333333333329" height="25"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="tintColor" systemColor="labelColor"/>
                                 <state key="normal">
@@ -198,7 +198,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kCl-2z-JBJ">
-                                <rect key="frame" x="20" y="89" width="28" height="26.666666666666671"/>
+                                <rect key="frame" x="20" y="89" width="28" height="26.333333333333329"/>
                                 <color key="tintColor" systemColor="labelColor"/>
                                 <state key="normal">
                                     <color key="titleColor" systemColor="secondarySystemBackgroundColor"/>
@@ -208,6 +208,35 @@
                                     <action selector="upgradesButtonPressed:" destination="Wic-UL-1mk" eventType="touchUpInside" id="0li-MK-Kes"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KoJ-f0-Uff">
+                                <rect key="frame" x="20" y="658.66666666666663" width="30" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="0ZP-Qv-vsl"/>
+                                    <constraint firstAttribute="height" constant="35" id="I4a-R2-8Ty"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="systemRedColor"/>
+                                <state key="normal">
+                                    <imageReference key="image" image="heart.fill" catalog="system" symbolScale="large"/>
+                                </state>
+                            </button>
+                            <progressView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="1" translatesAutoresizingMaskIntoConstraints="NO" id="oPg-kF-hUI" customClass="GradientProgressView" customModule="CashCow" customModuleProvider="target">
+                                <rect key="frame" x="64" y="673.66666666666663" width="300" height="15"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" notEnabled="YES" updatesFrequently="YES"/>
+                                </accessibility>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="JVM-5w-8g0"/>
+                                    <constraint firstAttribute="width" constant="300" id="Sab-Px-pWp"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="firstColor">
+                                        <color key="value" systemColor="systemRedColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="secondColor">
+                                        <color key="value" systemColor="systemGreenColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </progressView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aGm-hF-SI4">
                                 <rect key="frame" x="379" y="44" width="29" height="28.666666666666671"/>
                                 <color key="tintColor" systemColor="labelColor"/>
@@ -218,26 +247,17 @@
                                     <action selector="settingsButtonPressed:" destination="Wic-UL-1mk" eventType="touchUpInside" id="FKU-7u-odF"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KoJ-f0-Uff">
-                                <rect key="frame" x="20" y="641.66666666666663" width="25.666666666666671" height="22"/>
-                                <color key="tintColor" systemColor="systemRedColor"/>
-                                <state key="normal">
-                                    <imageReference key="image" image="heart.fill" catalog="system" symbolScale="large"/>
-                                </state>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aaF-iF-8rN">
-                                <rect key="frame" x="20" y="663.66666666666663" width="25" height="24"/>
+                                <rect key="frame" x="20" y="713.66666666666663" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="aVI-er-2kj"/>
+                                    <constraint firstAttribute="width" constant="30" id="irU-tc-kcn"/>
+                                </constraints>
                                 <color key="tintColor" systemColor="systemGreenColor"/>
                                 <state key="normal">
                                     <imageReference key="image" image="dollarsign.circle.fill" catalog="system" symbolScale="large"/>
                                 </state>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;Insert Stamina Bar&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YZN-0z-zeS">
-                                <rect key="frame" x="133.66666666666666" y="653.66666666666663" width="160.99999999999997" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="egJ-0v-vzg">
                                 <rect key="frame" x="43.333333333333343" y="292.33333333333337" width="341.33333333333326" height="341.33333333333337"/>
                                 <state key="normal" image="CashCowBase"/>
@@ -246,7 +266,10 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.000a" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0rX-2x-Gx8">
-                                <rect key="frame" x="176.66666666666666" y="682.66666666666663" width="75" height="30"/>
+                                <rect key="frame" x="65" y="713.66666666666663" width="300" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="GR7-ZR-XBw"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -256,35 +279,36 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="egJ-0v-vzg" firstAttribute="centerY" secondItem="3Ne-tH-sBS" secondAttribute="centerY" id="15C-7k-o4B"/>
-                            <constraint firstItem="KoJ-f0-Uff" firstAttribute="top" secondItem="egJ-0v-vzg" secondAttribute="bottom" constant="8" symbolic="YES" id="8Bl-rj-nx1"/>
+                            <constraint firstItem="aaF-iF-8rN" firstAttribute="leading" secondItem="G3y-Xk-ALp" secondAttribute="leading" constant="20" id="8fZ-t8-L8C"/>
+                            <constraint firstItem="oPg-kF-hUI" firstAttribute="centerX" secondItem="3Ne-tH-sBS" secondAttribute="centerX" id="9Jg-aq-hE4"/>
                             <constraint firstItem="egJ-0v-vzg" firstAttribute="centerX" secondItem="3Ne-tH-sBS" secondAttribute="centerX" id="BJB-EM-LWq"/>
-                            <constraint firstItem="0rX-2x-Gx8" firstAttribute="centerX" secondItem="3Ne-tH-sBS" secondAttribute="centerX" id="LMy-j5-3xb"/>
-                            <constraint firstItem="YZN-0z-zeS" firstAttribute="top" secondItem="egJ-0v-vzg" secondAttribute="bottom" constant="20" id="Oqr-6L-nkM"/>
-                            <constraint firstItem="0rX-2x-Gx8" firstAttribute="top" secondItem="YZN-0z-zeS" secondAttribute="bottom" constant="8" symbolic="YES" id="Qmj-PC-ePs"/>
+                            <constraint firstItem="KoJ-f0-Uff" firstAttribute="leading" secondItem="G3y-Xk-ALp" secondAttribute="leading" constant="20" id="GaV-1f-urk"/>
+                            <constraint firstItem="aaF-iF-8rN" firstAttribute="top" secondItem="KoJ-f0-Uff" secondAttribute="bottom" constant="20" id="Omg-e5-zrj"/>
                             <constraint firstItem="8Lx-uK-9wE" firstAttribute="leading" secondItem="G3y-Xk-ALp" secondAttribute="leading" constant="20" id="dSz-Yp-WH9"/>
                             <constraint firstItem="kCl-2z-JBJ" firstAttribute="top" secondItem="8Lx-uK-9wE" secondAttribute="bottom" constant="20" id="ee1-7j-qLT"/>
                             <constraint firstItem="8Lx-uK-9wE" firstAttribute="top" secondItem="G3y-Xk-ALp" secondAttribute="top" id="iFa-wD-93e"/>
-                            <constraint firstItem="aaF-iF-8rN" firstAttribute="leading" secondItem="G3y-Xk-ALp" secondAttribute="leading" constant="20" id="jrW-rY-cnj"/>
-                            <constraint firstItem="YZN-0z-zeS" firstAttribute="centerX" secondItem="3Ne-tH-sBS" secondAttribute="centerX" id="kta-D9-hCs"/>
                             <constraint firstItem="kCl-2z-JBJ" firstAttribute="leading" secondItem="G3y-Xk-ALp" secondAttribute="leading" constant="20" id="lum-kl-JQN"/>
+                            <constraint firstItem="KoJ-f0-Uff" firstAttribute="top" secondItem="egJ-0v-vzg" secondAttribute="bottom" constant="25" id="nIb-gg-5or"/>
+                            <constraint firstItem="oPg-kF-hUI" firstAttribute="top" secondItem="egJ-0v-vzg" secondAttribute="bottom" constant="40" id="pjf-WE-EIH"/>
                             <constraint firstItem="G3y-Xk-ALp" firstAttribute="trailing" secondItem="aGm-hF-SI4" secondAttribute="trailing" constant="20" id="qHX-Uh-03f"/>
+                            <constraint firstItem="0rX-2x-Gx8" firstAttribute="leading" secondItem="aaF-iF-8rN" secondAttribute="trailing" constant="15" id="sLD-du-6Qy"/>
                             <constraint firstItem="G3y-Xk-ALp" firstAttribute="trailing" secondItem="aGm-hF-SI4" secondAttribute="trailing" constant="20" id="uOx-yN-UCh"/>
-                            <constraint firstItem="KoJ-f0-Uff" firstAttribute="leading" secondItem="G3y-Xk-ALp" secondAttribute="leading" constant="20" id="wCA-xM-dhD"/>
                             <constraint firstItem="aGm-hF-SI4" firstAttribute="top" secondItem="G3y-Xk-ALp" secondAttribute="top" id="x3s-pi-gkG"/>
-                            <constraint firstItem="aaF-iF-8rN" firstAttribute="top" secondItem="KoJ-f0-Uff" secondAttribute="bottom" id="z7I-DS-Hcn"/>
+                            <constraint firstItem="0rX-2x-Gx8" firstAttribute="top" secondItem="oPg-kF-hUI" secondAttribute="bottom" constant="25" id="xWg-zV-h0e"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="clickerButton" destination="egJ-0v-vzg" id="dV0-hQ-OQe"/>
                         <outlet property="profileButton" destination="8Lx-uK-9wE" id="jdE-4q-7xb"/>
                         <outlet property="settingsButton" destination="aGm-hF-SI4" id="lMd-aV-eWB"/>
+                        <outlet property="staminaBar" destination="oPg-kF-hUI" id="sdX-UX-Sru"/>
                         <outlet property="totalIncome" destination="0rX-2x-Gx8" id="i4r-RB-8RR"/>
                         <outlet property="upgradesButton" destination="kCl-2z-JBJ" id="4jV-MF-c76"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LAN-Dy-mAD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2686.9565217391305" y="32.8125"/>
+            <point key="canvasLocation" x="2685.9813084112147" y="32.397408207343418"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="RcW-ye-gFJ">
@@ -653,13 +677,13 @@
     </scenes>
     <designables>
         <designable name="V8H-7j-e5V">
-            <size key="intrinsicContentSize" width="150" height="30"/>
+            <size key="intrinsicContentSize" width="206" height="18"/>
         </designable>
         <designable name="bZr-ER-nik">
-            <size key="intrinsicContentSize" width="120" height="30"/>
+            <size key="intrinsicContentSize" width="176" height="18"/>
         </designable>
         <designable name="pJW-zq-ReT">
-            <size key="intrinsicContentSize" width="132" height="30"/>
+            <size key="intrinsicContentSize" width="188" height="18"/>
         </designable>
     </designables>
     <resources>
