@@ -7,6 +7,24 @@ Link: https://trello.com/b/lWbT4HPm/sprint-planning
 ## Up-to-date Design Document
 Link: https://docs.google.com/document/d/1u3lhgbHPWvu3ZiSRF6G-g07oFe98yUl7xDgBPtAVmeU/edit?usp=sharing
 
+## Sprint Planning 3 [*February 24*]
+### Leading up to this meeting, we:
+- Completed clicker functionality with pretty stamina bar @Angie
+- Started Settings, Profile, and Upgrades view controllers @Rachel
+- Started database reference work @Bridget
+- Outlined currency and upgrades plan @Jarod
+- Logo animation @Jarod
+### Our incoming action items due *next Milestone 2*:
+- Complete database reference @Bridget
+- Populate updates with UI and working code @Rachel
+- Apply currency and clicker rules to clicker view controller @Angie @Jarod
+- Finalize all server work @Bridget
+- Create our user and money class for application durability @Angie @Jarod
+- Get a working demo ready @everyone
+### Issues:
+- We need the "magic moment" that Sam wants
+
+
 ## Milestone 1 [*February 22*]
 ### Team Roles
 - Bridget: API’s, Firebase, testing + debugging
