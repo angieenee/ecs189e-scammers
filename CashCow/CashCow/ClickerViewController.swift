@@ -16,6 +16,7 @@ class ClickerViewController: UIViewController {
     @IBOutlet weak var clickerButton: UIButton!
     @IBOutlet weak var staminaBar: UIProgressView!
     
+    var mooneyinv: Mooooney = Mooooney.init()
     var totalMooney = 0
     var mooneyPerClick = 1
     
@@ -67,6 +68,7 @@ class ClickerViewController: UIViewController {
     // TODO: clicker functionality
     @IBAction func cowClicked(_ sender: Any) {
         totalMooney += mooneyPerClick
+        // mooneyinv.addMooney(cash: mooneyPerClick)
         staminaBar.progress -= 0.1
         totalIncome.text = String(totalMooney)
     }
