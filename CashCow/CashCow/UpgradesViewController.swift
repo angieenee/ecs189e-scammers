@@ -32,7 +32,6 @@ class UpgradesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // TODO: check if this actually works lol
         var amountsList = [self.coffeeAmount]
         
         let amountLabelsList = [self.coffeeAmountLabel]
@@ -46,5 +45,8 @@ class UpgradesViewController: UIViewController {
         }
     }
     
-
+    @IBAction func backButtonPressed(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
 }

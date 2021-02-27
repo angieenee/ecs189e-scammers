@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cash Cow" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lHD-th-YUb">
-                                <rect key="frame" x="50.666666666666657" y="153" width="327" height="91.666666666666686"/>
+                                <rect key="frame" x="39.666666666666657" y="153" width="349" height="87.666666666666686"/>
                                 <fontDescription key="fontDescription" name="ProximaNovaT-Thin" family="Proxima Nova" pointSize="75"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -186,7 +186,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Lx-uK-9wE">
-                                <rect key="frame" x="20" y="44" width="24.333333333333329" height="25"/>
+                                <rect key="frame" x="20" y="44" width="25" height="25"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="tintColor" systemColor="labelColor"/>
                                 <state key="normal">
@@ -198,7 +198,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kCl-2z-JBJ">
-                                <rect key="frame" x="20" y="89" width="28" height="26.333333333333329"/>
+                                <rect key="frame" x="20" y="89" width="28" height="26.666666666666671"/>
                                 <color key="tintColor" systemColor="labelColor"/>
                                 <state key="normal">
                                     <color key="titleColor" systemColor="secondarySystemBackgroundColor"/>
@@ -377,12 +377,26 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b28-JS-kSv">
+                                <rect key="frame" x="358" y="64" width="83" height="23.333333333333329"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button">
+                                    <imageReference key="image" image="arrow.forward" catalog="system" symbolScale="large"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="20" weight="bold"/>
+                                </state>
+                                <connections>
+                                    <action selector="backButtonPressed:" destination="119-8x-o1f" eventType="touchUpInside" id="aIL-YT-38C"/>
+                                    <action selector="backButtonPressed:" destination="rGs-OU-VLF" eventType="touchUpInside" id="d7V-bx-jhP"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="jI9-Po-vKC"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="wzM-fa-92o" firstAttribute="centerX" secondItem="clw-Ew-6XU" secondAttribute="centerX" id="5f6-0V-24D"/>
                             <constraint firstItem="wzM-fa-92o" firstAttribute="centerY" secondItem="clw-Ew-6XU" secondAttribute="centerY" id="LYL-H4-sMz"/>
+                            <constraint firstItem="b28-JS-kSv" firstAttribute="top" secondItem="jI9-Po-vKC" secondAttribute="top" constant="20" id="XZw-qC-yh4"/>
+                            <constraint firstItem="b28-JS-kSv" firstAttribute="trailing" secondItem="jI9-Po-vKC" secondAttribute="trailing" constant="13" id="d1S-RL-qft"/>
                             <constraint firstItem="wzM-fa-92o" firstAttribute="leading" secondItem="jI9-Po-vKC" secondAttribute="leading" constant="30" id="qAm-61-WDG"/>
                             <constraint firstItem="jI9-Po-vKC" firstAttribute="bottom" secondItem="wzM-fa-92o" secondAttribute="bottom" constant="311" id="xH8-ox-lXX"/>
                         </constraints>
@@ -390,7 +404,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="86A-OK-Obq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2687" y="729"/>
+            <point key="canvasLocation" x="2685.9813084112147" y="728.94168466522683"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="P7P-Po-YDJ">
@@ -421,22 +435,36 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9SQ-Yf-BO4">
+                                <rect key="frame" x="31" y="62.000000000000007" width="83" height="23.333333333333336"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button">
+                                    <imageReference key="image" image="arrow.backward" catalog="system" symbolScale="large"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="20" weight="bold"/>
+                                </state>
+                                <connections>
+                                    <action selector="backButtonPressed:" destination="rGs-OU-VLF" eventType="touchUpInside" id="Pwc-Da-oaV"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="OoV-mJ-mvF"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="9SQ-Yf-BO4" firstAttribute="leading" secondItem="OoV-mJ-mvF" secondAttribute="leading" constant="31" id="WWl-pd-TjD"/>
+                            <constraint firstItem="9SQ-Yf-BO4" firstAttribute="top" secondItem="OoV-mJ-mvF" secondAttribute="top" constant="18" id="n9M-En-7az"/>
                             <constraint firstItem="hRP-o6-leO" firstAttribute="centerY" secondItem="IjO-MV-m23" secondAttribute="centerY" id="xr6-MH-rqh"/>
                             <constraint firstItem="hRP-o6-leO" firstAttribute="centerX" secondItem="IjO-MV-m23" secondAttribute="centerX" id="yNJ-Im-Qqg"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backButton" destination="9SQ-Yf-BO4" id="y5g-3j-4wm"/>
                         <outlet property="logoutButton" destination="eNQ-9K-lWI" id="s1b-I2-iar"/>
                         <outlet property="resetButton" destination="1bW-WC-RdG" id="GM9-H5-pzk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dkf-hc-N39" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3502.898550724638" y="33.482142857142854"/>
+            <point key="canvasLocation" x="3501.8691588785045" y="33.045356371490286"/>
         </scene>
         <!--Upgrades View Controller-->
         <scene sceneID="i8M-8B-Xkp">
@@ -633,6 +661,18 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jXM-Ug-wqX">
+                                <rect key="frame" x="362.66666666666669" y="64" width="83" height="23.333333333333329"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button">
+                                    <imageReference key="image" image="arrow.forward" catalog="system" symbolScale="large"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="20" weight="bold"/>
+                                </state>
+                                <connections>
+                                    <action selector="backButtonPressed:" destination="xkM-nF-WQb" eventType="touchUpInside" id="CT1-mv-ZIf"/>
+                                    <action selector="backButtonPressed:" destination="rGs-OU-VLF" eventType="touchUpInside" id="H97-A0-LTV"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="AOa-Vv-8bT"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -640,6 +680,8 @@
                             <constraint firstItem="EPK-sX-BAq" firstAttribute="leading" secondItem="AOa-Vv-8bT" secondAttribute="leading" constant="21" id="10q-Us-gJ1"/>
                             <constraint firstItem="EPK-sX-BAq" firstAttribute="centerX" secondItem="RvV-95-Ct4" secondAttribute="centerX" id="HmQ-5I-b5l"/>
                             <constraint firstItem="EPK-sX-BAq" firstAttribute="centerY" secondItem="RvV-95-Ct4" secondAttribute="centerY" id="Tb1-c2-hI8"/>
+                            <constraint firstItem="jXM-Ug-wqX" firstAttribute="trailing" secondItem="AOa-Vv-8bT" secondAttribute="trailing" constant="17.5" id="X9A-Ya-VAQ"/>
+                            <constraint firstItem="jXM-Ug-wqX" firstAttribute="top" secondItem="AOa-Vv-8bT" secondAttribute="top" constant="20" id="Yz8-BM-56s"/>
                         </constraints>
                     </view>
                     <connections>
@@ -677,17 +719,19 @@
     </scenes>
     <designables>
         <designable name="V8H-7j-e5V">
-            <size key="intrinsicContentSize" width="206" height="18"/>
+            <size key="intrinsicContentSize" width="150" height="30"/>
         </designable>
         <designable name="bZr-ER-nik">
-            <size key="intrinsicContentSize" width="176" height="18"/>
+            <size key="intrinsicContentSize" width="120" height="30"/>
         </designable>
         <designable name="pJW-zq-ReT">
-            <size key="intrinsicContentSize" width="188" height="18"/>
+            <size key="intrinsicContentSize" width="132" height="30"/>
         </designable>
     </designables>
     <resources>
         <image name="CashCowBase" width="341.33334350585938" height="341.33334350585938"/>
+        <image name="arrow.backward" catalog="system" width="128" height="98"/>
+        <image name="arrow.forward" catalog="system" width="128" height="98"/>
         <image name="dollarsign.circle" catalog="system" width="128" height="121"/>
         <image name="dollarsign.circle.fill" catalog="system" width="128" height="121"/>
         <image name="heart.fill" catalog="system" width="128" height="109"/>
