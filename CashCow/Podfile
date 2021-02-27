@@ -22,4 +22,6 @@ target 'CashCow' do
 
   # UI
   pod 'EasySocialButton'
+  pod 'FontAwesome.swift'
+
 end

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FontAwesome_swift
 
 class UpgradesViewController: UIViewController {
     
@@ -43,6 +44,9 @@ class UpgradesViewController: UIViewController {
         for (amountLabel, amounts) in zip(amountLabelsList, amountsList) {
             amountLabel?.text = amounts
         }
+        
+        coffeeIcon.titleLabel?.font = UIFont.fontAwesome(ofSize: 20, style: .solid)
+        coffeeIcon.setTitle(String.fontAwesomeIcon(name: .coffee), for: .normal)
     }
     
     @IBAction func backButtonPressed(_ sender: Any) {
