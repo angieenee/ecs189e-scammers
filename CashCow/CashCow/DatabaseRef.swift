@@ -19,18 +19,18 @@ class DatabaseRef {
             self.ref.child("users/\(user.uid)").getData { (error, snapshot) in
                 if let err = error {
                     print("Error getting data \(err)")
+                    return nil
                 }
                 else if snapshot.exists() {
                     print("Got data \(snapshot.value ?? "")")
-                    info = snapshot.value as? [String: Any]
+                    return snapshot.value as? [String: Any]
                 }
                 else {
                     print("No data available")
-                    self.ref.child("users/\(user.uid)").setValue(["email": user.email])
+                    return self.ref.child("users/\(user.uid)").setValue(["email": user.email])
                 }
             }
         }
         
-        return info
     }
 }

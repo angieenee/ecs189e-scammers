@@ -9,16 +9,27 @@ import UIKit
 import GoogleSignIn
 import FBSDKLoginKit
 import FirebaseAuth
+import FirebaseDatabase
 
 class HomeViewController: UIViewController {
+    var ref: DatabaseRef?
+    var user: [String: Any]?
 
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var logoutButton: UIButton!
-    
     @IBOutlet weak var helpPopupButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.ref = DatabaseRef()
+        
+        if let usr = self.ref?.getUser() {
+            self.user = usr
+        } else {
+            self.user = self.ref?.getUser()
+        }
+        print(self.user)
     }
     
     @IBAction func startButtonPressed(_ sender: Any) {
