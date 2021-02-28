@@ -12,24 +12,45 @@ import FirebaseAuth
 import FirebaseDatabase
 
 class HomeViewController: UIViewController {
-    var ref: DatabaseRef?
-    var user: [String: Any]?
+    var userRef: DatabaseReference?
+    
+    var ref = Database.database().reference(withPath: "users")
+    var firebaseAuth = Auth.auth()
+    var user = User()
 
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var logoutButton: UIButton!
     @IBOutlet weak var helpPopupButton: UIButton!
+    @IBOutlet weak var welcomeLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.userRef = self.ref.child(firebaseAuth.currentUser?.uid ?? "")
         
-        self.ref = DatabaseRef()
+        self.userRef?.observe(.value, with: { snapshot in
+            if let data = snapshot.value as? [String: Any], let uid = self.firebaseAuth.currentUser?.uid {
+                self.user.email = data["email"] as? String
+                self.user.uid = uid
+                
+                if let username =  data["username"] as? String {
+                    self.user.username = username
+                } else {
+                    if let email = self.user.email, let i = self.user.email?.firstIndex(of: "@") {
+                        print("hello")
+                        self.user.username = String(email[..<i])
+                    }
+                }
+                
+                if let username = self.user.username {
+                    self.welcomeLabel.text = "Welcome, \(username)!"
+                }
+            }
+            
+            print("Email: \(self.user.email ?? "")")
+            print("Username: \(self.user.username ?? "")")
+            print("UID: \(self.user.uid ?? "")")
+        })
         
-        if let usr = self.ref?.getUser() {
-            self.user = usr
-        } else {
-            self.user = self.ref?.getUser()
-        }
-        print(self.user)
     }
     
     @IBAction func startButtonPressed(_ sender: Any) {

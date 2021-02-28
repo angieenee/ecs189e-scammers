@@ -40,9 +40,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             // Post notification after user successfully sign in
             NotificationCenter.default.post(name: .signInGoogleCompleted, object: nil)
             
-            let uid = user?.authentication.idToken
-            let email = user?.profile.email
-            print("ID: \(uid), email: \(email)")
+            //let uid = user?.authentication.idToken
+            //let email = user?.profile.email
+            //print("ID: \(uid), email: \(email)")
         }
     }
     

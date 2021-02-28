@@ -1,6 +1,0 @@
-module Pods_WalletApp {
-  umbrella header "Pods-WalletApp-umbrella.h"
-
-  export *
-  module * { export * }
-}

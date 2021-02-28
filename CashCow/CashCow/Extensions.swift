@@ -2,11 +2,13 @@
 //  Extensions.swift
 //  CashCow
 //
-//  Created by Angie Ni on 2/17/21.
+//  UIImage extension credited to Rodrigo Giglio
+// https://medium.com/academy-poa/how-to-create-a-uiprogressview-with-gradient-progress-in-swift-2d1fa7d26f24
 //
 
 import UIKit
 
+// The following extension is for creating a gradient progress bar
 extension UIImage {
 
     public convenience init?(bounds: CGRect, colors: [UIColor], orientation: GradientOrientation = .horizontal) {

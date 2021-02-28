@@ -14,14 +14,16 @@ class ClickerViewController: UIViewController {
     @IBOutlet weak var profileButton: UIButton!
     @IBOutlet weak var upgradesButton: UIButton!
     @IBOutlet weak var clickerButton: UIButton!
+    @IBOutlet weak var staminaBar: UIProgressView!
     
-    // M1: Stamina defaults to 5 when view loads
-//    int stamina = 5
-    // M1: save user's income
+    var mooneyinv: Mooooney = Mooooney.init()
+    var totalMooney = 0
+    var mooneyPerClick = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        totalIncome.text = "0"
         // TODO: display user's saved income, stamina
         
         
@@ -65,11 +67,10 @@ class ClickerViewController: UIViewController {
     
     // TODO: clicker functionality
     @IBAction func cowClicked(_ sender: Any) {
+        totalMooney += mooneyPerClick
+        // mooneyinv.addMooney(cash: mooneyPerClick)
+        staminaBar.progress -= 0.1
+        totalIncome.text = String(totalMooney)
     }
-    
-    // TODO: update stamina bar
-//    func updateStamina {
-//
-//    }
 
 }

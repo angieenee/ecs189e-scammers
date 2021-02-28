@@ -6,36 +6,40 @@
 //
 
 import UIKit
+import FontAwesome_swift
 
 class UpgradesViewController: UIViewController {
     
-    // Icon buttons
+    @IBOutlet weak var backButton: UIButton!
     
-    // TODO: use FontAwesome
+    // Icon buttons
     @IBOutlet weak var coffeeIcon: UIButton!
     @IBOutlet weak var diningIcon: UIButton!
     @IBOutlet weak var sleepIcon: UIButton!
     
     @IBOutlet weak var briefcaseIcon: UIButton!
     @IBOutlet weak var computerIcon: UIButton!
+    @IBOutlet weak var phoneIcon: UIButton!
     
     // Amount labels
     @IBOutlet weak var coffeeAmountLabel: UILabel!
+    @IBOutlet weak var diningAmountLabel: UILabel!
+    @IBOutlet weak var sleepAmountLabel: UILabel!
+    @IBOutlet weak var briefcaseAmountLabel: UILabel!
+    @IBOutlet weak var computerAmountLabel: UILabel!
+    @IBOutlet weak var phoneAmountLabel: UILabel!
     
     // Progress bars
-    
-    
-    // Initialize consts for amounts here
-    let coffeeAmount = "5a"
-        
+    @IBOutlet weak var coffeeProgressBar: UIProgressView!
+    @IBOutlet weak var diningProgessBar: UIProgressView!
+    @IBOutlet weak var sleepProgressBar: UIProgressView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // TODO: check if this actually works lol
-        var amountsList = [self.coffeeAmount]
+        var amountsList = ["5a", "10a", "15a", "1b", "2b", "3b"]
         
-        let amountLabelsList = [self.coffeeAmountLabel]
+        let amountLabelsList = [self.coffeeAmountLabel, self.diningAmountLabel, self.sleepAmountLabel, self.briefcaseAmountLabel, self.computerAmountLabel, self.phoneAmountLabel]
                 
         // Prepend $ to all consts using map
         amountsList = amountsList.map{"$" + $0}
@@ -44,7 +48,29 @@ class UpgradesViewController: UIViewController {
         for (amountLabel, amounts) in zip(amountLabelsList, amountsList) {
             amountLabel?.text = amounts
         }
+        
+        // Initialize FontAwesome icons
+        coffeeIcon.titleLabel?.font = UIFont.fontAwesome(ofSize: 20, style: .solid)
+        coffeeIcon.setTitle(String.fontAwesomeIcon(name: .coffee), for: .normal)
+        
+        diningIcon.titleLabel?.font = UIFont.fontAwesome(ofSize: 20, style: .solid)
+        diningIcon.setTitle(String.fontAwesomeIcon(name: .utensils), for: .normal)
+        
+        sleepIcon.titleLabel?.font = UIFont.fontAwesome(ofSize: 20, style: .solid)
+        sleepIcon.setTitle(String.fontAwesomeIcon(name: .moon), for: .normal)
+        
+        briefcaseIcon.titleLabel?.font = UIFont.fontAwesome(ofSize: 20, style: .solid)
+        briefcaseIcon.setTitle(String.fontAwesomeIcon(name: .briefcase), for: .normal)
+        
+        computerIcon.titleLabel?.font = UIFont.fontAwesome(ofSize: 20, style: .solid)
+        computerIcon.setTitle(String.fontAwesomeIcon(name: .desktop), for: .normal)
+        
+        phoneIcon.titleLabel?.font = UIFont.fontAwesome(ofSize: 20, style: .solid)
+        phoneIcon.setTitle(String.fontAwesomeIcon(name: .phone), for: .normal)
     }
     
-
+    @IBAction func backButtonPressed(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
 }

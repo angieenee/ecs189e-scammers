@@ -14,11 +14,16 @@ class SettingsViewController: UIViewController {
 
     @IBOutlet weak var resetButton: UIButton!
     @IBOutlet weak var logoutButton: UIButton!
+    @IBOutlet weak var backButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+    
+    @IBAction func backButtonPressed(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func resetButtonPressed(_ sender: Any) {
