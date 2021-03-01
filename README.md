@@ -36,3 +36,4 @@ Link: https://docs.google.com/document/d/1u3lhgbHPWvu3ZiSRF6G-g07oFe98yUl7xDgBPt
 - Upgrades View Controller front and back-end @Rachel @Angie
 - Popups for time-triggered personal finance decisions @Jarod
 - Persist money data associated with user @Bridget
+- Create a Tab view for Upgrades @Rachel
