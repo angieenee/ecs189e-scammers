@@ -7,6 +7,29 @@ Link: https://trello.com/b/lWbT4HPm/sprint-planning
 ## Up-to-date Design Document
 Link: https://docs.google.com/document/d/1u3lhgbHPWvu3ZiSRF6G-g07oFe98yUl7xDgBPtAVmeU/edit?usp=sharing
 
+## Milestone 2 [*March 1*]
+### Updated Team Roles
+- Bridget: API’s, Firebase, Testing
+- Jarod: Design, Currency Planning
+- Rachel: View Controller Setup, Testing
+- Angie: Reports, Clicker Functionality
+
+### What We Did
+- Set up `Upgrades`, `Profile`, `Settings` view controllers @Rachel
+- Functioning `Profile` view controller @Bridget
+- `Money` and `User` class @Bridget @Jarod
+- Persistant User Info @Bridget
+- Stamina Bar (Progress Bar with gradient UI) Functionality @Angie
+- Clicker Functionality @Angie
+- Additional design assets @Jarod
+
+### Next Steps: Get Everything Working
+- Passive money generation with time @
+- Upgrades front and backend @Rachel @Angie
+- 
+- 
+
+
 ## Sprint Planning 3 [*February 24*]
 ### Leading up to this meeting, we:
 - Completed clicker functionality with pretty stamina bar @Angie
