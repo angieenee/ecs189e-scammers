@@ -10,7 +10,7 @@ Link: https://docs.google.com/document/d/1u3lhgbHPWvu3ZiSRF6G-g07oFe98yUl7xDgBPt
 ## Milestone 2 [*March 1*]
 
 ### Important Commits
-- New view controllers: https://github.com/angieenee/ecs189e-scammers/commit/1ca3e77fe4d2fe00bcfb90611b2c7ddbd164cf4b
+- New view controllers: https://github.com/angieenee/ecs189e-scammers/blob/main/CashCow/CashCow/Controllers/ProfileViewController.swift https://github.com/angieenee/ecs189e-scammers/blob/main/CashCow/CashCow/Controllers/SettingsViewController.swift https://github.com/angieenee/ecs189e-scammers/blob/main/CashCow/CashCow/Controllers/UpgradesViewController.swift
 - Functioning clicker with stamina: https://github.com/angieenee/ecs189e-scammers/commit/fea7712867e02e1315bfb24949b722dbead69b08
 - Persist user: https://github.com/angieenee/ecs189e-scammers/commit/1d17ba2a92f990debcb051e12c28cd2e355ae730
 - `Money` class with currency conversions: https://github.com/angieenee/ecs189e-scammers/commit/1ed2f4c27645cd2275cffcf4de0f95f35b0c6425
@@ -35,4 +35,4 @@ Link: https://docs.google.com/document/d/1u3lhgbHPWvu3ZiSRF6G-g07oFe98yUl7xDgBPt
 - Passive money generation with time @Bridget
 - Upgrades View Controller front and back-end @Rachel @Angie
 - Popups for time-triggered personal finance decisions @Jarod
-- `Profile` view controller allows user to update profile pic @Bridget
+- Persist money data associated with user @Bridget
