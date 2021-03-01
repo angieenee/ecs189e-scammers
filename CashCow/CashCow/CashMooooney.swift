@@ -7,131 +7,120 @@
 
 import Foundation
 
-// maybe use enums to represent number of each letter in a container/array?
-// can have the 'letter' be an array of MooneyLetters for extensibility
-// or useful for code readibility in accessing the array of uint8s
-enum MooneyLetter : Int {
-    case Num = 0, A = 1, B, C, D, E, F, G, H, I, J, AA, AB, AC, AD, AE, AF, AG, AH, AI, AJ
-}
-
-
-// this option just keeps inventory of Letters (1000000s)
-
-    /*
-    var A: Int
-    var B: Int
-    var C: Int
-    var D: Int
-    var E: Int
-    var F: Int
-    var G: Int
-    var H: Int
-    var I: Int
-    var J: Int
-    */
-    
-    // the idea is
-    
-    // array of uint16s, denoting how many of each letter owned
-    // var inventory: [UInt16] = []
-
 
 class Mooooney {
     /* ***************************
      Class Variables and Constants
      *****************************/
     let NUM_BASE = 1000
-    
-    // NOTE: use LETTER_VALS.capacity for future capacity upgrade related stuff?
-    /*
-    let LETTER_VALS: [Int:String] = [0: "", 1:"A", 2:"B", 3:"C", 4:"D", 5:"E", 6:"F", 7:"G", 8:"H", 9:"I", 10:"J",
-                                     11: "AA", 12: "AB", 13: "AC", 14: "AD", 15: "AE", 16: "AF", 17: "AG", 18: "AH", 19: "AI", 20: "AJ",
-                                     21: "BA", 22: "BB", 23: "BC", 24: "BD", 25: "BE", 26: "BF", 27: "BG", 28: "BH", 29: "BI", 30: "BJ", ]
-     */
-    let LETTER_VALS: [String] = ["","A","B","C","D","E","F","G","H","I","J",
-                                     "AA","AB","AC","AD","AE","AF","AG","AH","AI","AJ",
-                                     "BA","BB","BC","BD","BE","BF","BG","BH","BI","BJ" ]
-    
-    // String to hold the display amount
-    var amount: String
-    
-    // index 0 holds the 1000s place, up to 999, index 1 holds As, idx 2 holds Bs and so on\
-    // inventory.count-1 is the highest letter, possible hold as separate member var for easy retrieval
-    var inventory: [Int16] = [0]
-    // var letter: [MooneyLetter] = []
+
+    var balance: [String: Int]
+    var moneyClick: [String: Int]
+    var moneyPassive: [String: Int]?
+    var largestVal: String
+    var secondVal: String
 
     init() {
-        self.amount = ""
-        inventory = [0]
+        self.balance = ["_": 0, "A": 0]
+        self.moneyClick = ["_": 100]
+        self.largestVal = "A"
+        self.secondVal = "_"
     }
     
-    // blindly trust that we're being fed aproper array of int16s
-    init(cash: [Int16]) {
-        self.amount = ""
-        self.inventory = cash
-        self.fmtAmount()
+    init(balance: [String: Int], click: [String: Int], passive: [String: Int], largest: String) {
+        self.balance = balance
+        self.moneyClick = click
+        self.moneyPassive = passive
+        self.largestVal = largest
+        self.secondVal = asciiShift(str: largest, inc: 1, add: false)
     }
     
     /* *********************************
                 Class Methods
      ***********************************/
-    func addMooney(cash: [Int16]) {
-        let oldMoney = self.inventory
-        // TODO: for each element, add the corresponding element
-        self.checkOverflow()
+    
+    func click() -> String {
+        for (key, val) in self.moneyClick {
+            if !checkOverflow(key, val, balance[key] ?? 0) {
+                self.balance[key]? += val
+            }
+        }
+        return getBalance()
     }
     
-    func subtractMooney(cash: [Int16]) {
-        // TODO: for each element, subtract the corresponding element
-        self.checkOverflow()
-    }
-    
-    /*
-    func increaseNumberBy(x: Int) {
-        let remainder = x % NUM_BASE
-        let letter = x/NUM_BASE
-    }
-    */
- 
-    func fmtAmount() {
-        // highest letter . second highest letter, both formatted to 3 characters
-        // example 934.111B = 934B + 111A
-        // self.amount = "highestnum.2ndhighestnum HighestNonzeroLetter)"
-        let predecimal = inventory[inventory.count-1]
-        // TODO: if there isnt an inventory.count-2 default to 000
-        let postdecimal = inventory[inventory.count-2] ?? 0
-        // TODO: format based on number of numbers for postdecimal (24 -> 024)
-        let postdecimalstr = "\(postdecimal)"
-        self.amount = "\(predecimal).\(postdecimalstr)\(LETTER_VALS[self.inventory.count-1])"
-    }
-    
-    func getAmount() -> String {
+    // Format balance for displaying to user
+    func getBalance() -> String {
+        var amount = ""
+        if let d1 = self.balance[self.largestVal], let d2 = self.balance[self.secondVal]{
+            let d2_str = String(d2)
+            amount += "\(d1)."
+            if d2_str.count < 3 {
+                for _ in 0..<(3 - d2_str.count) {
+                    amount += "0"
+                }
+            }
+            amount += "\(d2)\(self.largestVal)"
+        }
         return amount
     }
     
-    func checkOverflow() {
+    func checkOverflow(_ key: String, _ clickValue: Int, _ balanceValue: Int) -> Bool {
         // TODO: for each element in inventory, if the value is greater than 999, mod by 1000, increment
-    }
-    
-    func checkIfIndexExists(idx: Int) {
+        var overflow = false
         
+        if clickValue + balanceValue >= NUM_BASE {
+            let overflowVal = (clickValue + balanceValue) / NUM_BASE
+            let leftoverVal = (clickValue + balanceValue) % NUM_BASE
+            let newLetter = asciiShift(str: key, inc: 1, add: true)
+            
+            if self.balance[newLetter] != nil {
+                self.balance[newLetter]? += overflowVal
+            } else {
+                self.secondVal = self.largestVal
+                self.largestVal = newLetter
+                self.balance[newLetter] = overflowVal
+            }
+            
+            self.balance[key] = leftoverVal
+            overflow = true
+        }
+        
+        return overflow
     }
     
     
     /* DEBUG FUNCS */
     func printAmt() {
-        print(self.amount)
+        print(getBalance())
+    }
+}
+
+// Helper methods to inc/decrement string for balance
+func asciiShift(str: String, inc: UInt8, add: Bool) -> String {
+    var newStr = ""
+    let char = str[str.index(str.startIndex, offsetBy: str.count - 1)]
+    
+    if add {
+        // Adding
+//        if char == "Z" {
+//            return
+//        }
+        if char == "_" {
+            return "A"
+        }
+        if let asciiVal = char.asciiValue {
+            newStr = String(UnicodeScalar(asciiVal + inc))
+        }
+
+    } else {
+        // Subtracting
+        if str == "A" {
+            return "_"
+        }
+        if let asciiVal = char.asciiValue {
+            newStr = String(UnicodeScalar(asciiVal - inc))
+        }
     }
     
-    func testAdd1_v1() {
-        // inventory[MooneyLetter.Num]
-        inventory[0] += 1
-        self.checkOverflow()
-    }
-    
-    func testAdd1_v2() {
-        inventory[1] += 1
-        self.checkOverflow()
-    }
-    
+    return newStr
 }

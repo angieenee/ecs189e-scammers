@@ -13,4 +13,9 @@ class User {
     var email: String?
     var uid: String?
     var username: String?
+    var money: Mooooney?
+    
+    func save() {
+        // persist to DB
+    }
 }

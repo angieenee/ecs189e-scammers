@@ -8,6 +8,7 @@
 import UIKit
 
 class ClickerViewController: UIViewController {
+    var user: User?
 
     @IBOutlet weak var totalIncome: UILabel!
     @IBOutlet weak var settingsButton: UIButton!
@@ -16,17 +17,11 @@ class ClickerViewController: UIViewController {
     @IBOutlet weak var clickerButton: UIButton!
     @IBOutlet weak var staminaBar: UIProgressView!
     
-    var mooneyinv: Mooooney = Mooooney.init()
-    var totalMooney = 0
-    var mooneyPerClick = 1
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        totalIncome.text = "0"
-        // TODO: display user's saved income, stamina
-        
-        
+        print("hi")
+        self.totalIncome.text = user?.money?.getBalance()
+        self.staminaBar.progress = 1
     }
     
     @IBAction func profileButtonPressed(_ sender: Any) {
@@ -37,8 +32,12 @@ class ClickerViewController: UIViewController {
             return
         }
         
+        profileViewController.user = self.user
+        
         // Push to stack because we want users to be able to go back to clicker view
-        self.navigationController?.pushViewController(profileViewController, animated: true)
+        let viewControllers = [profileViewController, self]
+        self.navigationController?.setViewControllers(viewControllers, animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func upgradesButtonPressed(_ sender: Any) {
@@ -65,12 +64,12 @@ class ClickerViewController: UIViewController {
         self.navigationController?.pushViewController(settingsViewController, animated: true)
     }
     
-    // TODO: clicker functionality
     @IBAction func cowClicked(_ sender: Any) {
-        totalMooney += mooneyPerClick
-        // mooneyinv.addMooney(cash: mooneyPerClick)
-        staminaBar.progress -= 0.1
-        totalIncome.text = String(totalMooney)
+        // Update user balance and display
+        if self.staminaBar.progress > 0 {
+            self.totalIncome.text = self.user?.money?.click()
+            self.staminaBar.progress -= 0.01
+        }
     }
 
 }

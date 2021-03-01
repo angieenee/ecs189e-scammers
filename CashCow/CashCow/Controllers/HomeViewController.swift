@@ -31,6 +31,7 @@ class HomeViewController: UIViewController {
             if let data = snapshot.value as? [String: Any], let uid = self.firebaseAuth.currentUser?.uid {
                 self.user.email = data["email"] as? String
                 self.user.uid = uid
+                self.user.money = Mooooney.init()
                 
                 if let username =  data["username"] as? String {
                     self.user.username = username
@@ -60,6 +61,8 @@ class HomeViewController: UIViewController {
             assertionFailure("Couldn't find Clicker VC")
             return
         }
+        
+        clickerViewController.user = self.user
         
         // Push to stack because we want users to be able to go back to home view
         self.navigationController?.pushViewController(clickerViewController, animated: true)
