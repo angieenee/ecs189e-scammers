@@ -82,7 +82,7 @@ class Mooooney {
     }
     
     func subtractMooney(cash: [Int16]) {
-        // TODO: for each element, add the corresponding element
+        // TODO: for each element, subtract the corresponding element
         self.checkOverflow()
     }
     
@@ -113,7 +113,9 @@ class Mooooney {
         // TODO: for each element in inventory, if the value is greater than 999, mod by 1000, increment
     }
     
-    
+    func checkIfIndexExists(idx: Int) {
+        
+    }
     
     
     /* DEBUG FUNCS */
@@ -121,9 +123,14 @@ class Mooooney {
         print(self.amount)
     }
     
-    func testAdd1() {
+    func testAdd1_v1() {
         // inventory[MooneyLetter.Num]
         inventory[0] += 1
+        self.checkOverflow()
+    }
+    
+    func testAdd1_v2() {
+        inventory[1] += 1
         self.checkOverflow()
     }
     
