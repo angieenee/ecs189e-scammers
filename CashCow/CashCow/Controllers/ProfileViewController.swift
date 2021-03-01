@@ -17,6 +17,10 @@ class ProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.usernameLabel.text = self.user?.username
+        self.incomeAmountLabel.text = self.user?.money?.getBalance()
+        self.tapAmountLabel.text = self.user?.money?.getMoneyClick()
     }
     
     @IBAction func backButtonPressed(_ sender: Any) {

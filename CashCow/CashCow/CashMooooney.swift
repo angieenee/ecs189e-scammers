@@ -17,22 +17,22 @@ class Mooooney {
     var balance: [String: Int]
     var moneyClick: [String: Int]
     var moneyPassive: [String: Int]?
-    var largestVal: String
-    var secondVal: String
+    var keysBalance: (String, String)
+    var keysClick: (String, String)
 
     init() {
         self.balance = ["_": 0, "A": 0]
-        self.moneyClick = ["_": 100]
-        self.largestVal = "A"
-        self.secondVal = "_"
+        self.moneyClick = ["_": 100, "A": 0]
+        self.keysBalance = ("A", "_")
+        self.keysClick = ("A", "_")
     }
     
-    init(balance: [String: Int], click: [String: Int], passive: [String: Int], largest: String) {
+    init(balance: [String: Int], click: [String: Int], passive: [String: Int], largestKeyBal: String, largestKeyClick: String) {
         self.balance = balance
         self.moneyClick = click
         self.moneyPassive = passive
-        self.largestVal = largest
-        self.secondVal = asciiShift(str: largest, inc: 1, add: false)
+        self.keysBalance = (largestKeyBal, asciiShift(str: largestKeyBal, inc: 1, add: false))
+        self.keysClick = (largestKeyClick, asciiShift(str: largestKeyClick, inc: 1, add: false))
     }
     
     /* *********************************
@@ -45,13 +45,29 @@ class Mooooney {
                 self.balance[key]? += val
             }
         }
-        return getBalance()
+        return self.getBalance()
+    }
+    
+    func getBalance() -> String {
+        return self.formatMoney(money: self.balance)
+    }
+    
+    func getMoneyClick() -> String {
+        return self.formatMoney(money: self.moneyClick)
+    }
+    
+    func getMoneyPassive() -> String {
+        if let mp = self.moneyPassive {
+            return self.formatMoney(money: mp)
+        } else {
+            return ""
+        }
     }
     
     // Format balance for displaying to user
-    func getBalance() -> String {
+    func formatMoney(money: [String: Int]) -> String {
         var amount = ""
-        if let d1 = self.balance[self.largestVal], let d2 = self.balance[self.secondVal]{
+        if let d1 = money[self.keysBalance.0], let d2 = money[self.keysBalance.1]{
             let d2_str = String(d2)
             amount += "\(d1)."
             if d2_str.count < 3 {
@@ -59,7 +75,7 @@ class Mooooney {
                     amount += "0"
                 }
             }
-            amount += "\(d2)\(self.largestVal)"
+            amount += "\(d2)\(self.keysBalance.0)"
         }
         return amount
     }
@@ -76,8 +92,8 @@ class Mooooney {
             if self.balance[newLetter] != nil {
                 self.balance[newLetter]? += overflowVal
             } else {
-                self.secondVal = self.largestVal
-                self.largestVal = newLetter
+                self.keysBalance.1 = self.keysBalance.0
+                self.keysBalance.0 = newLetter
                 self.balance[newLetter] = overflowVal
             }
             

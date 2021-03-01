@@ -354,7 +354,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Income:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="esc-2g-6KM">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Balance:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="esc-2g-6KM">
                                         <rect key="frame" x="0.0" y="30.333333333333314" width="83" height="20.333333333333329"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -802,13 +802,13 @@
     </scenes>
     <designables>
         <designable name="V8H-7j-e5V">
-            <size key="intrinsicContentSize" width="150" height="30"/>
+            <size key="intrinsicContentSize" width="206" height="18"/>
         </designable>
         <designable name="bZr-ER-nik">
-            <size key="intrinsicContentSize" width="120" height="30"/>
+            <size key="intrinsicContentSize" width="176" height="18"/>
         </designable>
         <designable name="pJW-zq-ReT">
-            <size key="intrinsicContentSize" width="132" height="30"/>
+            <size key="intrinsicContentSize" width="188" height="18"/>
         </designable>
     </designables>
     <resources>
