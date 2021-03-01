@@ -16,7 +16,6 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var googleLoginButton: AZSocialButton!
     @IBOutlet weak var facebookLoginButton: AZSocialButton!
-    @IBOutlet weak var emailLoginButton: AZSocialButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +32,6 @@ class LoginViewController: UIViewController {
         self.set(button: googleLoginButton, image: UIImage(named: "ic_google") ?? UIImage(), with: "  Sign In with Google")
         self.set(button: facebookLoginButton, image: UIImage(named: "ic_facebook") ?? UIImage(), with: "  Sign In with Facebook")
         facebookLoginButton.backgroundColor = UIColor(red: 59/255.0, green: 89/255.0, blue: 152/255.0, alpha: 1)
-        self.set(button: emailLoginButton, image: UIImage(named: "ic_email") ?? UIImage(), with: "  Sign In with Email")
         
         // Notification for Google login
         NotificationCenter.default.addObserver(self, selector: #selector(userDidSignInGoogle(_:)), name: .signInGoogleCompleted, object: nil)

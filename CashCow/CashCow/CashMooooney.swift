@@ -22,7 +22,7 @@ class Mooooney {
 
     init() {
         self.balance = ["_": 0, "A": 0]
-        self.moneyClick = ["_": 100, "A": 0]
+        self.moneyClick = ["_": 10, "A": 0]
         self.keysBalance = ("A", "_")
         self.keysClick = ("A", "_")
     }
@@ -41,6 +41,11 @@ class Mooooney {
     
     func click() -> String {
         for (key, val) in self.moneyClick {
+            if balance[key] == nil {
+                self.keysBalance.1 = self.keysBalance.0
+                self.keysBalance.0 = key
+                balance[key] = 0
+            }
             if !checkOverflow(key, val, balance[key] ?? 0) {
                 self.balance[key]? += val
             }
@@ -60,7 +65,7 @@ class Mooooney {
         if let mp = self.moneyPassive {
             return self.formatMoney(money: mp)
         } else {
-            return ""
+            return "0.000A"
         }
     }
     
@@ -70,10 +75,8 @@ class Mooooney {
         if let d1 = money[self.keysBalance.0], let d2 = money[self.keysBalance.1]{
             let d2_str = String(d2)
             amount += "\(d1)."
-            if d2_str.count < 3 {
-                for _ in 0..<(3 - d2_str.count) {
-                    amount += "0"
-                }
+            for _ in 0..<(3 - d2_str.count) {
+                amount += "0"
             }
             amount += "\(d2)\(self.keysBalance.0)"
         }
@@ -81,7 +84,7 @@ class Mooooney {
     }
     
     func checkOverflow(_ key: String, _ clickValue: Int, _ balanceValue: Int) -> Bool {
-        // TODO: for each element in inventory, if the value is greater than 999, mod by 1000, increment
+        // For each element in inventory, if the value is greater than 999, mod by 1000, increment
         var overflow = false
         
         if clickValue + balanceValue >= NUM_BASE {
@@ -118,9 +121,10 @@ func asciiShift(str: String, inc: UInt8, add: Bool) -> String {
     
     if add {
         // Adding
-//        if char == "Z" {
-//            return
-//        }
+        if char == "Z" {
+            // TODO: modify to handle multiple Z's
+            return "AA"
+        }
         if char == "_" {
             return "A"
         }

@@ -28,21 +28,8 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bZr-ER-nik" customClass="AZSocialButton" customModule="EasySocialButton">
-                                <rect key="frame" x="64" y="722" width="300" height="70"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="70" id="2Yh-4o-osD"/>
-                                    <constraint firstAttribute="width" constant="300" id="CUf-Z5-xDv"/>
-                                </constraints>
-                                <state key="normal" title="Sign in with Email">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="loginEmailPress" destination="BYZ-38-t0r" eventType="touchUpInside" id="Br6-Xm-Sbd"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V8H-7j-e5V" customClass="AZSocialButton" customModule="EasySocialButton">
-                                <rect key="frame" x="64" y="627" width="300" height="70"/>
+                                <rect key="frame" x="64" y="672" width="300" height="70"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="ElP-yL-2mg"/>
                                     <constraint firstAttribute="height" constant="70" id="l1B-LE-Qje"/>
@@ -58,7 +45,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pJW-zq-ReT" customClass="AZSocialButton" customModule="EasySocialButton">
-                                <rect key="frame" x="64" y="532" width="300" height="70"/>
+                                <rect key="frame" x="64" y="577" width="300" height="70"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="Pw5-Do-ZDy"/>
                                     <constraint firstAttribute="height" constant="70" id="gYm-So-xmQ"/>
@@ -84,15 +71,12 @@
                             <constraint firstItem="V8H-7j-e5V" firstAttribute="top" secondItem="pJW-zq-ReT" secondAttribute="bottom" constant="25" id="9aW-gE-ygA"/>
                             <constraint firstItem="pJW-zq-ReT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="BEy-Yd-WVz"/>
                             <constraint firstItem="lHD-th-YUb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="HFF-Ok-ptW"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="bZr-ER-nik" secondAttribute="bottom" constant="100" id="Hva-cp-mz4"/>
-                            <constraint firstItem="bZr-ER-nik" firstAttribute="top" secondItem="V8H-7j-e5V" secondAttribute="bottom" constant="25" id="N2T-Qo-49R"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="V8H-7j-e5V" secondAttribute="bottom" constant="150" id="HFN-8g-XBS"/>
                             <constraint firstItem="lHD-th-YUb" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="65" id="aAe-xm-y7X"/>
-                            <constraint firstItem="bZr-ER-nik" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gtb-vh-9tR"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="NqT-KO-btR"/>
                     <connections>
-                        <outlet property="emailLoginButton" destination="bZr-ER-nik" id="2ei-d6-KoU"/>
                         <outlet property="facebookLoginButton" destination="V8H-7j-e5V" id="NiT-6P-l8L"/>
                         <outlet property="googleLoginButton" destination="pJW-zq-ReT" id="9JQ-xJ-DlH"/>
                     </connections>
@@ -328,7 +312,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b28-JS-kSv">
-                                <rect key="frame" x="358" y="64" width="83" height="23.333333333333329"/>
+                                <rect key="frame" x="345" y="64" width="42" height="23"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="42" id="QGS-FJ-COb"/>
+                                    <constraint firstAttribute="height" constant="23" id="q8E-EO-LjY"/>
+                                </constraints>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button">
                                     <imageReference key="image" image="arrow.forward" catalog="system" symbolScale="large"/>
@@ -339,30 +327,36 @@
                                     <action selector="backButtonPressed:" destination="rGs-OU-VLF" eventType="touchUpInside" id="d7V-bx-jhP"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oCg-fH-JAF">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CashCowHalf" translatesAutoresizingMaskIntoConstraints="NO" id="oCg-fH-JAF">
                                 <rect key="frame" x="128" y="261" width="172" height="166"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="166" id="nMx-Rg-cat"/>
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="i3b-2K-l6b" userLabel="Info">
-                                <rect key="frame" x="53" y="466" width="83" height="81"/>
+                                <rect key="frame" x="50.666666666666664" y="465.99999999999994" width="85.333333333333343" height="111.33333333333331"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XaE-Nh-qO0">
-                                        <rect key="frame" x="0.0" y="0.0" width="83" height="20.333333333333332"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="85.333333333333329" height="20.333333333333332"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Balance:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="esc-2g-6KM">
-                                        <rect key="frame" x="0.0" y="30.333333333333314" width="83" height="20.333333333333329"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <rect key="frame" x="0.0" y="30.333333333333314" width="85.333333333333329" height="20.333333333333329"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$/Tap:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E00-lk-iXQ">
-                                        <rect key="frame" x="0.0" y="60.666666666666636" width="83" height="20.333333333333336"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <rect key="frame" x="0.0" y="60.666666666666636" width="85.333333333333329" height="20.333333333333336"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$/Sec:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yYr-30-NSJ" userLabel="Income:">
+                                        <rect key="frame" x="0.0" y="91" width="85.333333333333329" height="20.333333333333329"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -374,7 +368,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Rjo-yu-798" userLabel="Fill Ins">
-                                <rect key="frame" x="233" y="466" width="143" height="81"/>
+                                <rect key="frame" x="233" y="465.99999999999994" width="143" height="111.33333333333331"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;username&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rgT-lc-r2S">
                                         <rect key="frame" x="0.0" y="0.0" width="143" height="20.333333333333332"/>
@@ -394,26 +388,46 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;passive_amt&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3lD-LG-RwF">
+                                        <rect key="frame" x="0.0" y="91" width="143" height="20.333333333333329"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lni-a9-ONC">
+                                <rect key="frame" x="41" y="64" width="42" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="42" id="CCC-sf-dlU"/>
+                                    <constraint firstAttribute="height" constant="25" id="peg-cD-vcF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="gearshape.fill" catalog="system">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="jI9-Po-vKC"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="oCg-fH-JAF" firstAttribute="leading" secondItem="jI9-Po-vKC" secondAttribute="leading" constant="128" id="EU7-hC-6VS"/>
                             <constraint firstItem="i3b-2K-l6b" firstAttribute="top" secondItem="oCg-fH-JAF" secondAttribute="bottom" constant="39" id="J6E-Xn-tjR"/>
-                            <constraint firstItem="i3b-2K-l6b" firstAttribute="centerX" secondItem="clw-Ew-6XU" secondAttribute="centerX" constant="-119.5" id="K4s-S8-dyA"/>
+                            <constraint firstItem="b28-JS-kSv" firstAttribute="top" secondItem="jI9-Po-vKC" secondAttribute="top" constant="20" id="Jg9-Tu-Fk3"/>
                             <constraint firstItem="Rjo-yu-798" firstAttribute="leading" secondItem="i3b-2K-l6b" secondAttribute="trailing" constant="97" id="L3e-Da-76h"/>
-                            <constraint firstItem="b28-JS-kSv" firstAttribute="top" secondItem="jI9-Po-vKC" secondAttribute="top" constant="20" id="XZw-qC-yh4"/>
-                            <constraint firstItem="b28-JS-kSv" firstAttribute="trailing" secondItem="jI9-Po-vKC" secondAttribute="trailing" constant="13" id="d1S-RL-qft"/>
+                            <constraint firstItem="Lni-a9-ONC" firstAttribute="leading" secondItem="jI9-Po-vKC" secondAttribute="leading" constant="41" id="eSF-fl-DLo"/>
+                            <constraint firstItem="jI9-Po-vKC" firstAttribute="trailing" secondItem="b28-JS-kSv" secondAttribute="trailing" constant="41" id="kLG-Lp-BAI"/>
                             <constraint firstItem="Rjo-yu-798" firstAttribute="top" secondItem="oCg-fH-JAF" secondAttribute="bottom" constant="39" id="lox-Yz-HUX"/>
                             <constraint firstItem="oCg-fH-JAF" firstAttribute="centerX" secondItem="clw-Ew-6XU" secondAttribute="centerX" id="o3q-bj-SJc"/>
                             <constraint firstItem="oCg-fH-JAF" firstAttribute="top" secondItem="jI9-Po-vKC" secondAttribute="top" constant="217" id="rQf-Fa-4xH"/>
                             <constraint firstItem="Rjo-yu-798" firstAttribute="centerX" secondItem="clw-Ew-6XU" secondAttribute="centerX" constant="90.5" id="sef-uU-5CX"/>
+                            <constraint firstItem="Lni-a9-ONC" firstAttribute="top" secondItem="jI9-Po-vKC" secondAttribute="top" constant="20" id="vxX-Bh-1Cf"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="incomeAmountLabel" destination="dK5-3J-EKS" id="32K-T9-3I1"/>
+                        <outlet property="passiveAmountLabel" destination="3lD-LG-RwF" id="NLp-4r-EoE"/>
                         <outlet property="profilePicture" destination="oCg-fH-JAF" id="XDc-Ox-QuZ"/>
                         <outlet property="tapAmountLabel" destination="yKA-60-Swl" id="seD-95-T0S"/>
                         <outlet property="usernameLabel" destination="rgT-lc-r2S" id="pdl-P4-FU5"/>
@@ -802,21 +816,20 @@
     </scenes>
     <designables>
         <designable name="V8H-7j-e5V">
-            <size key="intrinsicContentSize" width="206" height="18"/>
-        </designable>
-        <designable name="bZr-ER-nik">
-            <size key="intrinsicContentSize" width="176" height="18"/>
+            <size key="intrinsicContentSize" width="150" height="30"/>
         </designable>
         <designable name="pJW-zq-ReT">
-            <size key="intrinsicContentSize" width="188" height="18"/>
+            <size key="intrinsicContentSize" width="132" height="30"/>
         </designable>
     </designables>
     <resources>
         <image name="CashCowBase" width="341.33334350585938" height="341.33334350585938"/>
+        <image name="CashCowHalf" width="1024" height="1024"/>
         <image name="arrow.backward" catalog="system" width="128" height="98"/>
         <image name="arrow.forward" catalog="system" width="128" height="98"/>
         <image name="dollarsign.circle" catalog="system" width="128" height="121"/>
         <image name="dollarsign.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="gearshape.fill" catalog="system" width="128" height="121"/>
         <image name="heart.fill" catalog="system" width="128" height="109"/>
         <image name="person.circle.fill" catalog="system" width="128" height="121"/>
         <image name="questionmark.circle" catalog="system" width="128" height="121"/>

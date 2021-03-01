@@ -9,6 +9,7 @@ import UIKit
 
 class ClickerViewController: UIViewController {
     var user: User?
+    var staminaTimer: Timer?
 
     @IBOutlet weak var totalIncome: UILabel!
     @IBOutlet weak var settingsButton: UIButton!
@@ -19,9 +20,10 @@ class ClickerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("hi")
         self.totalIncome.text = user?.money?.getBalance()
         self.staminaBar.progress = 1
+        
+        self.staminaTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.reloadStamina), userInfo: nil, repeats: true)
     }
     
     @IBAction func profileButtonPressed(_ sender: Any) {
@@ -48,8 +50,12 @@ class ClickerViewController: UIViewController {
             return
         }
         
+        upgradesViewController.user = self.user
+        
         // Push to stack because we want users to be able to go back to clicker view
-        self.navigationController?.pushViewController(upgradesViewController, animated: true)
+        let viewControllers = [upgradesViewController, self]
+        self.navigationController?.setViewControllers(viewControllers, animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func settingsButtonPressed(_ sender: Any) {
@@ -68,8 +74,17 @@ class ClickerViewController: UIViewController {
         // Update user balance and display
         if self.staminaBar.progress > 0 {
             self.totalIncome.text = self.user?.money?.click()
-            self.staminaBar.progress -= 0.01
+            self.subtractStamina(amount: 0.01)
         }
     }
 
+    // Stamina bar methods
+    @objc func reloadStamina() {
+        self.staminaBar.progress += 0.05
+        print("Stamina added")
+    }
+    
+    func subtractStamina(amount: Float) {
+        self.staminaBar.progress -= amount
+    }
 }

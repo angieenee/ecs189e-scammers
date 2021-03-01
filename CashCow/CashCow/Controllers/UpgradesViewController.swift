@@ -9,6 +9,7 @@ import UIKit
 import FontAwesome_swift
 
 class UpgradesViewController: UIViewController {
+    var user: User?
     
     @IBOutlet weak var backButton: UIButton!
     
@@ -70,7 +71,16 @@ class UpgradesViewController: UIViewController {
     }
     
     @IBAction func backButtonPressed(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let clickerViewController =  storyboard.instantiateViewController(identifier: "clickerViewController") as? ClickerViewController else {
+            assertionFailure("Couldn't find Profile VC")
+            return
+        }
+        clickerViewController.user = self.user
+        
+        // Push to stack because we want users to be able to go back to clicker view
+        let viewControllers = [clickerViewController]
+        self.navigationController?.setViewControllers(viewControllers, animated: true)
     }
     
 }

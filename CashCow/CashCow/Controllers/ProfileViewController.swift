@@ -14,13 +14,15 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var incomeAmountLabel: UILabel!
     @IBOutlet weak var tapAmountLabel: UILabel!
-
+    @IBOutlet weak var passiveAmountLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.usernameLabel.text = self.user?.username
         self.incomeAmountLabel.text = self.user?.money?.getBalance()
         self.tapAmountLabel.text = self.user?.money?.getMoneyClick()
+        self.passiveAmountLabel.text = self.user?.money?.getMoneyPassive()
     }
     
     @IBAction func backButtonPressed(_ sender: Any) {
