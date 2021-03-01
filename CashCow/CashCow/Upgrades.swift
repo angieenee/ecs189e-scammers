@@ -8,6 +8,6 @@
 import Foundation
 
 class Upgrade {
-    var upgradeType: String // 'stamina', 'passive', or 'perclick"
-    var upgradeQuantity: int // how much to add to stat
+    var upgradeType: String? // 'stamina', 'passive', or 'perclick"
+    var upgradeQuantity: Int? // how much to add to stat
 }

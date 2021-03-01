@@ -8,9 +8,11 @@
 import Foundation
 
 class Stamina {
-    var max: int
-    var curr: int
-    var regenRate: int  // Per second
+    var max: Int?
+    var curr: Int?
+    var regenRate: Int?  // Per second
     
-    func regenerate()
+    func regenerate() {
+        
+    }
 }
