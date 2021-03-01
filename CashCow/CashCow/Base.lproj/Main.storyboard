@@ -218,7 +218,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KoJ-f0-Uff">
-                                <rect key="frame" x="20" y="658.66666666666663" width="30" height="35"/>
+                                <rect key="frame" x="20" y="807" width="30" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="0ZP-Qv-vsl"/>
                                     <constraint firstAttribute="height" constant="35" id="I4a-R2-8Ty"/>
@@ -229,7 +229,7 @@
                                 </state>
                             </button>
                             <progressView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="1" translatesAutoresizingMaskIntoConstraints="NO" id="oPg-kF-hUI" customClass="GradientProgressView" customModule="CashCow" customModuleProvider="target">
-                                <rect key="frame" x="64" y="673.66666666666663" width="300" height="15"/>
+                                <rect key="frame" x="64" y="827" width="300" height="15"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" notEnabled="YES" updatesFrequently="YES"/>
                                 </accessibility>
@@ -257,7 +257,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aaF-iF-8rN">
-                                <rect key="frame" x="20" y="713.66666666666663" width="30" height="30"/>
+                                <rect key="frame" x="20" y="862" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="aVI-er-2kj"/>
                                     <constraint firstAttribute="width" constant="30" id="irU-tc-kcn"/>
@@ -275,7 +275,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.000a" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0rX-2x-Gx8">
-                                <rect key="frame" x="65" y="713.66666666666663" width="300" height="30"/>
+                                <rect key="frame" x="65" y="862" width="300" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="GR7-ZR-XBw"/>
                                 </constraints>
@@ -292,18 +292,18 @@
                             <constraint firstItem="oPg-kF-hUI" firstAttribute="centerX" secondItem="3Ne-tH-sBS" secondAttribute="centerX" id="9Jg-aq-hE4"/>
                             <constraint firstItem="egJ-0v-vzg" firstAttribute="centerX" secondItem="3Ne-tH-sBS" secondAttribute="centerX" id="BJB-EM-LWq"/>
                             <constraint firstItem="KoJ-f0-Uff" firstAttribute="leading" secondItem="G3y-Xk-ALp" secondAttribute="leading" constant="20" id="GaV-1f-urk"/>
-                            <constraint firstItem="aaF-iF-8rN" firstAttribute="top" secondItem="KoJ-f0-Uff" secondAttribute="bottom" constant="20" id="Omg-e5-zrj"/>
+                            <constraint firstItem="aaF-iF-8rN" firstAttribute="top" secondItem="KoJ-f0-Uff" secondAttribute="bottom" constant="20" id="NOK-VF-Cfc"/>
+                            <constraint firstItem="0rX-2x-Gx8" firstAttribute="top" secondItem="oPg-kF-hUI" secondAttribute="bottom" constant="20" id="Z8U-Ig-rT6"/>
                             <constraint firstItem="8Lx-uK-9wE" firstAttribute="leading" secondItem="G3y-Xk-ALp" secondAttribute="leading" constant="20" id="dSz-Yp-WH9"/>
+                            <constraint firstItem="G3y-Xk-ALp" firstAttribute="bottom" secondItem="0rX-2x-Gx8" secondAttribute="bottom" id="dyq-Be-m35"/>
                             <constraint firstItem="kCl-2z-JBJ" firstAttribute="top" secondItem="8Lx-uK-9wE" secondAttribute="bottom" constant="20" id="ee1-7j-qLT"/>
                             <constraint firstItem="8Lx-uK-9wE" firstAttribute="top" secondItem="G3y-Xk-ALp" secondAttribute="top" id="iFa-wD-93e"/>
                             <constraint firstItem="kCl-2z-JBJ" firstAttribute="leading" secondItem="G3y-Xk-ALp" secondAttribute="leading" constant="20" id="lum-kl-JQN"/>
-                            <constraint firstItem="KoJ-f0-Uff" firstAttribute="top" secondItem="egJ-0v-vzg" secondAttribute="bottom" constant="25" id="nIb-gg-5or"/>
-                            <constraint firstItem="oPg-kF-hUI" firstAttribute="top" secondItem="egJ-0v-vzg" secondAttribute="bottom" constant="40" id="pjf-WE-EIH"/>
                             <constraint firstItem="G3y-Xk-ALp" firstAttribute="trailing" secondItem="aGm-hF-SI4" secondAttribute="trailing" constant="20" id="qHX-Uh-03f"/>
                             <constraint firstItem="0rX-2x-Gx8" firstAttribute="leading" secondItem="aaF-iF-8rN" secondAttribute="trailing" constant="15" id="sLD-du-6Qy"/>
                             <constraint firstItem="G3y-Xk-ALp" firstAttribute="trailing" secondItem="aGm-hF-SI4" secondAttribute="trailing" constant="20" id="uOx-yN-UCh"/>
+                            <constraint firstItem="G3y-Xk-ALp" firstAttribute="bottom" secondItem="aaF-iF-8rN" secondAttribute="bottom" id="uai-Nt-Y9I"/>
                             <constraint firstItem="aGm-hF-SI4" firstAttribute="top" secondItem="G3y-Xk-ALp" secondAttribute="top" id="x3s-pi-gkG"/>
-                            <constraint firstItem="0rX-2x-Gx8" firstAttribute="top" secondItem="oPg-kF-hUI" secondAttribute="bottom" constant="25" id="xWg-zV-h0e"/>
                         </constraints>
                     </view>
                     <connections>
