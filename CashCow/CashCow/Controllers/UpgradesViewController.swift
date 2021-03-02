@@ -8,66 +8,65 @@
 import UIKit
 import FontAwesome_swift
 
-class UpgradesViewController: UIViewController {
+//class UpgradeCell: UITableViewCell {
+//    @IBOutlet weak var upgradeIcon: UIButton!
+//
+//    @IBOutlet weak var upgradeName: UILabel!
+//
+//    @IBOutlet weak var upgradeAmount: UILabel!
+//
+//    @IBOutlet weak var upgradeDescription: UILabel!
+//
+//    @IBOutlet weak var buyButton: UIButton!
+//
+//}
+
+class UpgradesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
     var user: User?
     
     @IBOutlet weak var backButton: UIButton!
+        
+    @IBOutlet weak var upgradesTable: UITableView!
     
-    // Icon buttons
-    @IBOutlet weak var coffeeIcon: UIButton!
-    @IBOutlet weak var diningIcon: UIButton!
-    @IBOutlet weak var sleepIcon: UIButton!
     
-    @IBOutlet weak var briefcaseIcon: UIButton!
-    @IBOutlet weak var computerIcon: UIButton!
-    @IBOutlet weak var phoneIcon: UIButton!
-    
-    // Amount labels
-    @IBOutlet weak var coffeeAmountLabel: UILabel!
-    @IBOutlet weak var diningAmountLabel: UILabel!
-    @IBOutlet weak var sleepAmountLabel: UILabel!
-    @IBOutlet weak var briefcaseAmountLabel: UILabel!
-    @IBOutlet weak var computerAmountLabel: UILabel!
-    @IBOutlet weak var phoneAmountLabel: UILabel!
-    
-    // Progress bars
-    @IBOutlet weak var coffeeProgressBar: UIProgressView!
-    @IBOutlet weak var diningProgessBar: UIProgressView!
-    @IBOutlet weak var sleepProgressBar: UIProgressView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var amountsList = ["5a", "10a", "15a", "1b", "2b", "3b"]
+        self.upgradesTable.dataSource = self
+        self.upgradesTable.delegate = self
         
-        let amountLabelsList = [self.coffeeAmountLabel, self.diningAmountLabel, self.sleepAmountLabel, self.briefcaseAmountLabel, self.computerAmountLabel, self.phoneAmountLabel]
-                
-        // Prepend $ to all consts using map
-        amountsList = amountsList.map{"$" + $0}
-                
-        // Set amount labels to respective consts
-        for (amountLabel, amounts) in zip(amountLabelsList, amountsList) {
-            amountLabel?.text = amounts
+    }
+    
+    // TableView Protocols Implementation
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // TODO: return size of upgrades array
+        // upgrades array will be a list of upgrades object
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // TODO: Populate each row for each upgrades object
+//        guard let cell = tableView.dequeueReusableCell(withIdentifier: "upgradesTableCell") as? UpgradeCell else {
+//            assertionFailure("upgradesTableCell dequeue error")
+//            return UITableViewCell.init()
+//        }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "upgradesTableCell") else {
+            assertionFailure("upgradesTableCell dequeue error")
+            return UITableViewCell.init()
         }
         
-        // Initialize FontAwesome icons
-        coffeeIcon.titleLabel?.font = UIFont.fontAwesome(ofSize: 20, style: .solid)
-        coffeeIcon.setTitle(String.fontAwesomeIcon(name: .coffee), for: .normal)
-        
-        diningIcon.titleLabel?.font = UIFont.fontAwesome(ofSize: 20, style: .solid)
-        diningIcon.setTitle(String.fontAwesomeIcon(name: .utensils), for: .normal)
-        
-        sleepIcon.titleLabel?.font = UIFont.fontAwesome(ofSize: 20, style: .solid)
-        sleepIcon.setTitle(String.fontAwesomeIcon(name: .moon), for: .normal)
-        
-        briefcaseIcon.titleLabel?.font = UIFont.fontAwesome(ofSize: 20, style: .solid)
-        briefcaseIcon.setTitle(String.fontAwesomeIcon(name: .briefcase), for: .normal)
-        
-        computerIcon.titleLabel?.font = UIFont.fontAwesome(ofSize: 20, style: .solid)
-        computerIcon.setTitle(String.fontAwesomeIcon(name: .desktop), for: .normal)
-        
-        phoneIcon.titleLabel?.font = UIFont.fontAwesome(ofSize: 20, style: .solid)
-        phoneIcon.setTitle(String.fontAwesomeIcon(name: .phone), for: .normal)
+//        cell.upgradeIcon.titleLabel?.font = UIFont.fontAwesome(ofSize: 20, style: .solid)
+//        cell.upgradeIcon.setTitle(String.fontAwesomeIcon(name: .coffee), for: .normal)
+//        
+//        cell.upgradeName.text = "Coffee"
+//        
+//        cell.upgradeAmount.text = "$3a"
+//        
+//        cell.upgradeDescription.text = "Lorem ipsum"
+                
+        return cell
     }
     
     @IBAction func backButtonPressed(_ sender: Any) {
@@ -82,5 +81,4 @@ class UpgradesViewController: UIViewController {
         let viewControllers = [clickerViewController]
         self.navigationController?.setViewControllers(viewControllers, animated: true)
     }
-    
 }

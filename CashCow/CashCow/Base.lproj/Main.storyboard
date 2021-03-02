@@ -559,10 +559,10 @@
             </objects>
             <point key="canvasLocation" x="3501.8691588785045" y="33.045356371490286"/>
         </scene>
-        <!--Upgrades View Controller-->
+        <!--View Controller-->
         <scene sceneID="i8M-8B-Xkp">
             <objects>
-                <viewController storyboardIdentifier="upgradesViewController" id="xkM-nF-WQb" customClass="UpgradesViewController" customModule="CashCow" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="xkM-nF-WQb" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RvV-95-Ct4">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -855,6 +855,95 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pBW-vg-ivT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2685.9813084112147" y="-656.37149028077761"/>
+        </scene>
+        <!--Upgrades View Controller-->
+        <scene sceneID="qAe-AE-0c3">
+            <objects>
+                <viewController storyboardIdentifier="upgradesViewController" id="rhF-xY-MEG" customClass="UpgradesViewController" customModule="CashCow" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eJ4-sk-72L">
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pvu-MQ-PNm">
+                                <rect key="frame" x="367" y="59" width="29" height="24"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal">
+                                    <imageReference key="image" image="arrow.forward" catalog="system" symbolScale="large"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="20" weight="bold"/>
+                                </state>
+                                <connections>
+                                    <action selector="backButtonPressed:" destination="xkM-nF-WQb" eventType="touchUpInside" id="X8P-dc-Yko"/>
+                                    <action selector="backButtonPressed:" destination="rhF-xY-MEG" eventType="touchUpInside" id="jZ1-Ia-rNd"/>
+                                    <action selector="backButtonPressed:" destination="rGs-OU-VLF" eventType="touchUpInside" id="wI0-IQ-Yg2"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EaN-fI-8JG">
+                                <rect key="frame" x="32" y="122" width="364" height="682"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="upgradesTableCell" rowHeight="99" id="Ab5-cl-mRt" customClass="UpgradeCell" customModule="CashCow" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="364" height="99"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ab5-cl-mRt" id="H6N-gF-Pzh">
+                                            <rect key="frame" x="0.0" y="0.0" width="364" height="99"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="&lt;upgrade_name&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m3v-Ad-xPQ">
+                                                    <rect key="frame" x="47" y="11" width="146" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="&lt;amount&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Zv-pB-Ufz">
+                                                    <rect key="frame" x="201" y="11" width="85" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LV4-mo-1SF">
+                                                    <rect key="frame" x="303" y="6" width="52" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                                    <state key="normal" title="BUY">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="&lt;description&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tfN-V8-ISa">
+                                                    <rect key="frame" x="14" y="40" width="324" height="29"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fDz-RD-0S7">
+                                                    <rect key="frame" x="9" y="7" width="30" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="&lt;i&gt;"/>
+                                                </button>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="K4j-Kp-NUf"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="K4j-Kp-NUf" firstAttribute="trailing" secondItem="pvu-MQ-PNm" secondAttribute="trailing" constant="32" id="9BR-Jw-7hX"/>
+                            <constraint firstItem="pvu-MQ-PNm" firstAttribute="top" secondItem="K4j-Kp-NUf" secondAttribute="top" constant="15" id="YbW-6R-Ek8"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="backButton" destination="pvu-MQ-PNm" id="ZBL-tL-dcp"/>
+                        <outlet property="upgradesTable" destination="EaN-fI-8JG" id="STQ-IC-msu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lFj-J4-YBV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3395.3271028037379" y="-653.13174946004324"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="yfx-Kl-NPW">
