@@ -206,7 +206,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Lx-uK-9wE">
-                                <rect key="frame" x="20" y="44" width="24.333333333333329" height="25"/>
+                                <rect key="frame" x="20" y="44" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="E3h-0I-m0E"/>
+                                    <constraint firstAttribute="height" constant="40" id="Kdb-qH-kVm"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="tintColor" systemColor="labelColor"/>
                                 <state key="normal">
@@ -218,7 +222,11 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kCl-2z-JBJ">
-                                <rect key="frame" x="20" y="89" width="28" height="26.333333333333329"/>
+                                <rect key="frame" x="20" y="104" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="HNj-cc-pcm"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="Ht3-B9-muZ"/>
+                                </constraints>
                                 <color key="tintColor" systemColor="labelColor"/>
                                 <state key="normal">
                                     <color key="titleColor" systemColor="secondarySystemBackgroundColor"/>
@@ -229,7 +237,11 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aGm-hF-SI4">
-                                <rect key="frame" x="379" y="44" width="29" height="28.666666666666671"/>
+                                <rect key="frame" x="378" y="44" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Mkr-ZF-xeM"/>
+                                    <constraint firstAttribute="width" constant="30" id="i3m-vF-T3b"/>
+                                </constraints>
                                 <color key="tintColor" systemColor="labelColor"/>
                                 <state key="normal">
                                     <imageReference key="image" image="wrench.fill" catalog="system" symbolScale="large"/>
@@ -878,10 +890,10 @@
     </scenes>
     <designables>
         <designable name="V8H-7j-e5V">
-            <size key="intrinsicContentSize" width="150" height="30"/>
+            <size key="intrinsicContentSize" width="206" height="18"/>
         </designable>
         <designable name="pJW-zq-ReT">
-            <size key="intrinsicContentSize" width="132" height="30"/>
+            <size key="intrinsicContentSize" width="188" height="18"/>
         </designable>
     </designables>
     <resources>
