@@ -11,14 +11,15 @@ import UIKit
 // general class for holding sequence of images, like for an animation
 class ImgSeqContainer {
     var imageNames: [String]
-    var imageSequences: [[UIImages]]
+    var imageSequences: [[UIImage]]
     init() {
         imageNames = []
-        imageSequences = [[]]()
+        imageSequences = [[]]
     }
     
     init(imgNames: [String]) {
         imageNames = imgNames
+        imageSequences = [[]]
         for name in imageNames {
             let imageSet = setAnimatedImages(for: name)
             imageSequences.append(imageSet)
@@ -30,9 +31,9 @@ class ImgSeqContainer {
         var images = [UIImage]()
         
         while let image = UIImage(named: "\(name)_\(String(format: "%02d", idx))") {
-            print(named)
+            print("\(name)_\(String(format: "%02d", idx))")
             images.append(image)
-            i += 1
+            idx += 1
         }
         return images
     }

@@ -319,6 +319,13 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5mc-LI-urp">
+                                <rect key="frame" x="94" y="232.33333333333334" width="240" height="40.000000000000028"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="asB-Hf-mCL"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="w6S-vR-Mtb"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="G3y-Xk-ALp"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -326,6 +333,7 @@
                         <constraints>
                             <constraint firstItem="egJ-0v-vzg" firstAttribute="centerY" secondItem="3Ne-tH-sBS" secondAttribute="centerY" id="15C-7k-o4B"/>
                             <constraint firstItem="egJ-0v-vzg" firstAttribute="centerX" secondItem="3Ne-tH-sBS" secondAttribute="centerX" id="BJB-EM-LWq"/>
+                            <constraint firstItem="egJ-0v-vzg" firstAttribute="top" secondItem="5mc-LI-urp" secondAttribute="bottom" constant="20" id="IB5-yB-8ES"/>
                             <constraint firstItem="EHm-pW-8fk" firstAttribute="centerX" secondItem="3Ne-tH-sBS" secondAttribute="centerX" id="LDj-1P-3v1"/>
                             <constraint firstItem="8Lx-uK-9wE" firstAttribute="leading" secondItem="G3y-Xk-ALp" secondAttribute="leading" constant="20" id="dSz-Yp-WH9"/>
                             <constraint firstItem="kCl-2z-JBJ" firstAttribute="top" secondItem="8Lx-uK-9wE" secondAttribute="bottom" constant="20" id="ee1-7j-qLT"/>
@@ -339,6 +347,7 @@
                     </view>
                     <connections>
                         <outlet property="clickerButton" destination="egJ-0v-vzg" id="dV0-hQ-OQe"/>
+                        <outlet property="coinPopUp" destination="5mc-LI-urp" id="18a-KW-zOW"/>
                         <outlet property="profileButton" destination="8Lx-uK-9wE" id="jdE-4q-7xb"/>
                         <outlet property="settingsButton" destination="aGm-hF-SI4" id="lMd-aV-eWB"/>
                         <outlet property="staminaBar" destination="oPg-kF-hUI" id="sdX-UX-Sru"/>
