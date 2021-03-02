@@ -10,6 +10,7 @@ import UIKit
 class ClickerViewController: UIViewController {
     var user: User?
     var staminaTimer: Timer?
+    var coins: ImgSeqContainer
 
     @IBOutlet weak var totalIncome: UILabel!
     @IBOutlet weak var settingsButton: UIButton!
@@ -20,6 +21,9 @@ class ClickerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let coinsImgNames = ["CoinSpin_CashCow", "CoinSpin_Dollar", "CoinSpin_Moo"]
+        self.coins = ImgSeqContainer(coinsImgNames)
+        
         self.totalIncome.text = user?.money?.getBalance()
         self.staminaBar.progress = 1
         
