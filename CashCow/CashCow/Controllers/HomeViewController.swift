@@ -52,6 +52,9 @@ class HomeViewController: UIViewController {
             print("UID: \(self.user.uid ?? "")")
         })
         
+        if user == nil {
+            
+        }
     }
     
     @IBAction func startButtonPressed(_ sender: Any) {
