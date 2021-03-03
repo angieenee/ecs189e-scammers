@@ -64,6 +64,9 @@ class UpgradesViewController: UIViewController, UITableViewDataSource, UITableVi
         
         self.passiveIncomeIcon.titleLabel?.font = UIFont.fontAwesome(ofSize: 20, style: .solid)
         self.passiveIncomeIcon.setTitle(String.fontAwesomeIcon(name: .coins), for: .normal)
+        
+        parseData()
+        print("PARSE FINISHED?????????")
     }
     
     // TableView Protocols Implementation
