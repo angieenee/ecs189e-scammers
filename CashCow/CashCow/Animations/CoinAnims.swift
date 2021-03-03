@@ -24,6 +24,7 @@ class ImgSeqContainer {
             let imageSet = setAnimatedImages(for: name)
             imageSequences.append(imageSet)
         }
+        // print(imageSequences)
     }
     
     func setAnimatedImages(for name: String) -> [UIImage] {

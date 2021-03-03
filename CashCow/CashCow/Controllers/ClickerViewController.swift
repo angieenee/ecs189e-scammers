@@ -81,7 +81,12 @@ class ClickerViewController: UIViewController {
             self.totalIncome.text = self.user?.money?.click()
             self.subtractStamina(amount: 0.01)
             
-            coinPopUp.animationImages = self.coins.imageSequences[Int.random(in: 0...2)] ?? nil
+            coinPopUp.animationImages = self.coins.imageSequences[Int.random(in: 0...self.coins.imageSequences.count-1)]
+            print(coinPopUp.animationImages ?? "uh oh stinky no animation images.")
+            coinPopUp.animationDuration = 1
+            coinPopUp.animationRepeatCount = 1
+            coinPopUp.image = coinPopUp.animationImages?.first
+            coinPopUp.startAnimating()
         }
     }
 
