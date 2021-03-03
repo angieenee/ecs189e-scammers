@@ -28,12 +28,42 @@ class UpgradesViewController: UIViewController, UITableViewDataSource, UITableVi
         
     @IBOutlet weak var upgradesTable: UITableView!
     
+    @IBOutlet weak var staminaIcon: UIButton!
+    @IBOutlet weak var clickerIcon: UIButton!
+    @IBOutlet weak var passiveIncomeIcon: UIButton!
+        
+    @IBOutlet weak var staminaLabel: UILabel!
+    @IBOutlet weak var clickerLabel: UILabel!
+    @IBOutlet weak var passiveIncomeLabel: UILabel!
+    
+    var categoryIcons: [UIButton] = []
+    var categoryTextLabels: [UILabel] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.upgradesTable.dataSource = self
         self.upgradesTable.delegate = self
         
+        self.categoryIcons.append(staminaIcon)
+        self.categoryIcons.append(clickerIcon)
+        self.categoryIcons.append(passiveIncomeIcon)
+        
+        self.categoryTextLabels.append(staminaLabel)
+        self.categoryTextLabels.append(clickerLabel)
+        self.categoryTextLabels.append(passiveIncomeLabel)
+        
+        self.staminaIcon.titleLabel?.font = UIFont.fontAwesome(ofSize: 20, style: .solid)
+        self.staminaIcon.setTitle(String.fontAwesomeIcon(name: .heartbeat), for: .normal)
+        
+        self.categoryIcons[0].setTitleColor(.systemRed, for: .normal)
+        self.categoryTextLabels[0].textColor = .systemRed
+        
+        self.clickerIcon.titleLabel?.font = UIFont.fontAwesome(ofSize: 20, style: .solid)
+        self.clickerIcon.setTitle(String.fontAwesomeIcon(name: .handPointUp), for: .normal)
+        
+        self.passiveIncomeIcon.titleLabel?.font = UIFont.fontAwesome(ofSize: 20, style: .solid)
+        self.passiveIncomeIcon.setTitle(String.fontAwesomeIcon(name: .coins), for: .normal)
     }
     
     // TableView Protocols Implementation
@@ -77,4 +107,37 @@ class UpgradesViewController: UIViewController, UITableViewDataSource, UITableVi
         // TODO: Implement this button
         print("PRESSED")
     }
+    
+    func resetCategoriesButtons() {
+        self.categoryIcons = self.categoryIcons.map ({
+            $0.setTitleColor(.systemBlue, for: .normal); return $0
+        })
+        self.categoryTextLabels = self.categoryTextLabels.map ({
+            $0.textColor = .black; return $0
+        })
+    }
+    
+    @IBAction func staminaButtonPressed(_ sender: Any) {
+        
+        resetCategoriesButtons()
+        
+        self.categoryIcons[0].setTitleColor(.systemRed, for: .normal)
+        self.categoryTextLabels[0].textColor = .systemRed
+    }
+    
+    @IBAction func clickerButtonPressed(_ sender: Any) {
+        resetCategoriesButtons()
+        
+        self.categoryIcons[1].setTitleColor(.systemRed, for: .normal)
+        self.categoryTextLabels[1].textColor = .systemRed
+    }
+    
+    @IBAction func passiveIncomePressed(_ sender: Any) {
+        resetCategoriesButtons()
+        
+        self.categoryIcons[2].setTitleColor(.systemRed, for: .normal)
+        self.categoryTextLabels[2].textColor = .systemRed
+    }
+    
+    
 }

@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cash Cow" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lHD-th-YUb">
-                                <rect key="frame" x="50.666666666666657" y="153" width="327" height="91.666666666666686"/>
+                                <rect key="frame" x="50.333333333333343" y="153" width="327.33333333333326" height="91.666666666666686"/>
                                 <fontDescription key="fontDescription" name="ProximaNovaT-Thin" family="Proxima Nova" pointSize="75"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -890,7 +890,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="120" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EaN-fI-8JG">
-                                <rect key="frame" x="32" y="122" width="364" height="682"/>
+                                <rect key="frame" x="32" y="108" width="364" height="682"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="upgradesTableCell" rowHeight="99" id="Ab5-cl-mRt" customClass="UpgradeCell" customModule="CashCow" customModuleProvider="target">
@@ -970,20 +970,88 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="70" translatesAutoresizingMaskIntoConstraints="NO" id="pCP-v7-avS">
+                                <rect key="frame" x="32" y="814" width="364" height="50.333333333333371"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="6zC-sJ-uOQ">
+                                        <rect key="frame" x="0.0" y="0.0" width="74.666666666666671" height="50.333333333333336"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mOu-BZ-mck">
+                                                <rect key="frame" x="0.0" y="0.0" width="74.666666666666671" height="30"/>
+                                                <state key="normal" title="&lt;i&gt;"/>
+                                                <connections>
+                                                    <action selector="staminaButtonPressed:" destination="rhF-xY-MEG" eventType="touchUpInside" id="QPj-PW-kzm"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stamina" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="JDk-v4-qBY">
+                                                <rect key="frame" x="0.0" y="30" width="74.666666666666671" height="20.333333333333329"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="1kG-63-Jzz">
+                                        <rect key="frame" x="144.66666666666666" y="0.0" width="74.666666666666657" height="50.333333333333336"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x0y-nN-vrZ">
+                                                <rect key="frame" x="0.0" y="0.0" width="74.666666666666671" height="30"/>
+                                                <state key="normal" title="&lt;i&gt;"/>
+                                                <connections>
+                                                    <action selector="clickerButtonPressed:" destination="rhF-xY-MEG" eventType="touchUpInside" id="nRo-uN-3rj"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Clicker" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="oca-rh-7uH">
+                                                <rect key="frame" x="0.0" y="30" width="74.666666666666671" height="20.333333333333329"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="47P-Bk-Iaj">
+                                        <rect key="frame" x="289.33333333333331" y="0.0" width="74.666666666666686" height="50.333333333333336"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F41-cB-mdD">
+                                                <rect key="frame" x="0.0" y="0.0" width="74.666666666666671" height="30"/>
+                                                <state key="normal" title="&lt;i&gt;"/>
+                                                <connections>
+                                                    <action selector="passiveIncomePressed:" destination="rhF-xY-MEG" eventType="touchUpInside" id="Qfs-rL-SeA"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Passive" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="aRI-iZ-AWt">
+                                                <rect key="frame" x="0.0" y="30" width="74.666666666666671" height="20.333333333333329"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="K4j-Kp-NUf"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="EaN-fI-8JG" firstAttribute="leading" secondItem="K4j-Kp-NUf" secondAttribute="leading" constant="32" id="0f5-9X-q99"/>
-                            <constraint firstItem="K4j-Kp-NUf" firstAttribute="bottom" secondItem="EaN-fI-8JG" secondAttribute="bottom" constant="88" id="7dd-OX-kRE"/>
+                            <constraint firstItem="pCP-v7-avS" firstAttribute="centerX" secondItem="eJ4-sk-72L" secondAttribute="centerX" id="11o-gU-Tso"/>
                             <constraint firstItem="K4j-Kp-NUf" firstAttribute="trailing" secondItem="pvu-MQ-PNm" secondAttribute="trailing" constant="32" id="9BR-Jw-7hX"/>
+                            <constraint firstItem="EaN-fI-8JG" firstAttribute="top" secondItem="pvu-MQ-PNm" secondAttribute="bottom" constant="25.670000000000002" id="AYp-kM-dR2"/>
                             <constraint firstItem="EaN-fI-8JG" firstAttribute="centerX" secondItem="eJ4-sk-72L" secondAttribute="centerX" id="L9H-Az-JqI"/>
+                            <constraint firstItem="pCP-v7-avS" firstAttribute="leading" secondItem="K4j-Kp-NUf" secondAttribute="leading" constant="32" id="SX6-rH-aED"/>
                             <constraint firstItem="pvu-MQ-PNm" firstAttribute="top" secondItem="K4j-Kp-NUf" secondAttribute="top" constant="15" id="YbW-6R-Ek8"/>
-                            <constraint firstItem="EaN-fI-8JG" firstAttribute="top" secondItem="pvu-MQ-PNm" secondAttribute="bottom" constant="39.670000000000002" id="nxQ-jv-YJB"/>
+                            <constraint firstItem="pCP-v7-avS" firstAttribute="top" secondItem="EaN-fI-8JG" secondAttribute="bottom" constant="24" id="imJ-bt-HzI"/>
+                            <constraint firstItem="K4j-Kp-NUf" firstAttribute="bottom" secondItem="pCP-v7-avS" secondAttribute="bottom" constant="27.670000000000002" id="wiK-B3-hCb"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="backButton" destination="pvu-MQ-PNm" id="ZBL-tL-dcp"/>
+                        <outlet property="clickerIcon" destination="x0y-nN-vrZ" id="3b1-Ac-FXy"/>
+                        <outlet property="clickerLabel" destination="oca-rh-7uH" id="TTc-nC-dB5"/>
+                        <outlet property="passiveIncomeIcon" destination="F41-cB-mdD" id="Mlq-xV-Evj"/>
+                        <outlet property="passiveIncomeLabel" destination="aRI-iZ-AWt" id="5hT-8J-22i"/>
+                        <outlet property="staminaIcon" destination="mOu-BZ-mck" id="Nhg-Ll-VhF"/>
+                        <outlet property="staminaLabel" destination="JDk-v4-qBY" id="LLv-uD-qlS"/>
                         <outlet property="upgradesTable" destination="EaN-fI-8JG" id="STQ-IC-msu"/>
                     </connections>
                 </viewController>
