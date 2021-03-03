@@ -7,7 +7,7 @@
 
 import UIKit
 import GoogleSignIn
-import FBSDKCoreKit
+//import FBSDKCoreKit
 import Firebase
 import FirebaseAuth
 
@@ -40,9 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             // Post notification after user successfully sign in
             NotificationCenter.default.post(name: .signInGoogleCompleted, object: nil)
             
-            //let uid = user?.authentication.idToken
-            //let email = user?.profile.email
-            //print("ID: \(uid), email: \(email)")
+            
         }
     }
     
@@ -56,11 +54,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance()?.restorePreviousSignIn()
         
-        ApplicationDelegate.shared.application(
-            application,
-            didFinishLaunchingWithOptions:
-            launchOptions
-        )
+//        ApplicationDelegate.shared.application(
+//            application,
+//            didFinishLaunchingWithOptions:
+//            launchOptions
+//        )
         
         return true
     }
@@ -82,13 +80,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         
         let googleHandle = GIDSignIn.sharedInstance().handle(url)
-        let fbHandle = ApplicationDelegate.shared.application(
-            app,
-            open: url,
-            options: options
-        )
+        //let fbHandle = ApplicationDelegate.shared.application(
+        //    app,
+        //    open: url,
+        //    options: options
+        //)
         
-        return googleHandle || fbHandle
+        return googleHandle //|| fbHandle
     }
     
 }
