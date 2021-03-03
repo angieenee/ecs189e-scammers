@@ -8,18 +8,17 @@
 import UIKit
 import FontAwesome_swift
 
-//class UpgradeCell: UITableViewCell {
-//    @IBOutlet weak var upgradeIcon: UIButton!
-//
-//    @IBOutlet weak var upgradeName: UILabel!
-//
-//    @IBOutlet weak var upgradeAmount: UILabel!
-//
-//    @IBOutlet weak var upgradeDescription: UILabel!
-//
-//    @IBOutlet weak var buyButton: UIButton!
-//
-//}
+class UpgradeCell: UITableViewCell {
+    @IBOutlet weak var upgradeIcon: UIButton!
+    
+    @IBOutlet weak var upgradeName: UILabel!
+    
+    @IBOutlet weak var upgradeAmt: UILabel!
+    
+    @IBOutlet weak var buyButton: UIButton!
+    
+    @IBOutlet weak var upgradeDescription: UILabel!
+}
 
 class UpgradesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -28,8 +27,6 @@ class UpgradesViewController: UIViewController, UITableViewDataSource, UITableVi
     @IBOutlet weak var backButton: UIButton!
         
     @IBOutlet weak var upgradesTable: UITableView!
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,23 +45,17 @@ class UpgradesViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // TODO: Populate each row for each upgrades object
-//        guard let cell = tableView.dequeueReusableCell(withIdentifier: "upgradesTableCell") as? UpgradeCell else {
-//            assertionFailure("upgradesTableCell dequeue error")
-//            return UITableViewCell.init()
-//        }
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "upgradesTableCell") else {
-            assertionFailure("upgradesTableCell dequeue error")
-            return UITableViewCell.init()
-        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: "upgradesTableCell") as! UpgradeCell
         
-//        cell.upgradeIcon.titleLabel?.font = UIFont.fontAwesome(ofSize: 20, style: .solid)
-//        cell.upgradeIcon.setTitle(String.fontAwesomeIcon(name: .coffee), for: .normal)
-//        
-//        cell.upgradeName.text = "Coffee"
-//        
-//        cell.upgradeAmount.text = "$3a"
-//        
-//        cell.upgradeDescription.text = "Lorem ipsum"
+
+        cell.upgradeIcon.titleLabel?.font = UIFont.fontAwesome(ofSize: 20, style: .solid)
+        cell.upgradeIcon.setTitle(String.fontAwesomeIcon(name: .coffee), for: .normal)
+        
+        cell.upgradeName.text = "Coffee Udders"
+        
+        cell.upgradeAmt.text = "100A"
+        
+        cell.upgradeDescription.text = "Ah! Calf-feine really keeps me awake! This upgrade makes stamina regenerate 5% faster."
                 
         return cell
     }
@@ -80,5 +71,10 @@ class UpgradesViewController: UIViewController, UITableViewDataSource, UITableVi
         // Push to stack because we want users to be able to go back to clicker view
         let viewControllers = [clickerViewController]
         self.navigationController?.setViewControllers(viewControllers, animated: true)
+    }
+    
+    @IBAction func buyButtonPressed(_ sender: Any) {
+        // TODO: Implement this button
+        print("PRESSED")
     }
 }

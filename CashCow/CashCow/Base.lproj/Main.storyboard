@@ -889,7 +889,7 @@
                                     <action selector="backButtonPressed:" destination="rGs-OU-VLF" eventType="touchUpInside" id="wI0-IQ-Yg2"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EaN-fI-8JG">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="120" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EaN-fI-8JG">
                                 <rect key="frame" x="32" y="122" width="364" height="682"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
@@ -931,11 +931,20 @@
                                                             <state key="normal" title="BUY">
                                                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="buyButtonPressed:" destination="rhF-xY-MEG" eventType="touchUpInside" id="Cn3-JO-dR0"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="0Tb-tO-o6c"/>
+                                                    </constraints>
                                                 </stackView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;description&gt;" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tfN-V8-ISa">
-                                                    <rect key="frame" x="12" y="41" width="340" height="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;description&gt;" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tfN-V8-ISa">
+                                                    <rect key="frame" x="12" y="41" width="340" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="cld-kH-GgF"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -951,6 +960,13 @@
                                                 <constraint firstItem="tfN-V8-ISa" firstAttribute="top" secondItem="WLf-Dl-fzJ" secondAttribute="bottom" constant="9" id="lyz-jM-EdG"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="buyButton" destination="LV4-mo-1SF" id="9P7-bB-Q9a"/>
+                                            <outlet property="upgradeAmt" destination="2Zv-pB-Ufz" id="YNp-X5-LpP"/>
+                                            <outlet property="upgradeDescription" destination="tfN-V8-ISa" id="9H0-Tj-VvE"/>
+                                            <outlet property="upgradeIcon" destination="fDz-RD-0S7" id="zOK-EO-0Xb"/>
+                                            <outlet property="upgradeName" destination="m3v-Ad-xPQ" id="eH3-rX-l87"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
