@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cash Cow" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lHD-th-YUb">
-                                <rect key="frame" x="50.666666666666657" y="153" width="327" height="91.666666666666686"/>
+                                <rect key="frame" x="50.333333333333343" y="153" width="327.33333333333326" height="91.666666666666686"/>
                                 <fontDescription key="fontDescription" name="ProximaNovaT-Thin" family="Proxima Nova" pointSize="75"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -93,12 +93,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;Insert_Logo&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rCh-wg-Hwr">
-                                <rect key="frame" x="151" y="361.66666666666669" width="126" height="20.333333333333314"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="125" translatesAutoresizingMaskIntoConstraints="NO" id="Uhr-Uv-r5v">
                                 <rect key="frame" x="51.666666666666657" y="763" width="325" height="50"/>
                                 <subviews>
@@ -173,15 +167,12 @@
                         <viewLayoutGuide key="safeArea" id="MqB-w6-CRp"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="rCh-wg-Hwr" firstAttribute="leading" secondItem="MqB-w6-CRp" secondAttribute="leading" constant="151" id="9op-XQ-F3I"/>
                             <constraint firstItem="Ltb-Rw-vwb" firstAttribute="centerX" secondItem="j5G-1g-ThQ" secondAttribute="centerX" id="9yP-lz-1b3"/>
                             <constraint firstItem="Kkc-Km-aae" firstAttribute="centerX" secondItem="j5G-1g-ThQ" secondAttribute="centerX" id="MwR-Zl-wu8"/>
-                            <constraint firstItem="MqB-w6-CRp" firstAttribute="trailing" secondItem="rCh-wg-Hwr" secondAttribute="trailing" constant="151" id="NPz-Cy-tcn"/>
                             <constraint firstItem="MqB-w6-CRp" firstAttribute="trailing" secondItem="7FJ-X8-F3Y" secondAttribute="trailing" constant="51" id="TBh-uO-DDo"/>
                             <constraint firstItem="Uhr-Uv-r5v" firstAttribute="centerX" secondItem="j5G-1g-ThQ" secondAttribute="centerX" id="XGK-QX-oL9"/>
                             <constraint firstItem="Ltb-Rw-vwb" firstAttribute="centerY" secondItem="j5G-1g-ThQ" secondAttribute="centerY" id="fQK-PO-gX5"/>
                             <constraint firstItem="7FJ-X8-F3Y" firstAttribute="top" secondItem="MqB-w6-CRp" secondAttribute="top" constant="28" id="hZN-H1-yDk"/>
-                            <constraint firstItem="Uhr-Uv-r5v" firstAttribute="top" secondItem="rCh-wg-Hwr" secondAttribute="bottom" constant="381" id="laY-aS-Acb"/>
                             <constraint firstItem="MqB-w6-CRp" firstAttribute="bottom" secondItem="Uhr-Uv-r5v" secondAttribute="bottom" constant="79" id="s80-64-dkh"/>
                             <constraint firstItem="Kkc-Km-aae" firstAttribute="top" secondItem="MqB-w6-CRp" secondAttribute="top" constant="100" id="uiD-Zd-zPh"/>
                         </constraints>
@@ -206,7 +197,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Lx-uK-9wE">
-                                <rect key="frame" x="20" y="44" width="24.333333333333329" height="25"/>
+                                <rect key="frame" x="20" y="44" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="E3h-0I-m0E"/>
+                                    <constraint firstAttribute="height" constant="40" id="Kdb-qH-kVm"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="tintColor" systemColor="labelColor"/>
                                 <state key="normal">
@@ -218,7 +213,11 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kCl-2z-JBJ">
-                                <rect key="frame" x="20" y="89" width="28" height="26.333333333333329"/>
+                                <rect key="frame" x="20" y="104" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="HNj-cc-pcm"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="Ht3-B9-muZ"/>
+                                </constraints>
                                 <color key="tintColor" systemColor="labelColor"/>
                                 <state key="normal">
                                     <color key="titleColor" systemColor="secondarySystemBackgroundColor"/>
@@ -229,7 +228,11 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aGm-hF-SI4">
-                                <rect key="frame" x="379" y="44" width="29" height="28.666666666666671"/>
+                                <rect key="frame" x="378" y="44" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Mkr-ZF-xeM"/>
+                                    <constraint firstAttribute="width" constant="30" id="i3m-vF-T3b"/>
+                                </constraints>
                                 <color key="tintColor" systemColor="labelColor"/>
                                 <state key="normal">
                                     <imageReference key="image" image="wrench.fill" catalog="system" symbolScale="large"/>
@@ -307,6 +310,13 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="CoinSpin_CashCow_00" translatesAutoresizingMaskIntoConstraints="NO" id="5mc-LI-urp">
+                                <rect key="frame" x="94" y="232.33333333333334" width="240" height="40.000000000000028"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="asB-Hf-mCL"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="w6S-vR-Mtb"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="G3y-Xk-ALp"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -314,6 +324,7 @@
                         <constraints>
                             <constraint firstItem="egJ-0v-vzg" firstAttribute="centerY" secondItem="3Ne-tH-sBS" secondAttribute="centerY" id="15C-7k-o4B"/>
                             <constraint firstItem="egJ-0v-vzg" firstAttribute="centerX" secondItem="3Ne-tH-sBS" secondAttribute="centerX" id="BJB-EM-LWq"/>
+                            <constraint firstItem="egJ-0v-vzg" firstAttribute="top" secondItem="5mc-LI-urp" secondAttribute="bottom" constant="20" id="IB5-yB-8ES"/>
                             <constraint firstItem="EHm-pW-8fk" firstAttribute="centerX" secondItem="3Ne-tH-sBS" secondAttribute="centerX" id="LDj-1P-3v1"/>
                             <constraint firstItem="8Lx-uK-9wE" firstAttribute="leading" secondItem="G3y-Xk-ALp" secondAttribute="leading" constant="20" id="dSz-Yp-WH9"/>
                             <constraint firstItem="kCl-2z-JBJ" firstAttribute="top" secondItem="8Lx-uK-9wE" secondAttribute="bottom" constant="20" id="ee1-7j-qLT"/>
@@ -327,6 +338,7 @@
                     </view>
                     <connections>
                         <outlet property="clickerButton" destination="egJ-0v-vzg" id="dV0-hQ-OQe"/>
+                        <outlet property="coinPopUp" destination="5mc-LI-urp" id="18a-KW-zOW"/>
                         <outlet property="profileButton" destination="8Lx-uK-9wE" id="jdE-4q-7xb"/>
                         <outlet property="settingsButton" destination="aGm-hF-SI4" id="lMd-aV-eWB"/>
                         <outlet property="staminaBar" destination="oPg-kF-hUI" id="sdX-UX-Sru"/>
@@ -967,15 +979,16 @@
     </scenes>
     <designables>
         <designable name="V8H-7j-e5V">
-            <size key="intrinsicContentSize" width="150" height="30"/>
+            <size key="intrinsicContentSize" width="206" height="18"/>
         </designable>
         <designable name="pJW-zq-ReT">
-            <size key="intrinsicContentSize" width="132" height="30"/>
+            <size key="intrinsicContentSize" width="188" height="18"/>
         </designable>
     </designables>
     <resources>
         <image name="CashCowBase" width="341.33334350585938" height="341.33334350585938"/>
         <image name="CashCowHalf" width="1024" height="1024"/>
+        <image name="CoinSpin_CashCow_00" width="1024" height="1024"/>
         <image name="arrow.backward" catalog="system" width="128" height="98"/>
         <image name="arrow.forward" catalog="system" width="128" height="98"/>
         <image name="dollarsign.circle" catalog="system" width="128" height="121"/>

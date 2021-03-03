@@ -30,6 +30,7 @@
 		E0843CB225DC74960015E5B5 /* ProximaNovaBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E0843CA725DC74890015E5B5 /* ProximaNovaBold.otf */; };
 		E0843CB325DC74960015E5B5 /* ProximaNovaThin.otf in Resources */ = {isa = PBXBuildFile; fileRef = E0843CA525DC74880015E5B5 /* ProximaNovaThin.otf */; };
 		E0A9C1B425E5B688006367EC /* CashMooooney.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A9C1B325E5B688006367EC /* CashMooooney.swift */; };
+		E0CF7D9925EE49DA00EF1D1C /* CoinAnims.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CF7D9825EE49DA00EF1D1C /* CoinAnims.swift */; };
 		E559C3C125DDF6470001CB88 /* GradientOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E559C3C025DDF6470001CB88 /* GradientOrientation.swift */; };
 		E559C3C425DDF6850001CB88 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E559C3C325DDF6850001CB88 /* Extensions.swift */; };
 		E559C3C725DDF7250001CB88 /* GradientProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E559C3C625DDF7250001CB88 /* GradientProgressView.swift */; };
@@ -65,6 +66,7 @@
 		E0843CA925DC74890015E5B5 /* ProximaNovaAltLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ProximaNovaAltLight.otf; sourceTree = "<group>"; };
 		E0843CAA25DC74890015E5B5 /* ProximaNovaAltThin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ProximaNovaAltThin.otf; sourceTree = "<group>"; };
 		E0A9C1B325E5B688006367EC /* CashMooooney.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashMooooney.swift; sourceTree = "<group>"; };
+		E0CF7D9825EE49DA00EF1D1C /* CoinAnims.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinAnims.swift; sourceTree = "<group>"; };
 		E559C3C025DDF6470001CB88 /* GradientOrientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientOrientation.swift; sourceTree = "<group>"; };
 		E559C3C325DDF6850001CB88 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		E559C3C625DDF7250001CB88 /* GradientProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientProgressView.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 		63CCBFCE25D9DC9F00AA3A36 /* CashCow */ = {
 			isa = PBXGroup;
 			children = (
+				E0CF7D9725EE49B600EF1D1C /* Animations */,
 				63CAA81825E615A800BC3AEE /* User.swift */,
 				E559C40C25ED98BC0001CB88 /* Upgrades.swift */,
 				E559C40F25EDA9D60001CB88 /* Stamina.swift */,
@@ -168,6 +171,14 @@
 				E0843CA325DC74870015E5B5 /* ProximaNova-Regular.otf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		E0CF7D9725EE49B600EF1D1C /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				E0CF7D9825EE49DA00EF1D1C /* CoinAnims.swift */,
+			);
+			path = Animations;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -322,6 +333,7 @@
 				63CCBFD225D9DC9F00AA3A36 /* SceneDelegate.swift in Sources */,
 				C978EFE225E31B6D0015530B /* ProfileViewController.swift in Sources */,
 				C97CE5A525DD981F002CBCDE /* ClickerViewController.swift in Sources */,
+				E0CF7D9925EE49DA00EF1D1C /* CoinAnims.swift in Sources */,
 				C97CE5A125DD9153002CBCDE /* HomeViewController.swift in Sources */,
 				E559C41025EDA9D60001CB88 /* Stamina.swift in Sources */,
 				E559C3C425DDF6850001CB88 /* Extensions.swift in Sources */,

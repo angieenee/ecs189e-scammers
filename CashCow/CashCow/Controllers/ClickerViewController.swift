@@ -10,6 +10,7 @@ import UIKit
 class ClickerViewController: UIViewController {
     var user: User?
     var staminaTimer: Timer?
+    var coins = ImgSeqContainer()
 
     @IBOutlet weak var totalIncome: UILabel!
     @IBOutlet weak var settingsButton: UIButton!
@@ -17,9 +18,13 @@ class ClickerViewController: UIViewController {
     @IBOutlet weak var upgradesButton: UIButton!
     @IBOutlet weak var clickerButton: UIButton!
     @IBOutlet weak var staminaBar: UIProgressView!
+    @IBOutlet weak var coinPopUp: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let coinsImgNames = ["CoinSpin_CashCow", "CoinSpin_Dollar", "CoinSpin_Moo"]
+        self.coins = ImgSeqContainer(imgNames: coinsImgNames)
+        
         self.totalIncome.text = user?.money?.getBalance()
         self.staminaBar.progress = 1
         
@@ -75,6 +80,13 @@ class ClickerViewController: UIViewController {
         if self.staminaBar.progress > 0 {
             self.totalIncome.text = self.user?.money?.click()
             self.subtractStamina(amount: 0.01)
+            
+            coinPopUp.animationImages = self.coins.imageSequences[Int.random(in: 0...self.coins.imageSequences.count-1)]
+            print(coinPopUp.animationImages ?? "uh oh stinky no animation images.")
+            coinPopUp.animationDuration = 1
+            coinPopUp.animationRepeatCount = 1
+            coinPopUp.image = coinPopUp.animationImages?.first
+            coinPopUp.startAnimating()
         }
     }
 
