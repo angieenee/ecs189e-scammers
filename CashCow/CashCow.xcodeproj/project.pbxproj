@@ -36,6 +36,7 @@
 		E559C3C725DDF7250001CB88 /* GradientProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E559C3C625DDF7250001CB88 /* GradientProgressView.swift */; };
 		E559C40D25ED98BD0001CB88 /* Upgrades.swift in Sources */ = {isa = PBXBuildFile; fileRef = E559C40C25ED98BC0001CB88 /* Upgrades.swift */; };
 		E559C41025EDA9D60001CB88 /* Stamina.swift in Sources */ = {isa = PBXBuildFile; fileRef = E559C40F25EDA9D60001CB88 /* Stamina.swift */; };
+		E559C41425F025280001CB88 /* UpgradesList.JSON in Resources */ = {isa = PBXBuildFile; fileRef = E559C41325F025270001CB88 /* UpgradesList.JSON */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +73,7 @@
 		E559C3C625DDF7250001CB88 /* GradientProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientProgressView.swift; sourceTree = "<group>"; };
 		E559C40C25ED98BC0001CB88 /* Upgrades.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Upgrades.swift; sourceTree = "<group>"; };
 		E559C40F25EDA9D60001CB88 /* Stamina.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stamina.swift; sourceTree = "<group>"; };
+		E559C41325F025270001CB88 /* UpgradesList.JSON */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = UpgradesList.JSON; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,7 @@
 				E0CF7D9725EE49B600EF1D1C /* Animations */,
 				63CAA81825E615A800BC3AEE /* User.swift */,
 				E559C40C25ED98BC0001CB88 /* Upgrades.swift */,
+				E559C41325F025270001CB88 /* UpgradesList.JSON */,
 				E559C40F25EDA9D60001CB88 /* Stamina.swift */,
 				63CAA7E125E5FBE800BC3AEE /* Controllers */,
 				E0843C9E25DC73170015E5B5 /* Fonts */,
@@ -248,6 +251,7 @@
 				E0843CAE25DC74960015E5B5 /* ProximaNovaAltLight.otf in Resources */,
 				E0843CB125DC74960015E5B5 /* ProximaNovaBlack.otf in Resources */,
 				63CCBFD925D9DCA300AA3A36 /* Assets.xcassets in Resources */,
+				E559C41425F025280001CB88 /* UpgradesList.JSON in Resources */,
 				E0843CB325DC74960015E5B5 /* ProximaNovaThin.otf in Resources */,
 				63CCBFD725D9DC9F00AA3A36 /* Main.storyboard in Resources */,
 				E0843CAC25DC74960015E5B5 /* ProximaNovaAltBold.otf in Resources */,
