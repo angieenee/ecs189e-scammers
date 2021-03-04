@@ -33,5 +33,6 @@ Link: https://docs.google.com/document/d/1u3lhgbHPWvu3ZiSRF6G-g07oFe98yUl7xDgBPt
 - Upgrades : modifying user stats @Angie
 - Upgrades : passive income generation @Rachel
 - Popups for time-triggered personal finance decisions @Jarod
+- Clicker Functionality + Firebase Persistance - Upgrades, Stocks, etc. @Bridget
 - Finalize remaining game components @everyone
 - If time allows, clean up game + improve UI/UX @everyone
