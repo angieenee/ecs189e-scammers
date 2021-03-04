@@ -67,7 +67,7 @@ class UpgradesViewController: UIViewController, UITableViewDataSource, UITableVi
         self.passiveIncomeIcon.titleLabel?.font = UIFont.fontAwesome(ofSize: 20, style: .solid)
         self.passiveIncomeIcon.setTitle(String.fontAwesomeIcon(name: .coins), for: .normal)
         
-        upgradesList = getStaminaUpgrades() ?? []
+        self.upgradesList = getStaminaUpgrades() ?? []
         print("RETRIEVED UPGRADES LIST-------")
         print(upgradesList)
     }
