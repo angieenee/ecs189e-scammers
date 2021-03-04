@@ -18,17 +18,15 @@ struct Upgrade: Codable {
     var iconName: String?
 }
 
-func readLocalFile() -> Data? {
+private func readJSONFile() -> Data? {
     do {
-        guard let bundlePath = Bundle.main.path(forResource: "UpgradesList",
-                                                ofType: "json") else {
+        guard let bundlePath = Bundle.main.path(forResource: "UpgradesList", ofType: "json") else {
             print("BUNDLE PATH NOT FOUND")
             return nil
         }
         print("bundle path---------", bundlePath)
         
         if let jsonData = try String(contentsOfFile: bundlePath).data(using: .utf8) {
-//            print(jsonData)
             print("DO")
             return jsonData
         }
@@ -42,25 +40,48 @@ func readLocalFile() -> Data? {
     return nil
 }
 
-func parseData() {
-    if let localData = readLocalFile() {
+private func parseUpgradeData() -> [Upgrade]? {
+    if let localData = readJSONFile() {
         print("UPGRADES PARSING----")
-//        do {
-//            let upgradeData = try JSONDecoder().decode(Upgrade.self, from: localData)
-//        } catch  {
-//            print("ERROR IN DECODING UPGRADE DATA")
-//        }
         
         do {
-            let results = try JSONDecoder().decode([Upgrade].self, from: localData)
+            let upgradesList = try JSONDecoder().decode([Upgrade].self, from: localData)
             print("RESULTS--------")
-            print(results)
+            print(upgradesList)
+            return upgradesList
         } catch  {
             print("ERROR IN DECODING UPGRADE list------")
         }
-        
-        
-
-        
+            
     }
+
+    print("Empty")
+    return nil
+}
+
+func getStaminaUpgrades() -> [Upgrade]? {
+    guard let upgradesList = parseUpgradeData() else {
+        print("Unable to parse upgrade data")
+        return nil
+    }
+    
+  return upgradesList.filter{$0.type == "stamina"}
+}
+
+func getClickerUpgrades() -> [Upgrade]? {
+    guard let upgradesList = parseUpgradeData() else {
+        print("Unable to parse upgrade data")
+        return nil
+    }
+    
+  return upgradesList.filter{$0.type == "clicker"}
+}
+
+func getPassiveUpgrades() -> [Upgrade]? {
+    guard let upgradesList = parseUpgradeData() else {
+        print("Unable to parse upgrade data")
+        return nil
+    }
+    
+  return upgradesList.filter{$0.type == "passive"}
 }

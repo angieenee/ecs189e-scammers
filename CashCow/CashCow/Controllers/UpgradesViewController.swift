@@ -39,6 +39,8 @@ class UpgradesViewController: UIViewController, UITableViewDataSource, UITableVi
     var categoryIcons: [UIButton] = []
     var categoryTextLabels: [UILabel] = []
     
+    var upgradesList: [Upgrade] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -65,30 +67,47 @@ class UpgradesViewController: UIViewController, UITableViewDataSource, UITableVi
         self.passiveIncomeIcon.titleLabel?.font = UIFont.fontAwesome(ofSize: 20, style: .solid)
         self.passiveIncomeIcon.setTitle(String.fontAwesomeIcon(name: .coins), for: .normal)
         
-        parseData()
-        print("PARSE FINISHED?????????")
+        upgradesList = getStaminaUpgrades() ?? []
+        print("RETRIEVED UPGRADES LIST-------")
+        print(upgradesList)
+    }
+    
+    func convertStringToFontAwesome(_ iconName: String) -> FontAwesome {
+        switch iconName {
+        case "coffee":
+            return .coffee
+        case "shoePrints":
+            return .shoePrints
+        default:
+            return .allergies
+        }
     }
     
     // TableView Protocols Implementation
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // TODO: return size of upgrades array
         // upgrades array will be a list of upgrades object
-        return 1
+        return upgradesList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // TODO: Populate each row for each upgrades object
         let cell = tableView.dequeueReusableCell(withIdentifier: "upgradesTableCell") as! UpgradeCell
         
-
+        let iconName = upgradesList[indexPath.row].iconName ?? "default"
+        
         cell.upgradeIcon.titleLabel?.font = UIFont.fontAwesome(ofSize: 20, style: .solid)
-        cell.upgradeIcon.setTitle(String.fontAwesomeIcon(name: .coffee), for: .normal)
-        
-        cell.upgradeName.text = "Coffee Udders"
-        
-        cell.upgradeAmt.text = "100A"
-        
-        cell.upgradeDescription.text = "Ah! Calf-feine really keeps me awake! This upgrade makes stamina regenerate 5% faster."
+        cell.upgradeIcon.setTitle(String.fontAwesomeIcon(name: convertStringToFontAwesome(iconName)), for: .normal)
+                                  
+        cell.upgradeName.text = upgradesList[indexPath.row].name
+            
+        let upgradeCost = upgradesList[indexPath.row].cost ?? -1
+            
+        let upgradeCostCurrency = upgradesList[indexPath.row].costCurrency ?? "A"
+
+        cell.upgradeAmt.text = String(upgradeCost) + upgradeCostCurrency
+
+        cell.upgradeDescription.text = upgradesList[indexPath.row].description
                 
         return cell
     }
@@ -133,6 +152,10 @@ class UpgradesViewController: UIViewController, UITableViewDataSource, UITableVi
         
         self.categoryIcons[1].setTitleColor(.systemRed, for: .normal)
         self.categoryTextLabels[1].textColor = .systemRed
+        
+        upgradesList = getClickerUpgrades() ?? []
+        print("CLICKER UPGRADES -- RETRIEVED UPGRADES LIST-------")
+        print(upgradesList)
     }
     
     @IBAction func passiveIncomePressed(_ sender: Any) {
