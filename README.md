@@ -17,10 +17,14 @@ Link: https://docs.google.com/document/d/1u3lhgbHPWvu3ZiSRF6G-g07oFe98yUl7xDgBPt
 - https://github.com/angieenee/ecs189e-scammers/commit/f5b53a953eef361ceae4d7503c0c708b51410006
 - https://github.com/angieenee/ecs189e-scammers/commit/646ce026d75bfd707d1a090872af3a40725939c4
 - **Persist User**: 
+- https://github.com/angieenee/ecs189e-scammers/commit/721461f185ad95e9656bc9cc0067893782eae580
+- **Money Design and Clicker Functionality**
+- https://github.com/angieenee/ecs189e-scammers/commit/d9c8b9da1400f8c4092d081127fd7153c67b9a81
 
 ### What We Did (since Milestone 2)
 - Upgrades Table View @Rachel
-- Persist User @Bridget
+- Persist User and Money Data @Bridget
+- Money System Design and Clicker Functionality @Bridget
 - Upgrades Data Creation @Angie
 - Game Design + Animation @Jarod
 - Finalize Magic Moment Idea @everyone
@@ -29,6 +33,5 @@ Link: https://docs.google.com/document/d/1u3lhgbHPWvu3ZiSRF6G-g07oFe98yUl7xDgBPt
 - Upgrades : modifying user stats @Angie
 - Upgrades : passive income generation @Rachel
 - Popups for time-triggered personal finance decisions @Jarod
-- Persist money data associated with user @Bridget
 - Finalize remaining game components @everyone
 - If time allows, clean up game + improve UI/UX @everyone
