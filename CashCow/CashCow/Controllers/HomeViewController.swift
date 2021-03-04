@@ -25,36 +25,30 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.userRef = self.ref.child(firebaseAuth.currentUser?.uid ?? "")
+        var userRef = self.ref.child(firebaseAuth.currentUser?.uid ?? "")
         
-        self.userRef?.observe(.value, with: { snapshot in
-            if let data = snapshot.value as? [String: Any], let uid = self.firebaseAuth.currentUser?.uid {
-                self.user.email = data["email"] as? String
-                self.user.uid = uid
-                self.user.money = Mooooney.init()
-                
-                if let username =  data["username"] as? String {
-                    self.user.username = username
-                } else {
-                    if let email = self.user.email, let i = self.user.email?.firstIndex(of: "@") {
-                        print("hello")
-                        self.user.username = String(email[..<i])
+        userRef.observe(.value, with: { snapshot in
+            if let data = snapshot.value as? [String: Any] {
+                self.user.load(data) {
+                    if let username = self.user.username {
+                        self.welcomeLabel.text = "Welcome, \(username)!"
                     }
                 }
-                
-                if let username = self.user.username {
-                    self.welcomeLabel.text = "Welcome, \(username)!"
+            } else {
+                if let uid = Auth.auth().currentUser?.uid, let email = Auth.auth().currentUser?.email {
+                    self.user.email = email
+                    self.user.uid = uid
+                    self.user.money = Mooooney.init()
+                    
+                    self.user.save() {
+                    if let username = self.user.username {
+                            self.welcomeLabel.text = "Welcome, \(username)!"
+                        }
+                    }
                 }
             }
-            
-            print("Email: \(self.user.email ?? "")")
-            print("Username: \(self.user.username ?? "")")
-            print("UID: \(self.user.uid ?? "")")
-        })
-        
-        if user == nil {
-            
-        }
+       })
+        print("User: \(user)")
     }
     
     @IBAction func startButtonPressed(_ sender: Any) {

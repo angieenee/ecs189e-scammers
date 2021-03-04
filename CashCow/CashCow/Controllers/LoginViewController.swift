@@ -15,6 +15,7 @@ import FirebaseDatabase
 
 class LoginViewController: UIViewController {
     var ref = Database.database().reference(withPath: "users")
+    var firebaseAuth = Auth.auth()
     
     @IBOutlet weak var googleLoginButton: AZSocialButton!
     @IBOutlet weak var facebookLoginButton: AZSocialButton!
@@ -108,18 +109,7 @@ class LoginViewController: UIViewController {
     @objc private func userDidSignInGoogle(_ notification: Notification) {
         // Update screen after user successfully signed in
         print("signed in")
-        
-        if let uid = Auth.auth().currentUser?.uid, let email = Auth.auth().currentUser?.email {
-            ref.child(uid).setValue(["email": email]) {
-                (error: Error?, ref:DatabaseReference) in
-                if let error = error {
-                    print("Data could not be saved: \(error).")
-                } else {
-                    print("Data saved successfully!")
-                    self.navHomeView()
-                }
-            }
-        }
+        self.navHomeView()
     }
 }
 

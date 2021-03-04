@@ -10,6 +10,7 @@ import UIKit
 class ClickerViewController: UIViewController {
     var user: User?
     var staminaTimer: Timer?
+    var saveTimer: Timer?
     var coins = ImgSeqContainer()
 
     @IBOutlet weak var totalIncome: UILabel!
@@ -29,6 +30,7 @@ class ClickerViewController: UIViewController {
         self.staminaBar.progress = 1
         
         self.staminaTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.reloadStamina), userInfo: nil, repeats: true)
+        self.saveTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.saveData), userInfo: nil, repeats: true)
     }
     
     @IBAction func profileButtonPressed(_ sender: Any) {
@@ -82,7 +84,7 @@ class ClickerViewController: UIViewController {
             self.subtractStamina(amount: 0.01)
             
             coinPopUp.animationImages = self.coins.imageSequences[Int.random(in: 0...self.coins.imageSequences.count-1)]
-            print(coinPopUp.animationImages ?? "uh oh stinky no animation images.")
+            //print(coinPopUp.animationImages ?? "uh oh stinky no animation images.")
             coinPopUp.animationDuration = 1
             coinPopUp.animationRepeatCount = 1
             coinPopUp.image = coinPopUp.animationImages?.first
@@ -93,10 +95,16 @@ class ClickerViewController: UIViewController {
     // Stamina bar methods
     @objc func reloadStamina() {
         self.staminaBar.progress += 0.05
-        print("Stamina added")
+        //print("Stamina added")
     }
     
     func subtractStamina(amount: Float) {
         self.staminaBar.progress -= amount
+    }
+    
+    @objc func saveData() {
+        self.user?.save() {
+            print("User data saved")
+        }
     }
 }

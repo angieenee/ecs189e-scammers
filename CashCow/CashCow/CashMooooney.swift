@@ -27,10 +27,13 @@ class Mooooney {
         self.keysClick = ("A", "_")
     }
     
-    init(balance: [String: Int], click: [String: Int], passive: [String: Int], largestKeyBal: String, largestKeyClick: String) {
-        self.balance = balance
-        self.moneyClick = click
-        self.moneyPassive = passive
+    init(_ money: [String: Any]) {
+        self.balance = money["balance"] as? [String: Int] ?? ["hello" : 0]
+        self.moneyClick = money["money_click"] as? [String: Int] ?? ["hello" : 0]
+        self.moneyPassive = money["money_passive"] as? [String: Int]
+        
+        let largestKeyBal = money["key_balance"] as? String ?? ""
+        let largestKeyClick = money["key_click"] as? String ?? ""
         self.keysBalance = (largestKeyBal, asciiShift(str: largestKeyBal, inc: 1, add: false))
         self.keysClick = (largestKeyClick, asciiShift(str: largestKeyClick, inc: 1, add: false))
     }
@@ -71,6 +74,7 @@ class Mooooney {
     
     // Format balance for displaying to user
     func formatMoney(money: [String: Int]) -> String {
+        print("Format money: \(money)")
         var amount = ""
         if let d1 = money[self.keysBalance.0], let d2 = money[self.keysBalance.1]{
             let d2_str = String(d2)
