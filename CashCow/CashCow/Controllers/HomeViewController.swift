@@ -41,14 +41,17 @@ class HomeViewController: UIViewController {
                     self.user.money = Mooooney.init()
                     
                     self.user.save() {
-                    if let username = self.user.username {
+                        if let username = self.user.username {
                             self.welcomeLabel.text = "Welcome, \(username)!"
                         }
                     }
                 }
             }
-       })
+        })
         print("User: \(user)")
+        self.user.push_upgrades() {
+            print("success")
+        }
     }
     
     @IBAction func startButtonPressed(_ sender: Any) {

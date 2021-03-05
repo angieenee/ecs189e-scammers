@@ -10,13 +10,9 @@ import FontAwesome_swift
 
 class UpgradeCell: UITableViewCell {
     @IBOutlet weak var upgradeIcon: UIButton!
-    
     @IBOutlet weak var upgradeName: UILabel!
-    
     @IBOutlet weak var upgradeAmt: UILabel!
-    
     @IBOutlet weak var buyButton: UIButton!
-    
     @IBOutlet weak var upgradeDescription: UILabel!
 }
 
@@ -67,9 +63,12 @@ class UpgradesViewController: UIViewController, UITableViewDataSource, UITableVi
         self.passiveIncomeIcon.titleLabel?.font = UIFont.fontAwesome(ofSize: 20, style: .solid)
         self.passiveIncomeIcon.setTitle(String.fontAwesomeIcon(name: .coins), for: .normal)
         
-        self.upgradesList = getStaminaUpgrades() ?? []
-        print("RETRIEVED UPGRADES LIST-------")
-        print(upgradesList)
+        getStaminaUpgrades() { response in
+            if let upgrades = response {
+                self.upgradesList = upgrades
+                self.upgradesTable.reloadData()
+            }
+        }
     }
     
     func convertStringToFontAwesome(_ iconName: String) -> FontAwesome {
@@ -140,11 +139,17 @@ class UpgradesViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     @IBAction func staminaButtonPressed(_ sender: Any) {
-        
         resetCategoriesButtons()
         
         self.categoryIcons[0].setTitleColor(.systemRed, for: .normal)
         self.categoryTextLabels[0].textColor = .systemRed
+        
+        getStaminaUpgrades() { response in
+            if let upgrades = response {
+                self.upgradesList = upgrades
+                self.upgradesTable.reloadData()
+            }
+        }
     }
     
     @IBAction func clickerButtonPressed(_ sender: Any) {
@@ -153,9 +158,12 @@ class UpgradesViewController: UIViewController, UITableViewDataSource, UITableVi
         self.categoryIcons[1].setTitleColor(.systemRed, for: .normal)
         self.categoryTextLabels[1].textColor = .systemRed
         
-        upgradesList = getClickerUpgrades() ?? []
-        print("CLICKER UPGRADES -- RETRIEVED UPGRADES LIST-------")
-        print(upgradesList)
+        getClickerUpgrades() { response in
+            if let upgrades = response {
+                self.upgradesList = upgrades
+                self.upgradesTable.reloadData()
+            }
+        }
     }
     
     @IBAction func passiveIncomePressed(_ sender: Any) {
@@ -163,6 +171,13 @@ class UpgradesViewController: UIViewController, UITableViewDataSource, UITableVi
         
         self.categoryIcons[2].setTitleColor(.systemRed, for: .normal)
         self.categoryTextLabels[2].textColor = .systemRed
+        
+        getPassiveUpgrades() { response in
+            if let upgrades = response {
+                self.upgradesList = upgrades
+                self.upgradesTable.reloadData()
+            }
+        }
     }
     
     

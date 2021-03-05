@@ -18,7 +18,27 @@ class User {
     var username: String?
     var money: Mooooney?
     
-    func load(_ data: [String: Any], completion: () -> Void) {
+    func push_upgrades(completion: () -> Void) {
+        var ref1 = Database.database().reference(withPath: "upgrades")
+        let post = ["id": 0,
+                    "name": "Hoof Shine",
+                    "cost": 10,
+                    "costCurrency": "A",
+                    "statAmt": 10,
+                    "statAmtCurrency": "A",
+                    "description": "Can’t click well if your hooves aren’t spruced up! This upgrade +10A more mooney to each click!",
+                    "iconName": "shoePrints"] as [String : Any]
+        ref1.child("clicker").setValue(post) {
+            (error: Error?, ref:DatabaseReference) in
+            if let error = error {
+                print("Data could not be saved: \(error).")
+            } else {
+                print("Data saved successfully!")
+            }
+        }
+    }
+    
+    func load(_ data: [String: Any], completion: @escaping () -> Void) {
         self.email = data["email"] as? String
         self.uid = firebaseAuth.currentUser?.uid
         self.money = Mooooney.init(data)
@@ -34,7 +54,7 @@ class User {
         completion()
     }
     
-    func save(completion: () -> Void) {
+    func save(completion: @escaping () -> Void) {
         if let uid = Auth.auth().currentUser?.uid, let m = self.money {
             let post = ["email": email,
                         "username": username,
@@ -50,6 +70,7 @@ class User {
                 } else {
                     print("Data saved successfully!")
                 }
+                completion()
             }
         }
     }

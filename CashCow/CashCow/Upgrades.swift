@@ -6,9 +6,11 @@
 //
 
 import Foundation
+import FirebaseDatabase
 
-struct Upgrade: Codable {
+class Upgrade {
     var type: String? // 'stamina', 'passive', or 'perclick"
+    var id: Int?
     var name: String?
     var cost: Int?
     var costCurrency: String?
@@ -16,72 +18,51 @@ struct Upgrade: Codable {
     var statAmtCurrency: String?
     var description: String?
     var iconName: String?
+    
+    init(data: [String: Any], type: String) {
+        self.type = type
+        self.id = data["id"] as? Int
+        self.name = data["name"] as? String
+        self.cost = data["cost"] as? Int
+        self.costCurrency = data["costCurrency"] as? String
+        self.statAmt = data["statAmt"] as? Int
+        self.statAmtCurrency = data["statAmtCurrency"] as? String
+        self.description = data["description"] as? String
+        self.iconName = data["iconName"] as? String
+    }
 }
 
-private func readJSONFile() -> Data? {
-    do {
-        guard let bundlePath = Bundle.main.path(forResource: "UpgradesList", ofType: "json") else {
-            print("BUNDLE PATH NOT FOUND")
-            return nil
+private func getFirebaseUpgrades(_ type: String, completion: @escaping ([Upgrade]?) -> Void) {
+    let ref = Database.database().reference(withPath: "upgrades")
+    
+    ref.child(type).observe(.value, with: { snapshot in
+        if let data = snapshot.value as? [String: Any] {
+            let upgradesList = [Upgrade.init(data: data, type: type)]
+            completion(upgradesList)
         }
-        print("bundle path---------", bundlePath)
-        
-        if let jsonData = try String(contentsOfFile: bundlePath).data(using: .utf8) {
-            print("DO")
-            return jsonData
+    })
+}
+
+func getStaminaUpgrades(completion: @escaping ([Upgrade]?) -> Void) {
+    getFirebaseUpgrades("stamina") { response in
+        if let upgradesList = response {
+            completion(upgradesList)
         }
-    } catch {
-        print("BAD")
-        print(error)
     }
-    
-    print("nil")
-    
-    return nil
 }
 
-private func parseUpgradeData() -> [Upgrade]? {
-    if let localData = readJSONFile() {
-        print("UPGRADES PARSING----")
-        
-        do {
-            let upgradesList = try JSONDecoder().decode([Upgrade].self, from: localData)
-            print("RESULTS--------")
-            print(upgradesList)
-            return upgradesList
-        } catch  {
-            print("ERROR IN DECODING UPGRADE list------")
+func getClickerUpgrades(completion: @escaping ([Upgrade]?) -> Void) {
+    getFirebaseUpgrades("clicker") { response in
+        if let upgradesList = response {
+            completion(upgradesList)
         }
-            
     }
-
-    print("Empty")
-    return nil
 }
 
-func getStaminaUpgrades() -> [Upgrade]? {
-    guard let upgradesList = parseUpgradeData() else {
-        print("Unable to parse upgrade data")
-        return nil
+func getPassiveUpgrades(completion: @escaping ([Upgrade]?) -> Void) {
+    getFirebaseUpgrades("passive") { response in
+        if let upgradesList = response {
+            completion(upgradesList)
+        }
     }
-    
-  return upgradesList.filter{$0.type == "stamina"}
-}
-
-func getClickerUpgrades() -> [Upgrade]? {
-    guard let upgradesList = parseUpgradeData() else {
-        print("Unable to parse upgrade data")
-        return nil
-    }
-    
-  return upgradesList.filter{$0.type == "clicker"}
-}
-
-func getPassiveUpgrades() -> [Upgrade]? {
-    guard let upgradesList = parseUpgradeData() else {
-        print("Unable to parse upgrade data")
-        return nil
-    }
-    
-  return upgradesList.filter{$0.type == "passive"}
 }
