@@ -13,6 +13,7 @@ Link: https://docs.google.com/document/d/1u3lhgbHPWvu3ZiSRF6G-g07oFe98yUl7xDgBPt
 - **Upgrades JSON & Parsing**:
 - https://github.com/angieenee/ecs189e-scammers/commit/714d1dda66dd8baefa70a7bd9e33c49b284bde75
 - https://github.com/angieenee/ecs189e-scammers/commit/8849fc8f09c33203a9571096b4e92a14a386b371
+- https://github.com/angieenee/ecs189e-scammers/commit/bc0adf6ca47a632abf95d3fdbc5c102e3480c75b
 - **Improved Upgrades UI with TableView**:
 - https://github.com/angieenee/ecs189e-scammers/commit/f5b53a953eef361ceae4d7503c0c708b51410006
 - https://github.com/angieenee/ecs189e-scammers/commit/646ce026d75bfd707d1a090872af3a40725939c4
