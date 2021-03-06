@@ -6,6 +6,9 @@
 //
 
 import UIKit
+import GoogleSignIn
+import FBSDKLoginKit
+import FirebaseAuth
 
 class ClickerViewController: UIViewController {
     var user: User?
@@ -14,7 +17,6 @@ class ClickerViewController: UIViewController {
     var coins = ImgSeqContainer()
 
     @IBOutlet weak var totalIncome: UILabel!
-    @IBOutlet weak var settingsButton: UIButton!
     @IBOutlet weak var profileButton: UIButton!
     @IBOutlet weak var upgradesButton: UIButton!
     @IBOutlet weak var clickerButton: UIButton!
@@ -65,16 +67,37 @@ class ClickerViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
-    @IBAction func settingsButtonPressed(_ sender: Any) {
-        // Go to settings view
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let settingsViewController =  storyboard.instantiateViewController(identifier: "settingsViewController") as? SettingsViewController else {
-            assertionFailure("Couldn't find Settings VC")
-            return
+    @IBAction func logoutButtonPressed() {
+        // Save user data, then logout
+        self.user?.save() {
+            // FB Logout
+            let loginManager = LoginManager()
+            
+            if let _ = AccessToken.current {
+                loginManager.logOut()
+            }
+            
+            GIDSignIn.sharedInstance()?.signOut()
+            
+            // Sign out from Firebase
+            do {
+                try Auth.auth().signOut()
+            } catch let error as NSError {
+                print ("Error signing out from Firebase: %@", error)
+            }
+            
+            // Go back to login view
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            guard let loginViewController =  storyboard.instantiateViewController(identifier: "loginViewController") as? LoginViewController else {
+                assertionFailure("Couldn't find Login VC")
+                return
+            }
+            
+            // Only have login view on stack so user can't go back
+            let viewControllers = [loginViewController, self]
+            self.navigationController?.setViewControllers(viewControllers, animated: true)
+            self.navigationController?.popViewController(animated: true)
         }
-        
-        // Push to stack because we want users to be able to go back to clicker view
-        self.navigationController?.pushViewController(settingsViewController, animated: true)
     }
     
     @IBAction func cowClicked(_ sender: Any) {
