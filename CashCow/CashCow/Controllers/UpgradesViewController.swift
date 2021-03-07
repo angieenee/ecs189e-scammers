@@ -125,8 +125,10 @@ class UpgradesViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     @IBAction func buyButtonPressed(_ sender: Any) {
-        // TODO: Implement this button
-        print("PRESSED")
+        print("PRESSED BUY BUTTON")
+        
+        // Check if user has enough mooney for upgrade
+        if user?.money
     }
     
     func resetCategoriesButtons() {

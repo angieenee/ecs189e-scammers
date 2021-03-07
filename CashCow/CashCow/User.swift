@@ -17,6 +17,7 @@ class User {
     var uid: String?
     var username: String?
     var money: Mooooney?
+    var upgrades: [String: String] // upgrade type: name
     
     func push_upgrades(completion: () -> Void) {
         var ref1 = Database.database().reference(withPath: "upgrades")

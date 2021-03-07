@@ -56,6 +56,39 @@ class Mooooney {
         return self.getBalance()
     }
     
+    func hasEnoughBalance(_ compareMoney: [String: Int]) -> Bool {
+        if self.getBalance() < self.formatMoney(money: compareMoney) {
+            return false
+        }
+        else {
+            return true
+        }
+    }
+    
+    func subtractBalance(_ amount: [String: Int]) -> String {
+        if self.hasEnoughBalance(amount) {
+            var carry = 0
+            // TODO: reverse iterate from biggest to smallest key:
+            for (key, val) in amount {
+            }
+        }
+        
+    }
+    
+    func addBalance(_ amount: [String: Int]) -> String {
+        for (key, val) in amount {
+            if balance[key] == nil {
+                self.keysBalance.1 = self.keysBalance.0
+                self.keysBalance.0 = key
+                balance[key] = 0
+            }
+            if !checkOverflow(key, val, balance[key] ?? 0) {
+                self.balance[key]? += val
+            }
+        }
+        return self.getBalance()
+    }
+    
     func getBalance() -> String {
         return self.formatMoney(money: self.balance)
     }
