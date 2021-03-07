@@ -119,6 +119,7 @@
 			children = (
 				E0CF7D9725EE49B600EF1D1C /* Animations */,
 				63CAA81825E615A800BC3AEE /* User.swift */,
+				E0A9C1B325E5B688006367EC /* CashMooooney.swift */,
 				E559C40C25ED98BC0001CB88 /* Upgrades.swift */,
 				E559C40F25EDA9D60001CB88 /* Stamina.swift */,
 				63CAA7E125E5FBE800BC3AEE /* Controllers */,
@@ -133,7 +134,6 @@
 				63CCBFDA25D9DCA300AA3A36 /* LaunchScreen.storyboard */,
 				63CCBFDD25D9DCA300AA3A36 /* Info.plist */,
 				63CCBFE525D9E08B00AA3A36 /* GoogleService-Info.plist */,
-				E0A9C1B325E5B688006367EC /* CashMooooney.swift */,
 			);
 			path = CashCow;
 			sourceTree = "<group>";

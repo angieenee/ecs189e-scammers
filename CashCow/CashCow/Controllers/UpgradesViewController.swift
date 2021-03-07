@@ -77,6 +77,8 @@ class UpgradesViewController: UIViewController, UITableViewDataSource, UITableVi
             return .coffee
         case "shoePrints":
             return .shoePrints
+        case "dumbbell":
+            return .dumbbell
         default:
             return .allergies
         }
@@ -84,13 +86,10 @@ class UpgradesViewController: UIViewController, UITableViewDataSource, UITableVi
     
     // TableView Protocols Implementation
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // TODO: return size of upgrades array
-        // upgrades array will be a list of upgrades object
         return upgradesList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // TODO: Populate each row for each upgrades object
         let cell = tableView.dequeueReusableCell(withIdentifier: "upgradesTableCell") as! UpgradeCell
         
         let iconName = upgradesList[indexPath.row].iconName ?? "default"
@@ -130,6 +129,7 @@ class UpgradesViewController: UIViewController, UITableViewDataSource, UITableVi
         // Check if user has enough mooney for upgrade
         let upgrade = upgradesList[sender.tag]
         var upgradeExpense: [String: Int]
+        
         if let key = upgrade.costCurrency, let val = upgrade.cost, let type = upgrade.type, let id = upgrade.id, let statAmt = upgrade.statAmt, let statCurrency = upgrade.statAmtCurrency  {
             upgradeExpense = [key: val]
             if let validPurchase = user?.money?.hasEnoughBalance(upgradeExpense) {
@@ -139,19 +139,25 @@ class UpgradesViewController: UIViewController, UITableViewDataSource, UITableVi
                     
                     // Put upgrade into effect:
                     var formattedStats: [String: Int]
-                    formattedStats = [statCurrency: statAmt]
+                    formattedStats = [statCurrency: statAmt, "_": 0]
+                    
+                    print("formattedStats -- ", formattedStats)
                     
                     if type == "stamina" {
+                        print("STAMINA BUY")
                         user?.staminaRegen = formattedStats
                         return
                     }
                     
                     if type == "passive" {
+                        print("PASSIVE BUY")
                         user?.money?.moneyPassive = formattedStats
+                        
                         return
                     }
                     
                     if type == "clicker" {
+                        print("CLICKER BUY")
                         user?.money?.moneyClick = formattedStats
                         return
                     }
