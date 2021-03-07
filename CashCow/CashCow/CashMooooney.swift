@@ -76,12 +76,12 @@ class Mooooney {
             var carry = 0
             var temp_key = "_"
             while (self.balance[temp_key] != nil) {
-                if amount[temp_key] != nil {
-                    if self.balance[temp_key] < amount[temp_key] + carry {
-                        carry = amount[temp_key] + carry - self.balance[temp_key]
+                if let check_amount = amount[temp_key], let check_balance = self.balance[temp_key] {
+                    if check_balance < check_amount + carry {
+                        carry = check_amount + carry - check_balance
                         self.balance[temp_key] = 0
                     } else {
-                        self.balance[temp_key] -= amount[temp_key] + carry
+                        self.balance[temp_key] = check_balance - (check_amount + carry)
                         carry = 0
                     }
                 }
@@ -110,6 +110,38 @@ class Mooooney {
         }
         return
     }
+    
+    /*
+    func addPassive(_ amount: [String: Int]) {
+        if let passive = self.moneyPassive {
+            for (key, val) in amount {
+                if let passiveAtKey = self.moneyPassive?[key] {
+                    if !checkOverflow(key, val, self.moneyPassive?[key]) {
+                        self.moneyPassive[key]? += val
+                    }
+                } else {
+                    self.moneyPassive[key] = 0
+                }
+            }
+        } else {
+            self.moneyPassive = amount
+        }
+        return
+    }
+    
+    func addClicker(_ amount: [String: Int]) {
+        for (key, val) in amount {
+            if self.moneyClick[key] == nil {
+                self.keysBalance.1 = self.keysBalance.0
+                self.keysBalance.0 = key
+                self.moneyClick[key] = 0
+            }
+            if !checkOverflow(key, val, moneyClick[key] ?? 0) {
+                self.moneyClick[key]? += val
+            }
+        }
+        return
+    }*/
     
     func getBalance() -> String {
         return self.formatMoney(money: self.balance)

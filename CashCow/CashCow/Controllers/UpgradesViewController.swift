@@ -124,11 +124,45 @@ class UpgradesViewController: UIViewController, UITableViewDataSource, UITableVi
         self.navigationController?.setViewControllers(viewControllers, animated: true)
     }
     
-    @IBAction func buyButtonPressed(_ sender: Any) {
+    @IBAction func buyButtonPressed(_ sender: UIButton) {
         print("PRESSED BUY BUTTON")
         
         // Check if user has enough mooney for upgrade
-        if user?.money
+        let upgrade = upgradesList[sender.tag]
+        var upgradeExpense: [String: Int]
+        if let key = upgrade.costCurrency, let val = upgrade.cost, let type = upgrade.type, let id = upgrade.id, let statAmt = upgrade.statAmt, let statCurrency = upgrade.statAmtCurrency  {
+            upgradeExpense = [key: val]
+            if let validPurchase = user?.money?.hasEnoughBalance(upgradeExpense) {
+                if validPurchase {
+                    user?.money?.subtractBalance(upgradeExpense)
+                    user?.upgrades[type] = id
+                    
+                    // Put upgrade into effect:
+                    var formattedStats: [String: Int]
+                    formattedStats = [statCurrency: statAmt]
+                    
+                    if type == "stamina" {
+                        user?.staminaRegen = formattedStats
+                        return
+                    }
+                    
+                    if type == "passive" {
+                        user?.money?.moneyPassive = formattedStats
+                        return
+                    }
+                    
+                    if type == "clicker" {
+                        user?.money?.moneyClick = formattedStats
+                        return
+                    }
+                }
+                else {
+                    print("Not enough money for upgrade")
+                    // TODO: Add error label here
+                }
+            }
+        }
+        return
     }
     
     func resetCategoriesButtons() {
