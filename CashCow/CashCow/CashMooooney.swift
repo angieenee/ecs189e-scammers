@@ -44,12 +44,12 @@ class Mooooney {
     
     func click() -> String {
         for (key, val) in self.moneyClick {
-            if balance[key] == nil {
+            if self.balance[key] == nil {
                 self.keysBalance.1 = self.keysBalance.0
                 self.keysBalance.0 = key
-                balance[key] = 0
+                self.balance[key] = 0
             }
-            if !checkOverflow(key, val, balance[key] ?? 0) {
+            if !checkOverflow(key, val, self.balance[key] ?? 0) {
                 self.balance[key]? += val
             }
         }
@@ -57,43 +57,90 @@ class Mooooney {
     }
     
     func hasEnoughBalance(_ compareMoney: [String: Int]) -> Bool {
-        // Not enough keys in balance
-        if compareMoney.count > self.balance.count {
-            return false
+        // First, check keys of balance and compareMoney
+        var temp_key = "_"
+        while (self.balance[temp_key] != nil && compareMoney[temp_key] != nil) {
+            temp_key = asciiShift(str: temp_key, inc: 1, add: true)
         }
-        // Same number of keys
-        if compareMoney.count == self.balance.count {
-            return (self.formatMoney(money: compareMoney) <= self.getBalance())
+        if (self.balance[temp_key] == nil && compareMoney[temp_key] == nil) {
+            return self.getBalance() >= formatMoney(money: compareMoney)
         }
-        // More keys in balance
-        return true
+        if (self.balance[temp_key] != nil) {
+            return true
+        }
+        return false
     }
     
-    // 1000
-    //   -1
-    // =999
     func subtractBalance(_ amount: [String: Int]) {
         if self.hasEnoughBalance(amount) {
             var carry = 0
-            for (key, val) in amount {
-                
+            var temp_key = "_"
+            while (self.balance[temp_key] != nil) {
+                if let check_amount = amount[temp_key], let check_balance = self.balance[temp_key] {
+                    if check_balance < check_amount + carry {
+                        carry = check_amount + carry - check_balance
+                        self.balance[temp_key] = 0
+                    } else {
+                        self.balance[temp_key] = check_balance - (check_amount + carry)
+                        carry = 0
+                    }
+                }
+                temp_key = asciiShift(str: temp_key, inc: 1, add: true)
+            }
+            // Make "leading" values with 0 = nil
+            // Ex: 0C 0B 100A --> 100A
+            temp_key = asciiShift(str: temp_key, inc: 1, add: false)
+            while (self.balance[temp_key] == 0) {
+                self.balance[temp_key] = nil
+                temp_key = asciiShift(str: temp_key, inc: 1, add: false)
             }
         }
-        // Remove keys from balance and keysBalance
     }
     
     func addBalance(_ amount: [String: Int]) {
         for (key, val) in amount {
-            if balance[key] == nil {
+            if self.balance[key] == nil {
                 self.keysBalance.1 = self.keysBalance.0
                 self.keysBalance.0 = key
-                balance[key] = 0
+                self.balance[key] = 0
             }
             if !checkOverflow(key, val, balance[key] ?? 0) {
                 self.balance[key]? += val
             }
         }
     }
+    
+    /*
+    func addPassive(_ amount: [String: Int]) {
+        if let passive = self.moneyPassive {
+            for (key, val) in amount {
+                if let passiveAtKey = self.moneyPassive?[key] {
+                    if !checkOverflow(key, val, self.moneyPassive?[key]) {
+                        self.moneyPassive[key]? += val
+                    }
+                } else {
+                    self.moneyPassive[key] = 0
+                }
+            }
+        } else {
+            self.moneyPassive = amount
+        }
+        return
+    }
+    
+    func addClicker(_ amount: [String: Int]) {
+        for (key, val) in amount {
+            if self.moneyClick[key] == nil {
+                self.keysBalance.1 = self.keysBalance.0
+                self.keysBalance.0 = key
+                self.moneyClick[key] = 0
+            }
+            if !checkOverflow(key, val, moneyClick[key] ?? 0) {
+                self.moneyClick[key]? += val
+            }
+        }
+        return
+    }*/
     
     func getBalance() -> String {
         return self.formatMoney(money: self.balance)
