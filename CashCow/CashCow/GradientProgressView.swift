@@ -2,20 +2,22 @@
 //  GradientProgressView.swift
 //  CashCow
 //
-//  Created by Angie Ni on 2/17/21.
+//  GradientProgressView credited to Rodrigo Giglio
+// https://medium.com/academy-poa/how-to-create-a-uiprogressview-with-gradient-progress-in-swift-2d1fa7d26f24
+//
 //
 
 import UIKit
 
 class GradientProgressView: UIProgressView {
     
-    @IBInspectable var firstColor: UIColor = UIColor.white {
+    @IBInspectable var firstColor: UIColor = UIColor.red {
         didSet {
             updateView()
         }
     }
     
-    @IBInspectable var secondColor: UIColor = UIColor.black {
+    @IBInspectable var secondColor: UIColor = UIColor.green {
         didSet {
             updateView()
         }

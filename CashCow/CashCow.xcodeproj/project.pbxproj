@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6310577E25DCC0BC00D2EF96 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6310577D25DCC0BC00D2EF96 /* LoginViewController.swift */; };
+		63CAA81925E615A800BC3AEE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CAA81825E615A800BC3AEE /* User.swift */; };
 		63CCBFD025D9DC9F00AA3A36 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CCBFCF25D9DC9F00AA3A36 /* AppDelegate.swift */; };
 		63CCBFD225D9DC9F00AA3A36 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CCBFD125D9DC9F00AA3A36 /* SceneDelegate.swift */; };
 		63CCBFD725D9DC9F00AA3A36 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63CCBFD525D9DC9F00AA3A36 /* Main.storyboard */; };
@@ -15,6 +16,8 @@
 		63CCBFDC25D9DCA300AA3A36 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63CCBFDA25D9DCA300AA3A36 /* LaunchScreen.storyboard */; };
 		63CCBFE625D9E08B00AA3A36 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 63CCBFE525D9E08B00AA3A36 /* GoogleService-Info.plist */; };
 		A23AC00CA70BBBD5AEE4B07C /* Pods_CashCow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BF537A977EF60E5E1388CCB /* Pods_CashCow.framework */; };
+		C978EFDF25E31AC10015530B /* UpgradesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C978EFDE25E31AC10015530B /* UpgradesViewController.swift */; };
+		C978EFE225E31B6D0015530B /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C978EFE125E31B6D0015530B /* ProfileViewController.swift */; };
 		C97CE5A125DD9153002CBCDE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97CE5A025DD9153002CBCDE /* HomeViewController.swift */; };
 		C97CE5A525DD981F002CBCDE /* ClickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97CE5A425DD981F002CBCDE /* ClickerViewController.swift */; };
 		E0843CAC25DC74960015E5B5 /* ProximaNovaAltBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E0843CA425DC74880015E5B5 /* ProximaNovaAltBold.otf */; };
@@ -25,13 +28,18 @@
 		E0843CB125DC74960015E5B5 /* ProximaNovaBlack.otf in Resources */ = {isa = PBXBuildFile; fileRef = E0843CA825DC74890015E5B5 /* ProximaNovaBlack.otf */; };
 		E0843CB225DC74960015E5B5 /* ProximaNovaBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E0843CA725DC74890015E5B5 /* ProximaNovaBold.otf */; };
 		E0843CB325DC74960015E5B5 /* ProximaNovaThin.otf in Resources */ = {isa = PBXBuildFile; fileRef = E0843CA525DC74880015E5B5 /* ProximaNovaThin.otf */; };
+		E0A9C1B425E5B688006367EC /* CashMooooney.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A9C1B325E5B688006367EC /* CashMooooney.swift */; };
+		E0CF7D9925EE49DA00EF1D1C /* CoinAnims.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CF7D9825EE49DA00EF1D1C /* CoinAnims.swift */; };
 		E559C3C125DDF6470001CB88 /* GradientOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E559C3C025DDF6470001CB88 /* GradientOrientation.swift */; };
 		E559C3C425DDF6850001CB88 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E559C3C325DDF6850001CB88 /* Extensions.swift */; };
 		E559C3C725DDF7250001CB88 /* GradientProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E559C3C625DDF7250001CB88 /* GradientProgressView.swift */; };
+		E559C40D25ED98BD0001CB88 /* Upgrades.swift in Sources */ = {isa = PBXBuildFile; fileRef = E559C40C25ED98BC0001CB88 /* Upgrades.swift */; };
+		E559C41025EDA9D60001CB88 /* Stamina.swift in Sources */ = {isa = PBXBuildFile; fileRef = E559C40F25EDA9D60001CB88 /* Stamina.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		6310577D25DCC0BC00D2EF96 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		63CAA81825E615A800BC3AEE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		63CCBFCC25D9DC9F00AA3A36 /* CashCow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CashCow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63CCBFCF25D9DC9F00AA3A36 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63CCBFD125D9DC9F00AA3A36 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -43,6 +51,8 @@
 		6BF537A977EF60E5E1388CCB /* Pods_CashCow.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CashCow.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A129A5F6D0882622A726EAC5 /* Pods-CashCow.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CashCow.release.xcconfig"; path = "Target Support Files/Pods-CashCow/Pods-CashCow.release.xcconfig"; sourceTree = "<group>"; };
 		A72387558186A579001E9A56 /* Pods-CashCow.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CashCow.debug.xcconfig"; path = "Target Support Files/Pods-CashCow/Pods-CashCow.debug.xcconfig"; sourceTree = "<group>"; };
+		C978EFDE25E31AC10015530B /* UpgradesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpgradesViewController.swift; sourceTree = "<group>"; };
+		C978EFE125E31B6D0015530B /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		C97CE5A025DD9153002CBCDE /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		C97CE5A425DD981F002CBCDE /* ClickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClickerViewController.swift; sourceTree = "<group>"; };
 		E0843CA325DC74870015E5B5 /* ProximaNova-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Regular.otf"; sourceTree = "<group>"; };
@@ -53,9 +63,13 @@
 		E0843CA825DC74890015E5B5 /* ProximaNovaBlack.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ProximaNovaBlack.otf; sourceTree = "<group>"; };
 		E0843CA925DC74890015E5B5 /* ProximaNovaAltLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ProximaNovaAltLight.otf; sourceTree = "<group>"; };
 		E0843CAA25DC74890015E5B5 /* ProximaNovaAltThin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ProximaNovaAltThin.otf; sourceTree = "<group>"; };
+		E0A9C1B325E5B688006367EC /* CashMooooney.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashMooooney.swift; sourceTree = "<group>"; };
+		E0CF7D9825EE49DA00EF1D1C /* CoinAnims.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinAnims.swift; sourceTree = "<group>"; };
 		E559C3C025DDF6470001CB88 /* GradientOrientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientOrientation.swift; sourceTree = "<group>"; };
 		E559C3C325DDF6850001CB88 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		E559C3C625DDF7250001CB88 /* GradientProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientProgressView.swift; sourceTree = "<group>"; };
+		E559C40C25ED98BC0001CB88 /* Upgrades.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Upgrades.swift; sourceTree = "<group>"; };
+		E559C40F25EDA9D60001CB88 /* Stamina.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stamina.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +84,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		63CAA7E125E5FBE800BC3AEE /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C97CE5A425DD981F002CBCDE /* ClickerViewController.swift */,
+				C97CE5A025DD9153002CBCDE /* HomeViewController.swift */,
+				6310577D25DCC0BC00D2EF96 /* LoginViewController.swift */,
+				C978EFE125E31B6D0015530B /* ProfileViewController.swift */,
+				C978EFDE25E31AC10015530B /* UpgradesViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		63CCBFC325D9DC9F00AA3A36 = {
 			isa = PBXGroup;
 			children = (
@@ -91,11 +117,13 @@
 		63CCBFCE25D9DC9F00AA3A36 /* CashCow */ = {
 			isa = PBXGroup;
 			children = (
+				E0CF7D9725EE49B600EF1D1C /* Animations */,
+				63CAA81825E615A800BC3AEE /* User.swift */,
+				E559C40C25ED98BC0001CB88 /* Upgrades.swift */,
+				E559C40F25EDA9D60001CB88 /* Stamina.swift */,
+				63CAA7E125E5FBE800BC3AEE /* Controllers */,
 				E0843C9E25DC73170015E5B5 /* Fonts */,
 				63CCBFCF25D9DC9F00AA3A36 /* AppDelegate.swift */,
-				6310577D25DCC0BC00D2EF96 /* LoginViewController.swift */,
-				C97CE5A025DD9153002CBCDE /* HomeViewController.swift */,
-				C97CE5A425DD981F002CBCDE /* ClickerViewController.swift */,
 				E559C3C325DDF6850001CB88 /* Extensions.swift */,
 				E559C3C625DDF7250001CB88 /* GradientProgressView.swift */,
 				E559C3C025DDF6470001CB88 /* GradientOrientation.swift */,
@@ -105,6 +133,7 @@
 				63CCBFDA25D9DCA300AA3A36 /* LaunchScreen.storyboard */,
 				63CCBFDD25D9DCA300AA3A36 /* Info.plist */,
 				63CCBFE525D9E08B00AA3A36 /* GoogleService-Info.plist */,
+				E0A9C1B325E5B688006367EC /* CashMooooney.swift */,
 			);
 			path = CashCow;
 			sourceTree = "<group>";
@@ -139,6 +168,14 @@
 				E0843CA325DC74870015E5B5 /* ProximaNova-Regular.otf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		E0CF7D9725EE49B600EF1D1C /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				E0CF7D9825EE49DA00EF1D1C /* CoinAnims.swift */,
+			);
+			path = Animations;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -283,12 +320,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				6310577E25DCC0BC00D2EF96 /* LoginViewController.swift in Sources */,
+				C978EFDF25E31AC10015530B /* UpgradesViewController.swift in Sources */,
+				E559C40D25ED98BD0001CB88 /* Upgrades.swift in Sources */,
+				63CAA81925E615A800BC3AEE /* User.swift in Sources */,
 				63CCBFD025D9DC9F00AA3A36 /* AppDelegate.swift in Sources */,
 				E559C3C125DDF6470001CB88 /* GradientOrientation.swift in Sources */,
 				E559C3C725DDF7250001CB88 /* GradientProgressView.swift in Sources */,
+				E0A9C1B425E5B688006367EC /* CashMooooney.swift in Sources */,
 				63CCBFD225D9DC9F00AA3A36 /* SceneDelegate.swift in Sources */,
+				C978EFE225E31B6D0015530B /* ProfileViewController.swift in Sources */,
 				C97CE5A525DD981F002CBCDE /* ClickerViewController.swift in Sources */,
+				E0CF7D9925EE49DA00EF1D1C /* CoinAnims.swift in Sources */,
 				C97CE5A125DD9153002CBCDE /* HomeViewController.swift in Sources */,
+				E559C41025EDA9D60001CB88 /* Stamina.swift in Sources */,
 				E559C3C425DDF6850001CB88 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -439,6 +483,32 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7V294662GT;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/AppAuth\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/EasySocialButton\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FBSDKCoreKit\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FBSDKLoginKit\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseAuth\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCore\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCoreDiagnostics\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseInstallations\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FontAwesome.swift\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GTMAppAuth\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GTMSessionFetcher\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleDataTransport\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleUtilities\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Hero\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/PromisesObjC\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Spring\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/nanopb\"",
+					"\"${PODS_ROOT}/FirebaseAnalytics/Frameworks\"",
+					"\"${PODS_ROOT}/GoogleAppMeasurement/Frameworks\"",
+					"\"${PODS_ROOT}/GoogleSignIn/Frameworks\"",
+					"\"${PODS_XCFRAMEWORKS_BUILD_DIR}/FirebaseAnalytics\"",
+					"\"${PODS_XCFRAMEWORKS_BUILD_DIR}/GoogleAppMeasurement\"",
+				);
 				INFOPLIST_FILE = CashCow/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -459,6 +529,32 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7V294662GT;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/AppAuth\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/EasySocialButton\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FBSDKCoreKit\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FBSDKLoginKit\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseAuth\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCore\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCoreDiagnostics\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseInstallations\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FontAwesome.swift\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GTMAppAuth\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GTMSessionFetcher\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleDataTransport\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleUtilities\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Hero\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/PromisesObjC\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Spring\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/nanopb\"",
+					"\"${PODS_ROOT}/FirebaseAnalytics/Frameworks\"",
+					"\"${PODS_ROOT}/GoogleAppMeasurement/Frameworks\"",
+					"\"${PODS_ROOT}/GoogleSignIn/Frameworks\"",
+					"\"${PODS_XCFRAMEWORKS_BUILD_DIR}/FirebaseAnalytics\"",
+					"\"${PODS_XCFRAMEWORKS_BUILD_DIR}/GoogleAppMeasurement\"",
+				);
 				INFOPLIST_FILE = CashCow/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

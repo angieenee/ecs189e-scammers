@@ -10,6 +10,7 @@ target 'CashCow' do
 	pod 'Firebase/Core'
 	pod 'Firebase/Analytics'
 	pod 'Firebase/Auth'
+	pod 'Firebase/Database'
 
 	# Animations
 	pod 'Spring', :git => 'https://github.com/MengTo/Spring.git'
@@ -17,7 +18,11 @@ target 'CashCow' do
 
   # Auth
   pod 'GoogleSignIn'
+	pod 'FBSDKCoreKit'
+	pod 'FBSDKLoginKit'
 
   # UI
   pod 'EasySocialButton'
+  pod 'FontAwesome.swift'
+	pod 'SSBouncyButton'
 end

@@ -7,13 +7,14 @@
 
 import UIKit
 import GoogleSignIn
+//import FBSDKCoreKit
 import Firebase
 import FirebaseAuth
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+    func sign(_ signIn: GIDSignIn?, didSignInFor user: GIDGoogleUser?, withError error: Error?) {
         // Check for sign in error
         if let error = error {
             if (error as NSError).code == GIDSignInErrorCode.hasNoAuthInKeychain.rawValue {
@@ -25,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         }
         
         // Get credential object using Google ID token and Google access token
-        guard let authentication = user.authentication else {
+        guard let authentication = user?.authentication else {
             return
         }
         let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
@@ -38,6 +39,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                     
             // Post notification after user successfully sign in
             NotificationCenter.default.post(name: .signInGoogleCompleted, object: nil)
+            
+            
         }
     }
     
@@ -51,11 +54,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance()?.restorePreviousSignIn()
         
+//        ApplicationDelegate.shared.application(
+//            application,
+//            didFinishLaunchingWithOptions:
+//            launchOptions
+//        )
+        
         return true
     }
 
     // MARK: UISceneSession Lifecycle
-
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
         // Called when a new scene session is being created.
         // Use this method to select a configuration to create the new scene with.
@@ -71,7 +79,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         
-        return GIDSignIn.sharedInstance().handle(url)
+        let googleHandle = GIDSignIn.sharedInstance().handle(url)
+        //let fbHandle = ApplicationDelegate.shared.application(
+        //    app,
+        //    open: url,
+        //    options: options
+        //)
+        
+        return googleHandle //|| fbHandle
     }
     
 }

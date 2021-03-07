@@ -1,0 +1,32 @@
+[
+    {
+        "type": "stamina",
+        "name": "Coffee Udders",
+        "cost": 10,
+        "costCurrency": "A",
+        "statAmt": 10,
+        "statAmtCurrency": "A",
+        "description": "Ah! Calf-feine really keeps me awake! This upgrade makes stamina regenerate +10A faster.",
+        "iconName": "coffee"
+    },
+    {
+        "type": "clicker",
+        "name": "Hoof Shine",
+        "cost": 10,
+        "costCurrency": "A",
+        "statAmt": 10,
+        "statAmtCurrency": "A",
+        "description": "Can’t click well if your hooves aren’t spruced up! This upgrade +10A more mooney to each click!",
+        "iconName": "shoePrints"
+    },
+    {
+        "type": "passive",
+        "name": "Side Hustle",
+        "cost": 10,
+        "costCurrency": "A",
+        "statAmt": 10,
+        "statAmtCurrency": "A",
+        "description": "Let’s start a smool business! This should generate +10A per minute even while I’m not clicking.",
+        "iconName": "dumbbell"
+    },
+]
