@@ -57,22 +57,29 @@ class Mooooney {
     }
     
     func hasEnoughBalance(_ compareMoney: [String: Int]) -> Bool {
-        if self.getBalance() < self.formatMoney(money: compareMoney) {
+        // Not enough keys in balance
+        if compareMoney.count > self.balance.count {
             return false
         }
-        else {
-            return true
+        // Same number of keys
+        if compareMoney.count == self.balance.count {
+            return (self.formatMoney(money: compareMoney) <= self.getBalance())
         }
+        // More keys in balance
+        return true
     }
     
+    // 1000
+    //   -1
+    // =999
     func subtractBalance(_ amount: [String: Int]) -> String {
         if self.hasEnoughBalance(amount) {
             var carry = 0
-            // TODO: reverse iterate from biggest to smallest key:
             for (key, val) in amount {
+                
             }
         }
-        
+        // Remove keys from balance and keysBalance
     }
     
     func addBalance(_ amount: [String: Int]) -> String {
