@@ -17,11 +17,11 @@ class User {
     var uid: String?
     var username: String?
     var money: Mooooney?
-    var upgrades: [String?: Int?] // upgrade type: id
-    var staminaRegen: [String?: Int?]
+    var upgrades: [String?: Int?] = [:] // upgrade type: id
+    var staminaRegen: [String?: Int?] = [:]
     
     func push_upgrades(completion: () -> Void) {
-        var ref1 = Database.database().reference(withPath: "upgrades")
+        let ref1 = Database.database().reference(withPath: "upgrades")
         let post = ["id": 0,
                     "name": "Hoof Shine",
                     "cost": 10,
