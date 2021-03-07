@@ -46,9 +46,9 @@ class HomeViewController: UIViewController {
             }
         })
         print("User: \(user)")
-        self.user.push_upgrades() {
-            print("success")
-        }
+//        self.user.push_upgrades() {
+//            print("success")
+//        }
     }
     
     @IBAction func startButtonPressed(_ sender: Any) {

@@ -128,7 +128,7 @@ class UpgradesViewController: UIViewController, UITableViewDataSource, UITableVi
         print("PRESSED BUY BUTTON")
         
         // Check if user has enough mooney for upgrade
-        if user?.money
+        //if user?.money
     }
     
     func resetCategoriesButtons() {

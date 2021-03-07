@@ -310,6 +310,9 @@
                                                     <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <imageReference key="image" image="chart.bar.xaxis" catalog="system" symbolScale="large"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="stocksButtonPressed" destination="Wic-UL-1mk" eventType="touchUpInside" id="8lN-SP-VFL"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stocks" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j6Q-co-i2o">
                                                 <rect key="frame" x="0.0" y="22" width="55.333333333333336" height="14.333333333333336"/>
@@ -403,6 +406,50 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LAN-Dy-mAD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2685.9813084112147" y="32.397408207343418"/>
+        </scene>
+        <!--Stocks View Controller-->
+        <scene sceneID="S7k-E1-uoK">
+            <objects>
+                <viewController storyboardIdentifier="stocksViewController" id="5D0-9N-Y2Y" customClass="StocksViewController" customModule="CashCow" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qZi-TO-deK">
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dYH-C7-Z0A">
+                                <rect key="frame" x="369" y="54.000000000000007" width="29" height="23.333333333333336"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal">
+                                    <imageReference key="image" image="arrow.forward" catalog="system" symbolScale="large"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="20" weight="bold"/>
+                                </state>
+                                <connections>
+                                    <action selector="backButtonPressed" destination="5D0-9N-Y2Y" eventType="touchUpInside" id="p5P-kQ-aFg"/>
+                                    <action selector="backButtonPressed:" destination="xkM-nF-WQb" eventType="touchUpInside" id="9ZE-GO-Dir"/>
+                                    <action selector="backButtonPressed:" destination="rhF-xY-MEG" eventType="touchUpInside" id="gji-b1-bdq"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AIA-iN-7UO">
+                                <rect key="frame" x="25" y="103" width="378" height="750"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="378" id="Avy-Uq-0CQ"/>
+                                    <constraint firstAttribute="height" constant="750" id="kg2-49-Fhe"/>
+                                </constraints>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="wqS-V8-WDa"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="dYH-C7-Z0A" firstAttribute="top" secondItem="wqS-V8-WDa" secondAttribute="top" constant="10" id="bLA-78-3To"/>
+                            <constraint firstItem="wqS-V8-WDa" firstAttribute="trailing" secondItem="dYH-C7-Z0A" secondAttribute="trailing" constant="30" id="d3D-8y-Q71"/>
+                            <constraint firstItem="AIA-iN-7UO" firstAttribute="centerX" secondItem="qZi-TO-deK" secondAttribute="centerX" id="p2D-Hx-1YM"/>
+                            <constraint firstItem="AIA-iN-7UO" firstAttribute="top" secondItem="dYH-C7-Z0A" secondAttribute="bottom" constant="25.670000000000002" id="pXx-xT-gm8"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IfU-Qb-G5B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3407.9439252336447" y="41.46868250539957"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="RcW-ye-gFJ">

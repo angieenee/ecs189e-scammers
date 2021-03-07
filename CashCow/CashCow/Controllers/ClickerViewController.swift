@@ -67,6 +67,22 @@ class ClickerViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
+    @IBAction func stocksButtonPressed() {
+        // Go to stocks view
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let stocksViewController =  storyboard.instantiateViewController(identifier: "stocksViewController") as? StocksViewController else {
+            assertionFailure("Couldn't find Upgrades VC")
+            return
+        }
+        
+        stocksViewController.user = self.user
+        
+        // Push to stack because we want users to be able to go back to clicker view
+        let viewControllers = [stocksViewController, self]
+        self.navigationController?.setViewControllers(viewControllers, animated: true)
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     @IBAction func logoutButtonPressed() {
         // Save user data, then logout
         self.user?.save() {

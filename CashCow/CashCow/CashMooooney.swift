@@ -72,7 +72,7 @@ class Mooooney {
     // 1000
     //   -1
     // =999
-    func subtractBalance(_ amount: [String: Int]) -> String {
+    func subtractBalance(_ amount: [String: Int]) {
         if self.hasEnoughBalance(amount) {
             var carry = 0
             for (key, val) in amount {
@@ -82,7 +82,7 @@ class Mooooney {
         // Remove keys from balance and keysBalance
     }
     
-    func addBalance(_ amount: [String: Int]) -> String {
+    func addBalance(_ amount: [String: Int]) {
         for (key, val) in amount {
             if balance[key] == nil {
                 self.keysBalance.1 = self.keysBalance.0
@@ -93,7 +93,6 @@ class Mooooney {
                 self.balance[key]? += val
             }
         }
-        return self.getBalance()
     }
     
     func getBalance() -> String {
