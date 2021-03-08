@@ -4,7 +4,6 @@
 //
 //  Created by Jarod Heng on 2/23/21.
 //
-
 import Foundation
 
 
@@ -112,37 +111,66 @@ class Mooooney {
         }
     }
     
-    /*
-    func addPassive(_ amount: [String: Int]) {
-        if let passive = self.moneyPassive {
-            for (key, val) in amount {
-                if let passiveAtKey = self.moneyPassive?[key] {
-                    if !checkOverflow(key, val, self.moneyPassive?[key]) {
-                        self.moneyPassive[key]? += val
+    // dump all the add related shit here
+    func add(_ amt1: [String: Int], _ amt2: [String: Int]) -> [String: Int] {
+        var sum = amt1
+        for (key, val1) in sum {
+            if let val2 = amt2[key] {
+                //sum = checkOverflowAndAdd(key, val, value, sum)
+                if val1 + val2  >= NUM_BASE {
+                    let overflowVal = (val1 + val2) / NUM_BASE
+                    let leftoverVal = (val1 + val2) % NUM_BASE
+                    let nextLetter = asciiShift(str: key, inc: 1, add: true)
+                    
+                    if sum[nextLetter] != nil {
+                        sum[nextLetter]? += overflowVal
+                    } else {
+                        sum[nextLetter] = overflowVal
                     }
-                } else {
-                    self.moneyPassive[key] = 0
+                    sum[key] = leftoverVal
                 }
             }
-        } else {
-            self.moneyPassive = amount
         }
-        return
+        return sum
     }
     
-    func addClicker(_ amount: [String: Int]) {
-        for (key, val) in amount {
-            if self.moneyClick[key] == nil {
-                self.keysBalance.1 = self.keysBalance.0
-                self.keysBalance.0 = key
-                self.moneyClick[key] = 0
-            }
-            if !checkOverflow(key, val, moneyClick[key] ?? 0) {
-                self.moneyClick[key]? += val
+    // subtract generalized func
+    // todo check for negative balance?
+    func subtract(_ amt1: [String: Int], _ amt2: [String: Int]) -> [String: Int] {
+        var diff = amt1
+        for (key, val1) in diff {
+            if let val2 = amt2[key] {
+                //sum = checkOverflowAndAdd(key, val, value, sum)
+                if val1 - val2 <= 0 {
+                    let underflowVal = (val1 - val2) / NUM_BASE
+                    let leftoverVal = (val1 - val2) % NUM_BASE
+                    let prevLetter = asciiShift(str: key, inc: 1, add: false)
+                    
+                    if diff[prevLetter] != nil {
+                        diff[prevLetter]? -= underflowVal
+                    } else {
+                        diff[prevLetter] = underflowVal
+                    }
+                    diff[key] = leftoverVal
+                } else {
+                    // check overflow in the off chance we have broken something
+                    if val1-val2 >= NUM_BASE {
+                        let overflowVal = (val1 + val2) / NUM_BASE
+                        let leftoverVal = (val1 + val2) % NUM_BASE
+                        let nextLetter = asciiShift(str: key, inc: 1, add: true)
+                        
+                        if diff[nextLetter] != nil {
+                            diff[nextLetter]? += overflowVal
+                        } else {
+                            diff[nextLetter] = overflowVal
+                        }
+                        diff[key] = leftoverVal
+                    }
+                }
             }
         }
-        return
-    }*/
+        return diff
+    }
     
     func getBalance() -> String {
         return self.formatMoney(money: self.balance)
@@ -198,7 +226,6 @@ class Mooooney {
         
         return overflow
     }
-    
     
     /* DEBUG FUNCS */
     func printAmt() {

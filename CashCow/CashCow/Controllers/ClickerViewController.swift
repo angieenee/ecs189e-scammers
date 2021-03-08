@@ -15,6 +15,7 @@ class ClickerViewController: UIViewController {
     var staminaTimer: Timer?
     var saveTimer: Timer?
     var passiveTimer: Timer?
+    var popupTimer: Timer?
     var coins = ImgSeqContainer()
 
     @IBOutlet weak var totalIncome: UILabel!
@@ -41,6 +42,12 @@ class ClickerViewController: UIViewController {
                 self.user?.money?.addBalance(self.user?.money?.moneyPassive ?? ["_" : 0, "A": 0])
                 print("AMT NOW AFTER ADDING PASSIVE INCOME")
                 self.user?.money?.printAmt()
+        }
+        
+        self.popupTimer = Timer.scheduledTimer(withTimeInterval: 60, repeats: true) {
+            timer in
+                self.showPopUp()
+                print("Testing if alert will show up.")
         }
     }
     
@@ -154,5 +161,16 @@ class ClickerViewController: UIViewController {
         self.user?.save() {
             print("User data saved")
         }
+    }
+    
+    func showPopUp() {
+        let alert = UIAlertController(title: "ALERT! ALERT!!", message: "This is my first alert.", preferredStyle: .alert)
+        let okayAction = UIAlertAction(title: "Okay", style: .default) {
+            (action) in print(action)
+        }
+        
+        // add to alert
+        alert.addAction(okayAction)
+        present(alert, animated: true, completion: nil)
     }
 }
