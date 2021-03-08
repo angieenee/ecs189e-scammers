@@ -49,6 +49,32 @@ class ClickerViewController: UIViewController {
                 self.showPopUp()
                 print("Testing if alert will show up.")
         }
+        
+        // Detect whether the user exited the app
+        // When user exits the app, fire stopPassiveTimer()
+        NotificationCenter.default.addObserver(self, selector: #selector(stopPassiveTimer), name: UIApplication.willResignActiveNotification, object: nil)
+        
+        // Detect whether the user opens the app
+        // When user enters back into the app, fire resumePassiveTimer()
+        NotificationCenter.default.addObserver(self, selector: #selector(resumePassiveTimer), name: UIApplication.willEnterForegroundNotification, object: nil)
+    }
+    
+    @objc func stopPassiveTimer() {
+        print("App moved to background!")
+        
+        // Stop timer
+        // Save current time in NSDate
+//        self.passiveTimer?.invalidate()
+        
+    }
+    
+    @objc func resumePassiveTimer() {
+        print("App moved back to foreground!")
+        
+        // Calculate the difference from the stored date to the current date
+        // From the difference, calculate how much passive income is earned
+        // Update the total income earned
+        // Start timer
     }
     
     @IBAction func profileButtonPressed(_ sender: Any) {

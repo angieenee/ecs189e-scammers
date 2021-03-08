@@ -424,7 +424,6 @@
                                 </state>
                                 <connections>
                                     <action selector="backButtonPressed" destination="5D0-9N-Y2Y" eventType="touchUpInside" id="p5P-kQ-aFg"/>
-                                    <action selector="backButtonPressed:" destination="xkM-nF-WQb" eventType="touchUpInside" id="9ZE-GO-Dir"/>
                                     <action selector="backButtonPressed:" destination="rhF-xY-MEG" eventType="touchUpInside" id="gji-b1-bdq"/>
                                 </connections>
                             </button>
