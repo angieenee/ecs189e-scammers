@@ -17,28 +17,28 @@ class User {
     var uid: String?
     var username: String?
     var money: Mooooney?
-    var upgrades: [String?: Int?] = [:] // upgrade type: id
-    var staminaRegen: [String?: Int?] = [:]
+    var upgrades: [String: Int]? // upgrade type: id
+    var staminaRegen: [String: Int]?
     
-    func push_upgrades(completion: () -> Void) {
-        let ref1 = Database.database().reference(withPath: "upgrades")
-        let post = ["id": 0,
-                    "name": "Hoof Shine",
-                    "cost": 10,
-                    "costCurrency": "A",
-                    "statAmt": 10,
-                    "statAmtCurrency": "A",
-                    "description": "Can’t click well if your hooves aren’t spruced up! This upgrade +10A more mooney to each click!",
-                    "iconName": "shoePrints"] as [String : Any]
-        ref1.child("clicker").setValue(post) {
-            (error: Error?, ref:DatabaseReference) in
-            if let error = error {
-                print("Data could not be saved: \(error).")
-            } else {
-                print("Data saved successfully!")
-            }
-        }
-    }
+//    func push_upgrades(completion: () -> Void) {
+//        let ref1 = Database.database().reference(withPath: "upgrades")
+//        let post = ["id": 0,
+//                    "name": "Hoof Shine",
+//                    "cost": 10,
+//                    "costCurrency": "A",
+//                    "statAmt": 10,
+//                    "statAmtCurrency": "A",
+//                    "description": "Can’t click well if your hooves aren’t spruced up! This upgrade +10A more mooney to each click!",
+//                    "iconName": "shoePrints"] as [String : Any]
+//        ref1.child("clicker").setValue(post) {
+//            (error: Error?, ref:DatabaseReference) in
+//            if let error = error {
+//                print("Data could not be saved: \(error).")
+//            } else {
+//                print("Data saved successfully!")
+//            }
+//        }
+//    }
     
     func load(_ data: [String: Any], completion: @escaping () -> Void) {
         self.email = data["email"] as? String

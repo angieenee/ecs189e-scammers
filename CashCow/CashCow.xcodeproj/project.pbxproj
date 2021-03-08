@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		63077D3D25F462DB00A53DE6 /* StocksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63077D3C25F462DB00A53DE6 /* StocksViewController.swift */; };
 		6310577E25DCC0BC00D2EF96 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6310577D25DCC0BC00D2EF96 /* LoginViewController.swift */; };
 		63CAA81925E615A800BC3AEE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CAA81825E615A800BC3AEE /* User.swift */; };
 		63CCBFD025D9DC9F00AA3A36 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CCBFCF25D9DC9F00AA3A36 /* AppDelegate.swift */; };
@@ -38,6 +39,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		63077D3C25F462DB00A53DE6 /* StocksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksViewController.swift; sourceTree = "<group>"; };
 		6310577D25DCC0BC00D2EF96 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		63CAA81825E615A800BC3AEE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		63CCBFCC25D9DC9F00AA3A36 /* CashCow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CashCow.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -92,6 +94,7 @@
 				6310577D25DCC0BC00D2EF96 /* LoginViewController.swift */,
 				C978EFE125E31B6D0015530B /* ProfileViewController.swift */,
 				C978EFDE25E31AC10015530B /* UpgradesViewController.swift */,
+				63077D3C25F462DB00A53DE6 /* StocksViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -119,6 +122,7 @@
 			children = (
 				E0CF7D9725EE49B600EF1D1C /* Animations */,
 				63CAA81825E615A800BC3AEE /* User.swift */,
+				E0A9C1B325E5B688006367EC /* CashMooooney.swift */,
 				E559C40C25ED98BC0001CB88 /* Upgrades.swift */,
 				E559C40F25EDA9D60001CB88 /* Stamina.swift */,
 				63CAA7E125E5FBE800BC3AEE /* Controllers */,
@@ -133,7 +137,6 @@
 				63CCBFDA25D9DCA300AA3A36 /* LaunchScreen.storyboard */,
 				63CCBFDD25D9DCA300AA3A36 /* Info.plist */,
 				63CCBFE525D9E08B00AA3A36 /* GoogleService-Info.plist */,
-				E0A9C1B325E5B688006367EC /* CashMooooney.swift */,
 			);
 			path = CashCow;
 			sourceTree = "<group>";
@@ -330,6 +333,7 @@
 				63CCBFD225D9DC9F00AA3A36 /* SceneDelegate.swift in Sources */,
 				C978EFE225E31B6D0015530B /* ProfileViewController.swift in Sources */,
 				C97CE5A525DD981F002CBCDE /* ClickerViewController.swift in Sources */,
+				63077D3D25F462DB00A53DE6 /* StocksViewController.swift in Sources */,
 				E0CF7D9925EE49DA00EF1D1C /* CoinAnims.swift in Sources */,
 				C97CE5A125DD9153002CBCDE /* HomeViewController.swift in Sources */,
 				E559C41025EDA9D60001CB88 /* Stamina.swift in Sources */,

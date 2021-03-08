@@ -14,6 +14,7 @@ class ClickerViewController: UIViewController {
     var user: User?
     var staminaTimer: Timer?
     var saveTimer: Timer?
+    var passiveTimer: Timer?
     var coins = ImgSeqContainer()
 
     @IBOutlet weak var totalIncome: UILabel!
@@ -33,6 +34,14 @@ class ClickerViewController: UIViewController {
         
         self.staminaTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.reloadStamina), userInfo: nil, repeats: true)
         self.saveTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.saveData), userInfo: nil, repeats: true)
+        
+        self.passiveTimer = Timer.scheduledTimer(withTimeInterval: 10, repeats: true) {
+            timer in
+                print("Passive Timer fired!")
+                self.user?.money?.addBalance(self.user?.money?.moneyPassive ?? ["_" : 0, "A": 0])
+                print("AMT NOW AFTER ADDING PASSIVE INCOME")
+                self.user?.money?.printAmt()
+        }
     }
     
     @IBAction func profileButtonPressed(_ sender: Any) {
@@ -63,6 +72,22 @@ class ClickerViewController: UIViewController {
         
         // Push to stack because we want users to be able to go back to clicker view
         let viewControllers = [upgradesViewController, self]
+        self.navigationController?.setViewControllers(viewControllers, animated: true)
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func stocksButtonPressed() {
+        // Go to stocks view
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let stocksViewController =  storyboard.instantiateViewController(identifier: "stocksViewController") as? StocksViewController else {
+            assertionFailure("Couldn't find Upgrades VC")
+            return
+        }
+        
+        stocksViewController.user = self.user
+        
+        // Push to stack because we want users to be able to go back to clicker view
+        let viewControllers = [stocksViewController, self]
         self.navigationController?.setViewControllers(viewControllers, animated: true)
         self.navigationController?.popViewController(animated: true)
     }
