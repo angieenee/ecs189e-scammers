@@ -129,11 +129,47 @@ class Mooooney {
 					}
 					sum[key] = leftoverVal
 				}
-            // overflow = true
 			}
         }
-		
         return sum
+    }
+	
+	// subtract generalized func
+	// todo check for negative balance?
+	func subtract(_ amt1: [String: Int], _ amt2: [String: Int]) -> [String: Int] {
+        var diff = amt1
+		for (key, val1) in diff {
+            if let val2 = amt2[key] {
+                //sum = checkOverflowAndAdd(key, val, value, sum)
+				if val1 - val2 <= 0 {
+					let underflowVal = (val1 - val2) / NUM_BASE
+					let leftoverVal = (val1 - val2) % NUM_BASE
+					let prevLetter = asciiShift(str: key, inc: -1, add: true)
+					
+					if diff[prevLetter] != nil {
+						diff[prevLetter] -= underflowVal
+					} else {
+						diff[prevLetter] = underflowVal
+					}
+					diff[key] = leftoverVal
+				} else {
+				    // check overflow in the off chance we have broken something
+					if val1-val2 >= NUM_BASE {
+						let overflowVal = (val1 + val2) / NUM_BASE
+						let leftoverVal = (val1 + val2) % NUM_BASE
+						let nextLetter = asciiShift(str: key, inc: 1, add: true)
+						
+						if diff[nextLetter] != nil {
+							diff[nextLetter] += overflowVal
+						} else {
+							diff[nextLetter] = overflowVal
+						}
+						diff[key] = leftoverVal
+					}
+				}
+			}
+        }
+        return diff
     }
     
     func getBalance() -> String {
