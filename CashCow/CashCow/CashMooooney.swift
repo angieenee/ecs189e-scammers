@@ -124,7 +124,7 @@ class Mooooney {
 					let nextLetter = asciiShift(str: key, inc: 1, add: true)
 					
 					if sum[nextLetter] != nil {
-						sum[nextLetter] += overflowVal
+						sum[nextLetter]? += overflowVal
 					} else {
 						sum[nextLetter] = overflowVal
 					}
@@ -161,7 +161,7 @@ class Mooooney {
 						let nextLetter = asciiShift(str: key, inc: 1, add: true)
 						
 						if diff[nextLetter] != nil {
-							diff[nextLetter] += overflowVal
+							diff[nextLetter]? += overflowVal
 						} else {
 							diff[nextLetter] = overflowVal
 						}
@@ -227,36 +227,6 @@ class Mooooney {
         
         return overflow
     }
-	
-	// (key, val, value, sum)
-	// this one is a generalized form of checkOverflow (also adds two fals cuz why not)
-	func checkOverflowAndAdd(_ key: String, _ val1: Int, _ val2: Int, _ mooney: [String: Int]) -> [String: Int] {
-        // For each element in inventory, if the value is greater than 999, mod by 1000, increment
-        // var overflow = false
-        
-        if clickValue + balanceValue >= NUM_BASE {
-            let overflowVal = (clickValue + balanceValue) / NUM_BASE
-            let leftoverVal = (clickValue + balanceValue) % NUM_BASE
-            let newLetter = asciiShift(str: key, inc: 1, add: true)
-            
-            if mooney[newLetter] != nil {
-                mooney[newLetter]? += overflowVal
-            } else {
-                self.keysBalance.1 = self.keysBalance.0
-                self.keysBalance.0 = newLetter
-                self.balance[newLetter] = overflowVal
-            }
-            
-            self.balance[key] = leftoverVal
-            overflow = true
-        }
-        
-        return mooney
-    }
-	
-	func checkUnderflowAndSubtract(_ key: String, _ val1: Int, _ val2: Int, _ balanceValue: [String: Int]) -> [String: Int] {
-		
-	}
     
     /* DEBUG FUNCS */
     func printAmt() {
