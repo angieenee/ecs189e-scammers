@@ -22,7 +22,7 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        var userRef = self.ref.child(firebaseAuth.currentUser?.uid ?? "")
+        let userRef = self.ref.child(firebaseAuth.currentUser?.uid ?? "")
         
         userRef.observe(.value, with: { snapshot in
             if let data = snapshot.value as? [String: Any] {
