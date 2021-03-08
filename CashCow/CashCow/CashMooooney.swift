@@ -145,10 +145,10 @@ class Mooooney {
 				if val1 - val2 <= 0 {
 					let underflowVal = (val1 - val2) / NUM_BASE
 					let leftoverVal = (val1 - val2) % NUM_BASE
-					let prevLetter = asciiShift(str: key, inc: -1, add: true)
+					let prevLetter = asciiShift(str: key, inc: 1, add: false)
 					
 					if diff[prevLetter] != nil {
-						diff[prevLetter] -= underflowVal
+						diff[prevLetter]? -= underflowVal
 					} else {
 						diff[prevLetter] = underflowVal
 					}
