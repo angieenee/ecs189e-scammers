@@ -28,8 +28,10 @@ class Mooooney {
     }
     
     init(_ money: [String: Any]) {
-        self.balance = money["balance"] as? [String: Int] ?? ["hello" : 0]
-        self.moneyClick = money["money_click"] as? [String: Int] ?? ["hello" : 0]
+        print("INIT CALLED: ")
+        print(money)
+        self.balance = money["balance"] as? [String: Int] ?? [:]
+        self.moneyClick = money["money_click"] as? [String: Int] ?? [:]
         self.moneyPassive = money["money_passive"] as? [String: Int]
         
         let largestKeyBal = money["key_balance"] as? String ?? ""
