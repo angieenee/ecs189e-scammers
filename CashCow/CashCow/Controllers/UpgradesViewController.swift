@@ -8,14 +8,6 @@
 import UIKit
 import FontAwesome_swift
 
-class UpgradeCell: UITableViewCell {
-    @IBOutlet weak var upgradeIcon: UIButton!
-    @IBOutlet weak var upgradeName: UILabel!
-    @IBOutlet weak var upgradeAmt: UILabel!
-    @IBOutlet weak var buyButton: UIButton!
-    @IBOutlet weak var upgradeDescription: UILabel!
-}
-
 class UpgradesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var user: User?
@@ -42,6 +34,8 @@ class UpgradesViewController: UIViewController, UITableViewDataSource, UITableVi
         
         self.upgradesTable.dataSource = self
         self.upgradesTable.delegate = self
+        
+        self.registerTableViewCells()
         
         self.categoryIcons.append(staminaIcon)
         self.categoryIcons.append(clickerIcon)
@@ -84,23 +78,33 @@ class UpgradesViewController: UIViewController, UITableViewDataSource, UITableVi
         }
     }
     
+    private func registerTableViewCells() {
+        let textFieldCell = UINib(nibName: "UpgradeCell", bundle: nil)
+        self.upgradesTable.register(textFieldCell, forCellReuseIdentifier: "UpgradeCell")
+    }
+    
     // TableView Protocols Implementation
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return upgradesList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "upgradesTableCell") as! UpgradeCell
+        var cell: UpgradeCell
+        if let reuseCell = tableView.dequeueReusableCell(withIdentifier: "UpgradeCell") as? UpgradeCell {
+            cell = reuseCell
+        } else {
+            cell = UpgradeCell(style: .default, reuseIdentifier: "UpgradeCell")
+        }
         
         let iconName = upgradesList[indexPath.row].iconName ?? "default"
-        
+        print(cell)
         cell.upgradeIcon.titleLabel?.font = UIFont.fontAwesome(ofSize: 20, style: .solid)
         cell.upgradeIcon.setTitle(String.fontAwesomeIcon(name: convertStringToFontAwesome(iconName)), for: .normal)
-                                  
+
         cell.upgradeName.text = upgradesList[indexPath.row].name
-            
+
         let upgradeCost = upgradesList[indexPath.row].cost ?? -1
-            
+
         let upgradeCostCurrency = upgradesList[indexPath.row].costCurrency ?? "A"
 
         cell.upgradeAmt.text = String(upgradeCost) + upgradeCostCurrency
