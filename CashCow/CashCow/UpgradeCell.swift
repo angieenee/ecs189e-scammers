@@ -40,6 +40,16 @@ class UpgradeCell: UITableViewCell {
             return .shoePrints
         case "dumbbell":
             return .dumbbell
+        case "tools":
+            return .tools
+        case "handSparkles":
+            return .handSparkles
+        case "hatCowboySide":
+            return .hatCowboySide
+        case "briefcase":
+            return .briefcase
+        case "moneyBillWave":
+            return .moneyBillWave
         default:
             return .allergies
         }

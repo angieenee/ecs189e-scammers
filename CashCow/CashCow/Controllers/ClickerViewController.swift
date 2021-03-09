@@ -52,14 +52,20 @@ class ClickerViewController: UIViewController {
     }
     
     @objc func generatePassiveIncome() {
-        print("Passive Timer fired!")
+//        print("Passive Timer fired!")
         self.user?.money?.addBalance(self.user?.money?.moneyPassive ?? ["_" : 0, "A": 0])
-        print("AMT NOW AFTER ADDING PASSIVE INCOME")
-        self.user?.money?.printAmt()
+        
+        guard let currBalance =  self.user?.money?.balance else {
+            print("BALANCE IS NULL IN GENERATE PASSIVE INCOME :(")
+            return
+        }
+        self.totalIncome.text = self.user?.money?.formatMoney(currBalance)
+//        print("AMT NOW AFTER ADDING PASSIVE INCOME")
+//        self.user?.money?.printAmt()
     }
     
     @objc func stopPassiveTimer() {
-        print("****App moved to BACKGROUND!")
+//        print("****App moved to BACKGROUND!")
         
         self.passiveTimer?.invalidate()
         self.timeWhenBackgrounded = NSDate()
@@ -68,18 +74,23 @@ class ClickerViewController: UIViewController {
     }
     
     func updateBalanceOnPassiveIncome(_ seconds: Int) {
-        // TODO: we can also multiply to reduce runtime
         for _ in 1...seconds {
             self.user?.money?.addBalance(self.user?.money?.moneyPassive ?? ["_" : 0, "A": 0])
         }
+        
+        guard let currBalance =  self.user?.money?.balance else {
+            print("BALANCE IS NULL IN UPDATE BALANCE :(")
+            return
+        }
+        self.totalIncome.text = self.user?.money?.formatMoney(currBalance)
     }
         
     @objc func resumePassiveTimer() {
-        print("****App moved back to FOREGROUND!")
+//        print("****App moved back to FOREGROUND!")
         
         guard var difference = self.timeWhenBackgrounded?.timeIntervalSinceNow else {return}
         difference = abs(difference)
-        print("Elapsed time: \(difference) seconds")
+//        print("Elapsed time: \(difference) seconds")
         
         self.updateBalanceOnPassiveIncome(Int(difference))
         

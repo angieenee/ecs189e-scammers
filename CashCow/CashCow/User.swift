@@ -20,71 +20,35 @@ class User {
     var upgrades: [String: Int]? // upgrade type: id
     var staminaRegenAmt: Int?
     
-//    func push_decision(completion: () -> Void) {
-//        let ref1 = Database.database().reference(withPath: "decisions")
-//        let post = [
-//            [
-//                "id": 0,
-//                "name": "Dinner Dash",
-//                "description": "Hungry from the clicking? It’s time to refuel!",
-//                "nameA": "MooDash Delivery",
-//                "nameB": "Cook At Home",
-//                "typeA": "stamina",
-//                "typeB": "clicker",
-//                "amountA": 5,
-//                "amountB": 5,
-//                "keyA": "A",
-//                "keyB": "A"
-//            ],
-//            [
-//                "id": 1,
-//                "name": "Stimoolus Check",
-//                "description": "Cowngress sent you a stimoolus check! What shall we do with it?",
-//                "nameA": "Cash It In",
-//                "nameB": "Stash As Savings",
-//                "typeA": "balance",
-//                "typeB": "passive",
-//                "amountA": 100,
-//                "amountB": 10,
-//                "keyA": "A",
-//                "keyB": "A"
-//            ],
-//            [
-//                "id": 2,
-//                "name": "Free Time",
-//                "description": "Take a break from the clicking. How should we relax?",
-//                "nameA": "MooTube Video",
-//                "nameB": "Call Moom",
-//                "typeA": "clicker",
-//                "typeB": "passive",
-//                "amountA": 5,
-//                "amountB": 5,
-//                "keyA": "A",
-//                "keyB": "A"
-//            ],
-//            [
-//                "id": 3,
-//                "name": "Aerobic Cowrdio",
-//                "description": "30 minutes of exercise a day gives the clickers a good pay!",
-//                "nameA": "Home Workout",
-//                "nameB": "Gym Membership",
-//                "typeA": "passive",
-//                "typeB": "stamina",
-//                "amountA": 10,
-//                "amountB": 10,
-//                "keyA": "A",
-//                "keyB": "A"
-//            ]
-//        ]
-//        ref1.setValue(post) {
-//            (error: Error?, ref: DatabaseReference) in
-//            if let error = error {
-//                print("Data could not be saved: \(error).")
-//            } else {
-//                print("Data saved successfully!")
-//            }
-//        }
-//    }
+    func push_decision(completion: () -> Void) {
+        let ref1 = Database.database().reference(withPath: "upgrades")
+        let post = [
+            ["id": 0,
+            "name": "Side Hustle",
+            "cost": 10,
+            "costCurrency": "A",
+            "statAmt": 0.010,
+            "statAmtCurrency": "A",
+            "description": "Let’s start a smool business! This should generate X per minute even while I’m not clicking.",
+            "iconName": "dumbbell"],
+            ["id": 1,
+            "name": "Invest in Savings",
+            "cost": 1,
+            "costCurrency": "B",
+            "statAmt": 1,
+            "statAmtCurrency": "A",
+            "description": "The Mooney Mooket always says to invest in savings, so that’s what we shall do.",
+            "iconName": "moneyBillWave"]
+        ] as [[String : Any]]
+        ref1.child("passive").setValue(post) {
+            (error: Error?, ref: DatabaseReference) in
+            if let error = error {
+                print("Data could not be saved: \(error).")
+            } else {
+                print("****Data saved successfully to Firebase!")
+            }
+        }
+    }
     
     func load(_ data: [String: Any], completion: @escaping () -> Void) {
         self.email = data["email"] as? String
