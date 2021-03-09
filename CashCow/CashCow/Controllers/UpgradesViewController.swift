@@ -101,35 +101,37 @@ class UpgradesViewController: UIViewController, UITableViewDataSource, UITableVi
         let upgrade = upgradesList[sender.tag]
         var upgradeExpense: [String: Int]
         
-        if let key = upgrade.costCurrency, let val = upgrade.cost, let type = upgrade.type, let id = upgrade.id, let statAmt = upgrade.statAmt, let statCurrency = upgrade.statAmtCurrency  {
+        if let key = upgrade.costCurrency, let val = upgrade.cost, let type = upgrade.type, let id = upgrade.id, let statAmt = upgrade.statAmt, let statCurrency = upgrade.statAmtCurrency, let currBalance = user?.money?.balance  {
             upgradeExpense = [key: val]
-            if let validPurchase = user?.money?.hasEnoughBalance(upgradeExpense) {
+            if let validPurchase = user?.money?.validSubtraction(currBalance, upgradeExpense) {
                 if validPurchase {
-                    //user?.money?.subtractBalance(upgradeExpense)
-                    //user?.upgrades[type] = id
+                    user?.money?.subtractBalance(upgradeExpense)
+                    user?.upgrades?[type] = id
                     
                     // Put upgrade into effect:
                     var formattedStats: [String: Int]
-                    formattedStats = [statCurrency: statAmt, "_": 0]
+                    formattedStats = [statCurrency: statAmt]
                     
                     print("formattedStats -- ", formattedStats)
                     
                     if type == "stamina" {
                         print("STAMINA BUY")
-                        user?.staminaRegen = formattedStats
-                        return
+                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                        guard let clickerViewController =  storyboard.instantiateViewController(identifier: "clickerViewController") as? ClickerViewController else {
+                            assertionFailure("Couldn't find Clicker VC")
+                            return
+                        }
+                        clickerViewController.staminaBar.progress += Float((statAmt / 100))
                     }
                     
                     if type == "passive" {
                         print("PASSIVE BUY")
-                        user?.money?.moneyPassive = formattedStats
-                        return
+                        user?.money?.moneyPassive = user?.money?.add(user?.money?.moneyPassive ?? ["_": 0], formattedStats)
                     }
                     
                     if type == "clicker" {
                         print("CLICKER BUY")
-                        user?.money?.moneyClick = formattedStats
-                        return
+                        user?.money?.moneyClick = user?.money?.add(user?.money?.moneyClick ?? ["_": 0], formattedStats) ?? ["_": 0]
                     }
                 }
                 else {
@@ -137,6 +139,7 @@ class UpgradesViewController: UIViewController, UITableViewDataSource, UITableVi
                     // TODO: Add error label here
                 }
             }
+            // TODO: Close the cell if purchase went through
         }
     }
     

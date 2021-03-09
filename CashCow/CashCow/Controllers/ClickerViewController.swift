@@ -17,7 +17,9 @@ class ClickerViewController: UIViewController {
     var passiveTimer: Timer?
     var popupTimer: Timer?
     var coins = ImgSeqContainer()
-
+    
+    var timeWhenBackgrounded: NSDate?
+    
     @IBOutlet weak var totalIncome: UILabel!
     @IBOutlet weak var profileButton: UIButton!
     @IBOutlet weak var upgradesButton: UIButton!
@@ -36,13 +38,7 @@ class ClickerViewController: UIViewController {
         self.staminaTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.reloadStamina), userInfo: nil, repeats: true)
         self.saveTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.saveData), userInfo: nil, repeats: true)
         
-        self.passiveTimer = Timer.scheduledTimer(withTimeInterval: 10, repeats: true) {
-            timer in
-                print("Passive Timer fired!")
-                self.user?.money?.addBalance(self.user?.money?.moneyPassive ?? ["_" : 0, "A": 0])
-                print("AMT NOW AFTER ADDING PASSIVE INCOME")
-                self.user?.money?.printAmt()
-        }
+        self.passiveTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.generatePassiveIncome), userInfo: nil, repeats: true)
         
         self.popupTimer = Timer.scheduledTimer(withTimeInterval: 60, repeats: true) {
             timer in
@@ -50,31 +46,55 @@ class ClickerViewController: UIViewController {
                 print("Testing if alert will show up.")
         }
         
-        // Detect whether the user exited the app
-        // When user exits the app, fire stopPassiveTimer()
         NotificationCenter.default.addObserver(self, selector: #selector(stopPassiveTimer), name: UIApplication.willResignActiveNotification, object: nil)
         
-        // Detect whether the user opens the app
-        // When user enters back into the app, fire resumePassiveTimer()
         NotificationCenter.default.addObserver(self, selector: #selector(resumePassiveTimer), name: UIApplication.willEnterForegroundNotification, object: nil)
     }
     
-    @objc func stopPassiveTimer() {
-        print("App moved to background!")
+    @objc func generatePassiveIncome() {
+//        print("Passive Timer fired!")
+        self.user?.money?.addBalance(self.user?.money?.moneyPassive ?? ["_" : 0, "A": 0])
         
-        // Stop timer
-        // Save current time in NSDate
-//        self.passiveTimer?.invalidate()
-        
+        guard let currBalance =  self.user?.money?.balance else {
+            print("BALANCE IS NULL IN GENERATE PASSIVE INCOME :(")
+            return
+        }
+        self.totalIncome.text = self.user?.money?.formatMoney(currBalance)
+//        print("AMT NOW AFTER ADDING PASSIVE INCOME")
+//        self.user?.money?.printAmt()
     }
     
-    @objc func resumePassiveTimer() {
-        print("App moved back to foreground!")
+    @objc func stopPassiveTimer() {
+//        print("****App moved to BACKGROUND!")
         
-        // Calculate the difference from the stored date to the current date
-        // From the difference, calculate how much passive income is earned
-        // Update the total income earned
-        // Start timer
+        self.passiveTimer?.invalidate()
+        self.timeWhenBackgrounded = NSDate()
+        print(self.timeWhenBackgrounded!)
+       
+    }
+    
+    func updateBalanceOnPassiveIncome(_ seconds: Int) {
+        for _ in 1...seconds {
+            self.user?.money?.addBalance(self.user?.money?.moneyPassive ?? ["_" : 0, "A": 0])
+        }
+        
+        guard let currBalance =  self.user?.money?.balance else {
+            print("BALANCE IS NULL IN UPDATE BALANCE :(")
+            return
+        }
+        self.totalIncome.text = self.user?.money?.formatMoney(currBalance)
+    }
+        
+    @objc func resumePassiveTimer() {
+//        print("****App moved back to FOREGROUND!")
+        
+        guard var difference = self.timeWhenBackgrounded?.timeIntervalSinceNow else {return}
+        difference = abs(difference)
+//        print("Elapsed time: \(difference) seconds")
+        
+        self.updateBalanceOnPassiveIncome(Int(difference))
+        
+        self.passiveTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.generatePassiveIncome), userInfo: nil, repeats: true)
     }
     
     @IBAction func profileButtonPressed(_ sender: Any) {
