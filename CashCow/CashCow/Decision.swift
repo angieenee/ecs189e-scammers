@@ -12,7 +12,7 @@ class Decision {
     var id: Int?
     var name: String?   // alert name
     var description: String?
-    var frequency: Int? // weight
+    // var frequency: Int? // weight
     var nameA: String?  // for action text
     var nameB: String?
     var typeA: String?  // balance, stamina, passive, clicker
