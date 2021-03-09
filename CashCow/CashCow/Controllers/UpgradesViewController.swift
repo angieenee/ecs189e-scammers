@@ -105,8 +105,8 @@ class UpgradesViewController: UIViewController, UITableViewDataSource, UITableVi
             upgradeExpense = [key: val]
             if let validPurchase = user?.money?.hasEnoughBalance(upgradeExpense) {
                 if validPurchase {
-                    //user?.money?.subtractBalance(upgradeExpense)
-                    //user?.upgrades[type] = id
+                    user?.money?.subtractBalance(upgradeExpense)
+                    user?.upgrades?[type] = id
                     
                     // Put upgrade into effect:
                     var formattedStats: [String: Int]

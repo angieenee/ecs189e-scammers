@@ -64,7 +64,7 @@ class Mooooney {
             temp_key = asciiShift(str: temp_key, inc: 1, add: true)
         }
         if (self.balance[temp_key] == nil && compareMoney[temp_key] == nil) {
-            return self.getBalance() >= formatMoney(money: compareMoney)
+            return self.getBalance() >= formatMoney(compareMoney)
         }
         if (self.balance[temp_key] != nil) {
             return true
@@ -80,7 +80,7 @@ class Mooooney {
         }
         
         if amt1[temp_key] == nil, amt2[temp_key] == nil {
-            return formatMoney(money: amt1) >= formatMoney(money: amt2)
+            return formatMoney(amt1) >= formatMoney(amt2)
         }
         
         if (amt1[temp_key] != nil) {
@@ -100,6 +100,10 @@ class Mooooney {
                 self.balance[key]? += val
             }
         }
+    }
+    
+    func subtractBalance(_ amount: [String: Int]) {
+        self.balance = self.subtract(self.balance, amount)
     }
     
     // Generalized Add
@@ -158,23 +162,23 @@ class Mooooney {
     }
     
     func getBalance() -> String {
-        return self.formatMoney(money: self.balance)
+        return self.formatMoney(self.balance)
     }
     
     func getMoneyClick() -> String {
-        return self.formatMoney(money: self.moneyClick)
+        return self.formatMoney(self.moneyClick)
     }
     
     func getMoneyPassive() -> String {
         if let mp = self.moneyPassive {
-            return self.formatMoney(money: mp)
+            return self.formatMoney(mp)
         } else {
             return "0.000A"
         }
     }
     
     // Format balance for displaying to user
-    func formatMoney(money: [String: Int]) -> String {
+    func formatMoney(_ money: [String: Int]) -> String {
         print("Format money: \(money)")
         var amount = ""
         if let d1 = money[self.keysBalance.0], let d2 = money[self.keysBalance.1]{

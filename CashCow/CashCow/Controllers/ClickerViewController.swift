@@ -54,6 +54,12 @@ class ClickerViewController: UIViewController {
     @objc func generatePassiveIncome() {
 //        print("Passive Timer fired!")
         self.user?.money?.addBalance(self.user?.money?.moneyPassive ?? ["_" : 0, "A": 0])
+        
+        guard let currBalance =  self.user?.money?.balance else {
+            print("BALANCE IS NULL IN GENERATE PASSIVE INCOME :(")
+            return
+        }
+        self.totalIncome.text = self.user?.money?.formatMoney(currBalance)
 //        print("AMT NOW AFTER ADDING PASSIVE INCOME")
 //        self.user?.money?.printAmt()
     }
@@ -68,10 +74,15 @@ class ClickerViewController: UIViewController {
     }
     
     func updateBalanceOnPassiveIncome(_ seconds: Int) {
-        // TODO: we can also multiply to reduce runtime
         for _ in 1...seconds {
             self.user?.money?.addBalance(self.user?.money?.moneyPassive ?? ["_" : 0, "A": 0])
         }
+        
+        guard let currBalance =  self.user?.money?.balance else {
+            print("BALANCE IS NULL IN UPDATE BALANCE :(")
+            return
+        }
+        self.totalIncome.text = self.user?.money?.formatMoney(currBalance)
     }
         
     @objc func resumePassiveTimer() {
