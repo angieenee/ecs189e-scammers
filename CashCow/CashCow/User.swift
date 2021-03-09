@@ -24,31 +24,23 @@ class User {
         let ref1 = Database.database().reference(withPath: "upgrades")
         let post = [
             ["id": 0,
-            "name": "Coffee Udders",
+            "name": "Side Hustle",
             "cost": 10,
             "costCurrency": "A",
-            "statAmt": 10,
+            "statAmt": 0.010,
             "statAmtCurrency": "A",
-            "description": "Ah! Calf-feine really keeps me awake! This upgrade makes stamina regenerate X% faster.",
-            "iconName": "coffee"],
+            "description": "Let’s start a smool business! This should generate X per minute even while I’m not clicking.",
+            "iconName": "dumbbell"],
             ["id": 1,
-            "name": "Barn Remoodeling",
-            "cost": 50,
-            "costCurrency": "A",
-            "statAmt": 50,
+            "name": "Invest in Savings",
+            "cost": 1,
+            "costCurrency": "B",
+            "statAmt": 1,
             "statAmtCurrency": "A",
-            "description": "Let’s ask Old MacDonald for some marble counters and a king size moottress -- that should refresh stamina X% faster!",
-            "iconName": "tools"],
-            ["id": 2,
-            "name": "Spa and Moossage Day",
-            "cost": 100,
-            "costCurrency": "A",
-            "statAmt": 100,
-            "statAmtCurrency": "A",
-            "description": "My mooscles are so tense… a trip to the Moossage Parlor would boost stamina regeneration by X%!",
-            "iconName": "handSparkles"]
+            "description": "The Mooney Mooket always says to invest in savings, so that’s what we shall do.",
+            "iconName": "moneyBillWave"]
         ] as [[String : Any]]
-        ref1.child("stamina").setValue(post) {
+        ref1.child("passive").setValue(post) {
             (error: Error?, ref: DatabaseReference) in
             if let error = error {
                 print("Data could not be saved: \(error).")
