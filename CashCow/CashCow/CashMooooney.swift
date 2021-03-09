@@ -73,6 +73,7 @@ class Mooooney {
     }
     
     func subtractBalance(_ amount: [String: Int]) {
+        print("Subtracting " + self.formatMoney(money: amount) + " from " + self.getBalance())
         if self.hasEnoughBalance(amount) {
             var carry = 0
             var temp_key = "_"
@@ -80,10 +81,25 @@ class Mooooney {
                 if let check_amount = amount[temp_key], let check_balance = self.balance[temp_key] {
                     if check_balance < check_amount + carry {
                         carry = check_amount + carry - check_balance
+                        carry /= 1000
                         self.balance[temp_key] = 0
                     } else {
                         self.balance[temp_key] = check_balance - (check_amount + carry)
                         carry = 0
+                    }
+                }
+                else {
+                    if let check_balance = self.balance[temp_key] {
+                        if amount[temp_key] == nil {
+                            if check_balance < carry {
+                                carry = carry - check_balance
+                                carry /= 1000
+                                self.balance[temp_key] = 0
+                            } else {
+                                self.balance[temp_key] = check_balance - carry
+                                carry = 0
+                            }
+                        }
                     }
                 }
                 temp_key = asciiShift(str: temp_key, inc: 1, add: true)
@@ -96,6 +112,7 @@ class Mooooney {
                 temp_key = asciiShift(str: temp_key, inc: 1, add: false)
             }
         }
+        print(self.getBalance())
     }
     
     func addBalance(_ amount: [String: Int]) {
@@ -111,31 +128,28 @@ class Mooooney {
         }
     }
     
-    // dump all the add related shit here
+    // Generalized Add
     func add(_ amt1: [String: Int], _ amt2: [String: Int]) -> [String: Int] {
+        print(amt1)
+        print(amt2)
         var sum = amt1
+        var carry = 0
         for (key, val1) in sum {
             if let val2 = amt2[key] {
-                //sum = checkOverflowAndAdd(key, val, value, sum)
-                if val1 + val2  >= NUM_BASE {
-                    let overflowVal = (val1 + val2) / NUM_BASE
-                    let leftoverVal = (val1 + val2) % NUM_BASE
-                    let nextLetter = asciiShift(str: key, inc: 1, add: true)
-                    
-                    if sum[nextLetter] != nil {
-                        sum[nextLetter]? += overflowVal
-                    } else {
-                        sum[nextLetter] = overflowVal
-                    }
-                    sum[key] = leftoverVal
+                if val1 + val2 + carry  >= NUM_BASE {
+                    sum[key] = (val1 + val2 + carry) - NUM_BASE
+                    carry = (val1 + val2 + carry) / NUM_BASE
+                }
+                else {
+                    sum[key] = val1 + val2 + carry
+                    carry = 0
                 }
             }
         }
         return sum
     }
     
-    // subtract generalized func
-    // todo check for negative balance?
+    // Don't need subtract for other stats
     func subtract(_ amt1: [String: Int], _ amt2: [String: Int]) -> [String: Int] {
         var diff = amt1
         for (key, val1) in diff {
