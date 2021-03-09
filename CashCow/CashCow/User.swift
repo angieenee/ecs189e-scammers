@@ -20,18 +20,64 @@ class User {
     var upgrades: [String: Int]? // upgrade type: id
     var staminaRegen: [String: Int]?
     
-//    func push_upgrades(completion: () -> Void) {
-//        let ref1 = Database.database().reference(withPath: "upgrades")
-//        let post = ["id": 0,
-//                    "name": "Hoof Shine",
-//                    "cost": 10,
-//                    "costCurrency": "A",
-//                    "statAmt": 10,
-//                    "statAmtCurrency": "A",
-//                    "description": "Can’t click well if your hooves aren’t spruced up! This upgrade +10A more mooney to each click!",
-//                    "iconName": "shoePrints"] as [String : Any]
-//        ref1.child("clicker").setValue(post) {
-//            (error: Error?, ref:DatabaseReference) in
+//    func push_decision(completion: () -> Void) {
+//        let ref1 = Database.database().reference(withPath: "decisions")
+//        let post = [
+//            [
+//                "id": 0,
+//                "name": "Dinner Dash",
+//                "description": "Hungry from the clicking? It’s time to refuel!",
+//                "nameA": "MooDash Delivery",
+//                "nameB": "Cook At Home",
+//                "typeA": "stamina",
+//                "typeB": "clicker",
+//                "amountA": 5,
+//                "amountB": 5,
+//                "keyA": "A",
+//                "keyB": "A"
+//            ],
+//            [
+//                "id": 1,
+//                "name": "Stimoolus Check",
+//                "description": "Cowngress sent you a stimoolus check! What shall we do with it?",
+//                "nameA": "Cash It In",
+//                "nameB": "Stash As Savings",
+//                "typeA": "balance",
+//                "typeB": "passive",
+//                "amountA": 100,
+//                "amountB": 10,
+//                "keyA": "A",
+//                "keyB": "A"
+//            ],
+//            [
+//                "id": 2,
+//                "name": "Free Time",
+//                "description": "Take a break from the clicking. How should we relax?",
+//                "nameA": "MooTube Video",
+//                "nameB": "Call Moom",
+//                "typeA": "clicker",
+//                "typeB": "passive",
+//                "amountA": 5,
+//                "amountB": 5,
+//                "keyA": "A",
+//                "keyB": "A"
+//            ],
+//            [
+//                "id": 3,
+//                "name": "Aerobic Cowrdio",
+//                "description": "30 minutes of exercise a day gives the clickers a good pay!",
+//                "nameA": "Home Workout",
+//                "nameB": "Gym Membership",
+//                "typeA": "passive",
+//                "typeB": "stamina",
+//                "amountA": 10,
+//                "amountB": 10,
+//                "keyA": "A",
+//                "keyB": "A"
+//            ]
+//        ]
+//        ref1.setValue(post) {
+//            (error: Error?, ref: DatabaseReference) in
 //            if let error = error {
 //                print("Data could not be saved: \(error).")
 //            } else {

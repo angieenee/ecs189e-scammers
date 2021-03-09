@@ -46,7 +46,7 @@ class HomeViewController: UIViewController {
             }
         })
         print("User: \(user)")
-//        self.user.push_upgrades() {
+//        self.user.push_decision() {
 //            print("success")
 //        }
     }

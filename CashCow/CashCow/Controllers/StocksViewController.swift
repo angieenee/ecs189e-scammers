@@ -50,8 +50,8 @@ struct TimeSeries: Decodable {
 class StocksViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var user: User?
     let API_KEY = "QxgT-zxMrt3AYy2xUhhA"
-    var stockCodes = ["APPL": "Apple", "DIS": "Walt Disney", "HD": "Home Depot", "MSFT": "Microsoft"]
-    var stocks: [TimeSeries] = []
+    var stockCodes = ["AAPL": "Apple", "DIS": "Walt Disney", "HD": "Home Depot", "MSFT": "Microsoft"]
+    var stocks: [String: TimeSeries] = [:]
     
     @IBOutlet weak var stocksTableView: UITableView!
     
@@ -61,59 +61,64 @@ class StocksViewController: UIViewController, UITableViewDataSource, UITableView
         self.stocksTableView.dataSource = self
         self.stocksTableView.delegate = self
         
-        var url = "https://www.quandl.com/api/v3/datasets/EOD/AAPl/data.json?api_key=\(API_KEY)"
-        print(url)
-        if let nsurl = URL(string: url) {
-            print(nsurl)
-            URLSession.shared.dataTask(with: nsurl) { data, response, error in
-                print("STOCK DATA ------")
-                //print(data)
-                //print(response)
-//                if let d = data {
-//                    do {
-//                        let json = try JSONSerialization.jsonObject(with: d, options: []) as? [String : Any]
-//                        print(json)
-//                    } catch {
-//                        print("Error converting to JSON")
-//                    }
-//                }
-                guard error == nil else {
-                    print("Error: \(error!)")
-                    return
-                }
-                guard let response = response as? HTTPURLResponse else {
-                    print("Bad Response")
-                    return
-                }
-                guard response.statusCode == 200 else {
-                    print("Bad Response: \(response.statusCode)")
-                    return
-                }
-                guard let data = data else {
-                    print("No data")
-                    return
-                }
-                
-                let formatter = DateFormatter()
-                formatter.dateFormat = "yyyy-MM-dd"
-                formatter.calendar = Calendar(identifier: .iso8601)
-                formatter.timeZone = TimeZone(secondsFromGMT: 0)
-                formatter.locale = Locale(identifier: "en_US_POSIX")
-                
-                let decoder = JSONDecoder()
-                decoder.dateDecodingStrategy = .formatted(formatter)
-                decoder.keyDecodingStrategy = .convertFromSnakeCase
-
-                if let result = try? decoder.decode(TimeSeries.self, from: data) {
-                    print(result.datasetData)
-                    self.stocks.append(result)
-                    
-                    // Update table in UI thread
-                    DispatchQueue.main.async() {
-                        self.stocksTableView.reloadData()
+        for (key, val) in stockCodes {
+            var url = "https://www.quandl.com/api/v3/datasets/EOD/\(key)/data.json?api_key=\(API_KEY)"
+            print(url)
+            if let nsurl = URL(string: url) {
+                print(nsurl)
+                URLSession.shared.dataTask(with: nsurl) { data, response, error in
+                    print("STOCK DATA ------")
+                    print("KEY: \(key)")
+                    //print(data)
+                    //print(response)
+    //                if let d = data {
+    //                    do {
+    //                        let json = try JSONSerialization.jsonObject(with: d, options: []) as? [String : Any]
+    //                        print(json)
+    //                    } catch {
+    //                        print("Error converting to JSON")
+    //                    }
+    //                }
+                    guard error == nil else {
+                        print("Error: \(error!)")
+                        return
                     }
-                }
-            }.resume()
+                    guard let response = response as? HTTPURLResponse else {
+                        print("Bad Response")
+                        return
+                    }
+                    guard response.statusCode == 200 else {
+                        print("Bad Response: \(response.statusCode)")
+                        return
+                    }
+                    guard let data = data else {
+                        print("No data")
+                        return
+                    }
+                    
+                    let formatter = DateFormatter()
+                    formatter.dateFormat = "yyyy-MM-dd"
+                    formatter.calendar = Calendar(identifier: .iso8601)
+                    formatter.timeZone = TimeZone(secondsFromGMT: 0)
+                    formatter.locale = Locale(identifier: "en_US_POSIX")
+                    
+                    let decoder = JSONDecoder()
+                    decoder.dateDecodingStrategy = .formatted(formatter)
+                    decoder.keyDecodingStrategy = .convertFromSnakeCase
+
+                    if let result = try? decoder.decode(TimeSeries.self, from: data) {
+                        //print(result.datasetData)
+                        print(key)
+                        self.stocks[key] = result
+                        
+                        // Update table in UI thread
+                        DispatchQueue.main.async() {
+                            self.stocksTableView.reloadData()
+                        }
+                    }
+                }.resume()
+            }
+            sleep(UInt32(0.1))
         }
     }
 
@@ -145,7 +150,7 @@ class StocksViewController: UIViewController, UITableViewDataSource, UITableView
         }
         
         let code = Array(stockCodes.keys)[indexPath.row]
-        if let val = stockCodes[code], let rand = stocks[indexPath.row].datasetData.data.randomElement() {
+        if let val = stockCodes[code], let rand = stocks[code]?.datasetData.data.randomElement() {
             cell.configureCell(code: code, name: val, price: String(rand.data[3]), open: String(rand.data[0]), high: String(rand.data[1]), low: String(rand.data[2]))
         }
         return cell
