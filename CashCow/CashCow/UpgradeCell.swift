@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FontAwesome_swift
 
 class UpgradeCell: UITableViewCell {
     
@@ -15,15 +16,33 @@ class UpgradeCell: UITableViewCell {
     @IBOutlet weak var buyButton: UIButton!
     @IBOutlet weak var upgradeDescription: UILabel!
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    func configureCell(upgradesList: [Upgrade], row: Int) {
+        let iconName = upgradesList[row].iconName ?? "default"
+        self.upgradeIcon.titleLabel?.font = UIFont.fontAwesome(ofSize: 20, style: .solid)
+        self.upgradeIcon.setTitle(String.fontAwesomeIcon(name: self.convertStringToFontAwesome(iconName)), for: .normal)
+
+        self.upgradeName.text = upgradesList[row].name
+
+        let upgradeCost = upgradesList[row].cost ?? -1
+
+        let upgradeCostCurrency = upgradesList[row].costCurrency ?? "A"
+
+        self.upgradeAmt.text = String(upgradeCost) + upgradeCostCurrency
+
+        self.upgradeDescription.text = upgradesList[row].description
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    func convertStringToFontAwesome(_ iconName: String) -> FontAwesome {
+        switch iconName {
+        case "coffee":
+            return .coffee
+        case "shoePrints":
+            return .shoePrints
+        case "dumbbell":
+            return .dumbbell
+        default:
+            return .allergies
+        }
     }
     
 }

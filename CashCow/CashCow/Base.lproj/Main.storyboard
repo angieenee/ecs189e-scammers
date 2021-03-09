@@ -435,7 +435,7 @@
                                     <constraint firstAttribute="height" constant="750" id="kg2-49-Fhe"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Z4g-fd-joF" customClass="StockCell" customModule="CashCow" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="stockCell" id="Z4g-fd-joF" customClass="StockCell" customModule="CashCow" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="378" height="121"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Z4g-fd-joF" id="Afk-4j-hI0">
@@ -506,7 +506,7 @@
                                                 <constraint firstItem="98l-xO-h4F" firstAttribute="top" secondItem="8kD-rj-gCR" secondAttribute="bottom" constant="5" id="g7j-az-1NX"/>
                                                 <constraint firstItem="5DW-7I-O0F" firstAttribute="top" secondItem="Afk-4j-hI0" secondAttribute="topMargin" id="jle-gL-nLB"/>
                                                 <constraint firstItem="Mqv-gL-Gsd" firstAttribute="top" secondItem="Afk-4j-hI0" secondAttribute="top" constant="11" id="p1z-Y2-srZ"/>
-                                                <constraint firstItem="Mqv-gL-Gsd" firstAttribute="leading" secondItem="GUd-4e-S3D" secondAttribute="trailing" constant="10" id="uNj-HJ-PRS"/>
+                                                <constraint firstAttribute="trailing" secondItem="Mqv-gL-Gsd" secondAttribute="trailing" constant="16" id="rvF-QR-pym"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -703,7 +703,7 @@
                                 <rect key="frame" x="32" y="103" width="364" height="687"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="upgradesTableCell" rowHeight="99" id="Ab5-cl-mRt" customClass="UpgradeCell" customModule="CashCow" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="upgradeCell" rowHeight="99" id="Ab5-cl-mRt" customClass="UpgradeCell" customModule="CashCow" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="364" height="99"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ab5-cl-mRt" id="H6N-gF-Pzh">

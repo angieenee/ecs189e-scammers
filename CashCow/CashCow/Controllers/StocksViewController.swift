@@ -7,6 +7,8 @@
 
 import UIKit
 
+// Start JSON schema Decodable from "thisischemistry" on Reddit
+
 struct TimeSeriesData {
   let date: Date
   let data: [Float]
@@ -43,16 +45,7 @@ struct TimeSeries: Decodable {
   let datasetData: DatasetData
 }
 
-class StockCell: UITableViewCell {
-    @IBOutlet weak var stockCode: UILabel!
-    @IBOutlet weak var stockName: UILabel!
-    @IBOutlet weak var price: UILabel!
-    @IBOutlet weak var open: UILabel!
-    @IBOutlet weak var high: UILabel!
-    @IBOutlet weak var low: UILabel!
-    @IBOutlet weak var buyButton: UIButton!
-    
-}
+// End JSON schema Decodable from Reddit
 
 class StocksViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var user: User?
@@ -143,19 +136,17 @@ class StocksViewController: UIViewController, UITableViewDataSource, UITableView
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell: StockCell
-        if let reuseCell = tableView.dequeueReusableCell(withIdentifier: "stockCell") as? StockCell {
+        if let reuseCell = tableView.dequeueReusableCell(withIdentifier: "stockCell", for: indexPath) as? StockCell {
+            print("Reused")
             cell = reuseCell
         } else {
+            print("New cell")
             cell = StockCell(style: .default, reuseIdentifier: "stockCell")
         }
         
-        cell.stockCode.text = Array(stockCodes.keys)[indexPath.row]
-        cell.stockName.text = stockCodes[Array(stockCodes.keys)[indexPath.row]]
-        if let rand = stocks[indexPath.row].datasetData.data.randomElement() {
-            cell.open.text = String(rand.data[0])
-            cell.high.text = String(rand.data[1])
-            cell.low.text = String(rand.data[2])
-            cell.price.text = String(rand.data[3])
+        let code = Array(stockCodes.keys)[indexPath.row]
+        if let val = stockCodes[code], let rand = stocks[indexPath.row].datasetData.data.randomElement() {
+            cell.configureCell(code: code, name: val, price: String(rand.data[3]), open: String(rand.data[0]), high: String(rand.data[1]), low: String(rand.data[2]))
         }
         return cell
     }

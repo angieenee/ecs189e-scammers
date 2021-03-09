@@ -35,8 +35,6 @@ class UpgradesViewController: UIViewController, UITableViewDataSource, UITableVi
         self.upgradesTable.dataSource = self
         self.upgradesTable.delegate = self
         
-        self.registerTableViewCells()
-        
         self.categoryIcons.append(staminaIcon)
         self.categoryIcons.append(clickerIcon)
         self.categoryIcons.append(passiveIncomeIcon)
@@ -65,51 +63,20 @@ class UpgradesViewController: UIViewController, UITableViewDataSource, UITableVi
         }
     }
     
-    func convertStringToFontAwesome(_ iconName: String) -> FontAwesome {
-        switch iconName {
-        case "coffee":
-            return .coffee
-        case "shoePrints":
-            return .shoePrints
-        case "dumbbell":
-            return .dumbbell
-        default:
-            return .allergies
-        }
-    }
-    
-    private func registerTableViewCells() {
-        let textFieldCell = UINib(nibName: "UpgradeCell", bundle: nil)
-        self.upgradesTable.register(textFieldCell, forCellReuseIdentifier: "UpgradeCell")
-    }
-    
     // TableView Protocols Implementation
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return upgradesList.count
+        return self.upgradesList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell: UpgradeCell
-        if let reuseCell = tableView.dequeueReusableCell(withIdentifier: "UpgradeCell") as? UpgradeCell {
+        if let reuseCell = tableView.dequeueReusableCell(withIdentifier: "upgradeCell") as? UpgradeCell {
             cell = reuseCell
         } else {
-            cell = UpgradeCell(style: .default, reuseIdentifier: "UpgradeCell")
+            cell = UpgradeCell(style: .default, reuseIdentifier: "upgradeCell")
         }
         
-        let iconName = upgradesList[indexPath.row].iconName ?? "default"
-        print(cell)
-        cell.upgradeIcon.titleLabel?.font = UIFont.fontAwesome(ofSize: 20, style: .solid)
-        cell.upgradeIcon.setTitle(String.fontAwesomeIcon(name: convertStringToFontAwesome(iconName)), for: .normal)
-
-        cell.upgradeName.text = upgradesList[indexPath.row].name
-
-        let upgradeCost = upgradesList[indexPath.row].cost ?? -1
-
-        let upgradeCostCurrency = upgradesList[indexPath.row].costCurrency ?? "A"
-
-        cell.upgradeAmt.text = String(upgradeCost) + upgradeCostCurrency
-
-        cell.upgradeDescription.text = upgradesList[indexPath.row].description
+        cell.configureCell(upgradesList: self.upgradesList, row: indexPath.row)
                 
         return cell
     }
