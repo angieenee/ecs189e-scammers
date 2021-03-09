@@ -18,7 +18,7 @@ class User {
     var username: String?
     var money: Mooooney?
     var upgrades: [String: Int]? // upgrade type: id
-    var staminaRegen: [String: Int]?
+    var staminaRegenAmt: Int?
     
 //    func push_decision(completion: () -> Void) {
 //        let ref1 = Database.database().reference(withPath: "decisions")
