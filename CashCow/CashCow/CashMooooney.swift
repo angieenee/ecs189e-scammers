@@ -72,47 +72,21 @@ class Mooooney {
         return false
     }
     
-    func subtractBalance(_ amount: [String: Int]) {
-        print("Subtracting " + self.formatMoney(money: amount) + " from " + self.getBalance())
-        if self.hasEnoughBalance(amount) {
-            var carry = 0
-            var temp_key = "_"
-            while (self.balance[temp_key] != nil) {
-                if let check_amount = amount[temp_key], let check_balance = self.balance[temp_key] {
-                    if check_balance < check_amount + carry {
-                        carry = check_amount + carry - check_balance
-                        carry /= 1000
-                        self.balance[temp_key] = 0
-                    } else {
-                        self.balance[temp_key] = check_balance - (check_amount + carry)
-                        carry = 0
-                    }
-                }
-                else {
-                    if let check_balance = self.balance[temp_key] {
-                        if amount[temp_key] == nil {
-                            if check_balance < carry {
-                                carry = carry - check_balance
-                                carry /= 1000
-                                self.balance[temp_key] = 0
-                            } else {
-                                self.balance[temp_key] = check_balance - carry
-                                carry = 0
-                            }
-                        }
-                    }
-                }
-                temp_key = asciiShift(str: temp_key, inc: 1, add: true)
-            }
-            // Make "leading" values with 0 = nil
-            // Ex: 0C 0B 100A --> 100A
-            temp_key = asciiShift(str: temp_key, inc: 1, add: false)
-            while (self.balance[temp_key] == 0) {
-                self.balance[temp_key] = nil
-                temp_key = asciiShift(str: temp_key, inc: 1, add: false)
-            }
+    func validSubtraction(_ amt1: [String: Int], _ amt2: [String: Int]) -> Bool {
+        
+        var temp_key = "_"
+        while amt1[temp_key] != nil, amt2[temp_key] != nil {
+            temp_key = asciiShift(str: temp_key, inc: 1, add: true)
         }
-        print(self.getBalance())
+        
+        if amt1[temp_key] == nil, amt2[temp_key] == nil {
+            return formatMoney(money: amt1) >= formatMoney(money: amt2)
+        }
+        
+        if (amt1[temp_key] != nil) {
+            return true
+        }
+        return false
     }
     
     func addBalance(_ amount: [String: Int]) {
@@ -149,12 +123,10 @@ class Mooooney {
         return sum
     }
     
-    // Don't need subtract for other stats
     func subtract(_ amt1: [String: Int], _ amt2: [String: Int]) -> [String: Int] {
         var diff = amt1
         for (key, val1) in diff {
             if let val2 = amt2[key] {
-                //sum = checkOverflowAndAdd(key, val, value, sum)
                 if val1 - val2 <= 0 {
                     let underflowVal = (val1 - val2) / NUM_BASE
                     let leftoverVal = (val1 - val2) % NUM_BASE
@@ -167,7 +139,6 @@ class Mooooney {
                     }
                     diff[key] = leftoverVal
                 } else {
-                    // check overflow in the off chance we have broken something
                     if val1-val2 >= NUM_BASE {
                         let overflowVal = (val1 + val2) / NUM_BASE
                         let leftoverVal = (val1 + val2) % NUM_BASE
