@@ -52,14 +52,14 @@ class ClickerViewController: UIViewController {
     }
     
     @objc func generatePassiveIncome() {
-        print("Passive Timer fired!")
+//        print("Passive Timer fired!")
         self.user?.money?.addBalance(self.user?.money?.moneyPassive ?? ["_" : 0, "A": 0])
-        print("AMT NOW AFTER ADDING PASSIVE INCOME")
-        self.user?.money?.printAmt()
+//        print("AMT NOW AFTER ADDING PASSIVE INCOME")
+//        self.user?.money?.printAmt()
     }
     
     @objc func stopPassiveTimer() {
-        print("****App moved to BACKGROUND!")
+//        print("****App moved to BACKGROUND!")
         
         self.passiveTimer?.invalidate()
         self.timeWhenBackgrounded = NSDate()
@@ -75,11 +75,11 @@ class ClickerViewController: UIViewController {
     }
         
     @objc func resumePassiveTimer() {
-        print("****App moved back to FOREGROUND!")
+//        print("****App moved back to FOREGROUND!")
         
         guard var difference = self.timeWhenBackgrounded?.timeIntervalSinceNow else {return}
         difference = abs(difference)
-        print("Elapsed time: \(difference) seconds")
+//        print("Elapsed time: \(difference) seconds")
         
         self.updateBalanceOnPassiveIncome(Int(difference))
         

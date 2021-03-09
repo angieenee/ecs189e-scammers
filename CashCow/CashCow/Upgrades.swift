@@ -36,17 +36,27 @@ private func getFirebaseUpgrades(_ type: String, completion: @escaping ([Upgrade
     let ref = Database.database().reference(withPath: "upgrades")
     
     ref.child(type).observe(.value, with: { snapshot in
-        if let data = snapshot.value as? [String: Any] {
-            let upgradesList = [Upgrade.init(data: data, type: type)]
-            completion(upgradesList)
+        var upgradesList: [Upgrade] = []
+        for child in snapshot.children {
+            let snap = child as? DataSnapshot
+            if let data = snap?.value as? [String: Any] {
+                upgradesList.append(Upgrade.init(data: data, type: type))
+            }
         }
+        
+        completion(upgradesList)
+
     })
 }
 
 func getStaminaUpgrades(completion: @escaping ([Upgrade]?) -> Void) {
+    print("***get stamina upgrades")
     getFirebaseUpgrades("stamina") { response in
         if let upgradesList = response {
             completion(upgradesList)
+        }
+        else {
+            print("NO RESPONSE FOR STAMINA :(")
         }
     }
 }
