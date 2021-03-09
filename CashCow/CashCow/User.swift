@@ -19,6 +19,8 @@ class User {
     var money: Mooooney?
     var upgrades: [String: Int]? // upgrade type: id
     var staminaRegen: [String: Int]?
+    var date: [String: Any]?
+    var stocks: [[String: Any]]?
     
 //    func push_decision(completion: () -> Void) {
 //        let ref1 = Database.database().reference(withPath: "decisions")
@@ -76,7 +78,7 @@ class User {
 //                "keyB": "A"
 //            ]
 //        ]
-//        ref1.setValue(post) {
+//        ref1.child().setValue(post) {
 //            (error: Error?, ref: DatabaseReference) in
 //            if let error = error {
 //                print("Data could not be saved: \(error).")
@@ -98,6 +100,12 @@ class User {
                 self.username = String(email[..<i])
             }
         }
+        if let date = data["date"] as? [String: Any] {
+            self.date = date
+        }
+        if let stocks = data["stocks"] as? [[String: Any]] {
+            self.stocks = stocks
+        }
         
         completion()
     }
@@ -110,7 +118,9 @@ class User {
                         "money_click": m.moneyClick,
                         "money_passive": m.moneyPassive,
                         "key_balance": m.keysBalance.0,
-                        "key_click": m.keysClick.0] as [String : Any]
+                        "key_click": m.keysClick.0,
+                        "date": date,
+                        "stocks": stocks] as [String : Any]
             ref.child(uid).setValue(post) {
                 (error: Error?, ref:DatabaseReference) in
                 if let error = error {

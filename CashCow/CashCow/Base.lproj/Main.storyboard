@@ -478,13 +478,15 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fpM-ke-auG">
-                                                    <rect key="frame" x="312" y="63" width="50" height="30"/>
-                                                    <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fpM-ke-auG" customClass="SSBouncyButton">
+                                                    <rect key="frame" x="302" y="63" width="60" height="30"/>
+                                                    <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="50" id="Aly-7c-CXf"/>
+                                                        <constraint firstAttribute="width" constant="60" id="Aly-7c-CXf"/>
+                                                        <constraint firstAttribute="height" constant="30" id="KaZ-la-BPR"/>
                                                     </constraints>
-                                                    <state key="normal" title="BUY">
+                                                    <color key="tintColor" systemColor="systemOrangeColor"/>
+                                                    <state key="normal" title="SELL 1">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
                                                     <userDefinedRuntimeAttributes>
@@ -496,12 +498,34 @@
                                                         <action selector="buyButtonPressed:" destination="rhF-xY-MEG" eventType="touchUpInside" id="ET8-3C-zqc"/>
                                                     </connections>
                                                 </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wjd-jS-Q7F" customClass="SSBouncyButton">
+                                                    <rect key="frame" x="226" y="63" width="60" height="30"/>
+                                                    <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="60" id="NBz-2a-sEa"/>
+                                                        <constraint firstAttribute="height" constant="30" id="swi-Lb-Uc0"/>
+                                                    </constraints>
+                                                    <color key="tintColor" systemColor="systemGreenColor"/>
+                                                    <state key="normal" title="BUY 1">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="buyButtonPressed:" destination="rhF-xY-MEG" eventType="touchUpInside" id="Tua-Zc-Iul"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="8kD-rj-gCR" firstAttribute="leading" secondItem="Afk-4j-hI0" secondAttribute="leadingMargin" constant="20" id="09e-A2-Yza"/>
                                                 <constraint firstItem="5Ua-E3-wg0" firstAttribute="leading" secondItem="Afk-4j-hI0" secondAttribute="leadingMargin" constant="20" id="6yd-N7-qmX"/>
                                                 <constraint firstItem="5Ua-E3-wg0" firstAttribute="top" secondItem="5DW-7I-O0F" secondAttribute="bottom" constant="8" symbolic="YES" id="9UP-hx-ZCe"/>
+                                                <constraint firstItem="Wjd-jS-Q7F" firstAttribute="top" secondItem="GUd-4e-S3D" secondAttribute="bottom" constant="29" id="FC8-nZ-nZO"/>
                                                 <constraint firstItem="GUd-4e-S3D" firstAttribute="leading" secondItem="5DW-7I-O0F" secondAttribute="trailing" constant="10" id="HBm-oC-CxL"/>
+                                                <constraint firstItem="fpM-ke-auG" firstAttribute="leading" secondItem="Wjd-jS-Q7F" secondAttribute="trailing" constant="16" id="JXg-p3-7Dn"/>
                                                 <constraint firstItem="98l-xO-h4F" firstAttribute="leading" secondItem="Afk-4j-hI0" secondAttribute="leading" constant="40" id="PQW-R3-7Rl"/>
                                                 <constraint firstItem="5DW-7I-O0F" firstAttribute="leading" secondItem="Afk-4j-hI0" secondAttribute="leadingMargin" id="QJR-kr-UrA"/>
                                                 <constraint firstItem="8kD-rj-gCR" firstAttribute="top" secondItem="5Ua-E3-wg0" secondAttribute="bottom" constant="5" id="anO-Sy-7wR"/>
@@ -515,11 +539,12 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="buyButton" destination="fpM-ke-auG" id="w3H-B0-G0a"/>
+                                            <outlet property="buyButton" destination="Wjd-jS-Q7F" id="En6-pz-CUO"/>
                                             <outlet property="high" destination="8kD-rj-gCR" id="d0y-Zh-hRb"/>
                                             <outlet property="low" destination="98l-xO-h4F" id="0ck-zp-Fhl"/>
                                             <outlet property="open" destination="5Ua-E3-wg0" id="1P7-DE-JBI"/>
                                             <outlet property="price" destination="Mqv-gL-Gsd" id="Js2-Qn-JaR"/>
+                                            <outlet property="sellButton" destination="fpM-ke-auG" id="PDf-96-PlG"/>
                                             <outlet property="stockCode" destination="5DW-7I-O0F" id="e1A-dN-3gp"/>
                                             <outlet property="stockName" destination="GUd-4e-S3D" id="l7s-78-otX"/>
                                         </connections>
@@ -737,12 +762,13 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LV4-mo-1SF">
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LV4-mo-1SF" customClass="SSBouncyButton">
                                                             <rect key="frame" x="290" y="0.0" width="50" height="30"/>
                                                             <color key="backgroundColor" systemColor="systemGreenColor"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="50" id="Zrh-ZJ-KAa"/>
                                                             </constraints>
+                                                            <color key="tintColor" systemColor="systemGreenColor"/>
                                                             <state key="normal" title="BUY">
                                                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </state>
@@ -932,6 +958,9 @@
         </systemColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
