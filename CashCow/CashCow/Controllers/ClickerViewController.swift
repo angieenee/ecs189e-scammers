@@ -15,7 +15,7 @@ class ClickerViewController: UIViewController {
     var staminaTimer: Timer?
     var saveTimer: Timer?
     var passiveTimer: Timer?
-    var popupTimer: Timer?
+    // var popupTimer: Timer?
     var coins = ImgSeqContainer()
     
     var timeWhenBackgrounded: NSDate?
@@ -24,6 +24,7 @@ class ClickerViewController: UIViewController {
     @IBOutlet weak var profileButton: UIButton!
     @IBOutlet weak var upgradesButton: UIButton!
     @IBOutlet weak var clickerButton: UIButton!
+    @IBOutlet weak var popupButton: UIButton!
     @IBOutlet weak var staminaBar: UIProgressView!
     @IBOutlet weak var coinPopUp: UIImageView!
     
@@ -39,12 +40,11 @@ class ClickerViewController: UIViewController {
         self.saveTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.saveData), userInfo: nil, repeats: true)
         
         self.passiveTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.generatePassiveIncome), userInfo: nil, repeats: true)
-        
+        /*
         self.popupTimer = Timer.scheduledTimer(withTimeInterval: 60, repeats: true) {
             timer in
                 self.showPopUp()
-                print("Testing if alert will show up.")
-        }
+        }*/
         
         NotificationCenter.default.addObserver(self, selector: #selector(stopPassiveTimer), name: UIApplication.willResignActiveNotification, object: nil)
         
@@ -60,12 +60,9 @@ class ClickerViewController: UIViewController {
             return
         }
         self.totalIncome.text = self.user?.money?.formatMoney(currBalance)
-//        print("AMT NOW AFTER ADDING PASSIVE INCOME")
-//        self.user?.money?.printAmt()
     }
     
     @objc func stopPassiveTimer() {
-//        print("****App moved to BACKGROUND!")
         
         self.passiveTimer?.invalidate()
         self.timeWhenBackgrounded = NSDate()
@@ -193,6 +190,11 @@ class ClickerViewController: UIViewController {
         }
     }
 
+    @IBAction func popupButtonPressed(_ sender: Any) {
+        print("It's decision time!")
+        showPopUp()
+    }
+    
     // Stamina bar methods
     @objc func reloadStamina() {
         self.staminaBar.progress += 0.05
@@ -210,13 +212,20 @@ class ClickerViewController: UIViewController {
     }
     
     func showPopUp() {
-        let alert = UIAlertController(title: "ALERT! ALERT!!", message: "This is my first alert.", preferredStyle: .alert)
-        let okayAction = UIAlertAction(title: "Okay", style: .default) {
+        // For the time being, this alert will be hard-coded
+        let alert = UIAlertController(title: "Dinner Dash", message: "Hungry from the clicking? It’s time to refuel!", preferredStyle: .alert)
+        let actionA = UIAlertAction(title: "MooDash Delivery +5A passive", style: .default) {
             (action) in print(action)
+            self.user?.money?.moneyPassive = self.user?.money?.add(self.user?.money?.moneyPassive ?? ["_": 0], ["_": 0, "A": 5])
+        }
+        let actionB = UIAlertAction(title: "Cook At Home +5A clicker", style: .default) {
+            (action) in print(action)
+            self.user?.money?.moneyClick = self.user?.money?.add(self.user?.money?.moneyClick ?? ["_": 0], ["_": 0, "A": 5]) ?? ["_": 0]
         }
         
         // add to alert
-        alert.addAction(okayAction)
+        alert.addAction(actionA)
+        alert.addAction(actionB)
         present(alert, animated: true, completion: nil)
     }
 }

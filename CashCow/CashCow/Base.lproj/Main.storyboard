@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cash Cow" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lHD-th-YUb">
-                                <rect key="frame" x="39.666666666666657" y="153" width="348.66666666666674" height="87.666666666666686"/>
+                                <rect key="frame" x="50.333333333333343" y="153" width="327.33333333333326" height="91.666666666666686"/>
                                 <fontDescription key="fontDescription" name="ProximaNovaT-Thin" family="Proxima Nova" pointSize="75"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -177,7 +177,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="egJ-0v-vzg">
-                                <rect key="frame" x="43.333333333333343" y="292.33333333333326" width="341.66666666666663" height="341.66666666666674"/>
+                                <rect key="frame" x="43.333333333333343" y="292.33333333333337" width="341.33333333333326" height="341.33333333333337"/>
                                 <state key="normal" image="CashCowBase"/>
                                 <connections>
                                     <action selector="cowClicked:" destination="Wic-UL-1mk" eventType="touchUpInside" id="Hu7-ON-oHx"/>
@@ -329,6 +329,9 @@
                                             <imageReference key="image" image="questionmark.circle" catalog="system" symbolScale="medium"/>
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25" scale="large" weight="regular"/>
                                         </state>
+                                        <connections>
+                                            <action selector="popupButtonPressed:" destination="Wic-UL-1mk" eventType="touchUpInside" id="Sw9-vJ-WG4"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -397,6 +400,7 @@
                     <connections>
                         <outlet property="clickerButton" destination="egJ-0v-vzg" id="dV0-hQ-OQe"/>
                         <outlet property="coinPopUp" destination="5mc-LI-urp" id="18a-KW-zOW"/>
+                        <outlet property="popupButton" destination="7FJ-X8-F3Y" id="Igz-BU-Svt"/>
                         <outlet property="profileButton" destination="8Lx-uK-9wE" id="jdE-4q-7xb"/>
                         <outlet property="staminaBar" destination="oPg-kF-hUI" id="sdX-UX-Sru"/>
                         <outlet property="totalIncome" destination="0rX-2x-Gx8" id="i4r-RB-8RR"/>
