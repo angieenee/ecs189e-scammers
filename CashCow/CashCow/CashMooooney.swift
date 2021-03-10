@@ -72,21 +72,16 @@ class Mooooney {
         return false
     }
     
-    func validSubtraction(_ amt1: [String: Int], _ amt2: [String: Int]) -> Bool {
+    func validSubtraction(_ balance: [String: Int], _ cost: [String: Int]) -> Bool {
+        let c_idx = cost.index(cost.startIndex, offsetBy: cost.count - 1)
         
-        var temp_key = "_"
-        while amt1[temp_key] != nil, amt2[temp_key] != nil {
-            temp_key = asciiShift(str: temp_key, inc: 1, add: true)
-        }
-        
-        if amt1[temp_key] == nil, amt2[temp_key] == nil {
-            return formatMoney(amt1) >= formatMoney(amt2)
-        }
-        
-        if (amt1[temp_key] != nil) {
+        if self.keysBalance.0 < cost.keys[c_idx] {
+            return false
+        } else if self.keysBalance.0 == cost.keys[c_idx] {
+            return (balance[self.keysBalance.0] ?? 0) >= cost.values[c_idx]
+        } else {
             return true
         }
-        return false
     }
     
     func addBalance(_ amount: [String: Int]) {
