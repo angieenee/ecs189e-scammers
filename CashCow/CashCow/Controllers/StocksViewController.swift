@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 // Start JSON schema Decodable from "thisischemistry" on Reddit
 
@@ -51,7 +52,9 @@ class StocksViewController: UIViewController, UITableViewDataSource, UITableView
     var user: User?
     let API_KEY = "QxgT-zxMrt3AYy2xUhhA"
     var stockCodes = ["AAPL": "Apple", "DIS": "Walt Disney", "HD": "Home Depot", "MSFT": "Microsoft"]
-    var stocks: [String: TimeSeries] = [:]
+    var stocksData: [String: TimeSeries] = [:]
+    var stocksDict: [[String: Any]]?
+    var ref = Database.database().reference().child("users")
     
     @IBOutlet weak var stocksTableView: UITableView!
     
@@ -61,24 +64,115 @@ class StocksViewController: UIViewController, UITableViewDataSource, UITableView
         self.stocksTableView.dataSource = self
         self.stocksTableView.delegate = self
         
-        for (key, val) in stockCodes {
-            var url = "https://www.quandl.com/api/v3/datasets/EOD/\(key)/data.json?api_key=\(API_KEY)"
-            print(url)
+        let currentDate = Date()
+        let components = Calendar.current.dateComponents([.year, .month, .day], from: currentDate)
+        
+        guard let uid = user?.uid else {
+            print("rip")
+            return
+        }
+        
+        ref.child(uid).child("date").observe( .value, with: { snapshot in
+            if let data = snapshot.value as? [String: Any] {
+                print("GOT THE DATE DATA")
+                print(data)
+                if data["year"] as? Int != components.year || data["month"] as? Int != components.month || data["day"] as? Int != components.day {
+                    print("NEW DATE - GETTING STOCKS FROM API ----------------")
+                    self.getStocksFromAPI() {
+                        // set stocks
+                        self.setStocksDict(uid) {
+                            self.stocksTableView.reloadData()
+                        }
+                    }
+                } else {
+                    // Get from DB
+                    print("SAME DATE - PULLING FROM DB ----------------")
+                    self.ref.child(uid).child("stocks").observe(.value, with: { snapshot in
+                        if let data = snapshot.value as? [[String: Any]] {
+                            print("STOCK DATA FROM DB: \(data)")
+                            self.stocksDict = data
+                            self.stocksTableView.reloadData()
+                        } else {
+                            // No data....
+                            print("No stock data")
+                            if self.stocksDict == nil {
+                                
+                                self.getStocksFromAPI() {
+                                    // set stocks
+                                    self.setStocksDict(uid) {
+                                        self.stocksTableView.reloadData()
+                                    }
+                                }
+                            }
+                        }
+                    })
+                }
+            } else {
+                // no data
+                let post = ["year": components.year, "day": components.day, "month": components.month]
+                self.ref.child(uid).child("date").setValue(post) {
+                    (error: Error?, ref:DatabaseReference) in
+                    if let error = error {
+                        print("Data could not be saved: \(error).")
+                    } else {
+                        print("Data saved successfully!")
+                    }
+                }
+            }
+        })
+    }
+    
+    func setStocksDict(_ uid: String, completion: @escaping () -> Void) {
+        if let count = self.stocksData["AAPL"]?.datasetData.data.count {
+            let rand = Int.random(in: 1..<count)
+            self.stocksDict = [
+                        ["code": "AAPL",
+                        "name": "Apple",
+                        "price": self.stocksData["AAPL"]?.datasetData.data[rand].data[3],
+                        "open": self.stocksData["AAPL"]?.datasetData.data[rand].data[0],
+                        "high": self.stocksData["AAPL"]?.datasetData.data[rand].data[1],
+                        "low": self.stocksData["AAPL"]?.datasetData.data[rand].data[2],
+                        "currency": "A"],
+                        ["code": "DIS",
+                        "name": "Walt Disney",
+                        "price": self.stocksData["DIS"]?.datasetData.data[rand].data[3],
+                        "open": self.stocksData["DIS"]?.datasetData.data[rand].data[0],
+                        "high": self.stocksData["DIS"]?.datasetData.data[rand].data[1],
+                        "low": self.stocksData["DIS"]?.datasetData.data[rand].data[2],
+                        "currency": "B"],
+                        ["code": "HD",
+                        "name": "Home Depot",
+                        "price": self.stocksData["HD"]?.datasetData.data[rand].data[3],
+                        "open": self.stocksData["HD"]?.datasetData.data[rand].data[0],
+                        "high": self.stocksData["HD"]?.datasetData.data[rand].data[1],
+                        "low": self.stocksData["HD"]?.datasetData.data[rand].data[2],
+                        "currency": "C"],
+                        ["code": "MSFT",
+                        "name": "Microsoft",
+                        "price": self.stocksData["MSFT"]?.datasetData.data[rand].data[3],
+                        "open": self.stocksData["MSFT"]?.datasetData.data[rand].data[0],
+                        "high": self.stocksData["MSFT"]?.datasetData.data[rand].data[1],
+                        "low": self.stocksData["MSFT"]?.datasetData.data[rand].data[2],
+                        "currency": "D"]
+                        ]
+            self.ref.child(uid).child("stocks").setValue(self.stocksDict) {
+                (error: Error?, ref:DatabaseReference) in
+                if let error = error {
+                    print("Data could not be saved: \(error).")
+                } else {
+                    print("STOCK Data saved successfully!")
+                    completion()
+                }
+            }
+        }
+    }
+    
+    func getStocksFromAPI(completion: @escaping () -> Void) {
+        for (key, val) in self.stockCodes {
+            var url = "https://www.quandl.com/api/v3/datasets/EOD/\(key)/data.json?api_key=\(self.API_KEY)"
             if let nsurl = URL(string: url) {
-                print(nsurl)
                 URLSession.shared.dataTask(with: nsurl) { data, response, error in
-                    print("STOCK DATA ------")
-                    print("KEY: \(key)")
-                    //print(data)
-                    //print(response)
-    //                if let d = data {
-    //                    do {
-    //                        let json = try JSONSerialization.jsonObject(with: d, options: []) as? [String : Any]
-    //                        print(json)
-    //                    } catch {
-    //                        print("Error converting to JSON")
-    //                    }
-    //                }
+                    
                     guard error == nil else {
                         print("Error: \(error!)")
                         return
@@ -109,16 +203,19 @@ class StocksViewController: UIViewController, UITableViewDataSource, UITableView
                     if let result = try? decoder.decode(TimeSeries.self, from: data) {
                         //print(result.datasetData)
                         print(key)
-                        self.stocks[key] = result
+                        self.stocksData[key] = result
                         
                         // Update table in UI thread
                         DispatchQueue.main.async() {
-                            self.stocksTableView.reloadData()
+                            // We're done here
+                            if self.stocksData.count == self.stockCodes.count {
+                                completion()
+                            }
                         }
                     }
                 }.resume()
             }
-            sleep(UInt32(0.1))
+            sleep(UInt32(0.5))
         }
     }
 
@@ -136,23 +233,21 @@ class StocksViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return stocks.count
+        return stocksDict?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell: StockCell
         if let reuseCell = tableView.dequeueReusableCell(withIdentifier: "stockCell", for: indexPath) as? StockCell {
-            print("Reused")
             cell = reuseCell
         } else {
-            print("New cell")
             cell = StockCell(style: .default, reuseIdentifier: "stockCell")
         }
         
-        let code = Array(stockCodes.keys)[indexPath.row]
-        if let val = stockCodes[code], let rand = stocks[code]?.datasetData.data.randomElement() {
-            cell.configureCell(code: code, name: val, price: String(rand.data[3]), open: String(rand.data[0]), high: String(rand.data[1]), low: String(rand.data[2]))
+        if let get = self.stocksDict?[indexPath.row] {
+            cell.configureCell(code: get["code"] as? String, name: get["name"] as? String, price: get["price"] as? Float, open: get["open"] as? Float, high: get["high"] as? Float, low: get["low"] as? Float, currency: get["currency"] as? String)
         }
+        
         return cell
     }
 }
