@@ -1044,6 +1044,11 @@
                             <constraint firstItem="aXf-3a-ynq" firstAttribute="centerX" secondItem="Vra-sL-V9l" secondAttribute="centerX" id="wrO-wn-Hqc"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="option1Button" destination="ufx-qV-Dvs" id="Hm6-Cj-yzh"/>
+                        <outlet property="option2Button" destination="yPF-on-ObI" id="kW6-Pm-8W4"/>
+                        <outlet property="option3Button" destination="Yq6-Rf-ujN" id="s9D-zL-quG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="40E-oR-sap" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
