@@ -57,9 +57,12 @@ class StocksViewController: UIViewController, UITableViewDataSource, UITableView
     var ref = Database.database().reference().child("users")
     
     @IBOutlet weak var stocksTableView: UITableView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var loadingLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        wait()
         
         self.stocksTableView.dataSource = self
         self.stocksTableView.delegate = self
@@ -81,7 +84,17 @@ class StocksViewController: UIViewController, UITableViewDataSource, UITableView
                     self.getStocksFromAPI() {
                         // set stocks
                         self.setStocksDict(uid) {
-                            self.stocksTableView.reloadData()
+                            let post = ["year": components.year, "day": components.day, "month": components.month]
+                            self.ref.child(uid).child("date").setValue(post) {
+                                (error: Error?, ref:DatabaseReference) in
+                                if let error = error {
+                                    print("Data could not be saved: \(error).")
+                                } else {
+                                    print("Data saved successfully!")
+                                    self.stocksTableView.reloadData()
+                                    self.start()
+                                }
+                            }
                         }
                     }
                 } else {
@@ -92,6 +105,7 @@ class StocksViewController: UIViewController, UITableViewDataSource, UITableView
                             print("STOCK DATA FROM DB: \(data)")
                             self.stocksDict = data
                             self.stocksTableView.reloadData()
+                            self.start()
                         } else {
                             // No data....
                             print("No stock data")
@@ -101,6 +115,7 @@ class StocksViewController: UIViewController, UITableViewDataSource, UITableView
                                     // set stocks
                                     self.setStocksDict(uid) {
                                         self.stocksTableView.reloadData()
+                                        self.start()
                                     }
                                 }
                             }
@@ -215,7 +230,7 @@ class StocksViewController: UIViewController, UITableViewDataSource, UITableView
                     }
                 }.resume()
             }
-            sleep(UInt32(0.5))
+            sleep(UInt32(1))
         }
     }
 
@@ -249,5 +264,20 @@ class StocksViewController: UIViewController, UITableViewDataSource, UITableView
         }
         
         return cell
+    }
+    
+    // activityIndicator methods
+    func wait() {
+        self.activityIndicator.startAnimating()
+        self.view.alpha = 0.8
+        self.view.isUserInteractionEnabled = false
+        self.loadingLabel.isHidden = false
+    }
+    
+    func start() {
+        self.activityIndicator.stopAnimating()
+        self.view.alpha = 1
+        self.view.isUserInteractionEnabled = true
+        self.loadingLabel.isHidden = true
     }
 }

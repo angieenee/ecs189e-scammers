@@ -16,6 +16,7 @@
 		63CCBFD925D9DCA300AA3A36 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63CCBFD825D9DCA300AA3A36 /* Assets.xcassets */; };
 		63CCBFDC25D9DCA300AA3A36 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63CCBFDA25D9DCA300AA3A36 /* LaunchScreen.storyboard */; };
 		63CCBFE625D9E08B00AA3A36 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 63CCBFE525D9E08B00AA3A36 /* GoogleService-Info.plist */; };
+		63DECA7525F9157D00FEFEE9 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DECA7425F9157D00FEFEE9 /* PopUpViewController.swift */; };
 		63FEFCAA25F6FB50008A0BE4 /* UpgradeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FEFCA825F6FB50008A0BE4 /* UpgradeCell.swift */; };
 		63FEFCAB25F6FB50008A0BE4 /* UpgradeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63FEFCA925F6FB50008A0BE4 /* UpgradeCell.xib */; };
 		63FEFCAF25F6FCD5008A0BE4 /* StockCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FEFCAD25F6FCD5008A0BE4 /* StockCell.swift */; };
@@ -54,6 +55,7 @@
 		63CCBFDB25D9DCA300AA3A36 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		63CCBFDD25D9DCA300AA3A36 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		63CCBFE525D9E08B00AA3A36 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		63DECA7425F9157D00FEFEE9 /* PopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
 		63FEFCA825F6FB50008A0BE4 /* UpgradeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpgradeCell.swift; sourceTree = "<group>"; };
 		63FEFCA925F6FB50008A0BE4 /* UpgradeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpgradeCell.xib; sourceTree = "<group>"; };
 		63FEFCAD25F6FCD5008A0BE4 /* StockCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockCell.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 				C978EFE125E31B6D0015530B /* ProfileViewController.swift */,
 				C978EFDE25E31AC10015530B /* UpgradesViewController.swift */,
 				63077D3C25F462DB00A53DE6 /* StocksViewController.swift */,
+				63DECA7425F9157D00FEFEE9 /* PopUpViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -350,6 +353,7 @@
 				C97CE5A525DD981F002CBCDE /* ClickerViewController.swift in Sources */,
 				63077D3D25F462DB00A53DE6 /* StocksViewController.swift in Sources */,
 				E0CF7D9925EE49DA00EF1D1C /* CoinAnims.swift in Sources */,
+				63DECA7525F9157D00FEFEE9 /* PopUpViewController.swift in Sources */,
 				63FEFCAF25F6FCD5008A0BE4 /* StockCell.swift in Sources */,
 				C97CE5A125DD9153002CBCDE /* HomeViewController.swift in Sources */,
 				E559C41025EDA9D60001CB88 /* Stamina.swift in Sources */,

@@ -192,7 +192,16 @@ class ClickerViewController: UIViewController {
 
     @IBAction func popupButtonPressed(_ sender: Any) {
         print("It's decision time!")
-        showPopUp()
+        //showPopUp()
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let popUpViewController =  storyboard.instantiateViewController(identifier: "popUpViewController") as? PopUpViewController else {
+            assertionFailure("Couldn't find VC")
+            return
+        }
+        // Not dismissable
+        popUpViewController.user = self.user
+        popUpViewController.isModalInPresentation = true
+        self.present(popUpViewController, animated: true)
     }
     
     // Stamina bar methods

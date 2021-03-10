@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -555,17 +556,33 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="3Ix-XC-8Pu">
+                                <rect key="frame" x="195.66666666666666" y="444.66666666666669" width="37" height="37"/>
+                                <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading stock data..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kcO-25-rUH">
+                                <rect key="frame" x="123" y="491.66666666666669" width="182" height="24.000000000000057"/>
+                                <fontDescription key="fontDescription" type="italicSystem" pointSize="20"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="wqS-V8-WDa"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="kcO-25-rUH" firstAttribute="centerX" secondItem="qZi-TO-deK" secondAttribute="centerX" id="5Wg-3t-2CW"/>
+                            <constraint firstItem="3Ix-XC-8Pu" firstAttribute="centerX" secondItem="qZi-TO-deK" secondAttribute="centerX" id="HMz-44-Xxr"/>
+                            <constraint firstItem="3Ix-XC-8Pu" firstAttribute="centerY" secondItem="qZi-TO-deK" secondAttribute="centerY" id="YKC-qf-h1g"/>
                             <constraint firstItem="dYH-C7-Z0A" firstAttribute="top" secondItem="wqS-V8-WDa" secondAttribute="top" constant="10" id="bLA-78-3To"/>
                             <constraint firstItem="wqS-V8-WDa" firstAttribute="trailing" secondItem="dYH-C7-Z0A" secondAttribute="trailing" constant="30" id="d3D-8y-Q71"/>
+                            <constraint firstItem="kcO-25-rUH" firstAttribute="top" secondItem="3Ix-XC-8Pu" secondAttribute="bottom" constant="10" id="dHY-np-dHm"/>
                             <constraint firstItem="AIA-iN-7UO" firstAttribute="centerX" secondItem="qZi-TO-deK" secondAttribute="centerX" id="p2D-Hx-1YM"/>
                             <constraint firstItem="AIA-iN-7UO" firstAttribute="top" secondItem="dYH-C7-Z0A" secondAttribute="bottom" constant="25.670000000000002" id="pXx-xT-gm8"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="3Ix-XC-8Pu" id="GxV-YL-HpB"/>
+                        <outlet property="loadingLabel" destination="kcO-25-rUH" id="h5S-dx-Llf"/>
                         <outlet property="stocksTableView" destination="AIA-iN-7UO" id="PfK-GX-HZl"/>
                     </connections>
                 </viewController>
@@ -909,6 +926,102 @@
             </objects>
             <point key="canvasLocation" x="2686" y="-675"/>
         </scene>
+        <!--Pop Up View Controller-->
+        <scene sceneID="NA5-sO-Agq">
+            <objects>
+                <viewController storyboardIdentifier="popUpViewController" id="lBh-A7-UOS" customClass="PopUpViewController" customModule="CashCow" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Vra-sL-V9l">
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aXf-3a-ynq">
+                                <rect key="frame" x="26.666666666666657" y="267" width="375" height="200"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dinner Dash" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2op-KJ-pmt">
+                                        <rect key="frame" x="127.33333333333331" y="20" width="120" height="26.333333333333329"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hungry from the clicking? It’s time to refuel!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f09-SZ-AKw">
+                                        <rect key="frame" x="21.666666666666657" y="56.333333333333321" width="331.66666666666674" height="20.333333333333336"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="7qH-1H-MeB">
+                                        <rect key="frame" x="75" y="106.66666666666669" width="225" height="68"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ufx-qV-Dvs">
+                                                <rect key="frame" x="0.0" y="0.0" width="225" height="30"/>
+                                                <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                                <state key="normal" title="Cook At Home (+5A/click)">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="option1Pressed" destination="lBh-A7-UOS" eventType="touchUpInside" id="88d-Y7-35T"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yPF-on-ObI">
+                                                <rect key="frame" x="0.0" y="38" width="225" height="30"/>
+                                                <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="225" id="nGi-j6-Ffq"/>
+                                                </constraints>
+                                                <state key="normal" title="MooDash Delivery (+5A/sec)">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="option2Pressed" destination="lBh-A7-UOS" eventType="touchUpInside" id="rzV-Qv-65R"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="yPF-on-ObI" firstAttribute="centerX" secondItem="7qH-1H-MeB" secondAttribute="centerX" id="GeB-Ne-pIW"/>
+                                            <constraint firstItem="ufx-qV-Dvs" firstAttribute="centerX" secondItem="7qH-1H-MeB" secondAttribute="centerX" id="k43-cJ-IAj"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="375" id="LHM-26-IPf"/>
+                                    <constraint firstItem="f09-SZ-AKw" firstAttribute="top" secondItem="2op-KJ-pmt" secondAttribute="bottom" constant="10" id="N8O-dL-V3C"/>
+                                    <constraint firstItem="7qH-1H-MeB" firstAttribute="top" secondItem="f09-SZ-AKw" secondAttribute="bottom" constant="30" id="Psl-I4-yZM"/>
+                                    <constraint firstItem="2op-KJ-pmt" firstAttribute="top" secondItem="aXf-3a-ynq" secondAttribute="top" constant="20" id="YVh-zd-oq7"/>
+                                    <constraint firstItem="2op-KJ-pmt" firstAttribute="centerX" secondItem="aXf-3a-ynq" secondAttribute="centerX" id="gMh-Wr-6RK"/>
+                                    <constraint firstItem="f09-SZ-AKw" firstAttribute="centerX" secondItem="aXf-3a-ynq" secondAttribute="centerX" id="lgh-ki-RT5"/>
+                                    <constraint firstItem="7qH-1H-MeB" firstAttribute="centerX" secondItem="aXf-3a-ynq" secondAttribute="centerX" id="sTo-Nv-sMc"/>
+                                    <constraint firstAttribute="height" constant="200" id="wVa-9O-DTE"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ORQ-Ws-ecK"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ORQ-Ws-ecK" firstAttribute="bottom" secondItem="aXf-3a-ynq" secondAttribute="bottom" constant="425" id="bPy-CY-zWV"/>
+                            <constraint firstItem="aXf-3a-ynq" firstAttribute="centerX" secondItem="Vra-sL-V9l" secondAttribute="centerX" id="wrO-wn-Hqc"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="40E-oR-sap" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3408" y="-675"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="yfx-Kl-NPW">
             <objects>
@@ -968,6 +1081,9 @@
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
