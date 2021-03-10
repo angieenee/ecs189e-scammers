@@ -33,6 +33,9 @@ class ClickerViewController: UIViewController {
         let coinsImgNames = ["CoinSpin_CashCow", "CoinSpin_Dollar", "CoinSpin_Moo"]
         self.coins = ImgSeqContainer(imgNames: coinsImgNames)
         
+        // FOR DEMO PURPOSES
+        self.coinPopUp.isHidden = true
+        
         self.totalIncome.text = user?.money?.getBalance()
         self.staminaBar.progress = 1
         

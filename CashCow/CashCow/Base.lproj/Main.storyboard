@@ -24,7 +24,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cash Cow" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lHD-th-YUb">
-                                <rect key="frame" x="50.333333333333343" y="153" width="327.33333333333326" height="91.666666666666686"/>
+                                <rect key="frame" x="39.666666666666657" y="153" width="348.66666666666674" height="87.666666666666686"/>
                                 <fontDescription key="fontDescription" name="ProximaNovaT-Thin" family="Proxima Nova" pointSize="75"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -466,25 +466,25 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;open&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Ua-E3-wg0">
-                                                    <rect key="frame" x="40" y="42" width="59" height="21"/>
+                                                    <rect key="frame" x="35" y="42" width="59" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;high&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8kD-rj-gCR">
-                                                    <rect key="frame" x="40" y="68" width="53.666666666666657" height="21"/>
+                                                    <rect key="frame" x="35" y="68" width="53.666666666666657" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;low&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="98l-xO-h4F">
-                                                    <rect key="frame" x="40" y="94" width="46.666666666666657" height="21"/>
+                                                    <rect key="frame" x="35" y="94" width="46.666666666666657" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fpM-ke-auG" customClass="SSBouncyButton">
-                                                    <rect key="frame" x="302" y="63" width="60" height="30"/>
+                                                    <rect key="frame" x="298" y="75" width="60" height="30"/>
                                                     <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="60" id="Aly-7c-CXf"/>
@@ -500,11 +500,11 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                     <connections>
-                                                        <action selector="buyButtonPressed:" destination="rhF-xY-MEG" eventType="touchUpInside" id="ET8-3C-zqc"/>
+                                                        <action selector="sellButtonPressed" destination="Z4g-fd-joF" eventType="touchUpInside" id="sWW-Jy-wG5"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wjd-jS-Q7F" customClass="SSBouncyButton">
-                                                    <rect key="frame" x="226" y="63" width="60" height="30"/>
+                                                    <rect key="frame" x="222" y="74" width="60" height="30"/>
                                                     <color key="backgroundColor" systemColor="systemGreenColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="60" id="NBz-2a-sEa"/>
@@ -520,27 +520,35 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                     <connections>
-                                                        <action selector="buyButtonPressed:" destination="rhF-xY-MEG" eventType="touchUpInside" id="Tua-Zc-Iul"/>
+                                                        <action selector="buyButtonPressed" destination="Z4g-fd-joF" eventType="touchUpInside" id="Qlw-E5-BaK"/>
                                                     </connections>
                                                 </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Owned: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OLN-7p-Hr3">
+                                                    <rect key="frame" x="222" y="43" width="74" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="8kD-rj-gCR" firstAttribute="leading" secondItem="Afk-4j-hI0" secondAttribute="leadingMargin" constant="20" id="09e-A2-Yza"/>
-                                                <constraint firstItem="5Ua-E3-wg0" firstAttribute="leading" secondItem="Afk-4j-hI0" secondAttribute="leadingMargin" constant="20" id="6yd-N7-qmX"/>
+                                                <constraint firstItem="8kD-rj-gCR" firstAttribute="leading" secondItem="Afk-4j-hI0" secondAttribute="leadingMargin" constant="15" id="09e-A2-Yza"/>
+                                                <constraint firstItem="5Ua-E3-wg0" firstAttribute="leading" secondItem="Afk-4j-hI0" secondAttribute="leadingMargin" constant="15" id="6yd-N7-qmX"/>
                                                 <constraint firstItem="5Ua-E3-wg0" firstAttribute="top" secondItem="5DW-7I-O0F" secondAttribute="bottom" constant="8" symbolic="YES" id="9UP-hx-ZCe"/>
-                                                <constraint firstItem="Wjd-jS-Q7F" firstAttribute="top" secondItem="GUd-4e-S3D" secondAttribute="bottom" constant="29" id="FC8-nZ-nZO"/>
                                                 <constraint firstItem="GUd-4e-S3D" firstAttribute="leading" secondItem="5DW-7I-O0F" secondAttribute="trailing" constant="10" id="HBm-oC-CxL"/>
                                                 <constraint firstItem="fpM-ke-auG" firstAttribute="leading" secondItem="Wjd-jS-Q7F" secondAttribute="trailing" constant="16" id="JXg-p3-7Dn"/>
-                                                <constraint firstItem="98l-xO-h4F" firstAttribute="leading" secondItem="Afk-4j-hI0" secondAttribute="leading" constant="40" id="PQW-R3-7Rl"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Wjd-jS-Q7F" secondAttribute="bottom" constant="15" id="KoD-iU-PpR"/>
+                                                <constraint firstItem="98l-xO-h4F" firstAttribute="leading" secondItem="Afk-4j-hI0" secondAttribute="leading" constant="35" id="PQW-R3-7Rl"/>
                                                 <constraint firstItem="5DW-7I-O0F" firstAttribute="leading" secondItem="Afk-4j-hI0" secondAttribute="leadingMargin" id="QJR-kr-UrA"/>
+                                                <constraint firstAttribute="bottom" secondItem="fpM-ke-auG" secondAttribute="bottom" constant="25" id="W8r-Pe-qiN"/>
                                                 <constraint firstItem="8kD-rj-gCR" firstAttribute="top" secondItem="5Ua-E3-wg0" secondAttribute="bottom" constant="5" id="anO-Sy-7wR"/>
-                                                <constraint firstAttribute="trailing" secondItem="fpM-ke-auG" secondAttribute="trailing" constant="16" id="asS-WF-h6C"/>
+                                                <constraint firstAttribute="trailing" secondItem="fpM-ke-auG" secondAttribute="trailing" constant="20" id="asS-WF-h6C"/>
                                                 <constraint firstItem="GUd-4e-S3D" firstAttribute="top" secondItem="Afk-4j-hI0" secondAttribute="topMargin" id="cX7-YQ-glL"/>
-                                                <constraint firstItem="fpM-ke-auG" firstAttribute="top" secondItem="Mqv-gL-Gsd" secondAttribute="bottom" constant="29" id="eqW-bS-dcv"/>
                                                 <constraint firstItem="98l-xO-h4F" firstAttribute="top" secondItem="8kD-rj-gCR" secondAttribute="bottom" constant="5" id="g7j-az-1NX"/>
                                                 <constraint firstItem="5DW-7I-O0F" firstAttribute="top" secondItem="Afk-4j-hI0" secondAttribute="topMargin" id="jle-gL-nLB"/>
+                                                <constraint firstItem="Wjd-jS-Q7F" firstAttribute="top" secondItem="OLN-7p-Hr3" secondAttribute="bottom" constant="10" id="onV-fb-Bh0"/>
                                                 <constraint firstItem="Mqv-gL-Gsd" firstAttribute="top" secondItem="Afk-4j-hI0" secondAttribute="top" constant="11" id="p1z-Y2-srZ"/>
                                                 <constraint firstAttribute="trailing" secondItem="Mqv-gL-Gsd" secondAttribute="trailing" constant="16" id="rvF-QR-pym"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="OLN-7p-Hr3" secondAttribute="trailing" constant="62" id="umM-Wf-SKd"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -548,6 +556,7 @@
                                             <outlet property="high" destination="8kD-rj-gCR" id="d0y-Zh-hRb"/>
                                             <outlet property="low" destination="98l-xO-h4F" id="0ck-zp-Fhl"/>
                                             <outlet property="open" destination="5Ua-E3-wg0" id="1P7-DE-JBI"/>
+                                            <outlet property="owned" destination="OLN-7p-Hr3" id="1Ku-Jp-8S8"/>
                                             <outlet property="price" destination="Mqv-gL-Gsd" id="Js2-Qn-JaR"/>
                                             <outlet property="sellButton" destination="fpM-ke-auG" id="PDf-96-PlG"/>
                                             <outlet property="stockCode" destination="5DW-7I-O0F" id="e1A-dN-3gp"/>
@@ -973,7 +982,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="225" id="nGi-j6-Ffq"/>
                                                 </constraints>
-                                                <state key="normal" title="MooDash Delivery (+5A/sec)">
+                                                <state key="normal" title="MooDash Delivery (+1A/sec)">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>

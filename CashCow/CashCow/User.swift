@@ -21,72 +21,7 @@ class User {
     var staminaRegen: [String: Int]?
     var date: [String: Any]?
     var stocks: [[String: Any]]?
-    
-//    func push_decision(completion: () -> Void) {
-//        let ref1 = Database.database().reference(withPath: "decisions")
-//        let post = [
-//            [
-//                "id": 0,
-//                "name": "Dinner Dash",
-//                "description": "Hungry from the clicking? It’s time to refuel!",
-//                "nameA": "MooDash Delivery",
-//                "nameB": "Cook At Home",
-//                "typeA": "stamina",
-//                "typeB": "clicker",
-//                "amountA": 5,
-//                "amountB": 5,
-//                "keyA": "A",
-//                "keyB": "A"
-//            ],
-//            [
-//                "id": 1,
-//                "name": "Stimoolus Check",
-//                "description": "Cowngress sent you a stimoolus check! What shall we do with it?",
-//                "nameA": "Cash It In",
-//                "nameB": "Stash As Savings",
-//                "typeA": "balance",
-//                "typeB": "passive",
-//                "amountA": 100,
-//                "amountB": 10,
-//                "keyA": "A",
-//                "keyB": "A"
-//            ],
-//            [
-//                "id": 2,
-//                "name": "Free Time",
-//                "description": "Take a break from the clicking. How should we relax?",
-//                "nameA": "MooTube Video",
-//                "nameB": "Call Moom",
-//                "typeA": "clicker",
-//                "typeB": "passive",
-//                "amountA": 5,
-//                "amountB": 5,
-//                "keyA": "A",
-//                "keyB": "A"
-//            ],
-//            [
-//                "id": 3,
-//                "name": "Aerobic Cowrdio",
-//                "description": "30 minutes of exercise a day gives the clickers a good pay!",
-//                "nameA": "Home Workout",
-//                "nameB": "Gym Membership",
-//                "typeA": "passive",
-//                "typeB": "stamina",
-//                "amountA": 10,
-//                "amountB": 10,
-//                "keyA": "A",
-//                "keyB": "A"
-//            ]
-//        ]
-//        ref1.child().setValue(post) {
-//            (error: Error?, ref: DatabaseReference) in
-//            if let error = error {
-//                print("Data could not be saved: \(error).")
-//            } else {
-//                print("Data saved successfully!")
-//            }
-//        }
-//    }
+    var stocksOwned: [String: Any] = [:]
     
     func load(_ data: [String: Any], completion: @escaping () -> Void) {
         self.email = data["email"] as? String
@@ -105,6 +40,13 @@ class User {
         }
         if let stocks = data["stocks"] as? [[String: Any]] {
             self.stocks = stocks
+            if let stocksOwned = data["stocks_owned"] as? [String: Any] {
+                self.stocksOwned = stocksOwned
+            } else {
+                for i in 0..<stocks.count {
+                    stocksOwned[String(i)] = 0
+                }
+            }
         }
         
         completion()
@@ -120,7 +62,8 @@ class User {
                         "key_balance": m.keysBalance.0,
                         "key_click": m.keysClick.0,
                         "date": date,
-                        "stocks": stocks] as [String : Any]
+                        "stocks": stocks,
+                        "stocks_owned": stocksOwned] as [String : Any]
             ref.child(uid).setValue(post) {
                 (error: Error?, ref:DatabaseReference) in
                 if let error = error {
@@ -132,4 +75,70 @@ class User {
             }
         }
     }
+    
+    //    func push_decision(completion: () -> Void) {
+    //        let ref1 = Database.database().reference(withPath: "decisions")
+    //        let post = [
+    //            [
+    //                "id": 0,
+    //                "name": "Dinner Dash",
+    //                "description": "Hungry from the clicking? It’s time to refuel!",
+    //                "nameA": "MooDash Delivery",
+    //                "nameB": "Cook At Home",
+    //                "typeA": "stamina",
+    //                "typeB": "clicker",
+    //                "amountA": 5,
+    //                "amountB": 5,
+    //                "keyA": "A",
+    //                "keyB": "A"
+    //            ],
+    //            [
+    //                "id": 1,
+    //                "name": "Stimoolus Check",
+    //                "description": "Cowngress sent you a stimoolus check! What shall we do with it?",
+    //                "nameA": "Cash It In",
+    //                "nameB": "Stash As Savings",
+    //                "typeA": "balance",
+    //                "typeB": "passive",
+    //                "amountA": 100,
+    //                "amountB": 10,
+    //                "keyA": "A",
+    //                "keyB": "A"
+    //            ],
+    //            [
+    //                "id": 2,
+    //                "name": "Free Time",
+    //                "description": "Take a break from the clicking. How should we relax?",
+    //                "nameA": "MooTube Video",
+    //                "nameB": "Call Moom",
+    //                "typeA": "clicker",
+    //                "typeB": "passive",
+    //                "amountA": 5,
+    //                "amountB": 5,
+    //                "keyA": "A",
+    //                "keyB": "A"
+    //            ],
+    //            [
+    //                "id": 3,
+    //                "name": "Aerobic Cowrdio",
+    //                "description": "30 minutes of exercise a day gives the clickers a good pay!",
+    //                "nameA": "Home Workout",
+    //                "nameB": "Gym Membership",
+    //                "typeA": "passive",
+    //                "typeB": "stamina",
+    //                "amountA": 10,
+    //                "amountB": 10,
+    //                "keyA": "A",
+    //                "keyB": "A"
+    //            ]
+    //        ]
+    //        ref1.child().setValue(post) {
+    //            (error: Error?, ref: DatabaseReference) in
+    //            if let error = error {
+    //                print("Data could not be saved: \(error).")
+    //            } else {
+    //                print("Data saved successfully!")
+    //            }
+    //        }
+    //    }
 }

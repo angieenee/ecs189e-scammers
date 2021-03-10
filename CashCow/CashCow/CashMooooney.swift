@@ -98,13 +98,12 @@ class Mooooney {
     }
     
     func subtractBalance(_ amount: [String: Int]) {
+        print(amount)
         self.balance = self.subtract(self.balance, amount)
     }
     
     // Generalized Add
     func add(_ amt1: [String: Int], _ amt2: [String: Int]) -> [String: Int] {
-        print(amt1)
-        print(amt2)
         var sum = amt1
         var carry = 0
         for (key, val1) in sum {
@@ -149,10 +148,13 @@ class Mooooney {
                             diff[nextLetter] = overflowVal
                         }
                         diff[key] = leftoverVal
+                    } else {
+                        diff[key] = val1 - val2
                     }
                 }
             }
         }
+        print("DIFF: \(diff)")
         return diff
     }
     
@@ -174,7 +176,6 @@ class Mooooney {
     
     // Format balance for displaying to user
     func formatMoney(_ money: [String: Int]) -> String {
-        print("Format money: \(money)")
         var amount = ""
         if let d1 = money[self.keysBalance.0], let d2 = money[self.keysBalance.1]{
             let d2_str = String(d2)

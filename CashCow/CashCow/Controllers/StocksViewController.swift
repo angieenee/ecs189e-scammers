@@ -233,7 +233,7 @@ class StocksViewController: UIViewController, UITableViewDataSource, UITableView
             sleep(UInt32(1))
         }
     }
-
+    
     @IBAction func backButtonPressed() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let clickerViewController =  storyboard.instantiateViewController(identifier: "clickerViewController") as? ClickerViewController else {
@@ -260,7 +260,7 @@ class StocksViewController: UIViewController, UITableViewDataSource, UITableView
         }
         
         if let get = self.stocksDict?[indexPath.row] {
-            cell.configureCell(code: get["code"] as? String, name: get["name"] as? String, price: get["price"] as? Float, open: get["open"] as? Float, high: get["high"] as? Float, low: get["low"] as? Float, currency: get["currency"] as? String)
+            cell.configureCell(code: get["code"] as? String, name: get["name"] as? String, price: get["price"] as? Float, open: get["open"] as? Float, high: get["high"] as? Float, low: get["low"] as? Float, currency: get["currency"] as? String, user: self.user)
         }
         
         return cell

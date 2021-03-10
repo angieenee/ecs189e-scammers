@@ -7,6 +7,7 @@
 
 import UIKit
 import FontAwesome_swift
+import Toast_Swift
 
 class UpgradesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -31,6 +32,13 @@ class UpgradesViewController: UIViewController, UITableViewDataSource, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Configure toasts
+        var style = ToastStyle()
+        style.backgroundColor = .systemYellow
+        style.messageColor = .white
+        ToastManager.shared.style = style
+        ToastManager.shared.isTapToDismissEnabled = true
         
         self.upgradesTable.dataSource = self
         self.upgradesTable.delegate = self
@@ -101,12 +109,13 @@ class UpgradesViewController: UIViewController, UITableViewDataSource, UITableVi
         let upgrade = upgradesList[sender.tag]
         var upgradeExpense: [String: Int]
         
-        if let key = upgrade.costCurrency, let val = upgrade.cost, let type = upgrade.type, let id = upgrade.id, let statAmt = upgrade.statAmt, let statCurrency = upgrade.statAmtCurrency, let currBalance = user?.money?.balance  {
+        if let key = upgrade.costCurrency, let val = upgrade.cost, let type = upgrade.type, let id = upgrade.id, let statAmt = upgrade.statAmt, let statCurrency = upgrade.statAmtCurrency, let currBalance = self.user?.money?.balance  {
             upgradeExpense = [key: val]
-            if let validPurchase = user?.money?.validSubtraction(currBalance, upgradeExpense) {
+            if let validPurchase = self.user?.money?.validSubtraction(currBalance, upgradeExpense) {
                 if validPurchase {
-                    user?.money?.subtractBalance(upgradeExpense)
-                    user?.upgrades?[type] = id
+                    self.user?.money?.subtractBalance(upgradeExpense)
+                    print("NEW USER BALANCE: \(self.user?.money?.balance)")
+                    self.user?.upgrades?[type] = id
                     
                     // Put upgrade into effect:
                     var formattedStats: [String: Int]
@@ -126,17 +135,24 @@ class UpgradesViewController: UIViewController, UITableViewDataSource, UITableVi
                     
                     if type == "passive" {
                         print("PASSIVE BUY")
-                        user?.money?.moneyPassive = user?.money?.add(user?.money?.moneyPassive ?? ["_": 0], formattedStats)
+                        self.user?.money?.moneyPassive = user?.money?.add(user?.money?.moneyPassive ?? ["_": 0], formattedStats)
                     }
                     
                     if type == "clicker" {
                         print("CLICKER BUY")
-                        user?.money?.moneyClick = user?.money?.add(user?.money?.moneyClick ?? ["_": 0], formattedStats) ?? ["_": 0]
+                        self.user?.money?.moneyClick = user?.money?.add(user?.money?.moneyClick ?? ["_": 0], formattedStats) ?? ["_": 0]
+                        
+                        self.view.makeToast("Successfully bought clicker upgrade.", duration: 3.0, position: .top)
+                    }
+                    
+                    self.user?.save {
+                        print("Save completed")
                     }
                 }
                 else {
                     print("Not enough money for upgrade")
                     // TODO: Add error label here
+                    self.view.makeToast("Not enough moooney for this upgrade.", duration: 3.0, position: .top)
                 }
             }
             // TODO: Close the cell if purchase went through
