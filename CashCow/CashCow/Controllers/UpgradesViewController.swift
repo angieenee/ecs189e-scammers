@@ -13,6 +13,8 @@ class UpgradesViewController: UIViewController, UITableViewDataSource, UITableVi
     
     var user: User?
     
+    var progressUpdateAfterUpgrade: Float?
+    
     @IBOutlet weak var backButton: UIButton!
         
     @IBOutlet weak var upgradesTable: UITableView!
@@ -97,6 +99,9 @@ class UpgradesViewController: UIViewController, UITableViewDataSource, UITableVi
         }
         clickerViewController.user = self.user
         
+        clickerViewController.progressUpdateAfterUpgrade = self.progressUpdateAfterUpgrade
+        
+        
         // Push to stack because we want users to be able to go back to clicker view
         let viewControllers = [clickerViewController]
         self.navigationController?.setViewControllers(viewControllers, animated: true)
@@ -125,12 +130,9 @@ class UpgradesViewController: UIViewController, UITableViewDataSource, UITableVi
                     
                     if type == "stamina" {
                         print("STAMINA BUY")
-                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                        guard let clickerViewController =  storyboard.instantiateViewController(identifier: "clickerViewController") as? ClickerViewController else {
-                            assertionFailure("Couldn't find Clicker VC")
-                            return
-                        }
-                        clickerViewController.staminaBar.progress += Float((statAmt / 100))
+                        
+                        progressUpdateAfterUpgrade =
+                            Float((statAmt / 100))
                     }
                     
                     if type == "passive" {
@@ -148,6 +150,14 @@ class UpgradesViewController: UIViewController, UITableViewDataSource, UITableVi
                     self.user?.save {
                         print("Save completed")
                     }
+                    
+                    // TODO: Close the cell if purchase went through
+                    
+                    print("PURCHASE COMPLETED")
+                    // Instantiate the particular cell that the user just bought
+                    
+                    // Change the color of the buy button to gray
+                    
                 }
                 else {
                     print("Not enough money for upgrade")
@@ -155,7 +165,6 @@ class UpgradesViewController: UIViewController, UITableViewDataSource, UITableVi
                     self.view.makeToast("Not enough moooney for this upgrade.", duration: 3.0, position: .top)
                 }
             }
-            // TODO: Close the cell if purchase went through
         }
     }
     

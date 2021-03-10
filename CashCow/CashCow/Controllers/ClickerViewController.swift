@@ -20,6 +20,8 @@ class ClickerViewController: UIViewController {
     
     var timeWhenBackgrounded: NSDate?
     
+    var progressUpdateAfterUpgrade: Float?
+    
     @IBOutlet weak var totalIncome: UILabel!
     @IBOutlet weak var profileButton: UIButton!
     @IBOutlet weak var upgradesButton: UIButton!
@@ -52,6 +54,9 @@ class ClickerViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(stopPassiveTimer), name: UIApplication.willResignActiveNotification, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(resumePassiveTimer), name: UIApplication.willEnterForegroundNotification, object: nil)
+        
+        // Update staminaBar.progress if it's not nil
+        self.staminaBar.progress += self.progressUpdateAfterUpgrade ?? 0.0
     }
     
     @objc func generatePassiveIncome() {
