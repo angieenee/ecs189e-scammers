@@ -944,7 +944,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aXf-3a-ynq">
-                                <rect key="frame" x="26.666666666666657" y="267" width="375" height="200"/>
+                                <rect key="frame" x="26.666666666666657" y="217" width="375" height="250"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dinner Dash" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2op-KJ-pmt">
                                         <rect key="frame" x="127.33333333333331" y="20" width="120" height="26.333333333333329"/>
@@ -959,12 +959,12 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="7qH-1H-MeB">
-                                        <rect key="frame" x="75" y="106.66666666666669" width="225" height="68"/>
+                                        <rect key="frame" x="75" y="106.66666666666669" width="225" height="106"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ufx-qV-Dvs">
                                                 <rect key="frame" x="0.0" y="0.0" width="225" height="30"/>
                                                 <color key="backgroundColor" systemColor="systemYellowColor"/>
-                                                <state key="normal" title="Cook At Home (+5A/click)">
+                                                <state key="normal" title="Cook At Home (-25% stam)">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
@@ -982,7 +982,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="225" id="nGi-j6-Ffq"/>
                                                 </constraints>
-                                                <state key="normal" title="MooDash Delivery (+1A/sec)">
+                                                <state key="normal" title="MooDash Delivery (-1A balance)">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
@@ -992,6 +992,24 @@
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="option2Pressed" destination="lBh-A7-UOS" eventType="touchUpInside" id="rzV-Qv-65R"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yq6-Rf-ujN">
+                                                <rect key="frame" x="0.0" y="76" width="225" height="30"/>
+                                                <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="225" id="thS-1N-GS9"/>
+                                                </constraints>
+                                                <state key="normal" title="Good Ol' Takeout (-0.1A/click)">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="option3Pressed:" destination="lBh-A7-UOS" eventType="touchUpInside" id="2ci-Ct-gfU"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -1010,7 +1028,7 @@
                                     <constraint firstItem="2op-KJ-pmt" firstAttribute="centerX" secondItem="aXf-3a-ynq" secondAttribute="centerX" id="gMh-Wr-6RK"/>
                                     <constraint firstItem="f09-SZ-AKw" firstAttribute="centerX" secondItem="aXf-3a-ynq" secondAttribute="centerX" id="lgh-ki-RT5"/>
                                     <constraint firstItem="7qH-1H-MeB" firstAttribute="centerX" secondItem="aXf-3a-ynq" secondAttribute="centerX" id="sTo-Nv-sMc"/>
-                                    <constraint firstAttribute="height" constant="200" id="wVa-9O-DTE"/>
+                                    <constraint firstAttribute="height" constant="250" id="wVa-9O-DTE"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -1026,6 +1044,11 @@
                             <constraint firstItem="aXf-3a-ynq" firstAttribute="centerX" secondItem="Vra-sL-V9l" secondAttribute="centerX" id="wrO-wn-Hqc"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="option1Button" destination="ufx-qV-Dvs" id="Hm6-Cj-yzh"/>
+                        <outlet property="option2Button" destination="yPF-on-ObI" id="kW6-Pm-8W4"/>
+                        <outlet property="option3Button" destination="Yq6-Rf-ujN" id="s9D-zL-quG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="40E-oR-sap" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
