@@ -260,7 +260,7 @@ class StocksViewController: UIViewController, UITableViewDataSource, UITableView
         }
         
         if let get = self.stocksDict?[indexPath.row] {
-            cell.configureCell(code: get["code"] as? String, name: get["name"] as? String, price: get["price"] as? Float, open: get["open"] as? Float, high: get["high"] as? Float, low: get["low"] as? Float, currency: get["currency"] as? String, user: self.user)
+            cell.configureCell(code: get["code"] as? String, name: get["name"] as? String, price: get["price"] as? Float, open: get["open"] as? Float, high: get["high"] as? Float, low: get["low"] as? Float, currency: get["currency"] as? String, row: indexPath.row, user: self.user)
         }
         
         return cell

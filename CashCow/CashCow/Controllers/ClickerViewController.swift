@@ -162,6 +162,9 @@ class ClickerViewController: UIViewController {
         
         stocksViewController.user = self.user
         
+        // Pause dave timer
+        self.saveTimer?.invalidate()
+        
         // Push to stack because we want users to be able to go back to clicker view
         let viewControllers = [stocksViewController, self]
         self.navigationController?.setViewControllers(viewControllers, animated: true)
@@ -232,8 +235,13 @@ class ClickerViewController: UIViewController {
     
     // Stamina bar methods
     @objc func reloadStamina() {
-        self.staminaBar.progress += 0.03
-        self.user?.stamina = (self.user?.stamina ?? 1) + 0.03
+        if (self.user?.stamina ?? 1) < 1 {
+            self.staminaBar.progress += 0.03
+            self.user?.stamina = (self.user?.stamina ?? 1) + 0.03
+        } else {
+            self.staminaBar.progress = 1.0
+            self.user?.stamina = 1.0
+        }
         //print("Stamina added")
     }
     

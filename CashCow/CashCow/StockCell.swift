@@ -10,15 +10,17 @@ import Toast_Swift
 
 class StockCell: UITableViewCell {
     var user: User?
-    var indexPath: IndexPath? {
-        guard let superView = self.superview as? UITableView else {
-            print("superview is not a UITableView - getIndexPath")
-            return nil
-        }
-        return superView.indexPath(for: self)
-    }
+//    var indexPath: IndexPath? {
+//        print(self.superview)
+//        guard let superView = self.superview as? UITableView else {
+//            print("superview is not a UITableView - getIndexPath")
+//            return nil
+//        }
+//        return superView.indexPath(for: self)
+//    }
     var cost: String?
     var currency: String?
+    var row: Int?
     
     @IBOutlet weak var stockCode: UILabel!
     @IBOutlet weak var stockName: UILabel!
@@ -30,7 +32,8 @@ class StockCell: UITableViewCell {
     @IBOutlet weak var sellButton: UIButton!
     @IBOutlet weak var owned: UILabel!
     
-    func configureCell(code: String?, name: String?, price: Float?, open: Float?, high: Float?, low: Float?, currency: String?, user: User?) {
+    func configureCell(code: String?, name: String?, price: Float?, open: Float?, high: Float?, low: Float?, currency: String?, row: Int?, user: User?) {
+        print("CONFIGURE CELL CALLED------------")
         self.stockCode.text = code
         self.stockName.text = name
         self.price.text = "\(formatMoney(price, currency))"
@@ -42,10 +45,12 @@ class StockCell: UITableViewCell {
             self.cost = String(format: "%.3f", cost)
         }
         self.currency = currency
+        self.row = row
         self.user = user
         
-        let idx = self.indexPath?.row
+        let idx = self.row
         if let i = idx {
+            print("LOAD: owns \(self.user?.stocksOwned[String(i)])")
             self.owned.text = "Owned: \(self.user?.stocksOwned[String(i)] ?? "0")"
         }
     }
@@ -75,27 +80,25 @@ class StockCell: UITableViewCell {
         ToastManager.shared.isTapToDismissEnabled = true
         
         // Get current row
-        let ip = self.indexPath
-        print("ROW: \(ip?.row)")
         
         let cost = self.formatCost(self.cost, self.currency)
         print(cost)
         
-        if let key = ip?.row {
+        if let key = self.row {
             if let numberStocksOwned = self.user?.stocksOwned[String(key)] as? Int{
                 self.user?.stocksOwned[String(key)] = numberStocksOwned + 1
             } else {
                 self.user?.stocksOwned[String(key)] = 1
             }
-            
+            print("KEY: \(String(key))")
             print("USER OWNS: \(self.user?.stocksOwned)")
+            print("USER OWNS val: \(self.user?.stocksOwned[String(key)])")
+            self.owned.text = "Owned: \(self.user?.stocksOwned[String(key)] ?? "0")"
             
             self.superview?.superview?.makeToast("Bought stock!")
-            (self.superview?.superview as? StocksViewController)?.user = self.user
             self.user?.save {
                 print("USER SAVED")
                 print(self.user?.stocksOwned[String(key)])
-                self.owned.text = "Owned: \(self.user?.stocksOwned[String(key)] ?? "0")"
             }
         }
     }
@@ -109,13 +112,11 @@ class StockCell: UITableViewCell {
         ToastManager.shared.isTapToDismissEnabled = true
         
         // Get current row
-        let ip = self.indexPath
-        print("ROW: \(ip?.row)")
         
         let cost = self.formatCost(self.cost, self.currency)
         print(cost)
         
-        if let key = ip?.row {
+        if let key = self.row {
             if let numberStocksOwned = self.user?.stocksOwned[String(key)] as? Int {
                 print("Stocks number: \(numberStocksOwned)")
                 if numberStocksOwned > 0 {

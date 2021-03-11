@@ -64,7 +64,9 @@ class HomeViewController: UIViewController {
         clickerViewController.user = self.user
         
         // Push to stack because we want users to be able to go back to home view
-        self.navigationController?.pushViewController(clickerViewController, animated: true)
+        self.user.save() {
+            self.navigationController?.pushViewController(clickerViewController, animated: true)
+        }
     }
     
     @IBAction func logoutButtonPressed(_ sender: Any) {
