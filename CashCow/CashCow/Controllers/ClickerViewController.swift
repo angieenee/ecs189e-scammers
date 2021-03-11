@@ -9,6 +9,7 @@ import UIKit
 import GoogleSignIn
 import FBSDKLoginKit
 import FirebaseAuth
+import FirebaseDatabase
 
 class ClickerViewController: UIViewController {
     var user: User?
@@ -32,16 +33,29 @@ class ClickerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         let coinsImgNames = ["CoinSpin_CashCow", "CoinSpin_Dollar", "CoinSpin_Moo"]
         self.coins = ImgSeqContainer(imgNames: coinsImgNames)
+        
+        let userRef = Database.database().reference(withPath: "users")
+        guard let uid = Auth.auth().currentUser?.uid else {
+            print("No user logged in")
+            return
+        }
+        userRef.child(uid).observe(.value, with: { snapshot in
+            if let data = snapshot.value as? [String: Any] {
+                self.user?.load(data) {
+                    self.totalIncome.text = self.user?.money?.getBalance()
+                    print("USER STAMINA!!! \(self.user?.stamina ?? 1.0)")
+                    self.staminaBar.progress = self.user?.stamina ?? 1.0
+                }
+            }
+        })
         
         // FOR DEMO PURPOSES
         self.coinPopUp.isHidden = true
         
-        self.totalIncome.text = user?.money?.getBalance()
-        self.staminaBar.progress = 1
-        
-        self.staminaTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.reloadStamina), userInfo: nil, repeats: true)
+        self.staminaTimer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(self.reloadStamina), userInfo: nil, repeats: true)
         self.saveTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.saveData), userInfo: nil, repeats: true)
         
         self.passiveTimer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(self.generatePassiveIncome), userInfo: nil, repeats: true)
@@ -73,10 +87,12 @@ class ClickerViewController: UIViewController {
     }
     
     @objc func stopPassiveTimer() {
-        
         self.passiveTimer?.invalidate()
-        self.timeWhenBackgrounded = NSDate()
-        print(self.timeWhenBackgrounded!)
+        self.user?.stamina = 1.0
+        self.user?.save() {
+            self.timeWhenBackgrounded = NSDate()
+            print(self.timeWhenBackgrounded)
+        }
        
     }
     
@@ -216,12 +232,14 @@ class ClickerViewController: UIViewController {
     
     // Stamina bar methods
     @objc func reloadStamina() {
-        self.staminaBar.progress += 0.05
+        self.staminaBar.progress += 0.03
+        self.user?.stamina = (self.user?.stamina ?? 1) + 0.03
         //print("Stamina added")
     }
     
     func subtractStamina(amount: Float) {
         self.staminaBar.progress -= amount
+        self.user?.stamina = (self.user?.stamina ?? 1) - amount
     }
     
     @objc func saveData() {

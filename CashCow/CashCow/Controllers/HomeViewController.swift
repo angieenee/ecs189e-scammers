@@ -24,18 +24,20 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         let userRef = self.ref.child(firebaseAuth.currentUser?.uid ?? "")
         
-        userRef.observe(.value, with: { snapshot in
+        userRef.observeSingleEvent(of: .value, with: { snapshot in
             if let data = snapshot.value as? [String: Any] {
                 self.user.load(data) {
                     if let username = self.user.username {
                         self.welcomeLabel.text = "Welcome, \(username)!"
                     }
+                    self.user.stamina = 1.0
                 }
             } else {
                 if let uid = Auth.auth().currentUser?.uid, let email = Auth.auth().currentUser?.email {
                     self.user.email = email
                     self.user.uid = uid
                     self.user.money = Mooooney.init()
+                    self.user.stamina = 1.0
                     
                     self.user.save() {
                         if let username = self.user.username {

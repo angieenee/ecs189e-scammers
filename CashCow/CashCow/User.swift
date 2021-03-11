@@ -22,6 +22,7 @@ class User {
     var date: [String: Any]?
     var stocks: [[String: Any]]?
     var stocksOwned: [String: Any] = [:]
+    var stamina: Float?
     
     func load(_ data: [String: Any], completion: @escaping () -> Void) {
         self.email = data["email"] as? String
@@ -64,6 +65,9 @@ class User {
             upgrades["clicker"] = []
             upgrades["passive"] = []
         }
+        if let stamina = data["stamina"] as? Float {
+            self.stamina = stamina
+        }
         
         completion()
     }
@@ -80,7 +84,8 @@ class User {
                         "date": date,
                         "stocks": stocks,
                         "stocks_owned": stocksOwned,
-                        "upgrades": upgrades] as [String : Any]
+                        "upgrades": upgrades,
+                        "stamina": stamina] as [String : Any]
             ref.child(uid).setValue(post) {
                 (error: Error?, ref:DatabaseReference) in
                 if let error = error {

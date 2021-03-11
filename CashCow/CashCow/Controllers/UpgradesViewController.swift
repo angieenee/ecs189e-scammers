@@ -12,7 +12,6 @@ import Toast_Swift
 class UpgradesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var user: User?
-    
     var progressUpdateAfterUpgrade: Float?
     
     var categoryOn = "stamina"

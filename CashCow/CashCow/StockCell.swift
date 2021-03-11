@@ -48,9 +48,6 @@ class StockCell: UITableViewCell {
         if let i = idx {
             self.owned.text = "Owned: \(self.user?.stocksOwned[String(i)] ?? "0")"
         }
-        
-        // FOR DEMO PURPOSES
-        self.owned.isHidden = true
     }
     
     func formatMoney(_ money: Float?, _ currency: String?) -> String {
@@ -94,6 +91,7 @@ class StockCell: UITableViewCell {
             print("USER OWNS: \(self.user?.stocksOwned)")
             
             self.superview?.superview?.makeToast("Bought stock!")
+            (self.superview?.superview as? StocksViewController)?.user = self.user
             self.user?.save {
                 print("USER SAVED")
                 print(self.user?.stocksOwned[String(key)])

@@ -78,6 +78,9 @@ class Mooooney {
         if self.keysBalance.0 < cost.keys[c_idx] {
             return false
         } else if self.keysBalance.0 == cost.keys[c_idx] {
+            print("VALID SUBTRACTION-------")
+            print(balance[self.keysBalance.0] ?? 0)
+            print(cost.values[c_idx])
             return (balance[self.keysBalance.0] ?? 0) >= cost.values[c_idx]
         } else {
             return true
