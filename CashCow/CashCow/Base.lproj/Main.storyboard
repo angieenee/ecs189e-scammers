@@ -24,7 +24,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cash Cow" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lHD-th-YUb">
-                                <rect key="frame" x="39.666666666666657" y="153" width="348.66666666666674" height="87.666666666666686"/>
+                                <rect key="frame" x="50.333333333333343" y="153" width="327.33333333333326" height="91.666666666666686"/>
                                 <fontDescription key="fontDescription" name="ProximaNovaT-Thin" family="Proxima Nova" pointSize="75"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -808,7 +808,7 @@
                                                                 </userDefinedRuntimeAttribute>
                                                             </userDefinedRuntimeAttributes>
                                                             <connections>
-                                                                <action selector="buyButtonPressed:" destination="rhF-xY-MEG" eventType="touchUpInside" id="Cn3-JO-dR0"/>
+                                                                <action selector="buyButtonPressed:" destination="Ab5-cl-mRt" eventType="touchUpInside" id="iIJ-eh-qBQ"/>
                                                             </connections>
                                                         </button>
                                                     </subviews>
@@ -837,7 +837,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="buyButton" destination="LV4-mo-1SF" id="9P7-bB-Q9a"/>
+                                            <outlet property="buyButton" destination="LV4-mo-1SF" id="DW2-5f-ECz"/>
                                             <outlet property="upgradeAmt" destination="2Zv-pB-Ufz" id="YNp-X5-LpP"/>
                                             <outlet property="upgradeDescription" destination="tfN-V8-ISa" id="9H0-Tj-VvE"/>
                                             <outlet property="upgradeIcon" destination="fDz-RD-0S7" id="zOK-EO-0Xb"/>
@@ -1053,10 +1053,10 @@
     </scenes>
     <designables>
         <designable name="V8H-7j-e5V">
-            <size key="intrinsicContentSize" width="206" height="18"/>
+            <size key="intrinsicContentSize" width="150" height="30"/>
         </designable>
         <designable name="pJW-zq-ReT">
-            <size key="intrinsicContentSize" width="188" height="18"/>
+            <size key="intrinsicContentSize" width="132" height="30"/>
         </designable>
     </designables>
     <resources>

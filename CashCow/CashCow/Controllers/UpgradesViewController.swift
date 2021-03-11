@@ -15,6 +15,8 @@ class UpgradesViewController: UIViewController, UITableViewDataSource, UITableVi
     
     var progressUpdateAfterUpgrade: Float?
     
+    var categoryOn = "stamina"
+    
     @IBOutlet weak var backButton: UIButton!
         
     @IBOutlet weak var upgradesTable: UITableView!
@@ -82,11 +84,16 @@ class UpgradesViewController: UIViewController, UITableViewDataSource, UITableVi
         var cell: UpgradeCell
         if let reuseCell = tableView.dequeueReusableCell(withIdentifier: "upgradeCell") as? UpgradeCell {
             cell = reuseCell
+            reuseCell.buyButton.backgroundColor = UIColor.systemGreen
+            reuseCell.buyButton.isEnabled = true
         } else {
             cell = UpgradeCell(style: .default, reuseIdentifier: "upgradeCell")
         }
         
-        cell.configureCell(upgradesList: self.upgradesList, row: indexPath.row)
+        cell.user = self.user
+        cell.progressUpdateAfterUpgrade = self.progressUpdateAfterUpgrade
+        cell.upgrades = self.upgradesList
+        cell.configureCell(category: self.categoryOn, row: indexPath.row)
                 
         return cell
     }
@@ -106,67 +113,7 @@ class UpgradesViewController: UIViewController, UITableViewDataSource, UITableVi
         let viewControllers = [clickerViewController]
         self.navigationController?.setViewControllers(viewControllers, animated: true)
     }
-    
-    @IBAction func buyButtonPressed(_ sender: UIButton) {
-        print("PRESSED BUY BUTTON")
-        
-        // Check if user has enough mooney for upgrade
-        let upgrade = upgradesList[sender.tag]
-        var upgradeExpense: [String: Int]
-        
-        if let key = upgrade.costCurrency, let val = upgrade.cost, let type = upgrade.type, let id = upgrade.id, let statAmt = upgrade.statAmt, let statCurrency = upgrade.statAmtCurrency, let currBalance = self.user?.money?.balance  {
-            upgradeExpense = [key: val]
-            if let validPurchase = self.user?.money?.validSubtraction(currBalance, upgradeExpense) {
-                if validPurchase {
-                    self.user?.money?.subtractBalance(upgradeExpense)
-                    print("NEW USER BALANCE: \(self.user?.money?.balance)")
-                    self.user?.upgrades?[type] = id
-                    
-                    // Put upgrade into effect:
-                    var formattedStats: [String: Int]
-                    formattedStats = [statCurrency: statAmt]
-                    
-                    print("formattedStats -- ", formattedStats)
-                    
-                    if type == "stamina" {
-                        print("STAMINA BUY")
-                        
-                        progressUpdateAfterUpgrade =
-                            Float((statAmt / 100))
-                    }
-                    
-                    if type == "passive" {
-                        print("PASSIVE BUY")
-                        self.user?.money?.moneyPassive = user?.money?.add(user?.money?.moneyPassive ?? ["_": 0], formattedStats)
-                    }
-                    
-                    if type == "clicker" {
-                        print("CLICKER BUY")
-                        self.user?.money?.moneyClick = user?.money?.add(user?.money?.moneyClick ?? ["_": 0], formattedStats) ?? ["_": 0]
-                        
-                        self.view.makeToast("Successfully bought clicker upgrade.", duration: 3.0, position: .top)
-                    }
-                    
-                    self.user?.save {
-                        print("Save completed")
-                    }
-                    
-                    // TODO: Close the cell if purchase went through
-                    
-                    print("PURCHASE COMPLETED")
-                    // Instantiate the particular cell that the user just bought
-                    
-                    // Change the color of the buy button to gray
-                    
-                }
-                else {
-                    print("Not enough money for upgrade")
-                    // TODO: Add error label here
-                    self.view.makeToast("Not enough moooney for this upgrade.", duration: 3.0, position: .top)
-                }
-            }
-        }
-    }
+
     
     func resetCategoriesButtons() {
         self.categoryIcons = self.categoryIcons.map ({
@@ -179,6 +126,8 @@ class UpgradesViewController: UIViewController, UITableViewDataSource, UITableVi
     
     @IBAction func staminaButtonPressed(_ sender: Any) {
         resetCategoriesButtons()
+        
+        self.categoryOn = "stamina"
         
         self.categoryIcons[0].setTitleColor(.systemRed, for: .normal)
         self.categoryTextLabels[0].textColor = .systemRed
@@ -194,6 +143,8 @@ class UpgradesViewController: UIViewController, UITableViewDataSource, UITableVi
     @IBAction func clickerButtonPressed(_ sender: Any) {
         resetCategoriesButtons()
         
+        self.categoryOn = "clicker"
+        
         self.categoryIcons[1].setTitleColor(.systemRed, for: .normal)
         self.categoryTextLabels[1].textColor = .systemRed
         
@@ -207,6 +158,8 @@ class UpgradesViewController: UIViewController, UITableViewDataSource, UITableVi
     
     @IBAction func passiveIncomePressed(_ sender: Any) {
         resetCategoriesButtons()
+        
+        self.categoryOn = "passive"
         
         self.categoryIcons[2].setTitleColor(.systemRed, for: .normal)
         self.categoryTextLabels[2].textColor = .systemRed

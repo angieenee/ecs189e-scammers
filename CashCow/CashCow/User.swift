@@ -17,7 +17,7 @@ class User {
     var uid: String?
     var username: String?
     var money: Mooooney?
-    var upgrades: [String: Int]? // upgrade type: id
+    var upgrades: [String: [Int]] = [:] // upgrade type: id
     var staminaRegen: [String: Int]?
     var date: [String: Any]?
     var stocks: [[String: Any]]?
@@ -48,6 +48,22 @@ class User {
                 }
             }
         }
+        if let upgrades = data["upgrades"] as? [String: [Int]] {
+            self.upgrades = upgrades
+            if (self.upgrades["stamina"] == nil) {
+                self.upgrades["stamina"] = []
+            }
+            if (self.upgrades["clicker"] == nil) {
+                self.upgrades["clicker"] = []
+            }
+            if (self.upgrades["passive"] == nil) {
+                self.upgrades["passive"] = []
+            }
+        } else {
+            upgrades["stamina"] = []
+            upgrades["clicker"] = []
+            upgrades["passive"] = []
+        }
         
         completion()
     }
@@ -63,7 +79,8 @@ class User {
                         "key_click": m.keysClick.0,
                         "date": date,
                         "stocks": stocks,
-                        "stocks_owned": stocksOwned] as [String : Any]
+                        "stocks_owned": stocksOwned,
+                        "upgrades": upgrades] as [String : Any]
             ref.child(uid).setValue(post) {
                 (error: Error?, ref:DatabaseReference) in
                 if let error = error {
@@ -141,4 +158,20 @@ class User {
     //            }
     //        }
     //    }
+        
+    func isUpgradeAlreadyBought(_ type: String, _ id: Int) -> Bool {
+        guard let upgradeTypeList = self.upgrades[type] else {
+//            print("upgrades[type] does not exist")
+            return false
+        }
+        
+//        print("TYPE -- \(type)")
+//        for indiv_id in upgradeTypeList {
+//            print(" ID -- \(indiv_id)")
+//        }
+        
+        let filteredUpgrades = upgradeTypeList.filter{ $0 == id}
+        
+        return !filteredUpgrades.isEmpty
+    }
 }

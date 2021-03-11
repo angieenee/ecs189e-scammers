@@ -57,6 +57,8 @@ class ClickerViewController: UIViewController {
         
         // Update staminaBar.progress if it's not nil
         self.staminaBar.progress += self.progressUpdateAfterUpgrade ?? 0.0
+        
+        self.progressUpdateAfterUpgrade = 0.0
     }
     
     @objc func generatePassiveIncome() {
