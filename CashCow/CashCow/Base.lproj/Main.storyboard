@@ -771,7 +771,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="WLf-Dl-fzJ">
-                                                    <rect key="frame" x="12" y="2" width="340" height="30"/>
+                                                    <rect key="frame" x="12" y="15" width="340" height="30"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fDz-RD-0S7">
                                                             <rect key="frame" x="0.0" y="0.0" width="38.666666666666664" height="30"/>
@@ -817,7 +817,7 @@
                                                     </constraints>
                                                 </stackView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;description&gt;" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tfN-V8-ISa">
-                                                    <rect key="frame" x="12" y="41" width="340" height="40"/>
+                                                    <rect key="frame" x="12" y="54" width="340" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="cld-kH-GgF"/>
                                                     </constraints>
@@ -827,7 +827,7 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="WLf-Dl-fzJ" firstAttribute="top" secondItem="H6N-gF-Pzh" secondAttribute="top" constant="2" id="4Ew-fZ-Rnj"/>
+                                                <constraint firstItem="WLf-Dl-fzJ" firstAttribute="top" secondItem="H6N-gF-Pzh" secondAttribute="top" constant="15" id="4Ew-fZ-Rnj"/>
                                                 <constraint firstItem="WLf-Dl-fzJ" firstAttribute="centerX" secondItem="H6N-gF-Pzh" secondAttribute="centerX" id="9KK-9e-Mwk"/>
                                                 <constraint firstItem="tfN-V8-ISa" firstAttribute="leading" secondItem="H6N-gF-Pzh" secondAttribute="leading" constant="12" id="P8a-6e-u24"/>
                                                 <constraint firstItem="tfN-V8-ISa" firstAttribute="width" secondItem="WLf-Dl-fzJ" secondAttribute="width" id="aoG-Ty-okx"/>
@@ -1076,10 +1076,10 @@
     </scenes>
     <designables>
         <designable name="V8H-7j-e5V">
-            <size key="intrinsicContentSize" width="150" height="30"/>
+            <size key="intrinsicContentSize" width="206" height="18"/>
         </designable>
         <designable name="pJW-zq-ReT">
-            <size key="intrinsicContentSize" width="132" height="30"/>
+            <size key="intrinsicContentSize" width="188" height="18"/>
         </designable>
     </designables>
     <resources>

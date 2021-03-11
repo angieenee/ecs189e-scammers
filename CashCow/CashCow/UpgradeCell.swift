@@ -20,6 +20,7 @@ class UpgradeCell: UITableViewCell {
     @IBOutlet weak var upgradeAmt: UILabel!
     @IBOutlet weak var buyButton: UIButton!
     @IBOutlet weak var upgradeDescription: UILabel!
+    
     var indexPath: IndexPath? {
         guard let superView = self.superview as? UITableView else {
             print("superview is not a UITableView - getIndexPath")
@@ -115,14 +116,14 @@ class UpgradeCell: UITableViewCell {
                     
                     if type == "passive" {
                         print("PASSIVE BUY")
-                        self.user?.money?.moneyPassive = user?.money?.add(user?.money?.moneyPassive ?? ["_": 0], formattedStats)
+                        self.user?.money?.moneyPassive = user?.money?.add(user?.money?.moneyPassive ?? ["_": 0, "A": 0], formattedStats)
                         
                         self.superview?.superview?.makeToast("Successfully bought passive upgrade.", duration: 3.0, position: .top)
                     }
                     
                     if type == "clicker" {
                         print("CLICKER BUY")
-                        self.user?.money?.moneyClick = user?.money?.add(user?.money?.moneyClick ?? ["_": 0], formattedStats) ?? ["_": 0]
+                        self.user?.money?.moneyClick = user?.money?.add(user?.money?.moneyClick ?? ["_": 0, "A": 0], formattedStats) ?? ["_": 0, "A": 0]
                         
                         self.superview?.superview?.makeToast("Successfully bought clicker upgrade.", duration: 3.0, position: .top)
                     }

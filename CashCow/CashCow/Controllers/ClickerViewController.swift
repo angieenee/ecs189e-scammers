@@ -44,7 +44,7 @@ class ClickerViewController: UIViewController {
         self.staminaTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.reloadStamina), userInfo: nil, repeats: true)
         self.saveTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.saveData), userInfo: nil, repeats: true)
         
-        self.passiveTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.generatePassiveIncome), userInfo: nil, repeats: true)
+        self.passiveTimer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(self.generatePassiveIncome), userInfo: nil, repeats: true)
         /*
         self.popupTimer = Timer.scheduledTimer(withTimeInterval: 60, repeats: true) {
             timer in
@@ -62,14 +62,14 @@ class ClickerViewController: UIViewController {
     }
     
     @objc func generatePassiveIncome() {
-//        print("Passive Timer fired!")
+        print("Passive Timer fired!")
         self.user?.money?.addBalance(self.user?.money?.moneyPassive ?? ["_" : 0, "A": 0])
         
-        guard let currBalance =  self.user?.money?.balance else {
-            print("BALANCE IS NULL IN GENERATE PASSIVE INCOME :(")
-            return
-        }
-        self.totalIncome.text = self.user?.money?.formatMoney(currBalance)
+//        guard let currBalance =  self.user?.money?.balance else {
+//            print("BALANCE IS NULL IN GENERATE PASSIVE INCOME :(")
+//            return
+//        }
+        self.totalIncome.text = user?.money?.getBalance() //self.user?.money?.formatMoney(currBalance)
     }
     
     @objc func stopPassiveTimer() {
