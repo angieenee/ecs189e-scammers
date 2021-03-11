@@ -20,7 +20,7 @@ Link: https://docs.google.com/document/d/1u3lhgbHPWvu3ZiSRF6G-g07oFe98yUl7xDgBPt
 ### What We Did (since Milestone 2)
 - Added passive income generation, Upgrades "Buy" functionality @Rachel
 - Incorporated stock selling/buying, debugging @Bridget
-- Design, Animations, Money class @Jarod
+- Game design and progression curve balancing, Animations, Money class @Jarod
 - General debugging, Popups, Decisions class @Angela
 
 ### Next Steps: Polish Everything Up
