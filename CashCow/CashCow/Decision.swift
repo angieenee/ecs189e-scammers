@@ -10,30 +10,30 @@ import Foundation
 // Choose A or B decision
 class Decision {
     var id: Int?
-    var name: String?   // alert name
+    var name: String?
     var description: String?
-    // var frequency: Int? // weight
-    var nameA: String?  // for action text
-    var nameB: String?
-    var typeA: String?  // balance, stamina, passive, clicker
-    var typeB: String?
-    var amountA: Int?
-    var amountB: Int?
-    var keyA: String?
-    var keyB: String?
+    var numOptions: Int?
+    
+    // ex: Balance ["balance": ["_": 100, "A": 1]
+    // ex: Stamina (use "_" for progress) ["stamina": ["_": 100]
+    var option1change: [String: [String: Int]]?
+    var option2change: [String: [String: Int]]?
+    var option3change: [String: [String: Int]]?
+    
+    var option1text: String?
+    var option2text: String?
+    var option3text: String?
     
     init(data: [String: Any], type: String) {
         self.id = data["id"] as? Int
         self.name = data["name"] as? String
         self.description = data["description"] as? String
-        self.frequency = data["frequency"] as? Int
-        self.nameA = data["nameA"] as? String
-        self.nameB = data["nameB"] as? String
-        self.typeA = data["typeA"] as? String
-        self.typeB = data["typeB"] as? String
-        self.amountA = data["amountA"] as? Int
-        self.amountB = data["amountB"] as? Int
-        self.keyA = data["keyA"] as? String
-        self.keyB = data["keyB"] as? String
+        self.numOptions = data["numOptions"] as? Int
+        self.option1change = data["option1change"] as? [String: [String: Int]]
+        self.option2change = data["option2change"] as? [String: [String: Int]]
+        self.option3change = data["option3change"] as? [String: [String: Int]]
+        self.option1text = data["option1text"] as? String
+        self.option2text = data["option2text"] as? String
+        self.option3text = data["option3text"] as? String
     }
 }
