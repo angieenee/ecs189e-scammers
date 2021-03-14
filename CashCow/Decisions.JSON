@@ -1,0 +1,67 @@
+[ {
+  "description" : "Hungry from the clicking? It’s time to refuel!",
+  "id" : 0,
+  "name" : "Dinner Dash",
+  "numOptions": 3,
+  "option1text" : "MooDash Delivery",
+  "option2text" : "Cook At Home",
+  "option3text": "Takeout",
+  "option1change": ["balance": ["_": 0, "A": -10]],
+  "option2change": [],
+  "option3change": []
+}, {
+  "description" : "Cowngress sent you a stimoolus check! What shall we do with it?",
+  "id" : 1,
+  "name" : "Stimoolus Check",
+  "numOptions": 2,
+  "option1text" : "Cash It In",
+  "option2text" : "Stash As Savings",
+  "option3text" : "",
+  "option1change": [],
+  "option2change": [],
+  "option3change": []
+}, {
+  "description" : "A friend is going through a rough patch and asks if you could pay for this month’s rent.",
+  "id" : 2,
+  "name" : "A Favor",
+  "numOptions": 3,
+  "option1text" : "Help them",
+  "option2text" : "Don't help",
+  "option3text" : "Make them a GoFundMoo",
+  "option1change": [],
+  "option2change": [],
+  "option3change": []
+}, {
+  "description" : "OUCH! I clicked too hard and strained my mooscles.",
+  "id" : 3,
+  "name" : "Hurt At Work",
+  "numOptions": 2,
+  "option1text" : "Visit the doctor",
+  "option2text" : "Nothing a bandage can't fix",
+  "option3text" : "",
+  "option1change": [],
+  "option2change": [],
+  "option3change": []
+}, {
+    "description" : "It's been a while since we took a day off...",
+    "id" : 4,
+    "name" : "Paid Time Off",
+    "numOptions": 3,
+    "option1text" : "Take a sick day",
+    "option2text" : "End work early",
+    "option3text" : "Save your sick day",
+    "option1change": [],
+    "option2change": [],
+    "option3change": []
+}, {
+    "description" : "Cash in some money now or keep waiting? Liquidate some assets now.",
+    "id" : 5,
+    "name" : "Spend or Save?",
+    "numOptions": 2,
+    "option1text" : "Home Workout",
+    "option2text" : "Gym Membership",
+    "option3text" : " ",
+    "option1change": [],
+    "option2change": [],
+    "option3change": []
+} ]
