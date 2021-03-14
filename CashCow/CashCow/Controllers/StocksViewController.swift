@@ -48,7 +48,8 @@ struct TimeSeries: Decodable {
 
 // End JSON schema Decodable from Reddit
 
-class StocksViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class StocksViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, StockCellProtocol {
+    
     var user: User?
     let API_KEY = "QxgT-zxMrt3AYy2xUhhA"
     var stockCodes = ["AAPL": "Apple", "DIS": "Walt Disney", "HD": "Home Depot", "MSFT": "Microsoft"]
@@ -240,6 +241,8 @@ class StocksViewController: UIViewController, UITableViewDataSource, UITableView
             assertionFailure("Couldn't find Profile VC")
             return
         }
+        print("BACK BUTTON PRESSED")
+        print(self.user?.stocksOwned)
         clickerViewController.user = self.user
         
         // Push to stack because we want users to be able to go back to clicker view
@@ -263,6 +266,7 @@ class StocksViewController: UIViewController, UITableViewDataSource, UITableView
             cell.configureCell(code: get["code"] as? String, name: get["name"] as? String, price: get["price"] as? Float, open: get["open"] as? Float, high: get["high"] as? Float, low: get["low"] as? Float, currency: get["currency"] as? String, row: indexPath.row, user: self.user)
         }
         
+        cell.stockCellDelegate = self
         return cell
     }
     
@@ -279,5 +283,16 @@ class StocksViewController: UIViewController, UITableViewDataSource, UITableView
         self.view.alpha = 1
         self.view.isUserInteractionEnabled = true
         self.loadingLabel.isHidden = true
+    }
+    
+    // StockCellProtocol stubs
+    func getUserInfo() -> User {
+        return self.user ?? User()
+    }
+    
+    func setUserInfo(user: User) {
+        print("SETTING USER INFO")
+        self.user = user
+        print(self.user?.stocksOwned)
     }
 }

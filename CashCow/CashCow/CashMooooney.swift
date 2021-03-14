@@ -27,8 +27,8 @@ class Mooooney {
     }
     
     init(_ money: [String: Any]) {
-        print("INIT CALLED: ")
-        print(money)
+//        print("INIT CALLED: ")
+//        print(money)
         self.balance = money["balance"] as? [String: Int] ?? [:]
         self.moneyClick = money["money_click"] as? [String: Int] ?? [:]
         self.moneyPassive = money["money_passive"] as? [String: Int]

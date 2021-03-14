@@ -34,7 +34,7 @@ class PopUpViewController: UIViewController {
         
         self.user?.stamina = (self.user?.stamina ?? 1.25) - 0.25
         
-        self.view.window?.makeToast("Groceries cost only 0.1A, but cooking the meal decreased your stamina by 25%!", duration: 3.0, position: .bottom)
+        self.view.window?.makeToast("Groceries cost only 0.1A, but cooking the meal decreased your stamina by 25%!", duration: 5.0, position: .bottom)
         
         self.user?.save() {
             self.presentingViewController?.loadView()

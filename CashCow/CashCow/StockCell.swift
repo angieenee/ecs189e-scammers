@@ -8,16 +8,15 @@
 import UIKit
 import Toast_Swift
 
+protocol StockCellProtocol {
+    var user: User? { get set }
+    func getUserInfo() -> User
+    func setUserInfo(user: User)
+}
+
 class StockCell: UITableViewCell {
     var user: User?
-//    var indexPath: IndexPath? {
-//        print(self.superview)
-//        guard let superView = self.superview as? UITableView else {
-//            print("superview is not a UITableView - getIndexPath")
-//            return nil
-//        }
-//        return superView.indexPath(for: self)
-//    }
+    var stockCellDelegate: StockCellProtocol?
     var cost: String?
     var currency: String?
     var row: Int?
@@ -86,6 +85,7 @@ class StockCell: UITableViewCell {
         
         if let key = self.row {
             if let numberStocksOwned = self.user?.stocksOwned[String(key)] as? Int{
+                print("numberStocksOwned: \(numberStocksOwned)")
                 self.user?.stocksOwned[String(key)] = numberStocksOwned + 1
             } else {
                 self.user?.stocksOwned[String(key)] = 1
@@ -100,6 +100,10 @@ class StockCell: UITableViewCell {
                 print("USER SAVED")
                 print(self.user?.stocksOwned[String(key)])
             }
+        }
+        
+        if let u = self.user {
+            self.stockCellDelegate?.setUserInfo(user: u)
         }
     }
     
