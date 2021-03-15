@@ -315,7 +315,7 @@ class ClickerViewController: UIViewController {
     }
     
     func showPopUp() {
-        // For the time being, this alert will be hard-coded
+        self.popupTimer?.invalidate()
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let popUpViewController =  storyboard.instantiateViewController(identifier: "popUpViewController") as? PopUpViewController else {
             assertionFailure("Couldn't find VC")
