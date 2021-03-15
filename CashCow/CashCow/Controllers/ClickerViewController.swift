@@ -208,6 +208,17 @@ class ClickerViewController: UIViewController {
         }
     }
     
+    @IBAction func resetButtonPressed() {
+        self.user?.money = Mooooney.init()
+        self.user?.stocks = nil
+        self.user?.stocksOwned = []
+        self.user?.upgrades = [:]
+        self.user?.stamina = 1.0
+        self.user?.save {
+            print("User reset successfully")
+        }
+    }
+    
     @IBAction func cowClicked(_ sender: Any) {
         // Update user balance and display
         if self.staminaBar.progress > 0 {

@@ -358,6 +358,9 @@
                                                 <state key="normal">
                                                     <imageReference key="image" image="restart.circle" catalog="system" symbolScale="large"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="resetButtonPressed" destination="Wic-UL-1mk" eventType="touchUpInside" id="YAD-Yr-teV"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reset Game" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qI9-k7-pZ2">
                                                 <rect key="frame" x="0.0" y="23.666666666666671" width="63.333333333333336" height="13.333333333333336"/>
