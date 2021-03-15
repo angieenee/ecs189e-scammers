@@ -49,15 +49,10 @@ class UpgradeCell: UITableViewCell {
         
         // if this upgrade cell is found in upgrades list
             // turn buy button color to gray
-        print("***UPGRADES LIST IN CELL")
         dump(self.user?.upgrades)
 
         
         let isBuyButtonGray = self.user?.isUpgradeAlreadyBought(category, row) ?? false
-        
-        print("**category -- \(category)")
-        print("**row -- \(row)")
-        print("**isBuyButtonGray -- \(isBuyButtonGray)")
         
         if (isBuyButtonGray) {
             self.buyButton.backgroundColor = UIColor.systemGray
@@ -66,7 +61,6 @@ class UpgradeCell: UITableViewCell {
     }
     
     @IBAction func buyButtonPressed(_ sender: UIButton) {
-        print("PRESSED BUY BUTTON")
         guard let upgradesList = self.upgrades else {
             return
         }
@@ -77,14 +71,6 @@ class UpgradeCell: UITableViewCell {
         }
         let upgrade = upgradesList[index]
         var upgradeExpense: [String: Int]
-        
-        print("upgrade.costCurrency -- ", upgrade.costCurrency ?? "no cost currency")
-        print("upgrade.cost -- ", upgrade.cost ?? "no cost")
-        print("upgrade.type -- ", upgrade.type ?? "no type")
-        print("upgrade.id -- ", upgrade.id ?? -1)
-        print("upgrade.statAmt -- ", upgrade.statAmt ?? -2)
-        print("upgrade.statAmtCurrency -- ", upgrade.statAmtCurrency ?? "no stat currency")
-        print("currBalance -- ", self.user?.money?.balance ?? ["_": 0])
         
         if let key = upgrade.costCurrency, let val = upgrade.cost, let type = upgrade.type, let id = upgrade.id, let statAmt = upgrade.statAmt, let statCurrency = upgrade.statAmtCurrency, let currBalance = self.user?.money?.balance  {
             upgradeExpense = [key: val]
@@ -103,11 +89,8 @@ class UpgradeCell: UITableViewCell {
                     var formattedStats: [String: Int]
                     formattedStats = [statCurrency: statAmt]
                     
-                    print("formattedStats -- ", formattedStats)
                     
                     if type == "stamina" {
-                        print("STAMINA BUY")
-                        
                         progressUpdateAfterUpgrade =
                             Float((statAmt / 100))
                         
@@ -115,14 +98,12 @@ class UpgradeCell: UITableViewCell {
                     }
                     
                     if type == "passive" {
-                        print("PASSIVE BUY")
                         self.user?.money?.moneyPassive = user?.money?.add(user?.money?.moneyPassive ?? ["_": 0, "A": 0], formattedStats)
                         
                         self.superview?.superview?.makeToast("Successfully bought passive upgrade.", duration: 3.0, position: .top)
                     }
                     
                     if type == "clicker" {
-                        print("CLICKER BUY")
                         self.user?.money?.moneyClick = user?.money?.add(user?.money?.moneyClick ?? ["_": 0, "A": 0], formattedStats) ?? ["_": 0, "A": 0]
                         
                         self.superview?.superview?.makeToast("Successfully bought clicker upgrade.", duration: 3.0, position: .top)
@@ -139,7 +120,6 @@ class UpgradeCell: UITableViewCell {
                     }
                 }
                 else {
-                    print("Not enough money for upgrade")
                     self.superview?.superview?.makeToast("Not enough moooney for this upgrade.", duration: 3.0, position: .top)
                 }
             }

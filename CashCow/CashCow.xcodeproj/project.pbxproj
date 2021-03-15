@@ -134,13 +134,18 @@
 			isa = PBXGroup;
 			children = (
 				E0CF7D9725EE49B600EF1D1C /* Animations */,
+				C91B8AD025FFEBEC0028F67C /* Cells */,
+				63CAA7E125E5FBE800BC3AEE /* Controllers */,
+				E0843C9E25DC73170015E5B5 /* Fonts */,
 				63CAA81825E615A800BC3AEE /* User.swift */,
+				63FEFCA825F6FB50008A0BE4 /* UpgradeCell.swift */,
+				63FEFCA925F6FB50008A0BE4 /* UpgradeCell.xib */,
+				63FEFCAD25F6FCD5008A0BE4 /* StockCell.swift */,
+				63FEFCAE25F6FCD5008A0BE4 /* StockCell.xib */,
 				E0A9C1B325E5B688006367EC /* CashMooooney.swift */,
 				E559C40C25ED98BC0001CB88 /* Upgrades.swift */,
 				6345E95825FFE10200839A27 /* Decision.swift */,
 				E559C40F25EDA9D60001CB88 /* Stamina.swift */,
-				63CAA7E125E5FBE800BC3AEE /* Controllers */,
-				E0843C9E25DC73170015E5B5 /* Fonts */,
 				63CCBFCF25D9DC9F00AA3A36 /* AppDelegate.swift */,
 				E559C3C325DDF6850001CB88 /* Extensions.swift */,
 				E559C3C625DDF7250001CB88 /* GradientProgressView.swift */,
@@ -151,10 +156,6 @@
 				63CCBFDA25D9DCA300AA3A36 /* LaunchScreen.storyboard */,
 				63CCBFDD25D9DCA300AA3A36 /* Info.plist */,
 				63CCBFE525D9E08B00AA3A36 /* GoogleService-Info.plist */,
-				63FEFCA825F6FB50008A0BE4 /* UpgradeCell.swift */,
-				63FEFCA925F6FB50008A0BE4 /* UpgradeCell.xib */,
-				63FEFCAD25F6FCD5008A0BE4 /* StockCell.swift */,
-				63FEFCAE25F6FCD5008A0BE4 /* StockCell.xib */,
 			);
 			path = CashCow;
 			sourceTree = "<group>";
@@ -174,6 +175,13 @@
 				A129A5F6D0882622A726EAC5 /* Pods-CashCow.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		C91B8AD025FFEBEC0028F67C /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		E0843C9E25DC73170015E5B5 /* Fonts */ = {

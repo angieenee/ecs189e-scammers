@@ -16,7 +16,6 @@ class ClickerViewController: UIViewController {
     var staminaTimer: Timer?
     var saveTimer: Timer?
     var passiveTimer: Timer?
-    // var popupTimer: Timer?
     var coins = ImgSeqContainer()
     
     var timeWhenBackgrounded: NSDate?
@@ -82,7 +81,6 @@ class ClickerViewController: UIViewController {
     }
     
     @objc func generatePassiveIncome() {
-        print("Passive Timer fired!")
         let passive = self.user?.money?.moneyPassive ?? ["_" : 0, "A": 0]
         self.user?.money?.addBalance(passive)
         
@@ -108,7 +106,6 @@ class ClickerViewController: UIViewController {
         }
         
         guard let currBalance =  self.user?.money?.balance else {
-            print("BALANCE IS NULL IN UPDATE BALANCE :(")
             return
         }
         self.totalIncome.text = self.user?.money?.formatMoney(currBalance)
@@ -118,11 +115,8 @@ class ClickerViewController: UIViewController {
     }
         
     @objc func resumePassiveTimer() {
-//        print("****App moved back to FOREGROUND!")
-        
         guard var difference = self.timeWhenBackgrounded?.timeIntervalSinceNow else {return}
         difference = abs(difference)
-//        print("Elapsed time: \(difference) seconds")
         
         self.updateBalanceOnPassiveIncome(Int(difference))
         
@@ -165,7 +159,7 @@ class ClickerViewController: UIViewController {
         // Go to stocks view
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let stocksViewController =  storyboard.instantiateViewController(identifier: "stocksViewController") as? StocksViewController else {
-            assertionFailure("Couldn't find Upgrades VC")
+            assertionFailure("Couldn't find Stocks VC")
             return
         }
         
@@ -220,7 +214,6 @@ class ClickerViewController: UIViewController {
             self.balanceStaminaChangeLabel.text = self.user?.money?.getMoneyClick()
             
             coinPopUp.animationImages = self.coins.imageSequences[Int.random(in: 0...self.coins.imageSequences.count-1)]
-            //print(coinPopUp.animationImages ?? "uh oh stinky no animation images.")
             coinPopUp.animationDuration = 1
             coinPopUp.animationRepeatCount = 1
             coinPopUp.image = coinPopUp.animationImages?.first
@@ -251,7 +244,6 @@ class ClickerViewController: UIViewController {
             self.staminaBar.progress = 1.0
             self.user?.stamina = 1.0
         }
-        //print("Stamina added")
     }
     
     func subtractStamina(amount: Float) {
