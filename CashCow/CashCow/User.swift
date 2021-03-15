@@ -44,8 +44,8 @@ class User {
             if let stocksOwned = data["stocks_owned"] as? [Int] {
                 self.stocksOwned = stocksOwned
             } else {
-                for i in 0..<stocks.count {
-                    stocksOwned[i] = 0
+                for _ in 0..<stocks.count {
+                    self.stocksOwned.append(0)
                 }
             }
         }
