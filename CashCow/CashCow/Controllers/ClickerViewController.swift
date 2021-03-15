@@ -112,6 +112,9 @@ class ClickerViewController: UIViewController {
             return
         }
         self.totalIncome.text = self.user?.money?.formatMoney(currBalance)
+        
+        self.plusMinusSignLabel.text = "+"
+        self.balanceStaminaChangeLabel.text = self.user?.money?.getMoneyPassive()
     }
         
     @objc func resumePassiveTimer() {
