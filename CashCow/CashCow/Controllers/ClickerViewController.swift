@@ -235,17 +235,28 @@ class ClickerViewController: UIViewController {
     }
 
     @IBAction func popupButtonPressed(_ sender: Any) {
-        print("It's decision time!")
-        //showPopUp()
+//        print("It's decision time!")
+//        //showPopUp()
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        guard let popUpViewController =  storyboard.instantiateViewController(identifier: "popUpViewController") as? PopUpViewController else {
+//            assertionFailure("Couldn't find VC")
+//            return
+//        }
+//        // Not dismissable
+//        popUpViewController.user = self.user
+//        popUpViewController.isModalInPresentation = true
+//        self.present(popUpViewController, animated: true)
+        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let popUpViewController =  storyboard.instantiateViewController(identifier: "popUpViewController") as? PopUpViewController else {
-            assertionFailure("Couldn't find VC")
+        
+        guard let infoPopupController = storyboard.instantiateViewController(withIdentifier: "infoPopupViewController") as? InfoPopupViewController else {
+            assertionFailure("couldn't find infoPopupViewController")
             return
         }
-        // Not dismissable
-        popUpViewController.user = self.user
-        popUpViewController.isModalInPresentation = true
-        self.present(popUpViewController, animated: true)
+        
+        infoPopupController.isModalInPresentation = true
+        
+        self.present(infoPopupController, animated: true)
     }
     
     // Stamina bar methods

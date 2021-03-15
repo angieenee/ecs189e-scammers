@@ -176,7 +176,7 @@ class User {
             return false
         }
         
-        let filteredUpgrades = upgradeTypeList.filter{ $0 == id}
+        let filteredUpgrades = upgradeTypeList.filter{$0 == id}
         
         return !filteredUpgrades.isEmpty
     }

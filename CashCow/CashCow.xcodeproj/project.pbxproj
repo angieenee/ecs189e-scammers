@@ -23,6 +23,7 @@
 		63FEFCAF25F6FCD5008A0BE4 /* StockCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FEFCAD25F6FCD5008A0BE4 /* StockCell.swift */; };
 		63FEFCB025F6FCD5008A0BE4 /* StockCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63FEFCAE25F6FCD5008A0BE4 /* StockCell.xib */; };
 		A23AC00CA70BBBD5AEE4B07C /* Pods_CashCow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BF537A977EF60E5E1388CCB /* Pods_CashCow.framework */; };
+		C91B8AD525FFF34F0028F67C /* InfoPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91B8AD425FFF34F0028F67C /* InfoPopupViewController.swift */; };
 		C978EFDF25E31AC10015530B /* UpgradesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C978EFDE25E31AC10015530B /* UpgradesViewController.swift */; };
 		C978EFE225E31B6D0015530B /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C978EFE125E31B6D0015530B /* ProfileViewController.swift */; };
 		C97CE5A125DD9153002CBCDE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97CE5A025DD9153002CBCDE /* HomeViewController.swift */; };
@@ -65,6 +66,7 @@
 		6BF537A977EF60E5E1388CCB /* Pods_CashCow.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CashCow.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A129A5F6D0882622A726EAC5 /* Pods-CashCow.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CashCow.release.xcconfig"; path = "Target Support Files/Pods-CashCow/Pods-CashCow.release.xcconfig"; sourceTree = "<group>"; };
 		A72387558186A579001E9A56 /* Pods-CashCow.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CashCow.debug.xcconfig"; path = "Target Support Files/Pods-CashCow/Pods-CashCow.debug.xcconfig"; sourceTree = "<group>"; };
+		C91B8AD425FFF34F0028F67C /* InfoPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPopupViewController.swift; sourceTree = "<group>"; };
 		C978EFDE25E31AC10015530B /* UpgradesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpgradesViewController.swift; sourceTree = "<group>"; };
 		C978EFE125E31B6D0015530B /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		C97CE5A025DD9153002CBCDE /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				C978EFDE25E31AC10015530B /* UpgradesViewController.swift */,
 				63077D3C25F462DB00A53DE6 /* StocksViewController.swift */,
 				63DECA7425F9157D00FEFEE9 /* PopUpViewController.swift */,
+				C91B8AD425FFF34F0028F67C /* InfoPopupViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -134,7 +137,6 @@
 			isa = PBXGroup;
 			children = (
 				E0CF7D9725EE49B600EF1D1C /* Animations */,
-				C91B8AD025FFEBEC0028F67C /* Cells */,
 				63CAA7E125E5FBE800BC3AEE /* Controllers */,
 				E0843C9E25DC73170015E5B5 /* Fonts */,
 				63CAA81825E615A800BC3AEE /* User.swift */,
@@ -175,13 +177,6 @@
 				A129A5F6D0882622A726EAC5 /* Pods-CashCow.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		C91B8AD025FFEBEC0028F67C /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Cells;
 			sourceTree = "<group>";
 		};
 		E0843C9E25DC73170015E5B5 /* Fonts */ = {
@@ -351,6 +346,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				63FEFCAA25F6FB50008A0BE4 /* UpgradeCell.swift in Sources */,
+				C91B8AD525FFF34F0028F67C /* InfoPopupViewController.swift in Sources */,
 				6310577E25DCC0BC00D2EF96 /* LoginViewController.swift in Sources */,
 				C978EFDF25E31AC10015530B /* UpgradesViewController.swift in Sources */,
 				E559C40D25ED98BD0001CB88 /* Upgrades.swift in Sources */,

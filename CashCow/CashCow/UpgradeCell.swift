@@ -77,14 +77,8 @@ class UpgradeCell: UITableViewCell {
             if let validPurchase = self.user?.money?.validSubtraction(currBalance, upgradeExpense) {
                 if validPurchase {
                     self.user?.money?.subtractBalance(upgradeExpense)
-                    print("***TYPE -- ", type)
-                    print("***ID -- ", id)
-                    
                     self.user?.upgrades[type]?.append(id)
-                    
-                    print("**UPGRADES DICT AFTER APPEND")
-                    dump(self.user?.upgrades[type])
-                    
+                 
                     // Put upgrade into effect:
                     var formattedStats: [String: Int]
                     formattedStats = [statCurrency: statAmt]
