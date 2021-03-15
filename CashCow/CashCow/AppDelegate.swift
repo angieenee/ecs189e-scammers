@@ -54,12 +54,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance()?.restorePreviousSignIn()
         
-//        ApplicationDelegate.shared.application(
-//            application,
-//            didFinishLaunchingWithOptions:
-//            launchOptions
-//        )
-        
         return true
     }
 
@@ -79,14 +73,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         
-        let googleHandle = GIDSignIn.sharedInstance().handle(url)
-        //let fbHandle = ApplicationDelegate.shared.application(
-        //    app,
-        //    open: url,
-        //    options: options
-        //)
-        
-        return googleHandle //|| fbHandle
+        return GIDSignIn.sharedInstance().handle(url)
     }
     
 }
