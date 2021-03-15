@@ -179,7 +179,8 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="egJ-0v-vzg">
                                 <rect key="frame" x="43.333333333333343" y="292.33333333333337" width="341.33333333333326" height="341.33333333333337"/>
-                                <state key="normal" image="CashCowBase"/>
+                                <state key="normal" image="CashCow_Down"/>
+                                <state key="highlighted" image="CashCowBase"/>
                                 <connections>
                                     <action selector="cowClicked:" destination="Wic-UL-1mk" eventType="touchUpInside" id="Hu7-ON-oHx"/>
                                 </connections>
@@ -1099,15 +1100,16 @@
     </scenes>
     <designables>
         <designable name="V8H-7j-e5V">
-            <size key="intrinsicContentSize" width="150" height="30"/>
+            <size key="intrinsicContentSize" width="206" height="18"/>
         </designable>
         <designable name="pJW-zq-ReT">
-            <size key="intrinsicContentSize" width="132" height="30"/>
+            <size key="intrinsicContentSize" width="188" height="18"/>
         </designable>
     </designables>
     <resources>
         <image name="CashCowBase" width="341.33334350585938" height="341.33334350585938"/>
         <image name="CashCowHalf" width="1024" height="1024"/>
+        <image name="CashCow_Down" width="341.33334350585938" height="341.33334350585938"/>
         <image name="CoinSpin_CashCow_00" width="1024" height="1024"/>
         <image name="arrow.forward" catalog="system" width="128" height="98"/>
         <image name="arrowshape.turn.up.left.2.fill" catalog="system" width="128" height="86"/>
