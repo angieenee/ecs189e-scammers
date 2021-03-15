@@ -34,14 +34,12 @@ class ClickerViewController: UIViewController {
     @IBOutlet weak var staminaBar: UIProgressView!
     @IBOutlet weak var coinPopUp: UIImageView!
     
-    @IBOutlet weak var plusMinusSignLabel: UILabel!
     @IBOutlet weak var balanceStaminaChangeLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        plusMinusSignLabel.text = nil
-        balanceStaminaChangeLabel.text = nil
+        balanceStaminaChangeLabel.isHidden = true
 
         let coinsImgNames = ["CoinSpin_CashCow", "CoinSpin_Dollar", "CoinSpin_Moo"]
         self.coins = ImgSeqContainer(imgNames: coinsImgNames)
@@ -98,14 +96,22 @@ class ClickerViewController: UIViewController {
     }
     
     @objc func generatePassiveIncome() {
-        print("Passive Timer fired!")
         let passive = self.user?.money?.moneyPassive ?? ["_" : 0, "A": 0]
         self.user?.money?.addBalance(passive)
         
         self.totalIncome.text = user?.money?.getBalance()
         
-        self.plusMinusSignLabel.text = "+"
-        self.balanceStaminaChangeLabel.text = self.user?.money?.getMoneyPassive()
+        //Trigger balance change animation
+        if let change = self.user?.money?.moneyPassive {
+            self.showBalanceChange(amount: change, plus: true)
+        }
+        
+        DispatchQueue.global(qos: .userInitiated).async {
+            Thread.sleep(forTimeInterval: 0.5)
+            DispatchQueue.main.async {
+                self.balanceStaminaChangeLabel.isHidden = true
+            }
+        }
     }
     
     
@@ -124,21 +130,14 @@ class ClickerViewController: UIViewController {
         }
         
         guard let currBalance =  self.user?.money?.balance else {
-            print("BALANCE IS NULL IN UPDATE BALANCE :(")
             return
         }
         self.totalIncome.text = self.user?.money?.formatMoney(currBalance)
-        
-        self.plusMinusSignLabel.text = "+"
-        self.balanceStaminaChangeLabel.text = self.user?.money?.getMoneyPassive()
     }
         
     @objc func resumePassiveTimer() {
-//        print("****App moved back to FOREGROUND!")
-        
         guard var difference = self.timeWhenBackgrounded?.timeIntervalSinceNow else {return}
         difference = abs(difference)
-//        print("Elapsed time: \(difference) seconds")
         
         self.updateBalanceOnPassiveIncome(Int(difference))
         
@@ -181,7 +180,7 @@ class ClickerViewController: UIViewController {
         // Go to stocks view
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let stocksViewController =  storyboard.instantiateViewController(identifier: "stocksViewController") as? StocksViewController else {
-            assertionFailure("Couldn't find Upgrades VC")
+            assertionFailure("Couldn't find Stocks VC")
             return
         }
         
@@ -226,21 +225,40 @@ class ClickerViewController: UIViewController {
         }
     }
     
+    @IBAction func resetButtonPressed() {
+        self.user?.money = Mooooney.init()
+        self.user?.stocks = nil
+        self.user?.stocksOwned = []
+        self.user?.upgrades = [:]
+        self.user?.stamina = 1.0
+        self.user?.save {
+            print("User reset successfully")
+        }
+    }
+    
     @IBAction func cowClicked(_ sender: Any) {
         // Update user balance and display
         if self.staminaBar.progress > 0 {
             self.totalIncome.text = self.user?.money?.click()
             self.subtractStamina(amount: 0.01)
             
-            self.plusMinusSignLabel.text = "+"
-            self.balanceStaminaChangeLabel.text = self.user?.money?.getMoneyClick()
-            
             coinPopUp.animationImages = self.coins.imageSequences[Int.random(in: 0...self.coins.imageSequences.count-1)]
-            //print(coinPopUp.animationImages ?? "uh oh stinky no animation images.")
             coinPopUp.animationDuration = 1
             coinPopUp.animationRepeatCount = 1
             coinPopUp.image = coinPopUp.animationImages?.first
             coinPopUp.startAnimating()
+            
+            //Trigger balance change animation
+            if let change = self.user?.money?.moneyClick {
+                self.showBalanceChange(amount: change, plus: true)
+            }
+            
+            DispatchQueue.global(qos: .userInitiated).async {
+                Thread.sleep(forTimeInterval: 0.5)
+                DispatchQueue.main.async {
+                    self.balanceStaminaChangeLabel.isHidden = true
+                }
+            }
         }
     }
 
@@ -268,7 +286,6 @@ class ClickerViewController: UIViewController {
             self.staminaBar.progress = 1.0
             self.user?.stamina = 1.0
         }
-        //print("Stamina added")
     }
     
     func subtractStamina(amount: Float) {
@@ -294,5 +311,11 @@ class ClickerViewController: UIViewController {
         popUpViewController.decisions = self.decisions
         popUpViewController.isModalInPresentation = true
         self.present(popUpViewController, animated: true)
+    }
+    
+    func showBalanceChange(amount: [String: Int], plus: Bool) {
+        self.balanceStaminaChangeLabel.isHidden = false
+        let text = plus ? "+\(self.user?.money?.formatMoney(amount) ?? "0.000A")" : "-\(self.user?.money?.formatMoney(amount) ?? "0.000A")"
+        self.balanceStaminaChangeLabel.text = text
     }
 }

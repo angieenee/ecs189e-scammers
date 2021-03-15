@@ -44,8 +44,8 @@ class User {
             if let stocksOwned = data["stocks_owned"] as? [Int] {
                 self.stocksOwned = stocksOwned
             } else {
-                for i in 0..<stocks.count {
-                    stocksOwned[i] = 0
+                for _ in 0..<stocks.count {
+                    self.stocksOwned.append(0)
                 }
             }
         }
@@ -173,14 +173,8 @@ class User {
         
     func isUpgradeAlreadyBought(_ type: String, _ id: Int) -> Bool {
         guard let upgradeTypeList = self.upgrades[type] else {
-//            print("upgrades[type] does not exist")
             return false
         }
-        
-//        print("TYPE -- \(type)")
-//        for indiv_id in upgradeTypeList {
-//            print(" ID -- \(indiv_id)")
-//        }
         
         let filteredUpgrades = upgradeTypeList.filter{ $0 == id}
         
