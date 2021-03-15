@@ -31,9 +31,15 @@ class ClickerViewController: UIViewController {
     @IBOutlet weak var staminaBar: UIProgressView!
     @IBOutlet weak var coinPopUp: UIImageView!
     
+    @IBOutlet weak var plusMinusSignLabel: UILabel!
+    @IBOutlet weak var balanceStaminaChangeLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        plusMinusSignLabel.text = nil
+        balanceStaminaChangeLabel.text = nil
+
         let coinsImgNames = ["CoinSpin_CashCow", "CoinSpin_Dollar", "CoinSpin_Moo"]
         self.coins = ImgSeqContainer(imgNames: coinsImgNames)
         
@@ -77,21 +83,21 @@ class ClickerViewController: UIViewController {
     
     @objc func generatePassiveIncome() {
         print("Passive Timer fired!")
-        self.user?.money?.addBalance(self.user?.money?.moneyPassive ?? ["_" : 0, "A": 0])
+        let passive = self.user?.money?.moneyPassive ?? ["_" : 0, "A": 0]
+        self.user?.money?.addBalance(passive)
         
-//        guard let currBalance =  self.user?.money?.balance else {
-//            print("BALANCE IS NULL IN GENERATE PASSIVE INCOME :(")
-//            return
-//        }
-        self.totalIncome.text = user?.money?.getBalance() //self.user?.money?.formatMoney(currBalance)
+        self.totalIncome.text = user?.money?.getBalance()
+        
+        self.plusMinusSignLabel.text = "+"
+        self.balanceStaminaChangeLabel.text = self.user?.money?.getMoneyPassive()
     }
+    
     
     @objc func stopPassiveTimer() {
         self.passiveTimer?.invalidate()
         self.user?.stamina = 1.0
         self.user?.save() {
             self.timeWhenBackgrounded = NSDate()
-            print(self.timeWhenBackgrounded)
         }
        
     }

@@ -164,6 +164,20 @@ class UpgradeCell: UITableViewCell {
             return .briefcase
         case "moneyBillWave":
             return .moneyBillWave
+        case "longArrowAltUp":
+            return .longArrowAltUp
+        case "utensils":
+            return .utensils
+        case "hamburger":
+            return .hamburger
+        case "conciergeBell":
+            return .conciergeBell
+        case "home":
+            return .home
+        case "leaf":
+            return .leaf
+        case "breadSlice":
+            return .breadSlice
         default:
             return .allergies
         }
