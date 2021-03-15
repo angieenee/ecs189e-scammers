@@ -7,9 +7,14 @@
 
 import UIKit
 import Toast_Swift
+import FirebaseDatabase
 
 class PopUpViewController: UIViewController {
     var user: User?
+    var ref = Database.database().reference(withPath: "decisions")
+    
+    var decisions: [Decision] = []
+    
     @IBOutlet weak var option1Button: UIButton!
     @IBOutlet weak var option2Button: UIButton!
     @IBOutlet weak var option3Button: UIButton!
@@ -27,6 +32,19 @@ class PopUpViewController: UIViewController {
 //            option3Button.backgroundColor = .lightGray
 //            option3Button.isEnabled = false
 //        }
+        
+        ref.observeSingleEvent(of: .value, with: { snapshot in
+            if let vals = snapshot.value as? [[String: Any]] {
+                let encoder = JSONDecoder()
+                do {
+                    let jsonData = try JSONSerialization.data(withJSONObject: vals)
+                    self.decisions = try encoder.decode([Decision].self, from: jsonData)
+                    print(self.decisions[0])
+                } catch {
+                    self.decisions = []
+                }
+            }
+        })
     }
 
     @IBAction func option1Pressed() {

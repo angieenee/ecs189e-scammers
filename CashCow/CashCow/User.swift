@@ -97,72 +97,79 @@ class User {
             }
         }
     }
-    
-    //    func push_decision(completion: () -> Void) {
-    //        let ref1 = Database.database().reference(withPath: "decisions")
-    //        let post = [
-    //            [
-    //                "id": 0,
-    //                "name": "Dinner Dash",
-    //                "description": "Hungry from the clicking? It’s time to refuel!",
-    //                "nameA": "MooDash Delivery",
-    //                "nameB": "Cook At Home",
-    //                "typeA": "stamina",
-    //                "typeB": "clicker",
-    //                "amountA": 5,
-    //                "amountB": 5,
-    //                "keyA": "A",
-    //                "keyB": "A"
-    //            ],
-    //            [
-    //                "id": 1,
-    //                "name": "Stimoolus Check",
-    //                "description": "Cowngress sent you a stimoolus check! What shall we do with it?",
-    //                "nameA": "Cash It In",
-    //                "nameB": "Stash As Savings",
-    //                "typeA": "balance",
-    //                "typeB": "passive",
-    //                "amountA": 100,
-    //                "amountB": 10,
-    //                "keyA": "A",
-    //                "keyB": "A"
-    //            ],
-    //            [
-    //                "id": 2,
-    //                "name": "Free Time",
-    //                "description": "Take a break from the clicking. How should we relax?",
-    //                "nameA": "MooTube Video",
-    //                "nameB": "Call Moom",
-    //                "typeA": "clicker",
-    //                "typeB": "passive",
-    //                "amountA": 5,
-    //                "amountB": 5,
-    //                "keyA": "A",
-    //                "keyB": "A"
-    //            ],
-    //            [
-    //                "id": 3,
-    //                "name": "Aerobic Cowrdio",
-    //                "description": "30 minutes of exercise a day gives the clickers a good pay!",
-    //                "nameA": "Home Workout",
-    //                "nameB": "Gym Membership",
-    //                "typeA": "passive",
-    //                "typeB": "stamina",
-    //                "amountA": 10,
-    //                "amountB": 10,
-    //                "keyA": "A",
-    //                "keyB": "A"
-    //            ]
-    //        ]
-    //        ref1.child().setValue(post) {
-    //            (error: Error?, ref: DatabaseReference) in
-    //            if let error = error {
-    //                print("Data could not be saved: \(error).")
-    //            } else {
-    //                print("Data saved successfully!")
-    //            }
-    //        }
-    //    }
+//
+//    func push_decision(completion: () -> Void) {
+//        let ref1 = Database.database().reference(withPath: "decisions")
+//        let post = [ [
+//            "description" : "Hungry from the clicking? It’s time to refuel!",
+//            "id" : 0,
+//            "name" : "Dinner Dash",
+//            "numOptions": 3,
+//            "option1text" : "MooDash Delivery",
+//            "option2text" : "Home cooked meal",
+//            "option3text": "Takeout",
+//            "option1change": ["balance": ["subtract": ["_": 0, "A": 10]]],
+//            "option2change": ["stamina": ["subtract": ["_": 100, "A": 0]]],
+//            "option3change": ["balance": ["subtract": ["_": 0, "A": 5]], "stamina": ["subtract": ["_": 50, "A": 0]]]
+//          ], [
+//            "description" : "Cowngress sent you a stimoolus check! What shall we do with it?",
+//            "id" : 1,
+//            "name" : "Stimoolus Check",
+//            "numOptions": 2,
+//            "option1text" : "Cash It In",
+//            "option2text" : "Stash As Savings",
+//            "option1change": ["balance": ["add": ["_": 0, "A": 5]]],
+//            "option2change": ["passive": ["add": ["_": 500, "A": 0]]]
+//          ], [
+//            "description" : "A friend is going through a rough patch and asks if you could pay for this month’s rent.",
+//            "id" : 2,
+//            "name" : "A Favor",
+//            "numOptions": 3,
+//            "option1text" : "Help them",
+//            "option2text" : "Don't help",
+//            "option3text" : "Make them a GoFundMoo",
+//            "option1change": ["balance": ["subtract": ["_": 0, "A": 30]], "passive": ["add": ["_": 0, "A": 5]]],
+//            "option2change": [],
+//            "option3change": ["stamina": ["subtract": ["_": 100, "A": 0]], "passive": ["add": ["_": 0, "A": 1]]]
+//          ], [
+//            "description" : "OUCH! I clicked too hard and strained my mooscles.",
+//            "id" : 3,
+//            "name" : "Hurt At Work",
+//            "numOptions": 2,
+//            "option1text" : "Visit the doctor",
+//            "option2text" : "Nothing a bandage can't fix",
+//            "option1change": ["balance": ["subtract": ["_": 0, "A": 30]], "clicker": ["add": ["_": 500, "A": 0]]],
+//            "option2change": ["clicker": ["subtract": ["_": 500, "A": 0]]]
+//          ], [
+//              "description" : "It's been a while since we took a day off...",
+//              "id" : 4,
+//              "name" : "Paid Time Off",
+//              "numOptions": 3,
+//              "option1text" : "Take a personal day",
+//              "option2text" : "End work early",
+//              "option3text" : "Save your sick day",
+//              "option1change": ["stamina": ["add": ["_": 100, "A": 0]]],
+//              "option2change": ["stamina": ["add": ["_": 50, "A": 0]], "clicker": ["add": ["_": 0, "A": 5]]],
+//              "option3change": ["clicker": ["add": ["_": 0, "A": 10]]]
+//          ], [
+//              "description" : "Cash in some money now or keep waiting? Liquidate some assets now.",
+//              "id" : 5,
+//              "name" : "Spend or Save?",
+//              "numOptions": 2,
+//              "option1text" : "",
+//              "option2text" : "",
+//              "option1change": [],
+//              "option2change": []
+//          ] ]
+//        ref1.setValue(post) {
+//            (error: Error?, ref: DatabaseReference) in
+//            if let error = error {
+//                print("Data could not be saved: \(error).")
+//            } else {
+//                print("Data saved successfully!")
+//            }
+//        }
+//    }
         
     func isUpgradeAlreadyBought(_ type: String, _ id: Int) -> Bool {
         guard let upgradeTypeList = self.upgrades[type] else {
