@@ -16,7 +16,11 @@ class ClickerViewController: UIViewController {
     var staminaTimer: Timer?
     var saveTimer: Timer?
     var passiveTimer: Timer?
+    var popupTimer: Timer?
     var coins = ImgSeqContainer()
+    var ref = Database.database().reference(withPath: "decisions")
+    
+    var decisions: [Decision] = []
     
     var timeWhenBackgrounded: NSDate?
     
@@ -55,6 +59,19 @@ class ClickerViewController: UIViewController {
             }
         })
         
+        ref.observeSingleEvent(of: .value, with: { snapshot in
+            if let vals = snapshot.value as? [[String: Any]] {
+                let encoder = JSONDecoder()
+                do {
+                    let jsonData = try JSONSerialization.data(withJSONObject: vals)
+                    self.decisions = try encoder.decode([Decision].self, from: jsonData)
+                    print(self.decisions[0])
+                } catch {
+                    self.decisions = []
+                }
+            }
+        })
+        
         // FOR DEMO PURPOSES
         self.coinPopUp.isHidden = true
         
@@ -62,11 +79,11 @@ class ClickerViewController: UIViewController {
         self.saveTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.saveData), userInfo: nil, repeats: true)
         
         self.passiveTimer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(self.generatePassiveIncome), userInfo: nil, repeats: true)
-        /*
+        
         self.popupTimer = Timer.scheduledTimer(withTimeInterval: 60, repeats: true) {
             timer in
                 self.showPopUp()
-        }*/
+        }
         
         NotificationCenter.default.addObserver(self, selector: #selector(stopPassiveTimer), name: UIApplication.willResignActiveNotification, object: nil)
         
@@ -208,6 +225,17 @@ class ClickerViewController: UIViewController {
         }
     }
     
+    @IBAction func resetButtonPressed() {
+        self.user?.money = Mooooney.init()
+        self.user?.stocks = nil
+        self.user?.stocksOwned = []
+        self.user?.upgrades = [:]
+        self.user?.stamina = 1.0
+        self.user?.save {
+            print("User reset successfully")
+        }
+    }
+    
     @IBAction func cowClicked(_ sender: Any) {
         // Update user balance and display
         if self.staminaBar.progress > 0 {
@@ -256,7 +284,12 @@ class ClickerViewController: UIViewController {
         
         infoPopupController.isModalInPresentation = true
         
-        self.present(infoPopupController, animated: true)
+         self.present(infoPopupController, animated: true)
+        // // Not dismissable
+        // popUpViewController.user = self.user
+        // popUpViewController.decisions = self.decisions
+        // popUpViewController.isModalInPresentation = true
+        // self.present(popUpViewController, animated: true)
     }
     
     // Stamina bar methods
@@ -283,20 +316,16 @@ class ClickerViewController: UIViewController {
     
     func showPopUp() {
         // For the time being, this alert will be hard-coded
-        let alert = UIAlertController(title: "Dinner Dash", message: "Hungry from the clicking? It’s time to refuel!", preferredStyle: .alert)
-        let actionA = UIAlertAction(title: "MooDash Delivery +5A passive", style: .default) {
-            (action) in print(action)
-            self.user?.money?.moneyPassive = self.user?.money?.add(self.user?.money?.moneyPassive ?? ["_": 0], ["_": 0, "A": 5])
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let popUpViewController =  storyboard.instantiateViewController(identifier: "popUpViewController") as? PopUpViewController else {
+            assertionFailure("Couldn't find VC")
+            return
         }
-        let actionB = UIAlertAction(title: "Cook At Home +5A clicker", style: .default) {
-            (action) in print(action)
-            self.user?.money?.moneyClick = self.user?.money?.add(self.user?.money?.moneyClick ?? ["_": 0], ["_": 0, "A": 5]) ?? ["_": 0]
-        }
-        
-        // add to alert
-        alert.addAction(actionA)
-        alert.addAction(actionB)
-        present(alert, animated: true, completion: nil)
+        // Not dismissable
+        popUpViewController.user = self.user
+        popUpViewController.decisions = self.decisions
+        popUpViewController.isModalInPresentation = true
+        self.present(popUpViewController, animated: true)
     }
     
     func showBalanceChange(amount: [String: Int], plus: Bool) {

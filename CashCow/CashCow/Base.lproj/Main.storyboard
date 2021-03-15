@@ -358,6 +358,9 @@
                                                 <state key="normal">
                                                     <imageReference key="image" image="restart.circle" catalog="system" symbolScale="large"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="resetButtonPressed" destination="Wic-UL-1mk" eventType="touchUpInside" id="YAD-Yr-teV"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reset Game" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qI9-k7-pZ2">
                                                 <rect key="frame" x="0.0" y="23.666666666666671" width="63.333333333333336" height="13.333333333333336"/>
@@ -1083,9 +1086,11 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="descriptionLabel" destination="f09-SZ-AKw" id="oYd-CG-Ahx"/>
                         <outlet property="option1Button" destination="ufx-qV-Dvs" id="Hm6-Cj-yzh"/>
                         <outlet property="option2Button" destination="yPF-on-ObI" id="kW6-Pm-8W4"/>
                         <outlet property="option3Button" destination="Yq6-Rf-ujN" id="s9D-zL-quG"/>
+                        <outlet property="titleLabel" destination="2op-KJ-pmt" id="sHb-WN-Ak0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="40E-oR-sap" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
