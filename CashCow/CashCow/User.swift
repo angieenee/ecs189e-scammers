@@ -21,7 +21,7 @@ class User {
     var staminaRegen: [String: Int]?
     var date: [String: Any]?
     var stocks: [[String: Any]]?
-    var stocksOwned: [String: Any] = [:]
+    var stocksOwned: [Int] = []
     var stamina: Float?
     
     func load(_ data: [String: Any], completion: @escaping () -> Void) {
@@ -41,11 +41,11 @@ class User {
         }
         if let stocks = data["stocks"] as? [[String: Any]] {
             self.stocks = stocks
-            if let stocksOwned = data["stocks_owned"] as? [String: Any] {
+            if let stocksOwned = data["stocks_owned"] as? [Int] {
                 self.stocksOwned = stocksOwned
             } else {
                 for i in 0..<stocks.count {
-                    stocksOwned[String(i)] = 0
+                    stocksOwned[i] = 0
                 }
             }
         }

@@ -48,7 +48,7 @@ struct TimeSeries: Decodable {
 
 // End JSON schema Decodable from Reddit
 
-class StocksViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, StockCellProtocol {
+class StocksViewController: UIViewController, UITableViewDataSource, UITableViewDelegate { //, StockCellProtocol {
     
     var user: User?
     let API_KEY = "QxgT-zxMrt3AYy2xUhhA"
@@ -266,7 +266,7 @@ class StocksViewController: UIViewController, UITableViewDataSource, UITableView
             cell.configureCell(code: get["code"] as? String, name: get["name"] as? String, price: get["price"] as? Float, open: get["open"] as? Float, high: get["high"] as? Float, low: get["low"] as? Float, currency: get["currency"] as? String, row: indexPath.row, user: self.user)
         }
         
-        cell.stockCellDelegate = self
+        //cell.stockCellDelegate = self
         return cell
     }
     
@@ -283,16 +283,5 @@ class StocksViewController: UIViewController, UITableViewDataSource, UITableView
         self.view.alpha = 1
         self.view.isUserInteractionEnabled = true
         self.loadingLabel.isHidden = true
-    }
-    
-    // StockCellProtocol stubs
-    func getUserInfo() -> User {
-        return self.user ?? User()
-    }
-    
-    func setUserInfo(user: User) {
-        print("SETTING USER INFO")
-        self.user = user
-        print(self.user?.stocksOwned)
     }
 }

@@ -162,9 +162,6 @@ class ClickerViewController: UIViewController {
         
         stocksViewController.user = self.user
         
-        // Pause dave timer
-        self.saveTimer?.invalidate()
-        
         // Push to stack because we want users to be able to go back to clicker view
         let viewControllers = [stocksViewController, self]
         self.navigationController?.setViewControllers(viewControllers, animated: true)
