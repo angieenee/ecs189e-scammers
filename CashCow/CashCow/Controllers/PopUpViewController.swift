@@ -15,9 +15,7 @@ class PopUpViewController: UIViewController {
     var decision: Decision?
     
     var viewControllerTransitionListener = ViewControllerTransitionMediator()
-    
-    var numOfInvalidOptions = 0
-    
+        
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var option1Button: UIButton!
@@ -54,7 +52,6 @@ class PopUpViewController: UIViewController {
                 print("NOT ENOUGH PASSIVE FOR OP 1")
                 option1Button.isEnabled = false
                 option1Button.backgroundColor = .lightGray
-                numOfInvalidOptions += 1
             }
         }
         if let clickerSubtract = self.decision?.option1change?["clicker"]?["subtract"] {
@@ -62,7 +59,6 @@ class PopUpViewController: UIViewController {
                 print("NOT ENOUGH CLICKER FOR OP 1")
                 option1Button.isEnabled = false
                 option1Button.backgroundColor = .lightGray
-                numOfInvalidOptions += 1
             }
         }
         if let balanceSubtract = self.decision?.option1change?["balance"]?["subtract"] {
@@ -73,7 +69,6 @@ class PopUpViewController: UIViewController {
                 print("NOT ENOUGH BALANCE FOR OP 1")
                 option1Button.isEnabled = false
                 option1Button.backgroundColor = .lightGray
-                numOfInvalidOptions += 1
             }
         }
         
@@ -82,21 +77,18 @@ class PopUpViewController: UIViewController {
             if (!(user?.money?.validSubtraction(user?.money?.moneyPassive ?? ["_": 0, "A": 0], passiveSubtract) ?? false)) {
                 option2Button.isEnabled = false
                 option2Button.backgroundColor = .lightGray
-                numOfInvalidOptions += 1
             }
         }
         if let clickerSubtract = self.decision?.option2change?["clicker"]?["subtract"] {
             if (!(user?.money?.validSubtraction(user?.money?.moneyClick ?? ["_": 0, "A": 0], clickerSubtract) ?? false)) {
                 option2Button.isEnabled = false
                 option2Button.backgroundColor = .lightGray
-                numOfInvalidOptions += 1
             }
         }
         if let balanceSubtract = self.decision?.option1change?["balance"]?["subtract"] {
             if (!(user?.money?.validSubtraction(user?.money?.balance ?? ["_": 0, "A": 0], balanceSubtract) ?? false)) {
                 option2Button.isEnabled = false
                 option2Button.backgroundColor = .lightGray
-                numOfInvalidOptions += 1
             }
         }
         
@@ -109,31 +101,20 @@ class PopUpViewController: UIViewController {
                 if (!(user?.money?.validSubtraction(user?.money?.moneyPassive ?? ["_": 0, "A": 0], passiveSubtract) ?? false)) {
                     option3Button.isEnabled = false
                     option3Button.backgroundColor = .lightGray
-                    numOfInvalidOptions += 1
                 }
             }
             if let clickerSubtract = self.decision?.option3change?["clicker"]?["subtract"] {
                 if (!(user?.money?.validSubtraction(user?.money?.moneyClick ?? ["_": 0, "A": 0], clickerSubtract) ?? false)) {
                     option3Button.isEnabled = false
                     option3Button.backgroundColor = .lightGray
-                    numOfInvalidOptions += 1
                 }
             }
             if let balanceSubtract = self.decision?.option3change?["balance"]?["subtract"] {
                 if (!(user?.money?.validSubtraction(user?.money?.balance ?? ["_": 0, "A": 0], balanceSubtract) ?? false)) {
                     option3Button.isEnabled = false
                     option3Button.backgroundColor = .lightGray
-                    numOfInvalidOptions += 1
                 }
             }
-        }
-        
-        // TODO: does not dismiss popup :(
-        print("NUM OF INVALID OPTIONS -- ", numOfInvalidOptions)
-        
-        if (numOfInvalidOptions >= 3) {
-            print("DISMISS HOEEE")
-            self.dismiss(animated: true, completion: {self.viewControllerTransitionListener.sendDecisionPopupDismissed(true)})
         }
     }
     

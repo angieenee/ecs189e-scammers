@@ -96,7 +96,7 @@ class ClickerViewController: UIViewController, ViewControllerTransitionListener 
         self.saveTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.saveData), userInfo: nil, repeats: true)
         self.passiveTimer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(self.generatePassiveIncome), userInfo: nil, repeats: true)
         // TODO: CHANGE IT BACK TO 60 AFTER FINISH DEBUGGING
-        self.decisionPopupTimer = Timer.scheduledTimer(withTimeInterval: 3, repeats: true) {
+        self.decisionPopupTimer = Timer.scheduledTimer(withTimeInterval: 60, repeats: true) {
             timer in
                 print("***DECISION POPUP")
                 self.showDecisionPopUp()
@@ -355,7 +355,7 @@ class ClickerViewController: UIViewController, ViewControllerTransitionListener 
         
         if !(self.decisions.isEmpty) {
             // TODO: CHANGE IT BACK TO 60 AFTER FINISH DEBUGGING
-            self.decisionPopupTimer = Timer.scheduledTimer(withTimeInterval: 3, repeats: true) {
+            self.decisionPopupTimer = Timer.scheduledTimer(withTimeInterval: 60, repeats: true) {
                 timer in
                     print("***DECISION POPUP from delegate")
                     self.showDecisionPopUp()
