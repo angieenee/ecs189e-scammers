@@ -13,7 +13,7 @@
 - Rachel: Upgrades, Passive Income Generation, Initial Setup of
   Home/Profile/Other Segues, Info Popup
 - Angela: Popup decisions, design document, basic clicker
-- Jarod: Auxiliary Money System, Coin Animations and Image interaction
+- Jarod: Auxiliary Money System, Coin Animations and Image interaction, Design/Balancing
 
 ## Final Trello Board
 Link: https://trello.com/b/w8JJljwX/milestone-4
