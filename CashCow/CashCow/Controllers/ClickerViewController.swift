@@ -334,7 +334,7 @@ class ClickerViewController: UIViewController, ViewControllerTransitionListener 
         // Not dismissable
         popUpViewController.user = self.user
         popUpViewController.decisions = self.decisions
-        popUpViewController.isModalInPresentation = true
+        // popUpViewController.isModalInPresentation = true
         
         popUpViewController.viewControllerTransitionListener = self.viewControllerTransitionListener
         
