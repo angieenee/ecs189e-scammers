@@ -993,12 +993,6 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Hungry from the clicking? It’s time to refuel!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f09-SZ-AKw">
-                                        <rect key="frame" x="8" y="56.333333333333307" width="359" height="30.666666666666664"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="7qH-1H-MeB">
                                         <rect key="frame" x="75" y="110" width="225" height="106"/>
                                         <subviews>
@@ -1055,6 +1049,12 @@
                                             </button>
                                         </subviews>
                                     </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" misplaced="YES" text="Hungry from the clicking? It’s time to refuel!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f09-SZ-AKw">
+                                        <rect key="frame" x="8" y="44" width="359" height="51.666666666666657"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
@@ -1064,7 +1064,6 @@
                                     <constraint firstItem="f09-SZ-AKw" firstAttribute="top" secondItem="2op-KJ-pmt" secondAttribute="bottom" constant="10" id="N8O-dL-V3C"/>
                                     <constraint firstItem="2op-KJ-pmt" firstAttribute="top" secondItem="aXf-3a-ynq" secondAttribute="top" constant="20" id="YVh-zd-oq7"/>
                                     <constraint firstItem="7qH-1H-MeB" firstAttribute="top" secondItem="aXf-3a-ynq" secondAttribute="top" constant="110" id="bf3-yY-Gbz"/>
-                                    <constraint firstItem="7qH-1H-MeB" firstAttribute="top" secondItem="f09-SZ-AKw" secondAttribute="bottom" constant="23" id="ezV-ad-Mye"/>
                                     <constraint firstItem="2op-KJ-pmt" firstAttribute="centerX" secondItem="aXf-3a-ynq" secondAttribute="centerX" id="gMh-Wr-6RK"/>
                                     <constraint firstItem="f09-SZ-AKw" firstAttribute="centerX" secondItem="aXf-3a-ynq" secondAttribute="centerX" id="lgh-ki-RT5"/>
                                     <constraint firstItem="f09-SZ-AKw" firstAttribute="leading" secondItem="aXf-3a-ynq" secondAttribute="leading" constant="8" id="o2b-bQ-hc3"/>
