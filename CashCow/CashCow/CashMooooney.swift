@@ -150,12 +150,11 @@ class Mooooney {
                     let leftoverVal = (val1 - val2) % NUM_BASE
                     let nextLetter = asciiShift(str: key, inc: 1, add: false)
                     
-                    if diff[nextLetter] != nil {
-                        diff[nextLetter]? -= underflowVal
-                    } else {
-                        // should throw an error or crash bc this aint it chief
-                        diff[nextLetter] = -underflowVal
+                    if key == "_" {
+                        break
                     }
+                    
+                    diff[nextLetter]? -= underflowVal
                     diff[key] = leftoverVal
                 } else {
                     if val1-val2 >= NUM_BASE {
