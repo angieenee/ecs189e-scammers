@@ -33,11 +33,16 @@ class ImgSeqContainer {
     func setAnimatedImages(for name: String) -> [UIImage] {
         var idx = 0
         var images = [UIImage]()
-        
+        if let emptyImg = UIImage(named: "transparent") {
+            images.append(emptyImg)
+        }
         while let image = UIImage(named: "\(name)_\(String(format: "%02d", idx))") {
             //print("\(name)_\(String(format: "%02d", idx))")
             images.append(image)
             idx += 1
+        }
+        if let emptyImg = UIImage(named: "transparent") {
+            images.append(emptyImg)
         }
         return images
     }
