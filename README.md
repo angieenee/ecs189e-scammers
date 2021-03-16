@@ -9,7 +9,7 @@
 - Run the application, and voila!
 
 # Individual Code Ownership
-- Bridget:
+- Bridget: Stocks and Money system
 - Rachel: Upgrades, Passive Income Generation, Initial Setup of
   Home/Profile/Other Segues, Info Popup
 - Angela: Popup decisions, design document, basic clicker
