@@ -5,7 +5,11 @@
 //  Created by Jarod Heng on 2/23/21.
 //
 import Foundation
-
+/* for use in checking the order of the associated nums, helpful for determining what the highest nonzzeroletter is
+enum LetterOrder: Int {
+    case A = 1,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z
+}
+*/
 
 class Mooooney {
     /* ***************************
@@ -119,6 +123,7 @@ class Mooooney {
         var carry = 0
         
         for (key, val1) in sum {
+            
             if let val2 = amt2[key] {
                 if val1 + val2 + carry  >= NUM_BASE {
                     sum[key] = (val1 + val2 + carry) - NUM_BASE
@@ -133,22 +138,23 @@ class Mooooney {
         
         return sum
     }
-    
+                    
     // General subtract method
     func subtract(_ amt1: [String: Int], _ amt2: [String: Int]) -> [String: Int] {
         var diff = amt1
         
         for (key, val1) in diff {
             if let val2 = amt2[key] {
-                if val1 - val2 <= 0 {
-                    let underflowVal = (val1 - val2) / NUM_BASE
+                if val1 - val2 < 0 {
+                    let underflowVal = abs(Int(floor(Double(val1 - val2) / Double(NUM_BASE))))
                     let leftoverVal = (val1 - val2) % NUM_BASE
-                    let prevLetter = asciiShift(str: key, inc: 1, add: false)
+                    let nextLetter = asciiShift(str: key, inc: 1, add: false)
                     
-                    if diff[prevLetter] != nil {
-                        diff[prevLetter]? -= underflowVal
+                    if diff[nextLetter] != nil {
+                        diff[nextLetter]? -= underflowVal
                     } else {
-                        diff[prevLetter] = underflowVal
+                        // should throw an error or crash bc this aint it chief
+                        diff[nextLetter] = -underflowVal
                     }
                     diff[key] = leftoverVal
                 } else {
