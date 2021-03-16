@@ -11,13 +11,26 @@ import FBSDKLoginKit
 import FirebaseAuth
 import FirebaseDatabase
 
-class ClickerViewController: UIViewController {
+protocol ViewControllerTransitionListener: class {
+    func decisionPopupDismissed()
+}
+
+class ViewControllerTransitionMediator {
+    weak var delegate: ViewControllerTransitionListener?
+    
+    func sendDecisionPopupDismissed(_ popupDiscussed: Bool) {
+        print("DECISION POPUP DISMISSED")
+        delegate?.decisionPopupDismissed()
+    }
+}
+
+class ClickerViewController: UIViewController, ViewControllerTransitionListener {
     var ref = Database.database().reference(withPath: "decisions")
     var user: User?
     var staminaTimer: Timer?
     var saveTimer: Timer?
     var passiveTimer: Timer?
-    var popupTimer: Timer?
+    var decisionPopupTimer: Timer?
     var coins = ImgSeqContainer()
     
     // List of popup options
@@ -35,6 +48,8 @@ class ClickerViewController: UIViewController {
     @IBOutlet weak var coinPopUp: UIImageView!
     @IBOutlet weak var balanceStaminaChangeLabel: UILabel!
     
+    let viewControllerTransitionListener = ViewControllerTransitionMediator()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -42,6 +57,8 @@ class ClickerViewController: UIViewController {
 
         let coinsImgNames = ["CoinSpin_CashCow", "CoinSpin_Dollar", "CoinSpin_Moo"]
         self.coins = ImgSeqContainer(imgNames: coinsImgNames)
+        
+        viewControllerTransitionListener.delegate = self
         
         // Load user data from DB
         let userRef = Database.database().reference(withPath: "users")
@@ -76,9 +93,11 @@ class ClickerViewController: UIViewController {
         self.staminaTimer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(self.reloadStamina), userInfo: nil, repeats: true)
         self.saveTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.saveData), userInfo: nil, repeats: true)
         self.passiveTimer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(self.generatePassiveIncome), userInfo: nil, repeats: true)
-        self.popupTimer = Timer.scheduledTimer(withTimeInterval: 60, repeats: true) {
+        // TODO: CHANGE IT BACK TO 60 AFTER FINISH DEBUGGING
+        self.decisionPopupTimer = Timer.scheduledTimer(withTimeInterval: 60, repeats: true) {
             timer in
-                self.showPopUp()
+                print("***DECISION POPUP")
+                self.showDecisionPopUp()
         }
         
         NotificationCenter.default.addObserver(self, selector: #selector(stopPassiveTimer), name: UIApplication.willResignActiveNotification, object: nil)
@@ -301,17 +320,22 @@ class ClickerViewController: UIViewController {
     }
     
     // Present popup to user
-    func showPopUp() {
-        self.popupTimer?.invalidate()
+    func showDecisionPopUp() {
+        self.decisionPopupTimer?.invalidate()
+        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let popUpViewController =  storyboard.instantiateViewController(identifier: "popUpViewController") as? PopUpViewController else {
-            assertionFailure("Couldn't find VC")
+            assertionFailure("Couldn't find Popup VC")
             return
         }
+        
         // Not dismissable
         popUpViewController.user = self.user
         popUpViewController.decisions = self.decisions
         popUpViewController.isModalInPresentation = true
+        
+        popUpViewController.viewControllerTransitionListener = self.viewControllerTransitionListener
+        
         self.present(popUpViewController, animated: true)
     }
     
@@ -320,5 +344,15 @@ class ClickerViewController: UIViewController {
         self.balanceStaminaChangeLabel.isHidden = false
         let text = plus ? "+\(self.user?.money?.formatMoney(amount) ?? "0.000A")" : "-\(self.user?.money?.formatMoney(amount) ?? "0.000A")"
         self.balanceStaminaChangeLabel.text = text
+    }
+    
+    func decisionPopupDismissed() {
+        self.decisionPopupTimer = Timer.scheduledTimer(withTimeInterval: 3, repeats: true) {
+            timer in
+                print("***DECISION POPUP from delegate")
+                self.showDecisionPopUp()
+        }
+        
+        self.decisions.removeFirst(1)
     }
 }

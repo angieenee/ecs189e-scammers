@@ -14,6 +14,8 @@ class PopUpViewController: UIViewController {
     var decisions: [Decision]?
     var decision: Decision?
     
+    var viewControllerTransitionListener = ViewControllerTransitionMediator()
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var option1Button: UIButton!
@@ -22,39 +24,47 @@ class PopUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        if let decision = self.decisions?[0] {
-            self.decisions?.append(decision)
-            self.decisions?.removeFirst(1)
-        } else {
+        
+        decision = self.decisions?[0]
+       
+        if decision == nil {
             print("Uh oh, decisions is empty!")
             self.presentingViewController?.loadView()
-            self.dismiss(animated: true)
+            self.dismiss(animated: true, completion: {self.viewControllerTransitionListener.sendDecisionPopupDismissed(true)})
         }
         
+        print("DECISION --")
+        dump(self.decision)
+        
         // Set up label and button text
-        self.titleLabel.text = decision?.name
-        self.descriptionLabel.text = decision?.description
-        self.option1Button.setTitle(decision?.option1text, for: .normal)
-        self.option2Button.setTitle(decision?.option2text, for: .normal)
-        self.option3Button.setTitle(decision?.option3text, for: .normal)
+        self.titleLabel.text = self.decision?.name
+        self.descriptionLabel.text = self.decision?.description
+        self.option1Button.setTitle(self.decision?.option1text, for: .normal)
+        self.option2Button.setTitle(self.decision?.option2text, for: .normal)
+        self.option3Button.setTitle(self.decision?.option3text, for: .normal)
         
         // Black out options that user cannot afford
         // Option 1:
         if let passiveSubtract = self.decision?.option1change?["passive"]?["subtract"] {
             if (!(user?.money?.validSubtraction(user?.money?.moneyPassive ?? ["_": 0, "A": 0], passiveSubtract) ?? false)) {
+                print("NOT ENOUGH PASSIVE FOR OP 1")
                 option1Button.isEnabled = false
                 option1Button.backgroundColor = .lightGray
             }
         }
         if let clickerSubtract = self.decision?.option1change?["clicker"]?["subtract"] {
             if (!(user?.money?.validSubtraction(user?.money?.moneyClick ?? ["_": 0, "A": 0], clickerSubtract) ?? false)) {
+                print("NOT ENOUGH CLICKER FOR OP 1")
                 option1Button.isEnabled = false
                 option1Button.backgroundColor = .lightGray
             }
         }
         if let balanceSubtract = self.decision?.option1change?["balance"]?["subtract"] {
-            if (!(user?.money?.validSubtraction(user?.money?.balance ?? ["_": 0, "A": 0], balanceSubtract) ?? false)) {
+//            print("USER BALANCE -- ", self.user?.money?.balance)
+//            print("BALANCE SUBTRACT -- ", balanceSubtract)
+//            print("VALID SUBTRACTION -- ", self.user?.money?.validSubtraction(user?.money?.balance ?? ["_": 0, "A": 0], balanceSubtract))
+            if (!(self.user?.money?.validSubtraction(self.user?.money?.balance ?? ["_": 0, "A": 0], balanceSubtract) ?? false)) {
+                print("NOT ENOUGH BALANCE FOR OP 1")
                 option1Button.isEnabled = false
                 option1Button.backgroundColor = .lightGray
             }
@@ -145,7 +155,7 @@ class PopUpViewController: UIViewController {
         
         self.user?.save() {
             self.presentingViewController?.loadView()
-            self.dismiss(animated: true)
+            self.dismiss(animated: true, completion: {self.viewControllerTransitionListener.sendDecisionPopupDismissed(true)})
         }
     }
     
@@ -188,7 +198,7 @@ class PopUpViewController: UIViewController {
         
         self.user?.save() {
             self.presentingViewController?.loadView()
-            self.dismiss(animated: true)
+            self.dismiss(animated: true, completion: {self.viewControllerTransitionListener.sendDecisionPopupDismissed(true)})
         }
     }
     
@@ -231,7 +241,7 @@ class PopUpViewController: UIViewController {
         
         self.user?.save() {
             self.presentingViewController?.loadView()
-            self.dismiss(animated: true)
+            self.dismiss(animated: true, completion: {self.viewControllerTransitionListener.sendDecisionPopupDismissed(true)})
         }
     }
 }
