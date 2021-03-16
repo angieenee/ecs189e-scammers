@@ -25,7 +25,9 @@ class PopUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        decision = self.decisions?[0]
+        if !(self.decisions?.isEmpty ?? true) {
+            decision = self.decisions?[0]
+        }
        
         if decision == nil {
             print("Uh oh, decisions is empty!")
@@ -60,9 +62,9 @@ class PopUpViewController: UIViewController {
             }
         }
         if let balanceSubtract = self.decision?.option1change?["balance"]?["subtract"] {
-//            print("USER BALANCE -- ", self.user?.money?.balance)
-//            print("BALANCE SUBTRACT -- ", balanceSubtract)
-//            print("VALID SUBTRACTION -- ", self.user?.money?.validSubtraction(user?.money?.balance ?? ["_": 0, "A": 0], balanceSubtract))
+            print("USER BALANCE -- ", self.user?.money?.balance)
+            print("BALANCE SUBTRACT -- ", balanceSubtract)
+            print("VALID SUBTRACTION -- ", self.user?.money?.validSubtraction(user?.money?.balance ?? ["_": 0, "A": 0], balanceSubtract))
             if (!(self.user?.money?.validSubtraction(self.user?.money?.balance ?? ["_": 0, "A": 0], balanceSubtract) ?? false)) {
                 print("NOT ENOUGH BALANCE FOR OP 1")
                 option1Button.isEnabled = false

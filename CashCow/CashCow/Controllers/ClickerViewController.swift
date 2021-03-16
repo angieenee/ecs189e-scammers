@@ -74,6 +74,8 @@ class ClickerViewController: UIViewController, ViewControllerTransitionListener 
                 }
             }
         })
+        
+        // Load decisions data
         ref.observeSingleEvent(of: .value, with: { snapshot in
             if let vals = snapshot.value as? [[String: Any]] {
                 let encoder = JSONDecoder()
@@ -94,7 +96,7 @@ class ClickerViewController: UIViewController, ViewControllerTransitionListener 
         self.saveTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.saveData), userInfo: nil, repeats: true)
         self.passiveTimer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(self.generatePassiveIncome), userInfo: nil, repeats: true)
         // TODO: CHANGE IT BACK TO 60 AFTER FINISH DEBUGGING
-        self.decisionPopupTimer = Timer.scheduledTimer(withTimeInterval: 60, repeats: true) {
+        self.decisionPopupTimer = Timer.scheduledTimer(withTimeInterval: 3, repeats: true) {
             timer in
                 print("***DECISION POPUP")
                 self.showDecisionPopUp()
@@ -347,12 +349,18 @@ class ClickerViewController: UIViewController, ViewControllerTransitionListener 
     }
     
     func decisionPopupDismissed() {
-        self.decisionPopupTimer = Timer.scheduledTimer(withTimeInterval: 60, repeats: true) {
-            timer in
-                print("***DECISION POPUP from delegate")
-                self.showDecisionPopUp()
+        if !(self.decisions.isEmpty) {
+            self.decisions.removeFirst(1)
         }
         
-        self.decisions.removeFirst(1)
+        if !(self.decisions.isEmpty) {
+            // TODO: CHANGE IT BACK TO 60 AFTER FINISH DEBUGGING
+            self.decisionPopupTimer = Timer.scheduledTimer(withTimeInterval: 3, repeats: true) {
+                timer in
+                    print("***DECISION POPUP from delegate")
+                    self.showDecisionPopUp()
+            }
+        }
+       
     }
 }

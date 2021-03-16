@@ -76,19 +76,19 @@ class Mooooney {
     func validSubtraction(_ balance: [String: Int], _ cost: [String: Int]) -> Bool {
         let c_idx = cost.index(cost.startIndex, offsetBy: cost.count - 1)
         
-//        print("self.keysBalance.0 -- ", self.keysBalance.0)
-//        print("cost.keys[c_idx] -- ", cost.keys[c_idx])
-//        print("balance[self.keysBalance.0] -- ", balance[self.keysBalance.0] ?? -1)
-//        print("cost.values[c_idx] -- ", cost.values[c_idx])
+        print("self.keysBalance.0 -- ", self.keysBalance.0)
+        print("cost.keys[c_idx] -- ", cost.keys[c_idx])
+        print("balance[self.keysBalance.0] -- ", balance[self.keysBalance.0] ?? -1)
+        print("cost.values[c_idx] -- ", cost.values[c_idx])
         
         if self.keysBalance.0 < cost.keys[c_idx] {
-//            print("self.keysBalance.0 < cost.keys[c_idx]")
+            print("FALSE -- self.keysBalance.0 < cost.keys[c_idx]")
             return false
         } else if self.keysBalance.0 == cost.keys[c_idx] {
-//            print("self.keysBalance.0 == cost.keys[c_idx]")
+            print("FALSE -- self.keysBalance.0 == cost.keys[c_idx]")
             return (balance[self.keysBalance.0] ?? 0) >= cost.values[c_idx]
         } else {
-//            print("TRUE BITCH")
+            print("TRUE BITCH")
             return true
         }
     }
