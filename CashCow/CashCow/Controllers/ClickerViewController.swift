@@ -282,7 +282,7 @@ class ClickerViewController: UIViewController, ViewControllerTransitionListener 
             coinAnim.animationImages = self.coins.imageSequences[Int.random(in: 0...self.coins.imageSequences.count-1)]
             coinAnim.animationRepeatCount = 1
             coinAnim.image = coinPopUp.animationImages?.first
-            
+            coinAnim.startAnimating()
             self.coinGoUp(imgView: coinAnim)
             // coinAnim.startAnimating()
             // handle deleting the image
@@ -363,7 +363,7 @@ class ClickerViewController: UIViewController, ViewControllerTransitionListener 
         })
         let floatUp:CABasicAnimation = CABasicAnimation(keyPath: "position")
         floatUp.duration = 1
-        // floatUp.repeatCount = 0
+        floatUp.repeatCount = 0
         // floatUp.autoreverses = false
 
         let from_point:CGPoint = CGPoint(x: imgView.center.x, y: imgView.center.y-50)
