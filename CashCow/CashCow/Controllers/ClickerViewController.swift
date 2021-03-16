@@ -19,7 +19,6 @@ class ViewControllerTransitionMediator {
     weak var delegate: ViewControllerTransitionListener?
     
     func sendDecisionPopupDismissed(_ popupDiscussed: Bool) {
-        print("DECISION POPUP DISMISSED")
         delegate?.decisionPopupDismissed()
     }
 }
@@ -98,7 +97,6 @@ class ClickerViewController: UIViewController, ViewControllerTransitionListener 
         // TODO: CHANGE IT BACK TO 60 AFTER FINISH DEBUGGING
         self.decisionPopupTimer = Timer.scheduledTimer(withTimeInterval: 60, repeats: true) {
             timer in
-                print("***DECISION POPUP")
                 self.showDecisionPopUp()
         }
         
@@ -344,11 +342,8 @@ class ClickerViewController: UIViewController, ViewControllerTransitionListener 
             return
         }
         
-        // Not dismissable
         popUpViewController.user = self.user
         popUpViewController.decisions = self.decisions
-        // popUpViewController.isModalInPresentation = true
-        
         popUpViewController.viewControllerTransitionListener = self.viewControllerTransitionListener
         
         self.present(popUpViewController, animated: true)
@@ -381,8 +376,24 @@ class ClickerViewController: UIViewController, ViewControllerTransitionListener 
     // "Animation" for keep user updated on how their balance is changing
     func showBalanceChange(amount: [String: Int], plus: Bool) {
         self.balanceStaminaChangeLabel.isHidden = false
-        let text = plus ? "+\(self.user?.money?.formatMoney(amount) ?? "0.000A")" : "-\(self.user?.money?.formatMoney(amount) ?? "0.000A")"
+        let text = plus ? "+\(self.formatChangeMoney(amount, self.user?.money?.keysClick))" : "-\(self.formatChangeMoney(amount, self.user?.money?.keysClick))"
         self.balanceStaminaChangeLabel.text = text
+    }
+    
+    // Format balance for displaying to user
+    func formatChangeMoney(_ money: [String: Int], _ keys: (String, String)?) -> String {
+        var amount = ""
+        
+        if let d1 = money[keys?.0 ?? ""], let d2 = money[keys?.1 ?? ""]{
+            let d2_str = String(d2)
+            amount += "\(d1)."
+            for _ in 0..<(3 - d2_str.count) {
+                amount += "0"
+            }
+            amount += "\(d2)\(keys?.0 ?? "")"
+        }
+        
+        return amount
     }
     
     func decisionPopupDismissed() {
@@ -394,7 +405,6 @@ class ClickerViewController: UIViewController, ViewControllerTransitionListener 
             // TODO: CHANGE IT BACK TO 60 AFTER FINISH DEBUGGING
             self.decisionPopupTimer = Timer.scheduledTimer(withTimeInterval: 60, repeats: true) {
                 timer in
-                    print("***DECISION POPUP from delegate")
                     self.showDecisionPopUp()
             }
         }

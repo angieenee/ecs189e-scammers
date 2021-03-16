@@ -80,19 +80,11 @@ class Mooooney {
     func validSubtraction(_ balance: [String: Int], _ cost: [String: Int]) -> Bool {
         let c_idx = cost.index(cost.startIndex, offsetBy: cost.count - 1)
         
-        print("self.keysBalance.0 -- ", self.keysBalance.0)
-        print("cost.keys[c_idx] -- ", cost.keys[c_idx])
-        print("balance[self.keysBalance.0] -- ", balance[self.keysBalance.0] ?? -1)
-        print("cost.values[c_idx] -- ", cost.values[c_idx])
-        
         if self.keysBalance.0 < cost.keys[c_idx] {
-            print("FALSE -- self.keysBalance.0 < cost.keys[c_idx]")
             return false
         } else if self.keysBalance.0 == cost.keys[c_idx] {
-            print("FALSE -- self.keysBalance.0 == cost.keys[c_idx]")
             return (balance[self.keysBalance.0] ?? 0) >= cost.values[c_idx]
         } else {
-            print("TRUE BITCH")
             return true
         }
     }
@@ -113,8 +105,7 @@ class Mooooney {
     
     // Subtract amount from balance
     func subtractBalance(_ amount: [String: Int]) {
-        print(amount)
-        self.balance = self.subtract(self.balance, amount)
+        self.balance = self.subtract(self.balance, amount, true)
     }
     
     // General add method
@@ -138,44 +129,34 @@ class Mooooney {
         
         return sum
     }
-                    
+    
     // General subtract method
-    func subtract(_ amt1: [String: Int], _ amt2: [String: Int]) -> [String: Int] {
+    func subtract(_ amt1: [String: Int], _ amt2: [String: Int], _ balance: Bool) -> [String: Int] {
         var diff = amt1
-        
-        for (key, val1) in diff {
-            if let val2 = amt2[key] {
+        for (key, val2) in amt2 {
+            if let val1 = diff[key] {
                 if val1 - val2 < 0 {
-                    let underflowVal = abs(Int(floor(Double(val1 - val2) / Double(NUM_BASE))))
-                    let leftoverVal = (val1 - val2) % NUM_BASE
-                    let nextLetter = asciiShift(str: key, inc: 1, add: false)
+                    let underflowVal = (val1 + val2) / NUM_BASE
+                    let leftoverVal = NUM_BASE - abs(val1 - val2) % NUM_BASE
+                    let nextLetter = asciiShift(str: key, inc: 1, add: true)
                     
-                    if diff[nextLetter] != nil {
-                        diff[nextLetter]? -= underflowVal
-                    } else {
-                        // should throw an error or crash bc this aint it chief
-                        diff[nextLetter] = -underflowVal
+                    if key == "_" {
+                        break
                     }
+                    
+                    diff[nextLetter]? -= underflowVal
+                    
+                    if balance, diff[nextLetter] == 0 {
+                        diff[nextLetter] = nil
+                        self.keysBalance = (self.keysBalance.1, asciiShift(str: self.keysBalance.1, inc: 1, add: false))
+                    }
+                    
                     diff[key] = leftoverVal
                 } else {
-                    if val1-val2 >= NUM_BASE {
-                        let overflowVal = (val1 + val2) / NUM_BASE
-                        let leftoverVal = (val1 + val2) % NUM_BASE
-                        let nextLetter = asciiShift(str: key, inc: 1, add: true)
-                        
-                        if diff[nextLetter] != nil {
-                            diff[nextLetter]? += overflowVal
-                        } else {
-                            diff[nextLetter] = overflowVal
-                        }
-                        diff[key] = leftoverVal
-                    } else {
-                        diff[key] = val1 - val2
-                    }
+                    diff[key] = val1 - val2
                 }
             }
         }
-
         return diff
     }
     
