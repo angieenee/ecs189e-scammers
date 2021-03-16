@@ -274,18 +274,6 @@ class ClickerViewController: UIViewController, ViewControllerTransitionListener 
                 coinPopUp.startAnimating()
             }
             
-            // handles the animation
-            let coinAnim = UIImageView(frame: CGRect(x: 50, y: 100, width: 50, height: 50))
-            coinAnim.center = view.center
-            coinAnim.animationImages = self.coins.imageSequences[Int.random(in: 0...self.coins.imageSequences.count-1)]
-            coinAnim.animationRepeatCount = 1
-            coinAnim.image = coinPopUp.animationImages?.first
-            coinAnim.startAnimating()
-            self.coinGoUp(imgView: coinAnim)
-            // coinAnim.startAnimating()
-            // handle deleting the image
-            
-            
             DispatchQueue.global(qos: .userInitiated).async {
                 Thread.sleep(forTimeInterval: 0.5)
                 DispatchQueue.main.async {
@@ -347,30 +335,6 @@ class ClickerViewController: UIViewController, ViewControllerTransitionListener 
         popUpViewController.viewControllerTransitionListener = self.viewControllerTransitionListener
         
         self.present(popUpViewController, animated: true)
-    }
-    
-    //Anim for Coins
-    // Currently nonfunctional
-    func coinGoUp(imgView: UIImageView) {
-        CATransaction.begin()
-        CATransaction.setCompletionBlock({
-            imgView.removeFromSuperview()
-        })
-        let floatUp:CABasicAnimation = CABasicAnimation(keyPath: "position")
-        floatUp.duration = 1
-        floatUp.repeatCount = 0
-        // floatUp.autoreverses = false
-
-        let from_point:CGPoint = CGPoint(x: imgView.center.x, y: imgView.center.y-50)
-        let from_value:NSValue = NSValue(cgPoint: from_point)
-
-        let to_point:CGPoint = CGPoint(x: imgView.center.x, y: imgView.center.y-150)
-        let to_value:NSValue = NSValue(cgPoint: to_point)
-
-        floatUp.fromValue = from_value
-        floatUp.toValue = to_value
-        imgView.layer.add(floatUp, forKey: "position")
-            CATransaction.commit()
     }
     
     // "Animation" for keep user updated on how their balance is changing
