@@ -17,13 +17,14 @@ class User {
     var uid: String?
     var username: String?
     var money: Mooooney?
-    var upgrades: [String: [Int]] = [:] // upgrade type: id
+    var upgrades: [String: [Int]] = [:]
     var staminaRegen: [String: Int]?
     var date: [String: Any]?
     var stocks: [[String: Any]]?
     var stocksOwned: [Int] = []
     var stamina: Float?
     
+    // Fill user attributes from Firebase data
     func load(_ data: [String: Any], completion: @escaping () -> Void) {
         self.email = data["email"] as? String
         self.uid = firebaseAuth.currentUser?.uid
@@ -44,6 +45,8 @@ class User {
             if let stocksOwned = data["stocks_owned"] as? [Int] {
                 self.stocksOwned = stocksOwned
             } else {
+                self.stocksOwned = []
+                print("STOCKS COUNT: \(stocks.count)")
                 for _ in 0..<stocks.count {
                     self.stocksOwned.append(0)
                 }
@@ -72,6 +75,7 @@ class User {
         completion()
     }
     
+    // Save user data to Firebase
     func save(completion: @escaping () -> Void) {
         if let uid = Auth.auth().currentUser?.uid, let m = self.money {
             let post = ["email": email,
@@ -171,6 +175,7 @@ class User {
 //        }
 //    }
         
+    // Check against user data to see if the given upgrade (from id) has already been bought
     func isUpgradeAlreadyBought(_ type: String, _ id: Int) -> Bool {
         guard let upgradeTypeList = self.upgrades[type] else {
             return false

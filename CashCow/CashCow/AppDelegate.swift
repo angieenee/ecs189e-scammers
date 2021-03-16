@@ -37,13 +37,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                 print("Error occurs when authenticate with Firebase: \(error.localizedDescription)")
             }
                     
-            // Post notification after user successfully sign in
+            // Post notification after user signed in
             NotificationCenter.default.post(name: .signInGoogleCompleted, object: nil)
-            
-            
         }
     }
-    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -69,19 +66,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
-
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        
         return GIDSignIn.sharedInstance().handle(url)
     }
     
 }
 
-// MARK:- Notification names
 extension Notification.Name {
-    
-    /// Notification when user successfully sign in using Google
+    // User successfully signed in with Google
     static var signInGoogleCompleted: Notification.Name {
         return .init(rawValue: #function)
     }

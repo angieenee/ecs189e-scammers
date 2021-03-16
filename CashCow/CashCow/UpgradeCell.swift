@@ -10,10 +10,8 @@ import FontAwesome_swift
 import Toast_Swift
 
 class UpgradeCell: UITableViewCell {
-    
     var user: User?
     var upgrades: [Upgrade]?
-    var progressUpdateAfterUpgrade: Float?
     
     @IBOutlet weak var upgradeIcon: UIButton!
     @IBOutlet weak var upgradeName: UILabel!
@@ -47,11 +45,7 @@ class UpgradeCell: UITableViewCell {
 
         self.upgradeDescription.text = upgradesList[row].description
         
-        // if this upgrade cell is found in upgrades list
-            // turn buy button color to gray
-        dump(self.user?.upgrades)
-
-        
+        // If this upgrade is found in upgrades list, turn buy button color to gray
         let isBuyButtonGray = self.user?.isUpgradeAlreadyBought(category, row) ?? false
         
         if (isBuyButtonGray) {
@@ -65,16 +59,19 @@ class UpgradeCell: UITableViewCell {
             return
         }
         
-        // Check if user has enough mooney for upgrade
+        // Get upgrade key
         guard let index = self.indexPath?.row else {
             return
         }
+        
         let upgrade = upgradesList[index]
         var upgradeExpense: [String: Int]
         
         if let key = upgrade.costCurrency, let val = upgrade.cost, let type = upgrade.type, let id = upgrade.id, let statAmt = upgrade.statAmt, let statCurrency = upgrade.statAmtCurrency, let currBalance = self.user?.money?.balance  {
             upgradeExpense = [key: val]
+            // Check if user can afford upgrade
             if let validPurchase = self.user?.money?.validSubtraction(currBalance, upgradeExpense) {
+                // User has enough money
                 if validPurchase {
                     self.user?.money?.subtractBalance(upgradeExpense)
                     self.user?.upgrades[type]?.append(id)
@@ -83,36 +80,35 @@ class UpgradeCell: UITableViewCell {
                     var formattedStats: [String: Int]
                     formattedStats = [statCurrency: statAmt]
                     
-                    
                     if type == "stamina" {
-                        progressUpdateAfterUpgrade =
-                            Float((statAmt / 100))
-                        
+                        // Update stamina
+                        self.user?.stamina? += Float(statAmt) / 100.0
                         self.superview?.superview?.makeToast("Successfully bought stamina upgrade.", duration: 3.0, position: .top)
                     }
                     
                     if type == "passive" {
                         self.user?.money?.moneyPassive = user?.money?.add(user?.money?.moneyPassive ?? ["_": 0, "A": 0], formattedStats)
-                        
                         self.superview?.superview?.makeToast("Successfully bought passive upgrade.", duration: 3.0, position: .top)
                     }
                     
                     if type == "clicker" {
                         self.user?.money?.moneyClick = user?.money?.add(user?.money?.moneyClick ?? ["_": 0, "A": 0], formattedStats) ?? ["_": 0, "A": 0]
-                        
                         self.superview?.superview?.makeToast("Successfully bought clicker upgrade.", duration: 3.0, position: .top)
                     }
                     
+                    // Persist changes to Firebase
                     self.user?.save {
                         guard let superView = self.superview as? UITableView else {
                             print("superview is not a UITableView - getIndexPath")
                             return
                         }
                         
+                        // Update table view
                         superView.reloadData()
                         print("Save completed")
                     }
                 }
+                // User doesn't have enough to purchase upgrade
                 else {
                     self.superview?.superview?.makeToast("Not enough moooney for this upgrade.", duration: 3.0, position: .top)
                 }
@@ -120,6 +116,7 @@ class UpgradeCell: UITableViewCell {
         }
     }
     
+    // Helper method for upgrade icons
     func convertStringToFontAwesome(_ iconName: String) -> FontAwesome {
         switch iconName {
         case "coffee":

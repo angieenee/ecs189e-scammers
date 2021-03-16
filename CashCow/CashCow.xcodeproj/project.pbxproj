@@ -42,7 +42,6 @@
 		E559C3C425DDF6850001CB88 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E559C3C325DDF6850001CB88 /* Extensions.swift */; };
 		E559C3C725DDF7250001CB88 /* GradientProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E559C3C625DDF7250001CB88 /* GradientProgressView.swift */; };
 		E559C40D25ED98BD0001CB88 /* Upgrades.swift in Sources */ = {isa = PBXBuildFile; fileRef = E559C40C25ED98BC0001CB88 /* Upgrades.swift */; };
-		E559C41025EDA9D60001CB88 /* Stamina.swift in Sources */ = {isa = PBXBuildFile; fileRef = E559C40F25EDA9D60001CB88 /* Stamina.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -85,7 +84,6 @@
 		E559C3C325DDF6850001CB88 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		E559C3C625DDF7250001CB88 /* GradientProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientProgressView.swift; sourceTree = "<group>"; };
 		E559C40C25ED98BC0001CB88 /* Upgrades.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Upgrades.swift; sourceTree = "<group>"; };
-		E559C40F25EDA9D60001CB88 /* Stamina.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stamina.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,7 +145,6 @@
 				E0A9C1B325E5B688006367EC /* CashMooooney.swift */,
 				E559C40C25ED98BC0001CB88 /* Upgrades.swift */,
 				6345E95825FFE10200839A27 /* Decision.swift */,
-				E559C40F25EDA9D60001CB88 /* Stamina.swift */,
 				63CCBFCF25D9DC9F00AA3A36 /* AppDelegate.swift */,
 				E559C3C325DDF6850001CB88 /* Extensions.swift */,
 				E559C3C625DDF7250001CB88 /* GradientProgressView.swift */,
@@ -364,7 +361,6 @@
 				63DECA7525F9157D00FEFEE9 /* PopUpViewController.swift in Sources */,
 				63FEFCAF25F6FCD5008A0BE4 /* StockCell.swift in Sources */,
 				C97CE5A125DD9153002CBCDE /* HomeViewController.swift in Sources */,
-				E559C41025EDA9D60001CB88 /* Stamina.swift in Sources */,
 				E559C3C425DDF6850001CB88 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
