@@ -263,20 +263,7 @@ class ClickerViewController: UIViewController {
         }
     }
 
-    // Present popup decision to the user
-    @IBAction func popupButtonPressed(_ sender: Any) {
-//        print("It's decision time!")
-//        //showPopUp()
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        guard let popUpViewController =  storyboard.instantiateViewController(identifier: "popUpViewController") as? PopUpViewController else {
-//            assertionFailure("Couldn't find VC")
-//            return
-//        }
-//        // Not dismissable
-//        popUpViewController.user = self.user
-//        popUpViewController.isModalInPresentation = true
-//        self.present(popUpViewController, animated: true)
-        
+    @IBAction func infoButtonPressed(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
         guard let infoPopupController = storyboard.instantiateViewController(withIdentifier: "infoPopupViewController") as? InfoPopupViewController else {
@@ -288,11 +275,6 @@ class ClickerViewController: UIViewController {
         infoPopupController.isModalInPresentation = true
         
          self.present(infoPopupController, animated: true)
-        // // Not dismissable
-        // popUpViewController.user = self.user
-        // popUpViewController.decisions = self.decisions
-        // popUpViewController.isModalInPresentation = true
-        // self.present(popUpViewController, animated: true)
     }
     
     // Add stamina
@@ -320,7 +302,7 @@ class ClickerViewController: UIViewController {
     
     // Present popup to user
     func showPopUp() {
-        // For the time being, this alert will be hard-coded
+        self.popupTimer?.invalidate()
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let popUpViewController =  storyboard.instantiateViewController(identifier: "popUpViewController") as? PopUpViewController else {
             assertionFailure("Couldn't find VC")
