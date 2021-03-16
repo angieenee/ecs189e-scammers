@@ -347,7 +347,7 @@ class ClickerViewController: UIViewController, ViewControllerTransitionListener 
     }
     
     func decisionPopupDismissed() {
-        self.decisionPopupTimer = Timer.scheduledTimer(withTimeInterval: 3, repeats: true) {
+        self.decisionPopupTimer = Timer.scheduledTimer(withTimeInterval: 60, repeats: true) {
             timer in
                 print("***DECISION POPUP from delegate")
                 self.showDecisionPopUp()
