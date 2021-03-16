@@ -9,7 +9,7 @@
 - Run the application, and voila!
 
 # Individual Code Ownership
-- Bridget: Stocks and Money system
+- Bridget: Stocks view, User and Money system, Login with Google, Firebase server and API interaction
 - Rachel: Upgrades, Passive Income Generation, Initial Setup of
   Home/Profile/Other Segues, Info Popup
 - Angela: Popup decisions, design document, basic clicker
