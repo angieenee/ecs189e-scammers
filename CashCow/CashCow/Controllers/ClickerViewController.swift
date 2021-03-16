@@ -19,7 +19,6 @@ class ViewControllerTransitionMediator {
     weak var delegate: ViewControllerTransitionListener?
     
     func sendDecisionPopupDismissed(_ popupDiscussed: Bool) {
-        print("DECISION POPUP DISMISSED")
         delegate?.decisionPopupDismissed()
     }
 }
@@ -98,7 +97,6 @@ class ClickerViewController: UIViewController, ViewControllerTransitionListener 
         // TODO: CHANGE IT BACK TO 60 AFTER FINISH DEBUGGING
         self.decisionPopupTimer = Timer.scheduledTimer(withTimeInterval: 60, repeats: true) {
             timer in
-                print("***DECISION POPUP")
                 self.showDecisionPopUp()
         }
         
@@ -370,7 +368,6 @@ class ClickerViewController: UIViewController, ViewControllerTransitionListener 
             // TODO: CHANGE IT BACK TO 60 AFTER FINISH DEBUGGING
             self.decisionPopupTimer = Timer.scheduledTimer(withTimeInterval: 60, repeats: true) {
                 timer in
-                    print("***DECISION POPUP from delegate")
                     self.showDecisionPopUp()
             }
         }

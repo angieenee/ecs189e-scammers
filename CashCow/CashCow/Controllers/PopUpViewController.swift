@@ -122,21 +122,21 @@ class PopUpViewController: UIViewController {
         // Check which user stat to update:
         // Balance add/subtract:
         if let balanceSubtract = self.decision?.option1change?["balance"]?["subtract"] {
-            user?.money?.balance = user?.money?.subtract(user?.money?.balance ?? ["_": 0, "A": 0], balanceSubtract) ?? ["_": 0, "A": 0]
+            user?.money?.balance = user?.money?.subtract(user?.money?.balance ?? ["_": 0, "A": 0], balanceSubtract, true) ?? ["_": 0, "A": 0]
         }
         if let balanceAdd = self.decision?.option1change?["balance"]?["add"] {
             user?.money?.balance = user?.money?.add(user?.money?.balance ?? ["_": 0, "A": 0], balanceAdd) ?? ["_": 0, "A": 0]
         }
         // Clicker add/subtract:
         if let clickerSubtract = self.decision?.option1change?["clicker"]?["subtract"] {
-            user?.money?.moneyClick = user?.money?.subtract(user?.money?.moneyClick ?? ["_": 0, "A": 0], clickerSubtract) ?? ["_": 0, "A": 0]
+            user?.money?.moneyClick = user?.money?.subtract(user?.money?.moneyClick ?? ["_": 0, "A": 0], clickerSubtract, false) ?? ["_": 0, "A": 0]
         }
         if let clickerAdd = self.decision?.option1change?["clicker"]?["add"] {
             user?.money?.moneyClick = user?.money?.add(user?.money?.moneyClick ?? ["_": 0, "A": 0], clickerAdd) ?? ["_": 0, "A": 0]
         }
         // Passive add/subtract:
         if let passiveSubtract = self.decision?.option1change?["passive"]?["subtract"] {
-            user?.money?.moneyPassive = user?.money?.subtract(user?.money?.moneyPassive ?? ["_": 0, "A": 0], passiveSubtract) ?? ["_": 0, "A": 0]
+            user?.money?.moneyPassive = user?.money?.subtract(user?.money?.moneyPassive ?? ["_": 0, "A": 0], passiveSubtract, false) ?? ["_": 0, "A": 0]
         }
         if let passiveAdd = self.decision?.option1change?["passive"]?["add"] {
             user?.money?.moneyPassive = user?.money?.add(user?.money?.moneyPassive ?? ["_": 0, "A": 0], passiveAdd) ?? ["_": 0, "A": 0]
@@ -165,21 +165,21 @@ class PopUpViewController: UIViewController {
         // Check which user stat to update:
         // Balance add/subtract:
         if let balanceSubtract = self.decision?.option2change?["balance"]?["subtract"] {
-            user?.money?.balance = user?.money?.subtract(user?.money?.balance ?? ["_": 0, "A": 0], balanceSubtract) ?? ["_": 0, "A": 0]
+            user?.money?.balance = user?.money?.subtract(user?.money?.balance ?? ["_": 0, "A": 0], balanceSubtract, true) ?? ["_": 0, "A": 0]
         }
         if let balanceAdd = self.decision?.option2change?["balance"]?["add"] {
             user?.money?.balance = user?.money?.add(user?.money?.balance ?? ["_": 0, "A": 0], balanceAdd) ?? ["_": 0, "A": 0]
         }
         // Clicker add/subtract:
         if let clickerSubtract = self.decision?.option2change?["clicker"]?["subtract"] {
-            user?.money?.moneyClick = user?.money?.subtract(user?.money?.moneyClick ?? ["_": 0, "A": 0], clickerSubtract) ?? ["_": 0, "A": 0]
+            user?.money?.moneyClick = user?.money?.subtract(user?.money?.moneyClick ?? ["_": 0, "A": 0], clickerSubtract, false) ?? ["_": 0, "A": 0]
         }
         if let clickerAdd = self.decision?.option2change?["clicker"]?["add"] {
             user?.money?.moneyClick = user?.money?.add(user?.money?.moneyClick ?? ["_": 0, "A": 0], clickerAdd) ?? ["_": 0, "A": 0]
         }
         // Passive add/subtract:
         if let passiveSubtract = self.decision?.option2change?["passive"]?["subtract"] {
-            user?.money?.moneyPassive = user?.money?.subtract(user?.money?.moneyPassive ?? ["_": 0, "A": 0], passiveSubtract) ?? ["_": 0, "A": 0]
+            user?.money?.moneyPassive = user?.money?.subtract(user?.money?.moneyPassive ?? ["_": 0, "A": 0], passiveSubtract, false) ?? ["_": 0, "A": 0]
         }
         if let passiveAdd = self.decision?.option2change?["passive"]?["add"] {
             user?.money?.moneyPassive = user?.money?.add(user?.money?.moneyPassive ?? ["_": 0, "A": 0], passiveAdd) ?? ["_": 0, "A": 0]
@@ -208,21 +208,21 @@ class PopUpViewController: UIViewController {
         // Check which user stat to update:
         // Balance add/subtract:
         if let balanceSubtract = self.decision?.option3change?["balance"]?["subtract"] {
-            user?.money?.balance = user?.money?.subtract(user?.money?.balance ?? ["_": 0, "A": 0], balanceSubtract) ?? ["_": 0, "A": 0]
+            user?.money?.balance = user?.money?.subtract(user?.money?.balance ?? ["_": 0, "A": 0], balanceSubtract, true) ?? ["_": 0, "A": 0]
         }
         if let balanceAdd = self.decision?.option3change?["balance"]?["add"] {
             user?.money?.balance = user?.money?.add(user?.money?.balance ?? ["_": 0, "A": 0], balanceAdd) ?? ["_": 0, "A": 0]
         }
         // Clicker add/subtract:
         if let clickerSubtract = self.decision?.option3change?["clicker"]?["subtract"] {
-            user?.money?.moneyClick = user?.money?.subtract(user?.money?.moneyClick ?? ["_": 0, "A": 0], clickerSubtract) ?? ["_": 0, "A": 0]
+            user?.money?.moneyClick = user?.money?.subtract(user?.money?.moneyClick ?? ["_": 0, "A": 0], clickerSubtract, false) ?? ["_": 0, "A": 0]
         }
         if let clickerAdd = self.decision?.option3change?["clicker"]?["add"] {
             user?.money?.moneyClick = user?.money?.add(user?.money?.moneyClick ?? ["_": 0, "A": 0], clickerAdd) ?? ["_": 0, "A": 0]
         }
         // Passive add/subtract:
         if let passiveSubtract = self.decision?.option3change?["passive"]?["subtract"] {
-            user?.money?.moneyPassive = user?.money?.subtract(user?.money?.moneyPassive ?? ["_": 0, "A": 0], passiveSubtract) ?? ["_": 0, "A": 0]
+            user?.money?.moneyPassive = user?.money?.subtract(user?.money?.moneyPassive ?? ["_": 0, "A": 0], passiveSubtract, false) ?? ["_": 0, "A": 0]
         }
         if let passiveAdd = self.decision?.option3change?["passive"]?["add"] {
             user?.money?.moneyPassive = user?.money?.add(user?.money?.moneyPassive ?? ["_": 0, "A": 0], passiveAdd) ?? ["_": 0, "A": 0]
