@@ -8,9 +8,10 @@
 - Open the CashCow.xcworkspace file in Xcode
 - Run the application, and voila!
 
-### Individual Code Ownership
+# Individual Code Ownership
 - Bridget:
-- Rachel:
+- Rachel: Upgrades, Passive Income Generation, Initial Setup of
+  Home/Profile/Other Segues, Info Popup
 - Angela: Popup decisions, design document, basic clicker
 - Jarod:
 
