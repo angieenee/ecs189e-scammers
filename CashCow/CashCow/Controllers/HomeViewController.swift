@@ -24,8 +24,10 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         let userRef = self.ref.child(firebaseAuth.currentUser?.uid ?? "")
         
+        // Load user info from Firebase
         userRef.observeSingleEvent(of: .value, with: { snapshot in
             if let data = snapshot.value as? [String: Any] {
+                // User already exists
                 self.user.load(data) {
                     if let username = self.user.username {
                         self.welcomeLabel.text = "Welcome, \(username)!"
@@ -33,6 +35,7 @@ class HomeViewController: UIViewController {
                     self.user.stamina = 1.0
                 }
             } else {
+                // New user
                 if let uid = Auth.auth().currentUser?.uid, let email = Auth.auth().currentUser?.email {
                     self.user.email = email
                     self.user.uid = uid
@@ -47,10 +50,6 @@ class HomeViewController: UIViewController {
                 }
             }
         })
-        print("User: \(user)")
-//        self.user.push_decision() {
-//            print("success")
-//        }
     }
     
     @IBAction func startButtonPressed(_ sender: Any) {

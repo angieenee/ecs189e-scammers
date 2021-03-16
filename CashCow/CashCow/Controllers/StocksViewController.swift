@@ -8,7 +8,8 @@
 import UIKit
 import FirebaseDatabase
 
-// Start JSON schema Decodable from "thisischemistry" on Reddit
+// Start JSON schema Decodable for Quandl API data from "thisischemistry" on Reddit
+// https://www.reddit.com/r/swift/comments/9ximzk/live_financial_data_using_yahoo_finance_or_quandl/
 
 struct TimeSeriesData {
   let date: Date
@@ -16,19 +17,27 @@ struct TimeSeriesData {
 }
 
 extension TimeSeriesData : Decodable {
+
   init(from: Decoder) throws {
     var container = try from.unkeyedContainer()
     self.date = try container.decode(Date.self)
     var floatData: [Float] = []
+    
     while !container.isAtEnd {
       try floatData.append(container.decode(Float.self))
     }
+    
     self.data = floatData
   }
 }
 
-enum Order: String, Decodable {  case asc, desc }
-enum Frequency: String, Decodable { case  daily, weekly, monthly, quarterly, annual }
+enum Order: String, Decodable {
+    case asc, desc
+}
+
+enum Frequency: String, Decodable {
+    case  daily, weekly, monthly, quarterly, annual
+}
 
 struct DatasetData: Decodable {
   let limit: Int?
@@ -48,14 +57,14 @@ struct TimeSeries: Decodable {
 
 // End JSON schema Decodable from Reddit
 
-class StocksViewController: UIViewController, UITableViewDataSource, UITableViewDelegate { //, StockCellProtocol {
-    
+class StocksViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var user: User?
+    var ref = Database.database().reference().child("users")
     let API_KEY = "QxgT-zxMrt3AYy2xUhhA"
+    
     var stockCodes = ["AAPL": "Apple", "DIS": "Walt Disney", "HD": "Home Depot", "MSFT": "Microsoft"]
     var stocksData: [String: TimeSeries] = [:]
     var stocksDict: [[String: Any]]?
-    var ref = Database.database().reference().child("users")
     
     @IBOutlet weak var stocksTableView: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -76,16 +85,16 @@ class StocksViewController: UIViewController, UITableViewDataSource, UITableView
             return
         }
         
+        // Load stock data from Firebase
         ref.child(uid).child("date").observe( .value, with: { snapshot in
             if let data = snapshot.value as? [String: Any] {
-                print("GOT THE DATE DATA")
-                print(data)
+                // If new day, then load new data from Quandl API
                 if data["year"] as? Int != components.year || data["month"] as? Int != components.month || data["day"] as? Int != components.day {
-                    print("NEW DATE - GETTING STOCKS FROM API ----------------")
                     self.getStocksFromAPI() {
-                        // set stocks
                         self.setStocksDict(uid) {
                             let post = ["year": components.year, "day": components.day, "month": components.month]
+                            
+                            // Post new date to Firebase for future reference
                             self.ref.child(uid).child("date").setValue(post) {
                                 (error: Error?, ref:DatabaseReference) in
                                 if let error = error {
@@ -98,22 +107,19 @@ class StocksViewController: UIViewController, UITableViewDataSource, UITableView
                             }
                         }
                     }
+                // Otherwise populate table with existing stock data
                 } else {
-                    // Get from DB
-                    print("SAME DATE - PULLING FROM DB ----------------")
+                    // Get stock data from Firebase
                     self.ref.child(uid).child("stocks").observe(.value, with: { snapshot in
                         if let data = snapshot.value as? [[String: Any]] {
-                            print("STOCK DATA FROM DB: \(data)")
                             self.stocksDict = data
                             self.stocksTableView.reloadData()
                             self.start()
                         } else {
-                            // No data....
+                            // No existing stock data - get from Quandl API
                             print("No stock data")
                             if self.stocksDict == nil {
-                                
                                 self.getStocksFromAPI() {
-                                    // set stocks
                                     self.setStocksDict(uid) {
                                         self.stocksTableView.reloadData()
                                         self.start()
@@ -124,10 +130,10 @@ class StocksViewController: UIViewController, UITableViewDataSource, UITableView
                     })
                 }
             } else {
-                // no data
+                // No existing date in Firebase - post new date for future reference
                 let post = ["year": components.year, "day": components.day, "month": components.month]
                 self.ref.child(uid).child("date").setValue(post) {
-                    (error: Error?, ref:DatabaseReference) in
+                    (error: Error?, ref: DatabaseReference) in
                     if let error = error {
                         print("Data could not be saved: \(error).")
                     } else {
@@ -138,6 +144,7 @@ class StocksViewController: UIViewController, UITableViewDataSource, UITableView
         })
     }
     
+    // Set dictionary for populating table view
     func setStocksDict(_ uid: String, completion: @escaping () -> Void) {
         if let count = self.stocksData["AAPL"]?.datasetData.data.count {
             let rand = Int.random(in: 1..<count)
@@ -171,66 +178,57 @@ class StocksViewController: UIViewController, UITableViewDataSource, UITableView
                         "low": self.stocksData["MSFT"]?.datasetData.data[rand].data[2],
                         "currency": "D"]
                         ]
+            
+            // Save to Firebase
             self.ref.child(uid).child("stocks").setValue(self.stocksDict) {
                 (error: Error?, ref:DatabaseReference) in
                 if let error = error {
                     print("Data could not be saved: \(error).")
                 } else {
-                    print("STOCK Data saved successfully!")
+                    print("Data saved successfully!")
                     completion()
                 }
             }
         }
     }
     
+    // Load stock data from Quandl API
     func getStocksFromAPI(completion: @escaping () -> Void) {
-        for (key, val) in self.stockCodes {
-            var url = "https://www.quandl.com/api/v3/datasets/EOD/\(key)/data.json?api_key=\(self.API_KEY)"
+        for (key, _) in self.stockCodes {
+            let url = "https://www.quandl.com/api/v3/datasets/EOD/\(key)/data.json?api_key=\(self.API_KEY)"
             if let nsurl = URL(string: url) {
                 URLSession.shared.dataTask(with: nsurl) { data, response, error in
-                    
-                    guard error == nil else {
-                        print("Error: \(error!)")
-                        return
+                    if let err = error {
+                        print("Error: \(err)")
                     }
-                    guard let response = response as? HTTPURLResponse else {
-                        print("Bad Response")
-                        return
-                    }
-                    guard response.statusCode == 200 else {
-                        print("Bad Response: \(response.statusCode)")
-                        return
-                    }
-                    guard let data = data else {
-                        print("No data")
-                        return
-                    }
-                    
-                    let formatter = DateFormatter()
-                    formatter.dateFormat = "yyyy-MM-dd"
-                    formatter.calendar = Calendar(identifier: .iso8601)
-                    formatter.timeZone = TimeZone(secondsFromGMT: 0)
-                    formatter.locale = Locale(identifier: "en_US_POSIX")
-                    
-                    let decoder = JSONDecoder()
-                    decoder.dateDecodingStrategy = .formatted(formatter)
-                    decoder.keyDecodingStrategy = .convertFromSnakeCase
-
-                    if let result = try? decoder.decode(TimeSeries.self, from: data) {
-                        //print(result.datasetData)
-                        print(key)
-                        self.stocksData[key] = result
+                    if let value = data {
+                        // Formatting for JSONDecoder
+                        let formatter = DateFormatter()
+                        formatter.dateFormat = "yyyy-MM-dd"
+                        formatter.calendar = Calendar(identifier: .iso8601)
+                        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+                        formatter.locale = Locale(identifier: "en_US_POSIX")
                         
-                        // Update table in UI thread
-                        DispatchQueue.main.async() {
-                            // We're done here
-                            if self.stocksData.count == self.stockCodes.count {
-                                completion()
+                        let decoder = JSONDecoder()
+                        decoder.dateDecodingStrategy = .formatted(formatter)
+                        decoder.keyDecodingStrategy = .convertFromSnakeCase
+
+                        // Attempt to decode into TimeSeries object
+                        if let result = try? decoder.decode(TimeSeries.self, from: value) {
+                            self.stocksData[key] = result
+                            
+                            // Update table in UI thread
+                            DispatchQueue.main.async() {
+                                // We're done here
+                                if self.stocksData.count == self.stockCodes.count {
+                                    completion()
+                                }
                             }
                         }
                     }
                 }.resume()
             }
+            // Sleep for a bit so the API is not overwhelmed
             sleep(UInt32(1))
         }
     }
@@ -241,8 +239,6 @@ class StocksViewController: UIViewController, UITableViewDataSource, UITableView
             assertionFailure("Couldn't find Profile VC")
             return
         }
-        print("BACK BUTTON PRESSED")
-        print(self.user?.stocksOwned)
         clickerViewController.user = self.user
         
         // Push to stack because we want users to be able to go back to clicker view
@@ -266,7 +262,6 @@ class StocksViewController: UIViewController, UITableViewDataSource, UITableView
             cell.configureCell(code: get["code"] as? String, name: get["name"] as? String, price: get["price"] as? Float, open: get["open"] as? Float, high: get["high"] as? Float, low: get["low"] as? Float, currency: get["currency"] as? String, row: indexPath.row, user: self.user)
         }
         
-        //cell.stockCellDelegate = self
         return cell
     }
     

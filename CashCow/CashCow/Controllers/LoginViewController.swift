@@ -31,6 +31,7 @@ class LoginViewController: UIViewController {
         
         GIDSignIn.sharedInstance()?.presentingViewController = self
         
+        // Set UI for button
         self.set(button: googleLoginButton, image: UIImage(named: "ic_google") ?? UIImage(), with: "  Sign In with Google")
         
         // Notification for Google login
@@ -41,40 +42,7 @@ class LoginViewController: UIViewController {
         GIDSignIn.sharedInstance()?.signIn()
     }
     
-    @IBAction func loginFacebookPress() {
-        let loginManager = LoginManager()
-            
-        loginManager.logIn(permissions: [], from: self) { [weak self] (result, error) in
-            if let err = error {
-                print(err.localizedDescription)
-                return
-            }
-            if let res = result {
-                if res.isCancelled {
-                    print("User cancelled login")
-                    return
-                }
-                
-                // Success - auth and nav to home view
-                let credential = FacebookAuthProvider.credential(withAccessToken: AccessToken.current?.tokenString ?? "")
-                print("Credential: \(credential)")
-                
-                // Authenticate with Firebase using the credential object
-                Auth.auth().signIn(with: credential) { (authResult, error) in
-                    if let error = error {
-                        print("Error occurs when authenticate with Firebase: \(error.localizedDescription)")
-                    }
-                }
-                self?.navHomeView()
-            }
-        }
-    }
-    
-    @IBAction func loginEmailPress() {
-        // Nav to home view for now until login w/ email is implemented
-        self.navHomeView()
-    }
-    
+    // Customize button
     func set(button: AZSocialButton, image: UIImage, with text: String) {
       let attachment = NSTextAttachment()
       attachment.image = image
@@ -90,6 +58,7 @@ class LoginViewController: UIViewController {
       button.setAttributedTitle(mutableAttributedString, for: UIControl.State.normal)
     }
     
+    // Go to home view
     private func navHomeView() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let homeViewController =  storyboard.instantiateViewController(identifier: "homeViewController") as? HomeViewController else {

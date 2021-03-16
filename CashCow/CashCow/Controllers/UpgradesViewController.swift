@@ -10,10 +10,9 @@ import FontAwesome_swift
 import Toast_Swift
 
 class UpgradesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    
     var user: User?
-    var progressUpdateAfterUpgrade: Float?
     
+    // Default tab is stamina upgrades
     var categoryOn = "stamina"
     
     @IBOutlet weak var backButton: UIButton!
@@ -43,6 +42,7 @@ class UpgradesViewController: UIViewController, UITableViewDataSource, UITableVi
         ToastManager.shared.style = style
         ToastManager.shared.isTapToDismissEnabled = true
         
+        // Configure view
         self.upgradesTable.dataSource = self
         self.upgradesTable.delegate = self
         
@@ -66,6 +66,7 @@ class UpgradesViewController: UIViewController, UITableViewDataSource, UITableVi
         self.passiveIncomeIcon.titleLabel?.font = UIFont.fontAwesome(ofSize: 20, style: .solid)
         self.passiveIncomeIcon.setTitle(String.fontAwesomeIcon(name: .coins), for: .normal)
         
+        // Retrieve stamina upgrades from Firebase
         getStaminaUpgrades() { response in
             if let upgrades = response {
                 self.upgradesList = upgrades
@@ -81,6 +82,7 @@ class UpgradesViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell: UpgradeCell
+        
         if let reuseCell = tableView.dequeueReusableCell(withIdentifier: "upgradeCell") as? UpgradeCell {
             cell = reuseCell
             reuseCell.buyButton.backgroundColor = UIColor.systemGreen
@@ -90,8 +92,8 @@ class UpgradesViewController: UIViewController, UITableViewDataSource, UITableVi
         }
         
         cell.user = self.user
-        cell.progressUpdateAfterUpgrade = self.progressUpdateAfterUpgrade
         cell.upgrades = self.upgradesList
+        
         cell.configureCell(category: self.categoryOn, row: indexPath.row)
                 
         return cell
@@ -105,15 +107,12 @@ class UpgradesViewController: UIViewController, UITableViewDataSource, UITableVi
         }
         clickerViewController.user = self.user
         
-        clickerViewController.progressUpdateAfterUpgrade = self.progressUpdateAfterUpgrade
-        
-        
         // Push to stack because we want users to be able to go back to clicker view
         let viewControllers = [clickerViewController]
         self.navigationController?.setViewControllers(viewControllers, animated: true)
     }
-
     
+    // Reset upgrade category buttons
     func resetCategoriesButtons() {
         self.categoryIcons = self.categoryIcons.map ({
             $0.setTitleColor(.systemBlue, for: .normal); return $0
@@ -123,6 +122,7 @@ class UpgradesViewController: UIViewController, UITableViewDataSource, UITableVi
         })
     }
     
+    // Switch upgrade category to stamina
     @IBAction func staminaButtonPressed(_ sender: Any) {
         resetCategoriesButtons()
         
@@ -139,6 +139,7 @@ class UpgradesViewController: UIViewController, UITableViewDataSource, UITableVi
         }
     }
     
+    // Switch upgrade category to clicker
     @IBAction func clickerButtonPressed(_ sender: Any) {
         resetCategoriesButtons()
         
@@ -155,6 +156,7 @@ class UpgradesViewController: UIViewController, UITableViewDataSource, UITableVi
         }
     }
     
+    // Switch upgrade category to passive
     @IBAction func passiveIncomePressed(_ sender: Any) {
         resetCategoriesButtons()
         
@@ -170,6 +172,4 @@ class UpgradesViewController: UIViewController, UITableViewDataSource, UITableVi
             }
         }
     }
-    
-    
 }

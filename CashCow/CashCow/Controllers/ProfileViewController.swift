@@ -19,12 +19,14 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Configure view
         self.usernameLabel.text = self.user?.username
         self.incomeAmountLabel.text = self.user?.money?.getBalance()
         self.tapAmountLabel.text = self.user?.money?.getMoneyClick()
         self.passiveAmountLabel.text = self.user?.money?.getMoneyPassive()
     }
     
+    // Go back to clicker view
     @IBAction func backButtonPressed(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let clickerViewController =  storyboard.instantiateViewController(identifier: "clickerViewController") as? ClickerViewController else {
@@ -33,7 +35,7 @@ class ProfileViewController: UIViewController {
         }
         clickerViewController.user = self.user
         
-        // Push to stack because we want users to be able to go back to clicker view
+        // Only have clicker view on stack so user can't go back
         let viewControllers = [clickerViewController]
         self.navigationController?.setViewControllers(viewControllers, animated: true)
     }

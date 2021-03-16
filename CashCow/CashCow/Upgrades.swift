@@ -9,7 +9,7 @@ import Foundation
 import FirebaseDatabase
 
 class Upgrade {
-    var type: String? // 'stamina', 'passive', or 'perclick"
+    var type: String?
     var id: Int?
     var name: String?
     var cost: Int?
@@ -32,6 +32,7 @@ class Upgrade {
     }
 }
 
+// Retrieve upgrades of given type from Firebase
 private func getFirebaseUpgrades(_ type: String, completion: @escaping ([Upgrade]?) -> Void) {
     let ref = Database.database().reference(withPath: "upgrades")
     
@@ -49,18 +50,16 @@ private func getFirebaseUpgrades(_ type: String, completion: @escaping ([Upgrade
     })
 }
 
+// Retrieve stamina upgrades from Firebase
 func getStaminaUpgrades(completion: @escaping ([Upgrade]?) -> Void) {
-    print("***get stamina upgrades")
     getFirebaseUpgrades("stamina") { response in
         if let upgradesList = response {
             completion(upgradesList)
         }
-        else {
-            print("NO RESPONSE FOR STAMINA :(")
-        }
     }
 }
 
+// Retrieve clicker upgrades from Firebase
 func getClickerUpgrades(completion: @escaping ([Upgrade]?) -> Void) {
     getFirebaseUpgrades("clicker") { response in
         if let upgradesList = response {
@@ -69,6 +68,7 @@ func getClickerUpgrades(completion: @escaping ([Upgrade]?) -> Void) {
     }
 }
 
+// Retrieve passive upgrades from Firebase
 func getPassiveUpgrades(completion: @escaping ([Upgrade]?) -> Void) {
     getFirebaseUpgrades("passive") { response in
         if let upgradesList = response {
