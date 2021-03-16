@@ -30,7 +30,7 @@ class ClickerViewController: UIViewController {
     @IBOutlet weak var profileButton: UIButton!
     @IBOutlet weak var upgradesButton: UIButton!
     @IBOutlet weak var clickerButton: UIButton!
-    @IBOutlet weak var popupButton: UIButton!
+    @IBOutlet weak var infoButton: UIButton!
     @IBOutlet weak var staminaBar: UIProgressView!
     @IBOutlet weak var coinPopUp: UIImageView!
     
