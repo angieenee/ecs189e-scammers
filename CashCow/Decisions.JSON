@@ -6,9 +6,9 @@
   "option1text" : "MooDash Delivery",
   "option2text" : "Home cooked meal",
   "option3text": "Takeout",
-  "option1change": ["balance": ["subtract": ["_": 0, "A": 10]]],
+  "option1change": ["balance": ["subtract": ["_": 10, "A": 0]]],
   "option2change": ["stamina": ["subtract": ["_": 100, "A": 0]]],
-  "option3change": ["balance": ["subtract": ["_": 0, "A": 5]], "stamina": ["subtract": ["_": 50, "A": 0]]]
+  "option3change": ["balance": ["subtract": ["_": 50, "A": 0]], "stamina": ["subtract": ["_": 50, "A": 0]]]
 }, {
   "description" : "Cowngress sent you a stimoolus check! What shall we do with it?",
   "id" : 1,
@@ -26,7 +26,7 @@
   "option1text" : "Help them",
   "option2text" : "Don't help",
   "option3text" : "Make them a GoFundMoo",
-  "option1change": ["balance": ["subtract": ["_": 0, "A": 30]], "passive": ["add": ["_": 0, "A": 5]]],
+  "option1change": ["balance": ["subtract": ["_": 20, "A": 0]], "passive": ["add": ["_": 0, "A": 5]]],
   "option2change": [],
   "option3change": ["stamina": ["subtract": ["_": 100, "A": 0]], "passive": ["add": ["_": 0, "A": 1]]]
 }, {
@@ -36,8 +36,8 @@
   "numOptions": 2,
   "option1text" : "Visit the doctor",
   "option2text" : "Nothing a bandage can't fix",
-  "option1change": ["balance": ["subtract": "_": 0, "A": 30], "clicker": ["add": ["_": 500, "A": 0]],
-  "option2change": ["clicker": ["subtract": ["_": 500, "A": 0]]]
+  "option1change": ["balance": ["subtract": "_": 30, "A": 0], "clicker": ["add": ["_": 500, "A": 0]],
+  "option2change": ["clicker": ["subtract": ["_": 50, "A": 0]]]
 }, {
     "description" : "It's been a while since we took a day off...",
     "id" : 4,
